@@ -1,0 +1,11 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  # Evaluated in every environment (the whole file is rendered), so this keeps
+  # the production-only default rather than the test-time fail-closed resolver.
+  url: <%= ENV.fetch("REDIS_URL") { Decidim::Bih::RedisEndpoint::LEGACY_FALLBACK_URL } %>

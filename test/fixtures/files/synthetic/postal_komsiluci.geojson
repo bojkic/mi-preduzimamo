@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 1,
+        "naziv": "Izmišljeni komšiluk jug"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.1,
+              0.1
+            ],
+            [
+              0.2,
+              0.1
+            ],
+            [
+              0.2,
+              0.2
+            ],
+            [
+              0.1,
+              0.2
+            ],
+            [
+              0.1,
+              0.1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 2,
+        "naziv": "Izmišljeni komšiluk sjever"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.1,
+              0.2
+            ],
+            [
+              0.2,
+              0.2
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.1,
+              0.3
+            ],
+            [
+              0.1,
+              0.2
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

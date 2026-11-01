@@ -1,0 +1,15 @@
+<button id="main-dropdown-summary-mobile"
+        class="main-bar__links-mobile__trigger mi-main-menu-mobile-trigger p-0"
+        type="button"
+        data-controller="dropdown"
+        data-target="dropdown-menu-main-mobile">
+  <%= icon "menu-line", role: "img", "aria-hidden": true %>
+  <span class="mi-main-menu-mobile-trigger__label"><%= t("main_menu", scope: "layouts.decidim.header") %></span>
+  <%= icon "close-line", role: "img", "aria-hidden": true %>
+</button>
+
+<div id="dropdown-menu-main-mobile" class="main-bar__links-mobile__dropdown main-bar__links-mobile__dropdown-before" aria-hidden="true">
+  <%= render partial: "layouts/decidim/header/menu_breadcrumb_main_dropdown_mobile", locals: { id: "breadcrumb-main-dropdown-mobile" } %>
+</div>
+
+<%= render partial: "layouts/decidim/header/main_links_mobile_item_account" %>

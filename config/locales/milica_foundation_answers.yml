@@ -1,0 +1,77 @@
+---
+sr:
+  decidim_app:
+    milica:
+      foundation_answers:
+        identity: Podaci o lokalnoj organizaciji nalaze se na pregledanom službenom
+          linku.
+        call_status: Ne mogu potvrditi da je poziv trenutno otvoren ni da su sredstva
+          dostupna; aktuelne uslove provjeri na službenom linku.
+        call_status_open: Pregledana potvrda organizacije navodi da je poziv otvoren.
+          Uslove i rok provjeri na službenom linku.
+        call_status_closed: Pregledana potvrda organizacije navodi da je poziv zatvoren.
+          Nove pozive prati na službenom linku.
+        source_about: Lokalna organizacija — pregledani izvor
+        source_idea_call: Poziv za ideje — pregledani izvor
+        contact: "%{name} je na adresi %{address}. Kontakt mejl: %{email}, sajt: %{website}."
+bs:
+  decidim_app:
+    milica:
+      foundation_answers:
+        identity: Podaci o lokalnoj organizaciji nalaze se na pregledanom službenom
+          linku.
+        call_status: Ne mogu potvrditi da je poziv trenutno otvoren ni da su sredstva
+          dostupna; aktuelne uslove provjeri na službenom linku.
+        call_status_open: Pregledana potvrda organizacije navodi da je poziv otvoren.
+          Uslove i rok provjeri na službenom linku.
+        call_status_closed: Pregledana potvrda organizacije navodi da je poziv zatvoren.
+          Nove pozive prati na službenom linku.
+        source_about: Lokalna organizacija — pregledani izvor
+        source_idea_call: Poziv za ideje — pregledani izvor
+        contact: "%{name} je na adresi %{address}. Kontakt mejl: %{email}, sajt: %{website}."
+hr:
+  decidim_app:
+    milica:
+      foundation_answers:
+        identity: Podaci o lokalnoj organizaciji nalaze se na pregledanoj službenoj
+          poveznici.
+        call_status: Ne mogu potvrditi da je poziv trenutačno otvoren ni da su sredstva
+          dostupna; aktualne uvjete provjeri na službenoj poveznici.
+        call_status_open: Pregledana potvrda organizacije navodi da je poziv otvoren.
+          Uslove i rok provjeri na službenom linku.
+        call_status_closed: Pregledana potvrda organizacije navodi da je poziv zatvoren.
+          Nove pozive prati na službenom linku.
+        source_about: Lokalna organizacija — pregledani izvor
+        source_idea_call: Poziv za ideje — pregledani izvor
+        contact: "%{name} nalazi se na adresi %{address}. Kontakt e-pošta: %{email},
+          web stranica: %{website}."
+en:
+  decidim_app:
+    milica:
+      foundation_answers:
+        identity: Information about the local organization is available at its reviewed
+          official link.
+        call_status: I cannot confirm that the call is currently open or that funds
+          are available; check the official link for current terms.
+        call_status_open: The reviewed confirmation from the organization states that
+          the call is open. Check the official link for terms and deadline.
+        call_status_closed: The reviewed confirmation from the organization states
+          that the call is closed. Watch the official link for new calls.
+        source_about: Local organization — reviewed source
+        source_idea_call: Call for ideas — reviewed source
+        contact: "%{name} is at %{address}. Contact e-mail: %{email}, website: %{website}."
+sr-Cyrl:
+  decidim_app:
+    milica:
+      foundation_answers:
+        identity: Подаци о локалној организацији налазе се на прегледаном службеном
+          линку.
+        call_status: Не могу потврдити да је позив тренутно отворен ни да су средства
+          доступна; актуелне услове провјери на службеном линку.
+        call_status_open: Прегледана потврда организације наводи да је позив отворен.
+          Услове и рок провјери на службеном линку.
+        call_status_closed: Прегледана потврда организације наводи да је позив затворен.
+          Нове позиве прати на службеном линку.
+        source_about: Локална организација — прегледани извор
+        source_idea_call: Позив за идеје — прегледани извор
+        contact: "%{name} је на адреси %{address}. Контакт мејл: %{email}, сајт: %{website}."

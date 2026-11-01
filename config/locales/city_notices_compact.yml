@@ -1,0 +1,239 @@
+---
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        compact: &1
+          location: Pogođeno područje i table komšiluka
+          affected: Lokacije iz izvora
+          map_help: Izbor table određuje gdje se objava prikazuje. Ne potvrđuje da su sva domaćinstva u tom komšiluku pogođena.
+          open_map: Otvori mapu
+          mz: Prikaži granice MZ
+          fit: Prikaži područje
+          legend: 'Plavo: odabrane table. Narandžasto: geometrija navedene lokacije; tačan obim prekida može biti nepoznat. Sivo: ostali komšiluci.'
+          search: Pretraži table komšiluka
+          edit_text: Uredi naslov i tekst objave
+          correction_note: Bilješka uz ispravku ili potvrdu područja
+          platform_first: Decidim obavještenje i browser push ostaju uključeni za podobne korisnike.
+          unknown: Tačan obim nije poznat. Prikazane granice su granice komšiluka, a ne područje prekida.
+          error: Mapa nije dostupna. Koristite izbor područja u nastavku.
+          stale: Podaci izvora su promijenjeni. Osvježite stranicu prije potvrde.
+          fallback: Pošalji Viber ako obavještenje ne bude dostavljeno
+          preview: Pregledaj publiku i Viber rezervu
+          timeout: Viber se šalje samo ako nema potvrde dostave kroz platformu do roka (najviše 15 minuta, do isteka obavještenja). Kasna potvrda može značiti poruku na oba kanala.
+          audience: 'Područni kandidati za obavještenje: %{recipients}; broj tabli: %{boards}. Podobnost za telefon prikazana je ispod.'
+          confirm: Potvrđujem objavu i Viber rezervu za prikazani tekst, područje i publiku.
+          publish_fallback: Objavi uz Viber rezervu
+          back: Nazad na provjeru
+          duplicates: Mogući duplikati ili izmjene
+          same: Isti događaj
+          separate: Odvojena obavještenja
+          undo: Poništi povezivanje
+          compare: Otvori za poređenje
+          automation: Automatsko objavljivanje
+          automation_help: Automatski se objavljuju samo potpuna i pouzdano locirana rutinska obavještenja. Viber se ne uključuje automatski. Ostali slučajevi čekaju provjeru.
+          'off': Isključeno
+          shadow: Probno — bez objavljivanja
+          automatic: Automatski objavi podobne
+          save_policy: Sačuvaj pravilo
+          collection_complete: Potpuno prikupljanje
+          retry_at: Naredni pokušaj
+          last_good_age: Posljednji uspjeh prije %{seconds} sekundi
+          coverage_reuse: Ponovna upotreba potvrđenog područja
+          revoke_coverage: Ukinuti ponovno korišćenje područja
+          viber_count: 'Mogući Viber primaoci: %{count}'
+          excluded_count: 'Isključeno (%{reason}): %{count}'
+          delivery_scope: Ukupno %{count} zapisa za ovaj incident; aktivno čekanje računato u trenutku otvaranja stranice. Ostali brojevi uključuju i istorijske zapise. Jedinica je zapis po korisniku, ne poruka na telefonu.
+          delivery_empty: Za ovaj incident nema sačuvanih zapisa o isporuci; objava na tabli ne dokazuje slanje poruke.
+          delivery_inbox_created: Sačuvano u Decidim obavještenjima
+          delivery_push_queued: Browser push u redu za slanje
+          delivery_acknowledged: Potvrđeno prikazivanje u browseru ili čitanje u Decidimu
+          delivery_awaiting_acknowledgment: Aktivno čeka prikazivanje ili čitanje
+          delivery_retired_unacknowledged: Otkazano ili isteklo bez potvrde
+          delivery_fallback_requested: Odobrena Viber rezerva
+          delivery_evidence: Red za slanje i prihvatanje pružaoca nisu dokaz dostave. Prikazivanje u browseru nije dokaz da je korisnik pročitao poruku.
+          results:
+            updated: Sačuvano.
+            revoked: Ponovno korišćenje područja je ukinuto.
+            not_authorized: Nemate ovlašćenje za ovu radnju.
+            invalid_selection: Provjerite izabrane podatke.
+            stale_review: Podaci su promijenjeni. Osvježite pregled.
+            unchanged: Odluka je već sačuvana.
+            undo_required: Prvo poništite postojeće povezivanje.
+            resolved: Odluka je sačuvana.
+            not_found: Zapis nije pronađen.
+          collection_status:
+            healthy: Prikupljeno
+            healthy_empty: Nema novih obavještenja
+            awaiting_review: Čeka provjeru
+            partial: Djelimično prikupljeno
+            deferred: Odloženo do sljedećeg pokušaja
+            policy_blocked: Pristup izvoru nije dozvoljen
+            failed: Neuspjelo prikupljanje
+          duplicate_reasons:
+            confirmed_same_incident: 'Potvrđeno: isti događaj'
+            overlapping_service_time_and_place: Podudaraju se usluga, vrijeme i područje
+            confirmed_separate_incident: 'Potvrđeno: odvojeni događaji'
+          preview_deadline: Okvirni rok provjere dostave ako sada potvrdite
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        compact:
+          location: Погођено подручје и табле комшилука
+          affected: Локације из извора
+          map_help: Избор табле одређује гдје се објава приказује. Не потврђује да су сва домаћинства у том комшилуку погођена.
+          open_map: Отвори мапу
+          mz: Прикажи границе МЗ
+          fit: Прикажи подручје
+          legend: 'Плаво: одабране табле. Наранџасто: геометрија наведене локације; тачан обим прекида може бити непознат. Сиво: остали комшилуци.'
+          search: Претражи табле комшилука
+          edit_text: Уреди наслов и текст објаве
+          correction_note: Биљешка уз исправку или потврду подручја
+          platform_first: Децидим обавјештење и броwсер пусх остају укључени за подобне кориснике.
+          unknown: Тачан обим није познат. Приказане границе су границе комшилука, а не подручје прекида.
+          error: Мапа није доступна. Користите избор подручја у наставку.
+          stale: Подаци извора су промијењени. Освјежите страницу прије потврде.
+          fallback: Пошаљи Вибер ако обавјештење не буде достављено
+          preview: Прегледај публику и Вибер резерву
+          timeout: Вибер се шаље само ако нема потврде доставе кроз платформу до рока (највише 15 минута, до истека обавјештења). Касна потврда може значити поруку на оба канала.
+          audience: 'Подручни кандидати за обавјештење: %{recipients}; број табли: %{boards}. Подобност за телефон приказана је испод.'
+          confirm: Потврђујем објаву и Вибер резерву за приказани текст, подручје и публику.
+          publish_fallback: Објави уз Вибер резерву
+          back: Назад на провјеру
+          duplicates: Могући дупликати или измјене
+          same: Исти догађај
+          separate: Одвојена обавјештења
+          undo: Поништи повезивање
+          compare: Отвори за поређење
+          automation: Аутоматско објављивање
+          automation_help: Аутоматски се објављују само потпуна и поуздано лоцирана рутинска обавјештења. Вибер се не укључује аутоматски. Остали случајеви чекају провјеру.
+          'off': Искључено
+          shadow: Пробно — без објављивања
+          automatic: Аутоматски објави подобне
+          save_policy: Сачувај правило
+          collection_complete: Потпуно прикупљање
+          retry_at: Наредни покушај
+          last_good_age: Посљедњи успјех прије %{seconds} секунди
+          coverage_reuse: Поновна употреба потврђеног подручја
+          revoke_coverage: Укинути поновно коришћење подручја
+          viber_count: 'Могући Вибер примаоци: %{count}'
+          excluded_count: 'Искључено (%{reason}): %{count}'
+          delivery_scope: Укупно %{count} записа за овај инцидент; активно чекање рачунато у тренутку отварања странице. Остали бројеви укључују и историјске записе. Јединица је запис по кориснику, не порука на телефону.
+          delivery_empty: За овај инцидент нема сачуваних записа о испоруци; објава на табли не доказује слање поруке.
+          delivery_inbox_created: Сачувано у Децидим обавјештењима
+          delivery_push_queued: Броwсер пусх у реду за слање
+          delivery_acknowledged: Потврђено приказивање у броwсеру или читање у Децидиму
+          delivery_awaiting_acknowledgment: Активно чека приказивање или читање
+          delivery_retired_unacknowledged: Отказано или истекло без потврде
+          delivery_fallback_requested: Одобрена Вибер резерва
+          delivery_evidence: Ред за слање и прихватање пружаоца нису доказ доставе. Приказивање у броwсеру није доказ да је корисник прочитао поруку.
+          results:
+            updated: Сачувано.
+            revoked: Поновно коришћење подручја је укинуто.
+            not_authorized: Немате овлашћење за ову радњу.
+            invalid_selection: Провјерите изабране податке.
+            stale_review: Подаци су промијењени. Освјежите преглед.
+            unchanged: Одлука је већ сачувана.
+            undo_required: Прво поништите постојеће повезивање.
+            resolved: Одлука је сачувана.
+            not_found: Запис није пронађен.
+          collection_status:
+            healthy: Прикупљено
+            healthy_empty: Нема нових обавјештења
+            awaiting_review: Чека провјеру
+            partial: Дјелимично прикупљено
+            deferred: Одложено до сљедећег покушаја
+            policy_blocked: Приступ извору није дозвољен
+            failed: Неуспјело прикупљање
+          duplicate_reasons:
+            confirmed_same_incident: 'Потврђено: исти догађај'
+            overlapping_service_time_and_place: Подударају се услуга, вријеме и подручје
+            confirmed_separate_incident: 'Потврђено: одвојени догађаји'
+          preview_deadline: Оквирни рок провјере доставе ако сада потврдите
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        compact: *1
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        compact: *1
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        compact:
+          location: Affected area and neighborhood boards
+          affected: Places named by source
+          map_help: Selecting a board controls where the notice appears. It does not confirm that every household is affected.
+          open_map: Open map
+          mz: Show MZ boundaries
+          fit: Fit affected area
+          legend: 'Blue: selected boards. Orange: supported named-place geometry; outage extent may be uncertain. Gray: other neighborhoods.'
+          search: Search neighborhood boards
+          edit_text: Edit title and notice text
+          correction_note: Correction or coverage review note
+          platform_first: Decidim notifications and browser push remain enabled for eligible users.
+          unknown: Affected extent is unknown. The polygons show neighborhood boundaries, not outage boundaries.
+          error: Map unavailable. Use the area selection below.
+          stale: Source details changed. Refresh before confirming.
+          fallback: Send Viber if the notification is not delivered
+          preview: Preview audience and Viber fallback
+          timeout: Viber is sent only when platform delivery remains unconfirmed at the deadline (up to 15 minutes, capped by notice expiry). A late acknowledgment can cause a message on both channels.
+          audience: 'Area audience candidates: %{recipients}; boards: %{boards}. Phone eligibility is shown below.'
+          confirm: I confirm publication and Viber fallback for this text, area and audience.
+          publish_fallback: Publish with Viber fallback
+          back: Back to review
+          duplicates: Possible duplicates or updates
+          same: Same incident
+          separate: Separate notices
+          undo: Undo linking
+          compare: Open comparison
+          automation: Automatic publication
+          automation_help: Only complete, confidently located routine notices are automatically published. Viber is never enabled automatically. Other cases require review.
+          'off': Disabled
+          shadow: Trial — no publication
+          automatic: Automatically publish eligible notices
+          save_policy: Save policy
+          collection_complete: Complete collection
+          retry_at: Next attempt
+          last_good_age: Last successful collection %{seconds} seconds ago
+          coverage_reuse: Reviewed coverage reuse
+          revoke_coverage: Revoke coverage reuse
+          viber_count: 'Potential Viber recipients: %{count}'
+          excluded_count: 'Excluded (%{reason}): %{count}'
+          delivery_scope: Total %{count} records for this incident; active waiting is counted when the page opens. Other counts include historical records. The unit is one record per user, not a message delivered to a phone.
+          delivery_empty: No delivery records are stored for this incident; board publication does not establish that a message was sent.
+          delivery_inbox_created: Saved to Decidim inbox
+          delivery_push_queued: Browser push queued
+          delivery_acknowledged: Browser display or inbox read acknowledged
+          delivery_awaiting_acknowledgment: Active, awaiting display or read
+          delivery_retired_unacknowledged: Cancelled or expired without acknowledgment
+          delivery_fallback_requested: Viber fallback authorized
+          delivery_evidence: Queueing and provider acceptance are not delivery evidence. Browser display does not prove the user read the message.
+          results:
+            updated: Saved.
+            revoked: Coverage reuse revoked.
+            not_authorized: You are not authorized for this action.
+            invalid_selection: Check the selected values.
+            stale_review: Details changed. Refresh the review.
+            unchanged: This decision is already saved.
+            undo_required: Undo the existing link first.
+            resolved: Decision saved.
+            not_found: Record not found.
+          collection_status:
+            healthy: Collected
+            healthy_empty: No new notices
+            awaiting_review: Awaiting review
+            partial: Partial collection
+            deferred: Retry deferred
+            policy_blocked: Source access not permitted
+            failed: Collection failed
+          duplicate_reasons:
+            confirmed_same_incident: Confirmed same incident
+            overlapping_service_time_and_place: Overlapping service, time and place
+            confirmed_separate_incident: Confirmed separate incidents
+          preview_deadline: Estimated acknowledgment deadline if confirmed now

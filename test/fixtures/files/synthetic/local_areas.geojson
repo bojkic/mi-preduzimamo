@@ -1,0 +1,147 @@
+{
+  "type": "FeatureCollection",
+  "name": "AUTHORED_TEST_ONLY_NOT_A_REAL_COMMUNITY",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "mz",
+        "slug": "mz-primjer-centar",
+        "name": {
+          "bs": "Izmišljeni centar",
+          "sr": "Izmišljeni centar",
+          "sr-Cyrl": "Измишљени центар",
+          "hr": "Izmišljeni centar"
+        },
+        "predsjednik": "IZMIŠLJENA OSOBA A",
+        "telefon": "TEST-NOT-A-PHONE-A",
+        "synthetic": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              0
+            ],
+            [
+              0.05,
+              0
+            ],
+            [
+              0.05,
+              0.05
+            ],
+            [
+              0.0,
+              0.05
+            ],
+            [
+              0.0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "mz",
+        "slug": "mz-primjer-park",
+        "name": {
+          "bs": "Izmišljeni park",
+          "sr": "Izmišljeni park",
+          "sr-Cyrl": "Измишљени парк",
+          "hr": "Izmišljeni park"
+        },
+        "predsjednik": "IZMIŠLJENA OSOBA B",
+        "telefon": "TEST-NOT-A-PHONE-B",
+        "synthetic": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.1,
+              0
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.15,
+              0.05
+            ],
+            [
+              0.1,
+              0.05
+            ],
+            [
+              0.1,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "mz",
+        "slug": "mz-primjer-rub",
+        "name": {
+          "bs": "Izmišljeni rub",
+          "sr": "Izmišljeni rub",
+          "sr-Cyrl": "Измишљени руб",
+          "hr": "Izmišljeni rub"
+        },
+        "predsjednik": null,
+        "telefon": null,
+        "synthetic": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.25,
+              0.05
+            ],
+            [
+              0.2,
+              0.05
+            ],
+            [
+              0.2,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "slug": "komsiluk-primjer",
+        "name": {
+          "bs": "Izmišljeni komšiluk"
+        },
+        "synthetic": true
+      },
+      "geometry": null
+    }
+  ]
+}

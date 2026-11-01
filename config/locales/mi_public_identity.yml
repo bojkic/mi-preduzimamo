@@ -1,0 +1,31 @@
+# Site identity belongs in the host; shared templates allow other hosts to omit it.
+sr:
+  decidim:
+    bih:
+      onboarding:
+        guide:
+          public_access: "Javne prijave i ovaj vodič možeš pregledati bez naloga. Za slanje prijave i radnje vezane za tvoj nalog prati uputstva za registraciju i potvrdu telefona. Status prijave na platformi nije potvrda da je problem na terenu riješen."
+bs:
+  decidim:
+    bih:
+      onboarding:
+        guide:
+          public_access: "Javne prijave i ovaj vodič možeš pregledati bez naloga. Za slanje prijave i radnje vezane za tvoj nalog prati uputstva za registraciju i potvrdu telefona. Status prijave na platformi nije potvrda da je problem na terenu riješen."
+hr:
+  decidim:
+    bih:
+      onboarding:
+        guide:
+          public_access: "Javne prijave i ovaj vodič možeš pregledati bez naloga. Za slanje prijave i radnje vezane za tvoj nalog prati uputstva za registraciju i potvrdu telefona. Status prijave na platformi nije potvrda da je problem na terenu riješen."
+sr-Cyrl:
+  decidim:
+    bih:
+      onboarding:
+        guide:
+          public_access: "Јавне пријаве и овај водич можеш прегледати без налога. За слање пријаве и радње везане за твој налог прати упутства за регистрацију и потврду телефона. Статус пријаве на платформи није потврда да је проблем на терену ријешен."
+en:
+  decidim:
+    bih:
+      onboarding:
+        guide:
+          public_access: "You can browse public reports and this guide without an account. To submit a report or use account features, follow the registration and phone-verification instructions. A report status on the platform does not confirm that the problem has been fixed on the ground."

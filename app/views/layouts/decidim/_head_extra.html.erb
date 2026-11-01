@@ -1,0 +1,194 @@
+<%# MI PRE(D)UZIMAMO! — brand theme injection (public layout only).
+    Decidim renders this empty partial inside <head> as an extension hook, so
+    this is the supported, override-based way to add the design-system fonts +
+    theme stylesheet site-wide without copying the whole layout. Admin uses a
+    different layout and is intentionally left on default Decidim. %>
+<%# Prefer generated CSS only while it is at least as fresh as its readable source.
+    Short source-only fixes remain visible; script/mi_minify_theme restores minified delivery. %>
+<% mi_css_path = ->(name) do
+     source = Rails.root.join("public/mi/#{name}.css")
+     compact = Rails.root.join("public/mi/#{name}.min.css")
+     compact.file? && compact.mtime >= source.mtime ? "/mi/#{name}.min.css" : "/mi/#{name}.css"
+   end %>
+<% mi_fonts_path = mi_css_path.call("mi-fonts") %>
+<% mi_theme_path = mi_css_path.call("mi-theme") %>
+<% mi_fonts_v = File.mtime(Rails.root.join("public#{mi_fonts_path}")).to_i %>
+<% mi_theme_v = File.mtime(Rails.root.join("public#{mi_theme_path}")).to_i %>
+<% mi_homepage = controller_name == "homepage" && action_name == "show" %>
+<%# Homepage CSS bundles fonts and excludes only account/registration form rules.
+    Source-only fixes fall back to both full sheets until the generator runs. %>
+<% mi_home_css = Rails.root.join("public/mi/mi-home.min.css") %>
+<% mi_home_css_fresh = mi_homepage && mi_home_css.file? &&
+     %w[mi-theme mi-fonts].all? { |name| mi_home_css.mtime >= Rails.root.join("public/mi/#{name}.css").mtime } %>
+<% mi_mobile_nav_v = (File.mtime(Rails.root.join("public/mi/mi-mobile-nav.js")).to_i rescue 1) %>
+<%# Fetch only homepage-critical font subsets early. sr uses Latin; sr-Cyrl uses Cyrillic. %>
+<% if mi_homepage %>
+  <link rel="preload" href="/mi/heart-mark.webp" as="image" fetchpriority="high">
+  <% mi_font_subsets = if I18n.locale.to_s == "sr-Cyrl"
+       %w[92zatBhPNqw73oDd4iYl 1Ptvg83HX_SGhgqk2wotcqA]
+     elsif %w[bs hr sr].include?(I18n.locale.to_s)
+       %w[92zatBhPNqw73ord4iYl 1Ptvg83HX_SGhgqk0QotcqA]
+     else
+       []
+     end %>
+  <% (%w[92zatBhPNqw73oTd4g 1Ptvg83HX_SGhgqk3wot] + mi_font_subsets).each do |font| %>
+    <link rel="preload" href="/mi/fonts/<%= font %>.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <% end %>
+<% end %>
+<% if mi_home_css_fresh %>
+  <link rel="stylesheet" href="/mi/mi-home.min.css?v=<%= mi_home_css.mtime.to_i %>" media="all">
+<% else %>
+  <link rel="stylesheet" href="<%= mi_fonts_path %>?v=<%= mi_fonts_v %>" media="all">
+  <link rel="stylesheet" href="<%= mi_theme_path %>?v=<%= mi_theme_v %>" media="all">
+<% end %>
+<script defer src="/mi/mi-mobile-nav.js?v=<%= mi_mobile_nav_v %>"></script>
+<meta name="application-name" content="MI!">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MI!">
+<link rel="apple-touch-icon" href="/icon.png">
+
+<%# ----------------------------------------------------------------
+    Floating "MI bot" web-chat widget (public layout only). The endpoint it
+    talks to (POST /biceriseno/chat) and the brain behind it live in the
+    decidim-bih engine. Localized copy is rendered here into a non-executable
+    meta config; /mi/mi-chat-loader.js creates a lightweight launcher and loads
+    the full chat CSS/JS only after user intent.
+
+    The widget is suppressed on form/auth surfaces where it can cover primary
+    inputs; the MI bot showcase keeps the loader so the bot entry opens a real
+    conversation.
+    ---------------------------------------------------------------- %>
+<%
+  mi_overlays_suppressed = mi_overlays_suppressed?
+  mi_chat_disabled = mi_overlays_suppressed
+  unless mi_chat_disabled
+    mi_chat_css_v = (File.mtime(Rails.root.join("public/mi/mi-chat.css")).to_i rescue 1)
+    mi_chat_js_v = (File.mtime(Rails.root.join("public/mi/mi-chat.js")).to_i rescue 1)
+    mi_chat_loader_v = (File.mtime(Rails.root.join("public/mi/mi-chat-loader.js")).to_i rescue 1)
+    mi_chat_shortcuts = Decidim::Bih::Concierge::CivicShortcuts.new(
+      organization: current_organization,
+      locale: I18n.locale.to_s
+    ).chips
+    mi_chat_cfg = {
+      endpoint: decidim_bih.web_chat_path,
+      locationStatusEndpoint: decidim_bih.web_chat_state_path,
+      reportUrl: decidim_bih.new_report_path,
+      donateUrl: decidim_bih.community_projects_path,
+      goodwillUrl: decidim_bih.wallet_path,
+      setupUrl: decidim_bih.verification_explainer_path,
+      komsilukUrl: decidim_bih.komsiluk_board_index_path,
+      publicBasePath: Decidim::Bih.public_path,
+      # The chat opens an authentication handoff in the CURRENT tab, because
+      # registering resets the session and its CSRF token. It has to be told
+      # where registration lives; that is a host switch, so it is read here
+      # rather than typed in mi-chat.js.
+      registrationPath: Decidim::Bih.registration_path,
+      avatarUrl: "/mi/milica/wave.jpg",
+      greetingMediaUrl: "/mi/milica/wave.gif",
+      greetingMediaStaticUrl: "/mi/milica/wave.jpg",
+      quick: mi_chat_shortcuts,
+      locationMemoryEnabled: ENV["MILICA_CONVERSATION_SLOTS_ENABLED"] == "1" && ENV["MILICA_CONVERSATION_LOCATION_ENABLED"] == "1",
+      i18n: {
+        header_title: t("decidim.bih.concierge.widget.header_title"),
+        header_status: t("decidim.bih.concierge.widget.header_status"),
+        bubble_label: t("decidim.bih.concierge.widget.bubble_label"),
+        greeting: t("decidim.bih.concierge.widget.greeting"),
+        return_greeting: t("decidim.bih.concierge.widget.return_greeting"),
+        greeting_media_alt: t("decidim.bih.concierge.widget.greeting_media_alt"),
+        loading: t("decidim.bih.concierge.widget.loading"),
+        long_loading: t("decidim.bih.concierge.widget.long_loading"),
+        input_placeholder: t("decidim.bih.concierge.widget.input_placeholder"),
+        error: t("decidim.bih.concierge.widget.error"),
+        aria_open: t("decidim.bih.concierge.widget.aria_open"),
+        aria_close: t("decidim.bih.concierge.widget.aria_close"),
+        aria_send: t("decidim.bih.concierge.widget.aria_send"),
+        aria_location: t("decidim.bih.concierge.widget.aria_location"),
+        location_ready: t("decidim.bih.concierge.widget.location_ready"),
+        location_error: t("decidim.bih.concierge.widget.location_error"),
+        location_consent_copy: t("decidim.bih.concierge.widget.location_consent_copy"),
+        location_active: t("decidim.bih.concierge.widget.location_active"),
+        forget_location: t("decidim.bih.concierge.widget.forget_location"),
+        forget_location_send: t("decidim.bih.concierge.widget.forget_location_send"),
+        retry: t("decidim.bih.concierge.widget.retry"),
+        resumed: t("decidim.bih.concierge.widget.resumed"),
+        capabilities: t("decidim.bih.concierge.widget.capabilities"),
+        capabilities_send: t("decidim.bih.concierge.widget.capabilities_send"),
+        new_conversation: t("decidim.bih.concierge.widget.new_conversation"),
+        new_conversation_send: t("decidim.bih.concierge.widget.new_conversation_send"),
+        feedback: {
+          prompt: t("decidim.bih.concierge.widget.feedback.prompt"),
+          unavailable: t("decidim.bih.concierge.widget.feedback.unavailable"),
+          helpful: t("decidim.bih.concierge.widget.feedback.helpful"),
+          not_helpful: t("decidim.bih.concierge.widget.feedback.not_helpful"),
+          shared: t("decidim.bih.concierge.widget.feedback.shared"),
+          thanks: t("decidim.bih.concierge.widget.feedback.thanks"),
+          error: t("decidim.bih.concierge.widget.feedback.error")
+        },
+        quick: {
+          report: t("decidim.bih.concierge.widget.quick.report"),
+          report_describe: t("decidim.bih.concierge.widget.quick.report_describe"),
+          report_describe_send: t("decidim.bih.concierge.widget.quick.report_describe_send"),
+          report_form: t("decidim.bih.concierge.widget.quick.report_form"),
+          idea: t("decidim.bih.concierge.widget.quick.idea"),
+          budget: t("decidim.bih.concierge.widget.quick.budget"),
+          donate: t("decidim.bih.concierge.widget.quick.donate"),
+          goodwill: t("decidim.bih.concierge.widget.quick.goodwill"),
+          setup: t("decidim.bih.concierge.widget.quick.setup"),
+          komsiluk: t("decidim.bih.concierge.widget.quick.komsiluk")
+        }
+      }
+    }
+  end
+%>
+<% unless mi_chat_disabled %>
+  <meta name="mi-chat-config"
+        content="<%= html_escape(mi_chat_cfg.to_json) %>"
+        data-css-src="/mi/mi-chat.css?v=<%= mi_chat_css_v %>"
+        data-js-src="/mi/mi-chat.js?v=<%= mi_chat_js_v %>">
+  <script defer src="/mi/mi-chat-loader.js?v=<%= mi_chat_loader_v %>"></script>
+<% end %>
+<%# The invite nudge is an in-flow strip, not a floating overlay, so it is not
+    part of the overlay suppression above: it never covers a form field. The
+    script only reveals a strip the server already decided to render, and the
+    server only renders one for a signed-in citizen — so an anonymous visitor
+    is not asked to fetch it at all. %>
+<% if current_user %>
+  <% mi_invite_nudge_v = (File.mtime(Rails.root.join("public/mi/mi-invite-nudge.js")).to_i rescue 1) %>
+  <script defer src="/mi/mi-invite-nudge.js?v=<%= mi_invite_nudge_v %>"></script>
+<% end %>
+<% unless mi_install_suppressed? %>
+  <% mi_install_v = (File.mtime(Rails.root.join("public/mi/mi-install.js")).to_i rescue 1) %>
+  <%# The card is offered to signed-in citizens only (data-signed-in) — an
+      anonymous visitor is never asked to install; the ?app=1 landing after
+      phone verification is the one exception, handled inside the script. %>
+  <script defer src="/mi/mi-install.js?v=<%= mi_install_v %>"
+          data-signed-in="<%= current_user ? 1 : 0 %>"
+          data-icon-src="/mi/heart-mark.png"
+          data-install-title="<%= html_escape(t("decidim.bih.pwa.install_title", default: "MI! kao aplikacija")) %>"
+          data-install-text="<%= html_escape(t("decidim.bih.pwa.install_text")) %>"
+          data-ios-text="<%= html_escape(t("decidim.bih.pwa.ios_text")) %>"
+          data-manual-text="<%= html_escape(t("decidim.bih.pwa.manual_text")) %>"
+          data-webview-text="<%= html_escape(t("decidim.bih.pwa.webview_text")) %>"
+          data-install-label="<%= html_escape(t("decidim.bih.pwa.install_label")) %>"
+          data-dismiss-label="<%= html_escape(t("decidim.bih.pwa.dismiss_label")) %>"></script>
+<% end %>
+
+<%# Consent-based measurement on exact public information routes, including ordinary signed-in visitors. %>
+<% mi_analytics = Rails.application.config.x.mi_web_analytics %>
+<% if Rails.env.production? && request.host == "mi.fondacijabijeljina.com" && !current_user&.admin? && mi_analytics[:paths].include?(request.path) %>
+  <meta name="mi-analytics-config" content="<%= html_escape(mi_analytics.to_json) %>">
+  <% mi_analytics_v = File.mtime(Rails.root.join("public/mi/mi-analytics.js")).to_i %>
+  <script defer src="/mi/mi-analytics.js?v=<%= mi_analytics_v %>"></script>
+<% end %>
+
+<% project_choice_path = DecidimApp::Bijeljina::RaceProjectSelection.process_path %>
+<% if request.path == project_choice_path || request.path.start_with?("#{project_choice_path}/") %>
+  <link rel="stylesheet" href="/mi/project-choice.css?v=<%= File.mtime(Rails.root.join('public/mi/project-choice.css')).to_i %>">
+<% end %>
+
+<% if request.path == "/processes" || request.path.start_with?("/processes/") %>
+  <link rel="stylesheet" href="/mi/process-help.css?v=<%= File.mtime(Rails.root.join('public/mi/process-help.css')).to_i %>">
+<% end %>
+
+<link rel="stylesheet" href="/mi/main-menu.css?v=<%= File.mtime(Rails.root.join('public/mi/main-menu.css')).to_i %>">

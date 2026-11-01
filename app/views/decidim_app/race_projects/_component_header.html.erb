@@ -1,0 +1,22 @@
+<% process = current_participatory_space
+   phase = mi_project_phase(process) %>
+<header class="mi-project-component">
+  <% if process.hero_image.attached? %>
+    <%= image_tag process.attached_uploader(:hero_image).url,
+                  alt: t("mi_project_choice.image_alt"),
+                  class: "mi-project-cover", width: 2048, height: 683,
+                  decoding: "async", fetchpriority: "high" %>
+  <% end %>
+  <%= link_to "← #{t('mi_project_choice.back')}", mi_project_home, class: "mi-project-component__back" %>
+  <p class="mi-project-choice__eyebrow"><%= t("mi_project_choice.eyebrow") %></p>
+  <h1><%= mi_project_name(current_component) %></h1>
+  <p><%= t("mi_project_choice.component_intro", name: mi_project_name(current_component)) %></p>
+  <div class="mi-project-component__navigation">
+    <span class="mi-project-component__phase"><%= t("mi_project_choice.now") %>: <%= t("mi_project_choice.phase_#{phase}") %></span>
+    <nav aria-label="<%= t('mi_project_choice.choose') %>">
+      <% process.components.published.where(manifest_name: "proposals").order(:weight).each do |component| %>
+        <%= link_to mi_project_name(component), mi_project_link(component), aria: { current: component.id == current_component.id ? "page" : nil } %>
+      <% end %>
+    </nav>
+  </div>
+</header>

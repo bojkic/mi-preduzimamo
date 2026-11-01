@@ -1,0 +1,90 @@
+en:
+  decidim_app:
+    source_health_dimensions:
+      evidence: Evidence and next check
+      partial_coverage: Record count does not establish service coverage.
+      inspect_fetch_or_parser: Inspect source access or extraction.
+      inspect_provider_feed: Inspect the stale publication at the provider; a fresh fetch is not fresh content.
+      last_attempt_status: "Latest fetch attempt: %{status}"
+      reviewed_on: "Content reviewed on: %{date}"
+      index_captured_on: "Index captured on: %{date}"
+      prepared_checked_at: "Preparation checked at: %{time}"
+      prepared_public_calls: Prepared call records; date, area and eligibility still require matching.
+      last_good_gazette_index: Last successful gazette index, including dated issue revisions.
+      bundled_gazette_index: Reviewed bundled gazette index; the current snapshot is not used.
+      reviewed_procedure_card: Reviewed procedure card; a failed latest fetch does not revoke its review.
+      refresh_source: Refresh the source check.
+      review_extracted_claims: Review extracted claims.
+      inspect_expected_output: Check expected reference or measurement coverage.
+      verify_requested_fact_coverage: Verify the requested fact, place and applicable
+        time.
+      quiet_scope: No relevant records in the checked source scope; this does not
+        prove no incidents.
+      oldest_observation: 'Oldest returned observation: %{time}'
+      observation_unknown: Observation time is unknown.
+      last_good_retained: Previous successful data retained for review; it is not
+        current answer evidence.
+      procedure_review: Procedure content review (not a list of records)
+      edition_review: Verify the applicable document edition and review status.
+sr:
+  decidim_app:
+    source_health_dimensions: &id001
+      evidence: Dokazi i naredna provjera
+      partial_coverage: Broj stavki ne potvrđuje obuhvat usluge.
+      inspect_fetch_or_parser: Provjerite pristup izvoru ili čitanje sadržaja.
+      inspect_provider_feed: Provjerite zastarjelu objavu kod izvora; novo preuzimanje nije nov sadržaj.
+      last_attempt_status: "Posljednje preuzimanje: %{status}"
+      reviewed_on: "Sadržaj pregledan: %{date}"
+      index_captured_on: "Indeks zabilježen: %{date}"
+      prepared_checked_at: "Priprema provjerena: %{time}"
+      prepared_public_calls: Pripremljeni pozivi; datum, područje i uslovi se provjeravaju za pitanje.
+      last_good_gazette_index: Posljednji uspješan indeks glasnika sa izdanjima i datumima.
+      bundled_gazette_index: Pregledani lokalni indeks glasnika; trenutni snimak izvora se ne koristi.
+      reviewed_procedure_card: Pregledani postupak; neuspjelo preuzimanje ne poništava pregled.
+      refresh_source: Ponovite provjeru izvora.
+      review_extracted_claims: Pregledajte izdvojene podatke.
+      inspect_expected_output: Provjerite očekivani obuhvat dokumenta ili mjerenja.
+      verify_requested_fact_coverage: Provjerite traženi podatak, mjesto i vrijeme
+        važenja.
+      quiet_scope: U provjerenom obuhvatu nema relevantnih stavki; to ne potvrđuje
+        da nema prekida.
+      oldest_observation: 'Najstarije prikazano mjerenje: %{time}'
+      observation_unknown: Vrijeme mjerenja nije poznato.
+      last_good_retained: Prethodni uspješni podaci su sačuvani za pregled; nisu dokaz
+        trenutnog stanja.
+      procedure_review: Provjera sadržaja postupka (nije spisak stavki)
+      edition_review: Provjerite važeće izdanje dokumenta i stanje pregleda.
+bs:
+  decidim_app:
+    source_health_dimensions: *id001
+hr:
+  decidim_app:
+    source_health_dimensions: *id001
+sr-Cyrl:
+  decidim_app:
+    source_health_dimensions:
+      evidence: Докази и наредна провјера
+      partial_coverage: Број ставки не потврђује обухват услуге.
+      inspect_fetch_or_parser: Провјерите приступ извору или читање садржаја.
+      inspect_provider_feed: Провјерите застарјелу објаву код извора; ново преузимање није нов садржај.
+      last_attempt_status: "Посљедње преузимање: %{status}"
+      reviewed_on: "Садржај прегледан: %{date}"
+      index_captured_on: "Индекс забиљежен: %{date}"
+      prepared_checked_at: "Припрема провјерена: %{time}"
+      prepared_public_calls: Припремљени позиви; датум, подручје и услови се провјеравају за питање.
+      last_good_gazette_index: Посљедњи успјешан индекс гласника са издањима и датумима.
+      bundled_gazette_index: Прегледани локални индекс гласника; тренутни снимак извора се не користи.
+      reviewed_procedure_card: Прегледани поступак; неуспјело преузимање не поништава преглед.
+      refresh_source: Поновите провјеру извора.
+      review_extracted_claims: Прегледајте издвојене податке.
+      inspect_expected_output: Провјерите очекивани обухват документа или мјерења.
+      verify_requested_fact_coverage: Провјерите тражени податак, мјесто и вријеме
+        важења.
+      quiet_scope: У провјереном обухвату нема релевантних ставки; то не потврђује
+        да нема прекида.
+      oldest_observation: 'Најстарије приказано мјерење: %{time}'
+      observation_unknown: Вријеме мјерења није познато.
+      last_good_retained: Претходни успјешни подаци су сачувани за преглед; нису доказ
+        тренутног стања.
+      procedure_review: Провјера садржаја поступка (није списак ставки)
+      edition_review: Провјерите важеће издање документа и стање прегледа.

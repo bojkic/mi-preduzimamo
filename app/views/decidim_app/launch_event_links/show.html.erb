@@ -1,0 +1,13 @@
+<% add_decidim_page_title("Dobrodošli na MI!") %>
+<main class="wrapper">
+  <section class="mi-surface" style="max-width: 36rem; margin: 2rem auto;">
+    <h1>Dobrodošli na MI!</h1>
+    <% if current_user && current_user != @delivery.user %>
+      <p>Ovaj lični link pripada drugom nalogu. Otvori ga u svom pregledaču, nakon odjave.</p>
+    <% else %>
+      <p>Jednim dodirom prijavićeš se na svoj nalog i nastaviti na <%= @delivery.message_key == "map" ? "mapu prijava" : "anketu" %>.</p>
+      <%= button_to @message.fetch(:action), main_app.launch_event_link_path(token: params[:token]), method: :post, class: "mi-btn mi-btn--primary" %>
+      <p style="margin-top: 1rem;"><%= t("mi_launch_event.valid_until", time: @delivery.expires_at.in_time_zone("Europe/Sarajevo").strftime("%d.%m.%Y. %H:%M %:z")) %></p>
+    <% end %>
+  </section>
+</main>

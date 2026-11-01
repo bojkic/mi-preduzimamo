@@ -1,0 +1,7 @@
+<% if events.total_pages > 1 %>
+  <nav class="pagination" aria-label="<%= t('decidim_app.admin.city_service_events.ui_review.pages') %>">
+    <%= link_to t('decidim_app.admin.city_service_events.ui_review.previous'), url_for(params.permit(:tab, :state, :source_key, :exception).merge(page: events.prev_page)), rel: 'prev' unless events.first_page? %>
+    <span aria-current="page"><%= t('decidim_app.admin.city_service_events.ui_review.page', current: events.current_page, total: events.total_pages) %></span>
+    <%= link_to t('decidim_app.admin.city_service_events.ui_review.next'), url_for(params.permit(:tab, :state, :source_key, :exception).merge(page: events.next_page)), rel: 'next' unless events.last_page? %>
+  </nav>
+<% end %>

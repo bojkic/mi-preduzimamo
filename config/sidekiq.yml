@@ -1,0 +1,48 @@
+:concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY", 5) %>
+# Restart contract (server health review 2026-10-21, item 9). On TSTP or TERM
+# Sidekiq goes quiet, gives busy jobs :timeout: seconds, then re-queues them
+# with the same job id and kills the threads.
+# - The window covers the longest provider call with an outside side effect,
+#   so a send already in flight finishes and records its outcome: report mail
+#   SMTP (30 s open/read), Infobip phone chain (2 x 10 s), web push (5 + 10 s);
+#   attachment assessment (25 s) fits too. Senders with a durable claim
+#   (account notifications, City dispatches, Komsiluk phone, second reminders,
+#   push) turn a cut-off send into "unknown" and never resend it.
+# - Case-agent Gemini calls (Ai::CaseAgent::CALL_TIMEOUT 120 s, up to three
+#   per proposal) do not fit and are not shortened to fit. Once quiet, the
+#   agent starts no new call; an interrupted job resumes its own lease when
+#   re-run, and ReportReviewProposalRecovery picks up leases older than
+#   Ai::CaseAgent::STALE_LEASE.
+# - systemd TimeoutStopSec (config/systemd/server-health-staged/sidekiq.conf,
+#   90 s) must stay >= :timeout: + 15 s, or systemd SIGKILLs Sidekiq before it
+#   re-queues the busy jobs.
+# - The release drain (MI_DRAIN_TIMEOUT, default 150 s in
+#   script/lib/mi_release_executor_runtime.rb) waits after TSTP without a hard
+#   stop, so it must outlast one case-agent call in flight: >= CALL_TIMEOUT
+#   + 30 s, or the release aborts with drain_timeout.
+# test/jobs/decidim/bih/job_queue_contract_test.rb pins all four numbers.
+:timeout: 60
+:queues:
+  # Reserved authentication capacity: phone verification and passwordless
+  # sign-in only. Highest weight on purpose — an optional-traffic backlog must
+  # never sit in front of a sign-in code. It reserves capacity and nothing else;
+  # every anti-abuse throttle still runs before a job reaches this queue.
+  - [authentication_critical, 10]
+  - [mailers, 4]
+  - [vote_reminder, 2]
+  - [reminders, 2]
+  - [default, 2]
+  - [delete_inactive_participants, 2]
+  - [newsletter, 2]
+  - [newsletters_opt_in, 2]
+  - [conference_diplomas, 2]
+  - [events, 2]
+  - [translations, 2]
+  - [user_report, 2]
+  - [block_user, 2]
+  - [exports, 1]
+  - [close_meeting_reminder, 1]
+  - [spam_analysis, 1]
+  - [reports, 2] # report classification and Sistem 48 forwarding; isolated from default
+  - [integrations, 1] # external Odoo refresh jobs; isolated from default request follow-ups
+  - [goodwill, 1] # low priority: point awards must never starve user-facing jobs

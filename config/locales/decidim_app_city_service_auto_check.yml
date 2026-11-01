@@ -1,0 +1,126 @@
+---
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        auto_check:
+          ok: "U redu"
+          correct: "Ispravi"
+          send: "Pošalji"
+          finished_unchecked: "Objava nije provjerena; pregledaj istoriju i izvor."
+          expired_unchecked: "Isteklo, nije provjereno."
+          audience_estimate: "Procjena primalaca prije potvrde: %{count}."
+          expired_filter: "Isteklo bez provjere: %{count}."
+          expired_unpublished: "Isteklo bez objave: %{count}."
+          filtered_review: "Za odluku: %{filtered} prikazano od ukupno %{total}."
+          select: "Izaberi automatsku objavu: %{title}"
+          bulk_help: "Provjeri samo izabrane objave. Svaka se upoređuje sa važećom verzijom."
+          bulk_submit: "U redu za izabrane"
+          bulk_result: "Provjereno: %{count}; preskočeno ili zastarjelo: %{failed}."
+          results:
+            checked: "Automatska objava je provjerena."
+            already_checked: "Ova verzija je već provjerena."
+            stale_review: "Objava se promijenila. Otvori važeću verziju."
+            not_publishable: "Objava više nije aktivna."
+            not_automatic: "Ovo nije važeća automatska objava."
+            not_authorized: "Nemaš dozvolu za ovu radnju."
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        auto_check:
+          ok: "U redu"
+          correct: "Ispravi"
+          send: "Pošalji"
+          finished_unchecked: "Objava nije provjerena; pregledaj istoriju i izvor."
+          expired_unchecked: "Isteklo, nije provjereno."
+          audience_estimate: "Procjena primalaca prije potvrde: %{count}."
+          expired_filter: "Isteklo bez provjere: %{count}."
+          expired_unpublished: "Isteklo bez objave: %{count}."
+          filtered_review: "Za odluku: %{filtered} prikazano od ukupno %{total}."
+          select: "Izaberi automatsku objavu: %{title}"
+          bulk_help: "Provjeri samo izabrane objave. Svaka se upoređuje sa važećom verzijom."
+          bulk_submit: "U redu za izabrane"
+          bulk_result: "Provjereno: %{count}; preskočeno ili zastarjelo: %{failed}."
+          results:
+            checked: "Automatska objava je provjerena."
+            already_checked: "Ova verzija je već provjerena."
+            stale_review: "Objava se promijenila. Otvori važeću verziju."
+            not_publishable: "Objava više nije aktivna."
+            not_automatic: "Ovo nije važeća automatska objava."
+            not_authorized: "Nemaš dozvolu za ovu radnju."
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        auto_check:
+          ok: "U redu"
+          correct: "Ispravi"
+          send: "Pošalji"
+          finished_unchecked: "Objava nije provjerena; pregledaj istoriju i izvor."
+          expired_unchecked: "Isteklo, nije provjereno."
+          audience_estimate: "Procjena primalaca prije potvrde: %{count}."
+          expired_filter: "Isteklo bez provjere: %{count}."
+          expired_unpublished: "Isteklo bez objave: %{count}."
+          filtered_review: "Za odluku: %{filtered} prikazano od ukupno %{total}."
+          select: "Izaberi automatsku objavu: %{title}"
+          bulk_help: "Provjeri samo izabrane objave. Svaka se upoređuje sa važećom verzijom."
+          bulk_submit: "U redu za izabrane"
+          bulk_result: "Provjereno: %{count}; preskočeno ili zastarjelo: %{failed}."
+          results:
+            checked: "Automatska objava je provjerena."
+            already_checked: "Ova verzija je već provjerena."
+            stale_review: "Objava se promijenila. Otvori važeću verziju."
+            not_publishable: "Objava više nije aktivna."
+            not_automatic: "Ovo nije važeća automatska objava."
+            not_authorized: "Nemaš dozvolu za ovu radnju."
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        auto_check:
+          ok: "У реду"
+          correct: "Исправи"
+          send: "Пошаљи"
+          finished_unchecked: "Објава није провјерена; прегледај историју и извор."
+          expired_unchecked: "Истекло, није провјерено."
+          audience_estimate: "Процјена прималаца прије потврде: %{count}."
+          expired_filter: "Истекло без провјере: %{count}."
+          expired_unpublished: "Истекло без објаве: %{count}."
+          filtered_review: "За одлуку: %{filtered} приказано од укупно %{total}."
+          select: "Изабери аутоматску објаву: %{title}"
+          bulk_help: "Провјери само изабране објаве. Свака се упоређује са важећом верзијом."
+          bulk_submit: "У реду за изабране"
+          bulk_result: "Провјерено: %{count}; прескочено или застарјело: %{failed}."
+          results:
+            checked: "Аутоматска објава је провјерена."
+            already_checked: "Ова верзија је већ провјерена."
+            stale_review: "Објава се промијенила. Отвори важећу верзију."
+            not_publishable: "Објава више није активна."
+            not_automatic: "Ово није важећа аутоматска објава."
+            not_authorized: "Немаш дозволу за ову радњу."
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        auto_check:
+          ok: "OK"
+          correct: "Correct"
+          send: "Send"
+          finished_unchecked: "Publication was not checked; review its history and source."
+          expired_unchecked: "Expired without a check."
+          audience_estimate: "Audience estimate before confirmation: %{count}."
+          expired_filter: "Expired without a check: %{count}."
+          expired_unpublished: "Expired unpublished: %{count}."
+          filtered_review: "Needs a decision: %{filtered} shown of %{total} total."
+          select: "Select automatic publication: %{title}"
+          bulk_help: "Check only the selected publications. Each is compared with its current revision."
+          bulk_submit: "OK for selected"
+          bulk_result: "Checked: %{count}; skipped or stale: %{failed}."
+          results:
+            checked: "Automatic publication checked."
+            already_checked: "This revision was already checked."
+            stale_review: "The publication changed. Open the current version."
+            not_publishable: "The publication is no longer active."
+            not_automatic: "This is not the current automatic publication."
+            not_authorized: "You cannot perform this action."

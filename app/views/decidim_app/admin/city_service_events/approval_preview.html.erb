@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "/mi/city-alerts-admin.css?v=#{File.mtime(Rails.root.join('public/mi/city-alerts-admin.css')).to_i}" %>
+<section class="city-approval-preview card">
+<h1><%= t('decidim_app.admin.city_service_events.compact.preview', default: 'Potvrdi slanje') %></h1>
+<p><strong><%= @approval_attributes["title"] %></strong></p>
+<p><%= @approval_attributes["summary"] %></p>
+<blockquote><%= @approval_attributes["viber_text"] %></blockquote>
+<p><%= t('decidim_app.admin.city_service_events.compact.audience', recipients: @approval_preview.recipients, boards: @approval_preview.boards) %></p>
+<p><strong><%= t('decidim_app.admin.city_service_events.compact.phone_count', count: @approval_preview.viber_audience.fetch(:eligible_phone), default: 'Podobni primaoci: %{count}') %></strong></p>
+<p><%= t('decidim_app.admin.city_service_events.compact.phone_channels', channels: @approval_preview.channels.join(' → '), default: 'Kanali: %{channels}') %></p>
+<% if @approval_preview.template %>
+  <p><%= t('decidim_app.admin.city_service_events.compact.whatsapp_copy', default: 'WhatsApp predložak:') %> <strong><%= @approval_preview.template.fetch(:name) %></strong></p>
+  <blockquote><%= @approval_preview.template.fetch(:display_text) %></blockquote>
+<% end %>
+<% @approval_preview.viber_audience.fetch(:excluded).each do |reason, count| %>
+  <p><%= t('decidim_app.admin.city_service_events.compact.excluded_count', reason: reason, count: count) %></p>
+<% end %>
+<p><%= t('decidim_app.admin.city_service_events.compact.platform_first') %></p>
+<p><%= t('decidim_app.admin.city_service_events.compact.timeout') %></p>
+<p><%= t('decidim_app.admin.city_service_events.compact.preview_deadline') %>: <time datetime="<%= @approval_preview.deadline.iso8601 %>"><%= @approval_preview.deadline.in_time_zone('Europe/Sarajevo').strftime('%d.%m.%Y. %H:%M') %> · Europe/Sarajevo</time></p>
+<%= form_with url: (@published_fallback ? decidim_app_admin_city_service_event_publish_viber_path(@event) : decidim_app_admin_city_service_event_path(@event)), method: (@published_fallback ? :post : :patch), local: true, class: "form form-defaults" do %>
+  <% @approval_attributes.each do |key, value| %>
+    <% if value.is_a?(Array) %>
+      <% value.each do |item| %><%= hidden_field_tag "city_service_event[#{key}][]", item %><% end %>
+    <% else %>
+      <%= hidden_field_tag "city_service_event[#{key}]", value %>
+    <% end %>
+  <% end %>
+  <% if @published_fallback %>
+    <%= hidden_field_tag :review_token, @event.answer_review_token %>
+    <%= hidden_field_tag :viber_review_confirmed, "1" %>
+    <%= hidden_field_tag :retry_failed, params[:retry_failed] %>
+  <% end %>
+  <%= hidden_field_tag :fallback_token, @approval_preview.token %>
+  <%= hidden_field_tag :fallback_confirmed, "1" %>
+  <%= hidden_field_tag :viber_fallback, "1" %>
+  <%= hidden_field_tag :review_action, "publish" %>
+  <p><%= t('decidim_app.admin.city_service_events.compact.confirm') %></p>
+  <%= submit_tag t('decidim_app.admin.city_service_events.compact.publish_fallback', default: 'Potvrdi i pošalji'), class: 'button button__secondary', disabled: @approval_preview.viber_audience.fetch(:eligible_phone).zero? %>
+<% end %>
+<%= link_to t('decidim_app.admin.city_service_events.compact.back'), decidim_app_admin_city_service_events_path(anchor: "city-service-event-#{@event.id}") %>
+
+</section>

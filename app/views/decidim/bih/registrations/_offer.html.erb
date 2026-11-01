@@ -1,0 +1,6 @@
+<% config = Decidim::Bih::Race::Config.new(organization: current_organization) %>
+<% if config.open? && !Decidim::Bih::Race::Edition.for(current_organization)&.captured_at %>
+  <p class="mi-registration-compact__offer"><%= t("mi_registration.race_offer", points: config.weights[:registered]) %></p>
+<% else %>
+  <p class="mi-registration-compact__offer"><%= t("decidim.bih.simplified_registration.intro") %></p>
+<% end %>

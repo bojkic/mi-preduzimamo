@@ -1,0 +1,107 @@
+<%= render "incident_candidates", event: event %>
+<% if workflow_entry(event).status == "finished" %>
+  <p><%= t("decidim_app.admin.city_service_events.simplified.archived_help") %></p>
+<% end %>
+<% if bih_allowed?(:city_alerts_manage) %>
+  <% if workflow_entry(event).editable? %>
+    <%= form_with model: event, scope: :city_service_event,
+                  url: decidim_app_admin_city_service_event_path(event),
+                  method: :patch,
+                  local: true,
+                  html: { style: "display:grid; gap:0.65rem; min-width:0;" },
+                  class: "form form-defaults mi-admin-form mi-admin-record-editor" do |form| %>
+      <%= hidden_field_tag "city_service_event[content_version]", event.content_version %>
+      <%= hidden_field_tag "city_service_event[review_token]", event.answer_review_token %>
+      <%= render "review_map", event: event %>
+      <details><summary><%= t("decidim_app.admin.city_service_events.compact.edit_text") %></summary>
+      <div class="mi-admin-form__field">
+        <%= form.text_field :title, label: t("decidim_app.admin.city_service_events.index.fields.title") %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.text_area :summary, rows: 3, label: t("decidim_app.admin.city_service_events.index.fields.summary") %>
+      </div>
+      </details>
+      <details data-city-fallback-text><summary>Viber</summary>
+      <div class="mi-admin-form__field">
+        <%= form.text_area :viber_text, rows: 2, label: t("decidim_app.admin.city_service_events.index.fields.viber_text") %>
+      </div>
+      </details>
+      <%= render "review_facts", event: event, form: form %>
+      <details><summary><%= t("decidim_app.admin.city_service_events.compact.correction_note") %></summary>
+      <div class="mi-admin-form__field">
+        <%= form.text_field :review_note, label: t("decidim_app.admin.city_service_events.index.fields.review_note") %>
+      </div>
+      </details>
+      <p><%= t("decidim_app.admin.city_service_events.compact.platform_first") %></p>
+      <% if @viber_send_ready %>
+        <label><%= check_box_tag :viber_fallback, "1", false, data: { city_fallback: true } %> <%= t("decidim_app.admin.city_service_events.compact.fallback") %></label>
+        <p><%= t("decidim_app.admin.city_service_events.compact.timeout") %></p>
+      <% else %>
+        <%#
+          Say WHY there is no send option here. Hiding it silently read as a
+          missing feature: operators published to the board and then looked for
+          a way to notify citizens that was never going to appear. The
+          published tab has carried this explanation for a while; the moment
+          that matters most is this one, while the alert is being published.
+        %>
+        <p class="mi-admin-hint" data-city-alert-send-blocked>
+          <%= t("decidim_app.admin.city_service_events.index.actions.viber_blocked", default: "Viber slanje čeka važeću vlasničku odluku i spremne postavke pružaoca.") %>
+          <%= link_to t("decidim_app.admin.city_service_events.index.actions.open_governance", default: "Pregledaj odluku"), decidim_admin_bih.governance_path(anchor: "governance-viber_launch") %>
+        </p>
+      <% end %>
+      <div class="mi-admin-record-editor__footer">
+        <%= button_tag t("decidim_app.admin.city_service_events.workflow_results.save_publish"), name: :review_action, value: "publish", data: { fallback_label: t("decidim_app.admin.city_service_events.compact.preview") }, class: "button button__sm button__secondary" %>
+        <%= form.submit t("decidim_app.admin.city_service_events.index.actions.save_review"), class: "button button__sm button__transparent-secondary" %>
+      </div>
+    <% end %>
+
+    <div class="mi-admin-record-editor__actions">
+
+      <%= button_to t("decidim_app.admin.city_service_events.index.actions.dismiss"),
+                    decidim_app_admin_city_service_event_dismiss_path(event),
+                    method: :post,
+                    class: "button button__sm button__transparent-secondary mi-admin-action--danger",
+                    data: { confirm: t("decidim_app.admin.city_service_events.index.actions.dismiss_confirm") } %>
+    </div>
+  <% elsif event.answer_approved? && workflow_entry(event).status != "finished" %>
+    <p><%= t("decidim_app.admin.city_service_events.index.reviewed_source_help") %></p>
+    <% if workflow_entry(event).publishable? %>
+    <%= button_to t("decidim_app.admin.city_service_events.index.actions.publish_board"),
+                  decidim_app_admin_city_service_event_publish_board_path(event), method: :post, params: { review_token: event.answer_review_token },
+                  class: "button button__sm button__secondary" %>
+    <% end %>
+    <%= button_to t('decidim_app.admin.city_service_events.simplified.edit_review'),
+                  decidim_app_admin_city_service_event_revoke_answers_path(event), method: :post,
+                  params: { review_token: event.answer_review_token, content_version: event.content_version }, class: 'button button__sm button__secondary' %>
+  <% end %>
+<% end %>
+
+
+<% if bih_allowed?(:city_alerts_manage) && workflow_entry(event).withdrawable? %>
+  <%# Withdrawal is rare and destructive. It shared top-level space with the
+      send control, so the panel opened showing two paragraphs of policy about
+      an action nobody was taking. Disclosed, not removed. %>
+  <details class="city-alerts-withdraw" data-city-alert-withdraw>
+    <summary><%= t("decidim_app.admin.city_service_events.workflow_results.withdraw") %></summary>
+  <%= form_with url: decidim_app_admin_city_service_event_withdraw_path(event), method: :post, local: true, class: "form form-defaults" do %>
+    <%= hidden_field_tag :review_token, event.answer_review_token %>
+    <p><%= t("decidim_app.admin.city_service_events.workflow_results.withdraw_help") %></p>
+    <%= label_tag "withdraw_note_#{event.id}", t("decidim_app.admin.city_service_events.index.fields.review_note") %>
+    <%= text_field_tag :review_note, nil, id: "withdraw_note_#{event.id}", required: true, maxlength: 2000 %>
+    <%= button_tag t("decidim_app.admin.city_service_events.workflow_results.correct"), name: :withdraw_action, value: "correct", class: "button button__sm button__secondary" %>
+    <%= button_tag t("decidim_app.admin.city_service_events.workflow_results.withdraw"), name: :withdraw_action, value: "withdraw", class: "button button__sm button__transparent-secondary" %>
+  <% end %>
+  </details>
+<% end %>
+
+<% if bih_allowed?(:city_alerts_manage) && workflow_entry(event).status == "published" && event.published? && workflow_entry(event).delivery_status == "error" %>
+  <%= link_to t('decidim_app.admin.city_service_events.simplified.retry_delivery'),
+              decidim_app_admin_city_service_event_notification_preview_path(event, retry_failed: '1'),
+              class: 'button button__sm button__secondary city-alert-retry-delivery' %>
+<% end %>
+
+<% if event.extraction_metadata.dig("operator_review", "reuse_coverage") == true %>
+  <details><summary><%= t('decidim_app.admin.city_service_events.compact.coverage_reuse') %></summary>
+    <%= button_to t('decidim_app.admin.city_service_events.compact.revoke_coverage'), decidim_app_admin_city_service_event_revoke_coverage_path(event), method: :post, class: 'button button__sm button__secondary' %>
+  </details>
+<% end %>

@@ -1,0 +1,156 @@
+---
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        ai_review:
+          title: "AI prijedlog i provjera"
+          stale: "AI prijedlog pripada starijoj verziji izvora; nije važeća odluka."
+          status_label: "Ishod:"
+          needs_review: "AI traži ljudsku provjeru prije objave."
+          type: "Predložena → potvrđena vrsta"
+          severity: "Predložena → potvrđena ozbiljnost"
+          unknown_value: "Nije potvrđeno"
+          suggested_copy: "Predloženi tekst (nije automatski objavljen)"
+          title_label: "Naslov"
+          body_label: "Sažetak"
+          phone_label: "Poruka za telefon"
+          published_copy: "Sačuvani tekst:"
+          model: "Model"
+          statuses:
+            accepted: "Prijedlog prihvaćen uz provjeru pravila."
+            rejected: "Prijedlog odbijen nakon provjere izvora."
+            disagreement: "AI prijedlog se razlikuje od izvora ili pravila; potrebna je odluka."
+            review: "Potrebna je ljudska provjera prijedloga."
+            unavailable: "AI usluga trenutno nije dostupna; primijenjena su lokalna pravila."
+            missing_article: "Nije dostupan puni članak; AI nije donio odluku."
+            budget_exhausted: "Provjera AI uslugom je odložena zbog ograničenja potrošnje."
+            unknown: "AI ishod nije jasan; provjeri izvor."
+          reasons:
+            gemini_unconfigured: "AI usluga nije podešena; ostaje provjera pravilima."
+            gemini_failed: "AI usluga nije odgovorila; ostaje provjera pravilima."
+            unknown: "AI je označio razlog za pregled; uporedi prijedlog sa izvornim tekstom."
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        ai_review:
+          title: "AI prijedlog i provjera"
+          stale: "AI prijedlog pripada starijoj verziji izvora; nije važeća odluka."
+          status_label: "Ishod:"
+          needs_review: "AI traži ljudsku provjeru prije objave."
+          type: "Predložena → potvrđena vrsta"
+          severity: "Predložena → potvrđena ozbiljnost"
+          unknown_value: "Nije potvrđeno"
+          suggested_copy: "Predloženi tekst (nije automatski objavljen)"
+          title_label: "Naslov"
+          body_label: "Sažetak"
+          phone_label: "Poruka za telefon"
+          published_copy: "Sačuvani tekst:"
+          model: "Model"
+          statuses:
+            accepted: "Prijedlog prihvaćen uz provjeru pravila."
+            rejected: "Prijedlog odbijen nakon provjere izvora."
+            disagreement: "AI prijedlog se razlikuje od izvora ili pravila; potrebna je odluka."
+            review: "Potrebna je ljudska provjera prijedloga."
+            unavailable: "AI usluga trenutno nije dostupna; primijenjena su lokalna pravila."
+            missing_article: "Nije dostupan puni članak; AI nije donio odluku."
+            budget_exhausted: "Provjera AI uslugom je odložena zbog ograničenja potrošnje."
+            unknown: "AI ishod nije jasan; provjeri izvor."
+          reasons:
+            gemini_unconfigured: "AI usluga nije podešena; ostaje provjera pravilima."
+            gemini_failed: "AI usluga nije odgovorila; ostaje provjera pravilima."
+            unknown: "AI je označio razlog za pregled; uporedi prijedlog sa izvornim tekstom."
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        ai_review:
+          title: "AI prijedlog i provjera"
+          stale: "AI prijedlog pripada starijoj verziji izvora; nije važeća odluka."
+          status_label: "Ishod:"
+          needs_review: "AI traži ljudsku provjeru prije objave."
+          type: "Predložena → potvrđena vrsta"
+          severity: "Predložena → potvrđena ozbiljnost"
+          unknown_value: "Nije potvrđeno"
+          suggested_copy: "Predloženi tekst (nije automatski objavljen)"
+          title_label: "Naslov"
+          body_label: "Sažetak"
+          phone_label: "Poruka za telefon"
+          published_copy: "Sačuvani tekst:"
+          model: "Model"
+          statuses:
+            accepted: "Prijedlog prihvaćen uz provjeru pravila."
+            rejected: "Prijedlog odbijen nakon provjere izvora."
+            disagreement: "AI prijedlog se razlikuje od izvora ili pravila; potrebna je odluka."
+            review: "Potrebna je ljudska provjera prijedloga."
+            unavailable: "AI usluga trenutno nije dostupna; primijenjena su lokalna pravila."
+            missing_article: "Nije dostupan puni članak; AI nije donio odluku."
+            budget_exhausted: "Provjera AI uslugom je odložena zbog ograničenja potrošnje."
+            unknown: "AI ishod nije jasan; provjeri izvor."
+          reasons:
+            gemini_unconfigured: "AI usluga nije podešena; ostaje provjera pravilima."
+            gemini_failed: "AI usluga nije odgovorila; ostaje provjera pravilima."
+            unknown: "AI je označio razlog za pregled; uporedi prijedlog sa izvornim tekstom."
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        ai_review:
+          title: "АИ приједлог и провјера"
+          stale: "АИ приједлог припада старијој верзији извора; није важећа одлука."
+          status_label: "Исход:"
+          needs_review: "АИ тражи људску провјеру прије објаве."
+          type: "Предложена → потврђена врста"
+          severity: "Предложена → потврђена озбиљност"
+          unknown_value: "Није потврђено"
+          suggested_copy: "Предложени текст (није аутоматски објављен)"
+          title_label: "Наслов"
+          body_label: "Сажетак"
+          phone_label: "Порука за телефон"
+          published_copy: "Сачувани текст:"
+          model: "Модел"
+          statuses:
+            accepted: "Приједлог прихваћен уз провјеру правила."
+            rejected: "Приједлог одбијен након провјере извора."
+            disagreement: "АИ приједлог се разликује од извора или правила; потребна је одлука."
+            review: "Потребна је људска провјера приједлога."
+            unavailable: "АИ услуга тренутно није доступна; примијењена су локална правила."
+            missing_article: "Није доступан пуни чланак; АИ није донио одлуку."
+            budget_exhausted: "Провјера АИ услугом је одложена због ограничења потрошње."
+            unknown: "АИ исход није јасан; провјери извор."
+          reasons:
+            gemini_unconfigured: "АИ услуга није подешена; остаје провјера правилима."
+            gemini_failed: "АИ услуга није одговорила; остаје провјера правилима."
+            unknown: "АИ је означио разлог за преглед; упореди приједлог са изворним текстом."
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        ai_review:
+          title: "AI suggestion and review"
+          stale: "The AI suggestion belongs to an older source version and is not a current decision."
+          status_label: "Outcome:"
+          needs_review: "AI requested human review before publication."
+          type: "Suggested → confirmed type"
+          severity: "Suggested → confirmed severity"
+          unknown_value: "Unconfirmed"
+          suggested_copy: "Suggested copy (not automatically published)"
+          title_label: "Title"
+          body_label: "Summary"
+          phone_label: "Phone message"
+          published_copy: "Saved copy:"
+          model: "Model"
+          statuses:
+            accepted: "Suggestion accepted after rule checks."
+            rejected: "Suggestion rejected after checking the source."
+            disagreement: "AI suggestion differs from the source or rules; a decision is needed."
+            review: "Human review of the suggestion is needed."
+            unavailable: "AI is unavailable; local rules were used."
+            missing_article: "The full article is unavailable; AI made no decision."
+            budget_exhausted: "AI review is deferred due to a usage limit."
+            unknown: "AI outcome is unclear; check the source."
+          reasons:
+            gemini_unconfigured: "AI is not configured; local rules still apply."
+            gemini_failed: "AI did not respond; local rules still apply."
+            unknown: "AI marked a reason for review; compare the suggestion with the source text."

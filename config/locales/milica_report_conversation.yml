@@ -1,0 +1,160 @@
+sr:
+  bijeljina:
+    milica_report:
+      preview: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo tačno i želiš poslati novu prijavu, pritisni „Potvrdi slanje“ ili napiši „%{command}“.
+        Za ispravku napiši šta treba promijeniti. Za odustajanje napiši „odustani“. Potvrda važi 15 minuta.
+      preview_typed: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo tačno, odgovori tačno ovako: „%{command}“.
+        Za ispravku napiši šta treba promijeniti. Za odustajanje napiši „odustani“. Potvrda važi 15 minuta.
+      shared_location: "lokacija koju si podijelio/la za ovu prijavu"
+      ask_place: "Gdje je problem? Napiši naziv ulice i najbliži broj ili orijentir, ili podijeli trenutnu lokaciju za ovu prijavu."
+      location_notice: "Važno: navedena adresa je javno vidljiva. Ako podijeliš GPS lokaciju, i tačna tačka biće javna na karti. Ako to ne želiš, izmijeni mjesto ili odustani prije potvrde."
+      disclosure_changed: "Prije slanja provjeri dopunjeno obavještenje o javnoj lokaciji. Prethodna potvrda je zamijenjena; za slanje koristi novu potvrdu ispod."
+      account_notice: "Prijava će biti povezana s tvojim nalogom, bez slanja kontakt podataka."
+      anonymous_notice: "Prijava je anonimna, bez kontakt podataka."
+      confirm_button: "Potvrdi slanje"
+      cancel_button: "Odustani"
+      cancel_command: "odustani"
+      status_button: "Prati prijavu"
+      submitted: "Prijava %{reference} je zaprimljena. Obrada i prosljeđivanje službi slijede naknadno; ovo još nije potvrda da je problem riješen.\nPrati status: %{url}"
+      expired: "Ova potvrda više ne važi ili ne pripada ovom razgovoru. Napiši ponovo šta želiš prijaviti da ti pokažem novi sažetak. Ništa nisam poslala ovom potvrdom."
+      busy: "Još obrađujem prethodnu poruku. Sačekaj trenutak pa pokušaj ponovo."
+      unavailable: "Trenutno ne mogu pouzdano potvrditi stanje prijave. Ako si već pritisnuo/la potvrdu, ponovi istu potvrdu — ne otvaraj novu prijavu; provjeriću isti zahtjev bez ponovnog slanja."
+      duplicate_notice: "U blizini postoje moguće slične prijave. Pregledaj javne prijave na /biceriseno/prijave prije potvrde. Potvrdi slanje samo ako ipak želiš novu prijavu."
+bs:
+  bijeljina:
+    milica_report:
+      preview: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo tačno i želiš poslati novu prijavu, pritisni „Potvrdi slanje“ ili napiši „%{command}“.
+        Za ispravku napiši šta treba promijeniti. Za odustajanje napiši „odustani“. Potvrda važi 15 minuta.
+      preview_typed: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo tačno, odgovori tačno ovako: „%{command}“.
+        Za ispravku napiši šta treba promijeniti. Za odustajanje napiši „odustani“. Potvrda važi 15 minuta.
+      shared_location: "lokacija koju si podijelio/la za ovu prijavu"
+      ask_place: "Gdje je problem? Napiši naziv ulice i najbliži broj ili orijentir, ili podijeli trenutnu lokaciju za ovu prijavu."
+      location_notice: "Važno: navedena adresa je javno vidljiva. Ako podijeliš GPS lokaciju, i tačna tačka bit će javna na karti. Ako to ne želiš, izmijeni mjesto ili odustani prije potvrde."
+      disclosure_changed: "Prije slanja provjeri dopunjeno obavještenje o javnoj lokaciji. Prethodna potvrda je zamijenjena; za slanje koristi novu potvrdu ispod."
+      account_notice: "Prijava će biti povezana s tvojim nalogom, bez slanja kontakt podataka."
+      anonymous_notice: "Prijava je anonimna, bez kontakt podataka."
+      confirm_button: "Potvrdi slanje"
+      cancel_button: "Odustani"
+      cancel_command: "odustani"
+      status_button: "Prati prijavu"
+      submitted: "Prijava %{reference} je zaprimljena. Obrada i prosljeđivanje službi slijede naknadno; ovo još nije potvrda da je problem riješen.\nPrati status: %{url}"
+      expired: "Ova potvrda više ne važi ili ne pripada ovom razgovoru. Napiši ponovo šta želiš prijaviti da ti pokažem novi sažetak. Ništa nisam poslala ovom potvrdom."
+      busy: "Još obrađujem prethodnu poruku. Sačekaj trenutak pa pokušaj ponovo."
+      unavailable: "Trenutno ne mogu pouzdano potvrditi stanje prijave. Ako si već pritisnuo/la potvrdu, ponovi istu potvrdu — ne otvaraj novu prijavu; provjerit ću isti zahtjev bez ponovnog slanja."
+      duplicate_notice: "U blizini postoje moguće slične prijave. Pregledaj javne prijave na /biceriseno/prijave prije potvrde. Potvrdi slanje samo ako ipak želiš novu prijavu."
+hr:
+  bijeljina:
+    milica_report:
+      preview: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo točno i želiš poslati novu prijavu, pritisni „Potvrdi slanje“ ili napiši „%{command}“.
+        Za ispravak napiši što treba promijeniti. Za odustajanje napiši „odustani“. Potvrda vrijedi 15 minuta.
+      preview_typed: |-
+        Evo prijave za tvoju provjeru — još ništa nije poslano.
+        Opis: %{description}
+        Mjesto: %{place}%{location_note}
+        %{account}
+        Ako je ovo točno, odgovori točno ovako: „%{command}“.
+        Za ispravak napiši što treba promijeniti. Za odustajanje napiši „odustani“. Potvrda vrijedi 15 minuta.
+      shared_location: "lokacija koju si podijelio/la za ovu prijavu"
+      ask_place: "Gdje je problem? Napiši naziv ulice i najbliži broj ili orijentir, ili podijeli trenutačnu lokaciju za ovu prijavu."
+      location_notice: "Važno: navedena adresa je javno vidljiva. Ako podijeliš GPS lokaciju, i točna točka bit će javna na karti. Ako to ne želiš, izmijeni mjesto ili odustani prije potvrde."
+      disclosure_changed: "Prije slanja provjeri dopunjenu obavijest o javnoj lokaciji. Prethodna potvrda je zamijenjena; za slanje koristi novu potvrdu ispod."
+      account_notice: "Prijava će biti povezana s tvojim računom, bez slanja kontakt podataka."
+      anonymous_notice: "Prijava je anonimna, bez kontakt podataka."
+      confirm_button: "Potvrdi slanje"
+      cancel_button: "Odustani"
+      cancel_command: "odustani"
+      status_button: "Prati prijavu"
+      submitted: "Prijava %{reference} je zaprimljena. Obrada i prosljeđivanje službi slijede naknadno; ovo još nije potvrda da je problem riješen.\nPrati status: %{url}"
+      expired: "Ova potvrda više ne vrijedi ili ne pripada ovom razgovoru. Napiši ponovno što želiš prijaviti da ti pokažem novi sažetak. Ništa nisam poslala ovom potvrdom."
+      busy: "Još obrađujem prethodnu poruku. Pričekaj trenutak pa pokušaj ponovno."
+      unavailable: "Trenutno ne mogu pouzdano potvrditi stanje prijave. Ako si već pritisnuo/la potvrdu, ponovi istu potvrdu — ne otvaraj novu prijavu; provjerit ću isti zahtjev bez ponovnog slanja."
+      duplicate_notice: "U blizini postoje moguće slične prijave. Pregledaj javne prijave na /biceriseno/prijave prije potvrde. Potvrdi slanje samo ako ipak želiš novu prijavu."
+sr-Cyrl:
+  bijeljina:
+    milica_report:
+      preview: |-
+        Ево пријаве за твоју провјеру — још ништа није послано.
+        Опис: %{description}
+        Мјесто: %{place}%{location_note}
+        %{account}
+        Ако је ово тачно и желиш послати нову пријаву, притисни „Потврди слање“ или напиши „%{command}“.
+        За исправку напиши шта треба промијенити. За одустајање напиши „одустани“. Потврда важи 15 минута.
+      preview_typed: |-
+        Ево пријаве за твоју провјеру — још ништа није послано.
+        Опис: %{description}
+        Мјесто: %{place}%{location_note}
+        %{account}
+        Ако је ово тачно, одговори тачно овако: „%{command}“.
+        За исправку напиши шта треба промијенити. За одустајање напиши „одустани“. Потврда важи 15 минута.
+      shared_location: "локација коју си подијелио/ла за ову пријаву"
+      ask_place: "Гдје је проблем? Напиши назив улице и најближи број или оријентир, или подијели тренутну локацију за ову пријаву."
+      location_notice: "Важно: наведена адреса је јавно видљива. Ако подијелиш GPS локацију, и тачна тачка биће јавна на карти. Ако то не желиш, измијени мјесто или одустани прије потврде."
+      disclosure_changed: "Прије слања провјери допуњено обавјештење о јавној локацији. Претходна потврда је замијењена; за слање користи нову потврду испод."
+      account_notice: "Пријава ће бити повезана с твојим налогом, без слања контакт података."
+      anonymous_notice: "Пријава је анонимна, без контакт података."
+      confirm_button: "Потврди слање"
+      cancel_button: "Одустани"
+      cancel_command: "одустани"
+      status_button: "Прати пријаву"
+      submitted: "Пријава %{reference} је запримљена. Обрада и просљеђивање служби слиједе накнадно; ово још није потврда да је проблем ријешен.\nПрати статус: %{url}"
+      expired: "Ова потврда више не важи или не припада овом разговору. Напиши поново шта желиш пријавити да ти покажем нови сажетак. Ништа нисам послала овом потврдом."
+      busy: "Још обрађујем претходну поруку. Сачекај тренутак па покушај поново."
+      unavailable: "Тренутно не могу поуздано потврдити стање пријаве. Ако си већ притиснуо/ла потврду, понови исту потврду — не отварај нову пријаву; провјерићу исти захтјев без поновног слања."
+      duplicate_notice: "У близини постоје могуће сличне пријаве. Прегледај јавне пријаве на /biceriseno/prijave прије потврде. Потврди слање само ако ипак желиш нову пријаву."
+en:
+  bijeljina:
+    milica_report:
+      preview: |-
+        Review your report — nothing has been submitted yet.
+        Description: %{description}
+        Place: %{place}%{location_note}
+        %{account}
+        If this is correct and you want to submit a new report, press “Confirm submission” or type “%{command}”.
+        Tell me what to change, or type “cancel” to stop. Confirmation expires in 15 minutes.
+      preview_typed: |-
+        Review your report — nothing has been submitted yet.
+        Description: %{description}
+        Place: %{place}%{location_note}
+        %{account}
+        If this is correct, reply with exactly this text: “%{command}”.
+        Tell me what to change, or type “cancel” to stop. Confirmation expires in 15 minutes.
+      shared_location: "the location you shared for this report"
+      ask_place: "Where is the problem? Give a street name and nearby number or landmark, or share your current location for this report."
+      location_notice: "Important: the address you provide is public. If you share GPS, the exact point will also be public on the map. If you do not want this, change the place or cancel before confirming."
+      disclosure_changed: "Review the updated public-location notice before submitting. The previous confirmation has been replaced; use the new confirmation below to submit."
+      account_notice: "The report will be linked to your account, without sending contact details."
+      anonymous_notice: "The report is anonymous, without contact details."
+      confirm_button: "Confirm submission"
+      cancel_button: "Cancel"
+      cancel_command: "cancel"
+      status_button: "Track report"
+      submitted: "Report %{reference} has been received. Processing and forwarding to the service happen separately; this does not mean the problem is resolved.\nTrack status: %{url}"
+      expired: "This confirmation has expired or belongs to a different conversation. Describe your problem again for a new preview. This confirmation has not submitted anything."
+      busy: "I am still processing your previous message. Please try again in a moment."
+      unavailable: "I cannot reliably confirm the report status right now. If you already confirmed, repeat the same confirmation instead of starting a new report; I will check the same request without submitting it again."
+      duplicate_notice: "There may be similar reports nearby. Check public reports at /biceriseno/prijave before confirming. Confirm only if you still want a new report."

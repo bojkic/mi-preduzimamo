@@ -1,0 +1,48 @@
+  <% coverage = event.extraction_metadata.fetch("coverage", {}) %>
+  <% proposed_slugs = coverage["source_content_version"] == event.content_version ? Array(coverage["affected_places"]).filter_map { |place| place["slug"] } : [] %>
+  <% proposed_areas = event.area_slugs.empty? ? @review_areas.select { |area| %w(mz komsiluk).include?(area.kind) && proposed_slugs.include?(area.slug) } : [] %>
+<details data-city-review-facts="<%= event.id %>" <%= 'open' if proposed_areas.any? || workflow_entry(event).blocker == :no_target %>
+         data-initial-kind="<%= event.targeting_level %>"
+         data-no-area-message="<%= t('decidim_app.admin.city_service_events.area_selection.required') %>">
+  <summary><%= t('.title') %></summary>
+  <p><%= t('.help') %></p>
+  <p class="city-area-selection-help"><%= t('decidim_app.admin.city_service_events.area_selection.help') %></p>
+  <% if proposed_areas.any? %>
+    <%= render 'proposed_areas', areas: proposed_areas, event: event %>
+  <% end %>
+  <label><%= check_box_tag "city_service_event[facts_reviewed]", "1", false %> <%= t('.apply') %></label>
+  <% { event_type: DecidimApp::Bijeljina::CityServiceNoticeClassifier::EVENT_TYPES,
+       severity: DecidimApp::Bijeljina::CityServiceEvent::SEVERITIES,
+       lifecycle: DecidimApp::Bijeljina::CityServiceEvent::LIFECYCLES.excluding('superseded') }.each do |field, values| %>
+    <div class="mi-admin-form__field">
+      <%= label_tag "city_service_event_#{event.id}_#{field}", t(".#{field}") %>
+      <%= select_tag "city_service_event[#{field}]", options_for_select(values.map { |value| [t(".values.#{value}", default: value.humanize), value] }, event.public_send(field)), id: "city_service_event_#{event.id}_#{field}" %>
+    </div>
+  <% end %>
+  <details data-city-manual-areas <%= 'open' if proposed_areas.empty? %>>
+    <summary><%= t('decidim_app.admin.city_service_events.area_selection.change') %></summary>
+    <div class="mi-admin-form__field">
+      <%= label_tag "city_service_event_#{event.id}_targeting_level", t('.targeting_level') %>
+      <%= select_tag "city_service_event[targeting_level]", options_for_select(%w(unknown mz komsiluk citywide).map { |value| [t(".values.#{value}"), value] }, event.targeting_level), id: "city_service_event_#{event.id}_targeting_level" %>
+    </div>
+  <div class="mi-admin-form__field">
+    <%= label_tag "city_service_event_#{event.id}_area_ids", t('.areas') %>
+    <%= hidden_field_tag "city_service_event[area_ids][]", '' %>
+    <%= select_tag "city_service_event[area_ids][]",
+                   options_for_select(@review_areas.map { |area| [city_alert_area_label(area.slug), area.id, { "data-area-kind" => area.kind }] },
+                                      @review_areas.select { |area| event.area_slugs.include?(area.slug) }.map(&:id)),
+                   multiple: true, include_blank: true, id: "city_service_event_#{event.id}_area_ids" %>
+  </div>
+  </details>
+  <% %w(starts_at ends_at).each do |field| %>
+    <div class="mi-admin-form__field">
+      <%= label_tag "city_service_event_#{event.id}_#{field}_local", t(".#{field}") %>
+      <%= datetime_local_field_tag "city_service_event[#{field}_local]", event.public_send(field)&.in_time_zone('Europe/Sarajevo')&.strftime("%Y-%m-%dT%H:%M:%S"),
+                         id: "city_service_event_#{event.id}_#{field}_local", step: 1 %>
+    </div>
+  <% end %>
+  <small><%= t('.time_help') %></small>
+  <p><label><%= check_box_tag "city_service_event[reuse_coverage]", "1", false %> <%= t('.reuse_coverage') %></label></p>
+  <%= label_tag "coverage_valid_until_#{event.id}", t('.coverage_valid_until') %>
+  <%= date_field_tag "city_service_event[coverage_valid_until]", nil, id: "coverage_valid_until_#{event.id}", min: Date.current.iso8601, max: (Date.current + 90).iso8601 %>
+</details>

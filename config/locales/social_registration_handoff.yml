@@ -1,0 +1,55 @@
+en:
+  decidim_app:
+    social_registration_handoff:
+      show:
+        title: Continue registration
+        description: Continue to the registration form and check your phone number before submitting it.
+        continue: Continue
+      invalid:
+        title: This registration link is no longer valid
+        description: Request a new link in the conversation or open registration directly.
+        register: Open registration
+sr:
+  decidim_app:
+    social_registration_handoff:
+      show:
+        title: Nastavi registraciju
+        description: Nastavi na obrazac za registraciju i provjeri broj telefona prije slanja.
+        continue: Nastavi
+      invalid:
+        title: Ovaj link za registraciju više ne važi
+        description: Zatraži novi link u razgovoru ili direktno otvori registraciju.
+        register: Otvori registraciju
+bs:
+  decidim_app:
+    social_registration_handoff:
+      show:
+        title: Nastavi registraciju
+        description: Nastavi na obrazac za registraciju i provjeri broj telefona prije slanja.
+        continue: Nastavi
+      invalid:
+        title: Ovaj link za registraciju više ne važi
+        description: Zatraži novi link u razgovoru ili direktno otvori registraciju.
+        register: Otvori registraciju
+hr:
+  decidim_app:
+    social_registration_handoff:
+      show:
+        title: Nastavi registraciju
+        description: Nastavi na obrazac za registraciju i provjeri broj telefona prije slanja.
+        continue: Nastavi
+      invalid:
+        title: Ova poveznica za registraciju više ne vrijedi
+        description: Zatraži novu poveznicu u razgovoru ili izravno otvori registraciju.
+        register: Otvori registraciju
+sr-Cyrl:
+  decidim_app:
+    social_registration_handoff:
+      show:
+        title: Настави регистрацију
+        description: Настави на образац за регистрацију и провјери број телефона прије слања.
+        continue: Настави
+      invalid:
+        title: Овај линк за регистрацију више не важи
+        description: Затражи нови линк у разговору или директно отвори регистрацију.
+        register: Отвори регистрацију

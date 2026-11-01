@@ -1,0 +1,80 @@
+en:
+  decidim_app:
+    city_service_events:
+      bot:
+        place_context: "The asset name suggests %{names}; the exact outage coverage is unconfirmed."
+    admin:
+      city_service_events:
+        index:
+          layout:
+            place_context: "Place from the asset name; coverage is unconfirmed"
+        source_evidence:
+          place_context_title: "Recognized place context"
+          place_context_note: "The asset name mentions these places. This does not establish the feeder footprint or an outage throughout the area."
+          place_context_kinds:
+            mz: "Local community"
+            komsiluk: "Neighbourhood"
+bs:
+  decidim_app:
+    city_service_events:
+      bot:
+        place_context: "Naziv objekta upućuje na %{names}; tačan obuhvat isključenja nije potvrđen."
+    admin:
+      city_service_events:
+        index:
+          layout:
+            place_context: "Područje iz naziva objekta; obuhvat nije potvrđen"
+        source_evidence:
+          place_context_title: "Prepoznato područje iz konteksta"
+          place_context_note: "Naziv objekta spominje ova mjesta. Time nije utvrđen obuhvat izvoda niti isključenje cijelog područja."
+          place_context_kinds:
+            mz: "Mjesna zajednica"
+            komsiluk: "Komšiluk"
+hr:
+  decidim_app:
+    city_service_events:
+      bot:
+        place_context: "Naziv objekta upućuje na %{names}; točan obuhvat isključenja nije potvrđen."
+    admin:
+      city_service_events:
+        index:
+          layout:
+            place_context: "Područje iz naziva objekta; obuhvat nije potvrđen"
+        source_evidence:
+          place_context_title: "Prepoznato područje iz konteksta"
+          place_context_note: "Naziv objekta spominje ova mjesta. Time nije utvrđen obuhvat izvoda niti isključenje cijelog područja."
+          place_context_kinds:
+            mz: "Mjesna zajednica"
+            komsiluk: "Susjedstvo"
+sr:
+  decidim_app:
+    city_service_events:
+      bot:
+        place_context: "Naziv objekta upućuje na %{names}; tačan obuhvat isključenja nije potvrđen."
+    admin:
+      city_service_events:
+        index:
+          layout:
+            place_context: "Područje iz naziva objekta; obuhvat nije potvrđen"
+        source_evidence:
+          place_context_title: "Prepoznato područje iz konteksta"
+          place_context_note: "Naziv objekta spominje ova mjesta. Time nije utvrđen obuhvat izvoda niti isključenje cijelog područja."
+          place_context_kinds:
+            mz: "Mjesna zajednica"
+            komsiluk: "Komšiluk"
+sr-Cyrl:
+  decidim_app:
+    city_service_events:
+      bot:
+        place_context: "Назив објекта упућује на %{names}; тачан обухват искључења није потврђен."
+    admin:
+      city_service_events:
+        index:
+          layout:
+            place_context: "Подручје из назива објекта; обухват није потврђен"
+        source_evidence:
+          place_context_title: "Препознато подручје из контекста"
+          place_context_note: "Назив објекта спомиње ова мјеста. Тиме није утврђен обухват извода нити искључење цијелог подручја."
+          place_context_kinds:
+            mz: "Мјесна заједница"
+            komsiluk: "Комшилук"

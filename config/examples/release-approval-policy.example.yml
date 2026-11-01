@@ -1,0 +1,14 @@
+# Authored example for a community's own release evidence policy.
+# Recording approval does not run checks or authorize an unverified deployment.
+version: 2
+execution: local
+verification:
+  lanes:
+    docs:
+      required_scopes: [source_review]
+    fast:
+      required_scopes: [source_review, selected_tests]
+    deep:
+      required_scopes: [source_review, public_backend, public_browser, engine_tests]
+  conditional_scopes:
+    frontend: [public_browser]

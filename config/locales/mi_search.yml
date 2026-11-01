@@ -1,0 +1,25 @@
+sr:
+  mi_search:
+    home_title: '%{community} — prijavi problem, predloži i odlučuj'
+    description: Platforma vaše zajednice. Prijavi problem, predloži ideju, odlučuj
+      o projektima i uključi se u svoj komšiluk.
+bs:
+  mi_search:
+    home_title: '%{community} — prijavi problem, predloži i odlučuj'
+    description: Platforma vaše zajednice. Prijavi problem, predloži ideju, odlučuj
+      o projektima i uključi se u svoj komšiluk.
+hr:
+  mi_search:
+    home_title: '%{community} — prijavi problem, predloži i odlučuj'
+    description: Platforma vaše zajednice. Prijavi problem, predloži ideju, odlučuj
+      o projektima i uključi se u svoje susjedstvo.
+sr-Cyrl:
+  mi_search:
+    home_title: '%{community} — пријави проблем, предложи и одлучуј'
+    description: Платформа ваше заједнице. Пријави проблем, предложи идеју, одлучуј
+      о пројектима и укључи се у свој комшилук.
+en:
+  mi_search:
+    home_title: '%{community} — report a problem, propose and participate'
+    description: Your community platform. Report a problem, propose an idea, participate
+      in projects and join your neighbourhood.

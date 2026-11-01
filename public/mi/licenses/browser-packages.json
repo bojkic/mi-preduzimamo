@@ -1,0 +1,1783 @@
+{
+  "format": 1,
+  "npm_lock_sha256": "652c14ec19b8c4ce311b74b5f3294df0a94b725c803b458e10ad0a055540df46",
+  "scope": "Actual production-mode JavaScript/CSS/worker module graph; regenerate and review when dependencies change",
+  "packages": [
+    {
+      "name": "@emoji-mart/data",
+      "version": "1.2.1",
+      "package_path": "node_modules/@emoji-mart/data",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@emoji-mart/data/v/1.2.1",
+      "source_repository": "https://github.com/missive/emoji-mart",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@floating-ui/core",
+      "version": "1.7.5",
+      "package_path": "node_modules/@floating-ui/core",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@floating-ui/core/v/1.7.5",
+      "source_repository": "https://github.com/floating-ui/floating-ui.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@floating-ui/dom",
+      "version": "1.7.6",
+      "package_path": "node_modules/@floating-ui/dom",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@floating-ui/dom/v/1.7.6",
+      "source_repository": "https://github.com/floating-ui/floating-ui.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@floating-ui/react-dom",
+      "version": "2.1.8",
+      "package_path": "node_modules/@floating-ui/react-dom",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@floating-ui/react-dom/v/2.1.8",
+      "source_repository": "https://github.com/floating-ui/floating-ui.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@floating-ui/utils",
+      "version": "0.2.11",
+      "package_path": "node_modules/@floating-ui/utils",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@floating-ui/utils/v/0.2.11",
+      "source_repository": "https://github.com/floating-ui/floating-ui.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@graphiql/react",
+      "version": "0.29.0",
+      "package_path": "node_modules/@graphiql/react",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@graphiql/react/v/0.29.0",
+      "source_repository": "https://github.com/graphql/graphiql",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@graphiql/toolkit",
+      "version": "0.11.3",
+      "package_path": "node_modules/@graphiql/toolkit",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@graphiql/toolkit/v/0.11.3",
+      "source_repository": "https://github.com/graphql/graphiql",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@headlessui/react",
+      "version": "1.7.19",
+      "package_path": "node_modules/@headlessui/react",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@headlessui/react/v/1.7.19",
+      "source_repository": "git+https://github.com/tailwindlabs/headlessui.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@hotwired/stimulus",
+      "version": "3.2.2",
+      "package_path": "node_modules/@hotwired/stimulus",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@hotwired/stimulus/v/3.2.2",
+      "source_repository": "git+https://github.com/hotwired/stimulus.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@kurkle/color",
+      "version": "0.3.4",
+      "package_path": "node_modules/@kurkle/color",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@kurkle/color/v/0.3.4",
+      "source_repository": "git+https://github.com/kurkle/color.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@radix-ui/primitive",
+      "version": "1.1.4",
+      "package_path": "node_modules/@radix-ui/primitive",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/primitive/v/1.1.4",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-arrow",
+      "version": "1.1.9",
+      "package_path": "node_modules/@radix-ui/react-arrow",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-arrow/v/1.1.9",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-collection",
+      "version": "1.1.9",
+      "package_path": "node_modules/@radix-ui/react-collection",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-collection/v/1.1.9",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-compose-refs",
+      "version": "1.1.3",
+      "package_path": "node_modules/@radix-ui/react-compose-refs",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-compose-refs/v/1.1.3",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-context",
+      "version": "1.1.4",
+      "package_path": "node_modules/@radix-ui/react-context",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-context/v/1.1.4",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-dialog",
+      "version": "1.1.16",
+      "package_path": "node_modules/@radix-ui/react-dialog",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-dialog/v/1.1.16",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-direction",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-direction",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-direction/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-dismissable-layer",
+      "version": "1.1.12",
+      "package_path": "node_modules/@radix-ui/react-dismissable-layer",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-dismissable-layer/v/1.1.12",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-dropdown-menu",
+      "version": "2.1.17",
+      "package_path": "node_modules/@radix-ui/react-dropdown-menu",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-dropdown-menu/v/2.1.17",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-focus-guards",
+      "version": "1.1.4",
+      "package_path": "node_modules/@radix-ui/react-focus-guards",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-focus-guards/v/1.1.4",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-focus-scope",
+      "version": "1.1.9",
+      "package_path": "node_modules/@radix-ui/react-focus-scope",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-focus-scope/v/1.1.9",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-id",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-id",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-id/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-menu",
+      "version": "2.1.17",
+      "package_path": "node_modules/@radix-ui/react-menu",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-menu/v/2.1.17",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-popper",
+      "version": "1.3.0",
+      "package_path": "node_modules/@radix-ui/react-popper",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-popper/v/1.3.0",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-portal",
+      "version": "1.1.11",
+      "package_path": "node_modules/@radix-ui/react-portal",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-portal/v/1.1.11",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-presence",
+      "version": "1.1.6",
+      "package_path": "node_modules/@radix-ui/react-presence",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-presence/v/1.1.6",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-primitive",
+      "version": "2.1.5",
+      "package_path": "node_modules/@radix-ui/react-primitive",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-primitive/v/2.1.5",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-roving-focus",
+      "version": "1.1.12",
+      "package_path": "node_modules/@radix-ui/react-roving-focus",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-roving-focus/v/1.1.12",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-slot",
+      "version": "1.2.5",
+      "package_path": "node_modules/@radix-ui/react-slot",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-slot/v/1.2.5",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-tooltip",
+      "version": "1.2.9",
+      "package_path": "node_modules/@radix-ui/react-tooltip",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-tooltip/v/1.2.9",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-use-callback-ref",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-use-callback-ref",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-use-callback-ref/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-use-controllable-state",
+      "version": "1.2.3",
+      "package_path": "node_modules/@radix-ui/react-use-controllable-state",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-use-controllable-state/v/1.2.3",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-use-escape-keydown",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-use-escape-keydown",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-use-escape-keydown/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-use-layout-effect",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-use-layout-effect",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-use-layout-effect/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-use-size",
+      "version": "1.1.2",
+      "package_path": "node_modules/@radix-ui/react-use-size",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-use-size/v/1.1.2",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@radix-ui/react-visually-hidden",
+      "version": "1.2.5",
+      "package_path": "node_modules/@radix-ui/react-visually-hidden",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@radix-ui/react-visually-hidden/v/1.2.5",
+      "source_repository": "git+https://github.com/radix-ui/primitives.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@rails/activestorage",
+      "version": "7.2.301",
+      "package_path": "node_modules/@rails/activestorage",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@rails/activestorage/v/7.2.301",
+      "source_repository": "git+https://github.com/rails/rails.git",
+      "notice_sections": [
+        "MIT-LICENSE"
+      ]
+    },
+    {
+      "name": "@rails/ujs",
+      "version": "6.1.710",
+      "package_path": "node_modules/@rails/ujs",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@rails/ujs/v/6.1.710",
+      "source_repository": "rails/rails",
+      "notice_sections": [
+        "MIT-LICENSE"
+      ]
+    },
+    {
+      "name": "@tanstack/react-virtual",
+      "version": "3.14.2",
+      "package_path": "node_modules/@tanstack/react-virtual",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tanstack/react-virtual/v/3.14.2",
+      "source_repository": "git+https://github.com/TanStack/virtual.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@tanstack/virtual-core",
+      "version": "3.17.0",
+      "package_path": "node_modules/@tanstack/virtual-core",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tanstack/virtual-core/v/3.17.0",
+      "source_repository": "git+https://github.com/TanStack/virtual.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@tarekraafat/autocomplete.js",
+      "version": "10.2.7",
+      "package_path": "node_modules/@tarekraafat/autocomplete.js",
+      "license": "Apache-2.0",
+      "package_url": "https://www.npmjs.com/package/@tarekraafat/autocomplete.js/v/10.2.7",
+      "source_repository": "git+https://github.com/TarekRaafat/autoComplete.js.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@tiptap/core",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/core",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/core/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-blockquote",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-blockquote",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-blockquote/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-bold",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-bold",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-bold/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-character-count",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-character-count",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-character-count/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-code",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-code",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-code/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-code-block",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-code-block",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-code-block/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-document",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-document",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-document/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-hard-break",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-hard-break",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-hard-break/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-heading",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-heading",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-heading/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-horizontal-rule",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-horizontal-rule",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-horizontal-rule/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-image",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-image",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-image/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-italic",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-italic",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-italic/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-link",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-link",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-link/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-list",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-list",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-list/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-mention",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-mention",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-mention/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-ordered-list",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-ordered-list",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-ordered-list/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-paragraph",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-paragraph",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-paragraph/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-strike",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-strike",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-strike/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-text",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-text",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-text/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extension-underline",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extension-underline",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extension-underline/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/extensions",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/extensions",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/extensions/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/starter-kit",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/starter-kit",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/starter-kit/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "@tiptap/suggestion",
+      "version": "3.32.2",
+      "package_path": "node_modules/@tiptap/suggestion",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/@tiptap/suggestion/v/3.32.2",
+      "source_repository": "https://github.com/ueberdosis/tiptap",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "a11y-accordion-component",
+      "version": "1.2.6",
+      "package_path": "node_modules/a11y-accordion-component",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/a11y-accordion-component/v/1.2.6",
+      "source_repository": "https://github.com/jonathanlevaillant/a11y-accordion-component.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "a11y-dialog-component",
+      "version": "5.5.1",
+      "package_path": "node_modules/a11y-dialog-component",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/a11y-dialog-component/v/5.5.1",
+      "source_repository": "https://github.com/jonathanlevaillant/a11y-dialog-component.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "a11y-dropdown-component",
+      "version": "1.2.0",
+      "package_path": "node_modules/a11y-dropdown-component",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/a11y-dropdown-component/v/1.2.0",
+      "source_repository": "https://github.com/jonathanlevaillant/a11y-dropdown-component.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "aria-hidden",
+      "version": "1.2.6",
+      "package_path": "node_modules/aria-hidden",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/aria-hidden/v/1.2.6",
+      "source_repository": "git+https://github.com/theKashey/aria-hidden.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "axe-core",
+      "version": "4.12.0",
+      "package_path": "node_modules/axe-core",
+      "license": "MPL-2.0",
+      "package_url": "https://www.npmjs.com/package/axe-core/v/4.12.0",
+      "source_repository": "https://github.com/dequelabs/axe-core.git",
+      "notice_sections": [
+        "LICENSE-3RD-PARTY.txt",
+        "LICENSE"
+      ],
+      "covered_source_url": "https://github.com/dequelabs/axe-core/tree/e260c7e484da8584f807091cd304bbe725348c1c",
+      "covered_source_archive": "https://github.com/dequelabs/axe-core/archive/e260c7e484da8584f807091cd304bbe725348c1c.tar.gz"
+    },
+    {
+      "name": "chart.js",
+      "version": "4.5.1",
+      "package_path": "node_modules/chart.js",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/chart.js/v/4.5.1",
+      "source_repository": "https://github.com/chartjs/Chart.js.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "chartjs-adapter-date-fns",
+      "version": "3.0.0",
+      "package_path": "node_modules/chartjs-adapter-date-fns",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/chartjs-adapter-date-fns/v/3.0.0",
+      "source_repository": "https://github.com/chartjs/chartjs-adapter-date-fns.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "chartkick",
+      "version": "5.0.1",
+      "package_path": "node_modules/chartkick",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/chartkick/v/5.0.1",
+      "source_repository": "https://github.com/ankane/chartkick.js",
+      "notice_sections": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "name": "clsx",
+      "version": "1.2.1",
+      "package_path": "node_modules/clsx",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/clsx/v/1.2.1",
+      "source_repository": "lukeed/clsx",
+      "notice_sections": [
+        "license"
+      ]
+    },
+    {
+      "name": "codemirror",
+      "version": "5.65.21",
+      "package_path": "node_modules/codemirror",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/codemirror/v/5.65.21",
+      "source_repository": "https://github.com/codemirror/CodeMirror.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "codemirror-graphql",
+      "version": "2.2.7",
+      "package_path": "node_modules/codemirror-graphql",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/codemirror-graphql/v/2.2.7",
+      "source_repository": "https://github.com/graphql/graphiql",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "copy-to-clipboard",
+      "version": "3.3.3",
+      "package_path": "node_modules/copy-to-clipboard",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/copy-to-clipboard/v/3.3.3",
+      "source_repository": "git+https://github.com/sudodoki/copy-to-clipboard",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "core-js",
+      "version": "3.33.3",
+      "package_path": "node_modules/core-js",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/core-js/v/3.33.3",
+      "source_repository": "https://github.com/zloirock/core-js.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "date-fns",
+      "version": "4.4.0",
+      "package_path": "node_modules/date-fns",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/date-fns/v/4.4.0",
+      "source_repository": "https://github.com/date-fns/date-fns",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "dayjs",
+      "version": "1.11.21",
+      "package_path": "node_modules/dayjs",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/dayjs/v/1.11.21",
+      "source_repository": "https://github.com/iamkun/dayjs.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "drag-on-drop",
+      "version": "3.6.1",
+      "package_path": "node_modules/drag-on-drop",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/drag-on-drop/v/3.6.1",
+      "source_repository": "git+https://github.com/schne324/dragon-drop.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "dragula",
+      "version": "3.7.3",
+      "package_path": "node_modules/dragula",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/dragula/v/3.7.3",
+      "source_repository": "https://github.com/bevacqua/dragula.git",
+      "notice_sections": [
+        "license"
+      ]
+    },
+    {
+      "name": "element-matches-polyfill",
+      "version": "1.0.0",
+      "package_path": "node_modules/element-matches-polyfill",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/element-matches-polyfill/v/1.0.0",
+      "source_repository": "git+https://github.com/mboughaba/element-matches-polyfill.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "emoji-mart",
+      "version": "5.6.0",
+      "package_path": "node_modules/emoji-mart",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/emoji-mart/v/5.6.0",
+      "source_repository": "https://github.com/missive/emoji-mart",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "entities",
+      "version": "3.0.1",
+      "package_path": "node_modules/entities",
+      "license": "BSD-2-Clause",
+      "package_url": "https://www.npmjs.com/package/entities/v/3.0.1",
+      "source_repository": "git://github.com/fb55/entities.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "expose-loader",
+      "version": "5.0.1",
+      "package_path": "node_modules/expose-loader",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/expose-loader/v/5.0.1",
+      "source_repository": "webpack-contrib/expose-loader",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "form-serialize",
+      "version": "0.7.2",
+      "package_path": "node_modules/form-serialize",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/form-serialize/v/0.7.2",
+      "source_repository": "git://github.com/shtylman/form-serialize.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "form-storage",
+      "version": "1.3.5",
+      "package_path": "node_modules/form-storage",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/form-storage/v/1.3.5",
+      "source_repository": null,
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "formBuilder",
+      "version": "3.23.1",
+      "package_path": "node_modules/formBuilder",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/formBuilder/v/3.23.1",
+      "source_repository": "https://github.com/kevinchappell/formBuilder.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "foundation-sites",
+      "version": "6.9.0",
+      "package_path": "node_modules/foundation-sites",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/foundation-sites/v/6.9.0",
+      "source_repository": "https://github.com/foundation/foundation-sites",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "framer-motion",
+      "version": "6.5.1",
+      "package_path": "node_modules/framer-motion",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/framer-motion/v/6.5.1",
+      "source_repository": "https://github.com/framer/motion/",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "framesync",
+      "version": "6.0.1",
+      "package_path": "node_modules/framesync",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/framesync/v/6.0.1",
+      "source_repository": "git+https://github.com/Popmotion/popmotion.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "get-nonce",
+      "version": "1.0.1",
+      "package_path": "node_modules/get-nonce",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/get-nonce/v/1.0.1",
+      "source_repository": "git@github.com:theKashey/get-nonce.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "get-value",
+      "version": "3.0.1",
+      "package_path": "node_modules/get-value",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/get-value/v/3.0.1",
+      "source_repository": "jonschlinkert/get-value",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "graphiql",
+      "version": "3.9.0",
+      "package_path": "node_modules/graphiql",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/graphiql/v/3.9.0",
+      "source_repository": "http://github.com/graphql/graphiql",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "graphql",
+      "version": "16.14.1",
+      "package_path": "node_modules/graphql",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/graphql/v/16.14.1",
+      "source_repository": "https://github.com/graphql/graphql-js.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "graphql-language-service",
+      "version": "5.5.2",
+      "package_path": "node_modules/graphql-language-service",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/graphql-language-service/v/5.5.2",
+      "source_repository": "https://github.com/graphql/graphiql",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "graphql-ws",
+      "version": "5.16.2",
+      "package_path": "node_modules/graphql-ws",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/graphql-ws/v/5.16.2",
+      "source_repository": "git+https://github.com/enisdenjo/graphql-ws.git",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "hey-listen",
+      "version": "1.0.8",
+      "package_path": "node_modules/hey-listen",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/hey-listen/v/1.0.8",
+      "source_repository": "git+https://github.com/Popmotion/hey-listen.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "html5sortable",
+      "version": "0.10.0",
+      "package_path": "node_modules/html5sortable",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/html5sortable/v/0.10.0",
+      "source_repository": "http://github.com/lukasoppermann/html5sortable",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "idb",
+      "version": "7.1.1",
+      "package_path": "node_modules/idb",
+      "license": "ISC",
+      "package_url": "https://www.npmjs.com/package/idb/v/7.1.1",
+      "source_repository": "git://github.com/jakearchibald/idb.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "inline-attacher",
+      "version": "0.0.7",
+      "package_path": "node_modules/inline-attacher",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/inline-attacher/v/0.0.7",
+      "source_repository": "https://github.com/EastSun5566/inline-attachment",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "is-plain-object",
+      "version": "2.0.4",
+      "package_path": "node_modules/is-plain-object",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/is-plain-object/v/2.0.4",
+      "source_repository": "jonschlinkert/is-plain-object",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "is-primitive",
+      "version": "3.0.1",
+      "package_path": "node_modules/is-primitive",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/is-primitive/v/3.0.1",
+      "source_repository": "jonschlinkert/is-primitive",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "isobject",
+      "version": "3.0.1",
+      "package_path": "node_modules/isobject",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/isobject/v/3.0.1",
+      "source_repository": "jonschlinkert/isobject",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "jquery",
+      "version": "3.7.1",
+      "package_path": "node_modules/jquery",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/jquery/v/3.7.1",
+      "source_repository": "https://github.com/jquery/jquery.git",
+      "notice_sections": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "name": "js-cookie",
+      "version": "3.0.8",
+      "package_path": "node_modules/js-cookie",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/js-cookie/v/3.0.8",
+      "source_repository": "git://github.com/js-cookie/js-cookie.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "jsrender",
+      "version": "1.2.0",
+      "package_path": "node_modules/jsrender",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/jsrender/v/1.2.0",
+      "source_repository": "https://github.com/borismoore/jsrender.git",
+      "notice_sections": [
+        "MIT-LICENSE.txt"
+      ]
+    },
+    {
+      "name": "leaflet",
+      "version": "1.9.4",
+      "package_path": "node_modules/leaflet",
+      "license": "BSD-2-Clause",
+      "package_url": "https://www.npmjs.com/package/leaflet/v/1.9.4",
+      "source_repository": "git://github.com/Leaflet/Leaflet.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "leaflet-tilelayer-here",
+      "version": "2.0.1",
+      "package_path": "node_modules/leaflet-tilelayer-here",
+      "license": "ISC",
+      "package_url": "https://www.npmjs.com/package/leaflet-tilelayer-here/v/2.0.1",
+      "source_repository": "https://github.com/wandersoncs/leaflet-tilelayer-here.git",
+      "notice_sections": [
+        "Deklaracija paketa i kanonski ISC tekst"
+      ]
+    },
+    {
+      "name": "leaflet.featuregroup.subgroup",
+      "version": "1.0.2",
+      "package_path": "node_modules/leaflet.featuregroup.subgroup",
+      "license": "BSD-2-Clause",
+      "package_url": "https://www.npmjs.com/package/leaflet.featuregroup.subgroup/v/1.0.2",
+      "source_repository": "git+https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "leaflet.markercluster",
+      "version": "1.5.3",
+      "package_path": "node_modules/leaflet.markercluster",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/leaflet.markercluster/v/1.5.3",
+      "source_repository": "https://github.com/Leaflet/Leaflet.markercluster",
+      "notice_sections": [
+        "MIT-LICENCE.txt"
+      ]
+    },
+    {
+      "name": "linkify-it",
+      "version": "5.0.2",
+      "package_path": "node_modules/linkify-it",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/linkify-it/v/5.0.2",
+      "source_repository": "markdown-it/linkify-it",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "linkifyjs",
+      "version": "4.4.0",
+      "package_path": "node_modules/linkifyjs",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/linkifyjs/v/4.4.0",
+      "source_repository": "git+https://github.com/nfrasser/linkifyjs.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "markdown-it",
+      "version": "14.3.3",
+      "package_path": "node_modules/markdown-it",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/markdown-it/v/14.3.3",
+      "source_repository": "markdown-it/markdown-it",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "mdurl",
+      "version": "2.0.0",
+      "package_path": "node_modules/mdurl",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/mdurl/v/2.0.0",
+      "source_repository": "markdown-it/mdurl",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "morphdom",
+      "version": "2.6.1",
+      "package_path": "node_modules/morphdom",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/morphdom/v/2.6.1",
+      "source_repository": "https://github.com/patrick-steele-idem/morphdom.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "nullthrows",
+      "version": "1.1.1",
+      "package_path": "node_modules/nullthrows",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/nullthrows/v/1.1.1",
+      "source_repository": "https://github.com/zertosh/nullthrows",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "orderedmap",
+      "version": "2.1.1",
+      "package_path": "node_modules/orderedmap",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/orderedmap/v/2.1.1",
+      "source_repository": "git+https://github.com/marijnh/orderedmap.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "popmotion",
+      "version": "11.0.3",
+      "package_path": "node_modules/popmotion",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/popmotion/v/11.0.3",
+      "source_repository": "https://github.com/Popmotion/popmotion/tree/master/packages/popmotion",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "prosemirror-commands",
+      "version": "1.7.2",
+      "package_path": "node_modules/prosemirror-commands",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-commands/v/1.7.2",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-commands.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-dropcursor",
+      "version": "1.8.4",
+      "package_path": "node_modules/prosemirror-dropcursor",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-dropcursor/v/1.8.4",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-dropcursor.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-gapcursor",
+      "version": "1.4.1",
+      "package_path": "node_modules/prosemirror-gapcursor",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-gapcursor/v/1.4.1",
+      "source_repository": "git://github.com/prosemirror/prosemirror-gapcursor.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-history",
+      "version": "1.5.1",
+      "package_path": "node_modules/prosemirror-history",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-history/v/1.5.1",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-history.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-keymap",
+      "version": "1.2.3",
+      "package_path": "node_modules/prosemirror-keymap",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-keymap/v/1.2.3",
+      "source_repository": "git://github.com/prosemirror/prosemirror-keymap.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-model",
+      "version": "1.25.12",
+      "package_path": "node_modules/prosemirror-model",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-model/v/1.25.12",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-model.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-schema-list",
+      "version": "1.6.0",
+      "package_path": "node_modules/prosemirror-schema-list",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-schema-list/v/1.6.0",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-schema-list.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-state",
+      "version": "1.4.4",
+      "package_path": "node_modules/prosemirror-state",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-state/v/1.4.4",
+      "source_repository": "git://github.com/prosemirror/prosemirror-state.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-transform",
+      "version": "1.12.4",
+      "package_path": "node_modules/prosemirror-transform",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-transform/v/1.12.4",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-transform.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "prosemirror-view",
+      "version": "1.42.9",
+      "package_path": "node_modules/prosemirror-view",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/prosemirror-view/v/1.42.9",
+      "source_repository": "git+https://code.haverbeke.berlin/prosemirror/prosemirror-view.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "punycode.js",
+      "version": "2.3.1",
+      "package_path": "node_modules/punycode.js",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/punycode.js/v/2.3.1",
+      "source_repository": "https://github.com/mathiasbynens/punycode.js.git",
+      "notice_sections": [
+        "LICENSE-MIT.txt"
+      ]
+    },
+    {
+      "name": "query-string-es5",
+      "version": "6.1.4",
+      "package_path": "node_modules/query-string-es5",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/query-string-es5/v/6.1.4",
+      "source_repository": "sindresorhus/query-string",
+      "notice_sections": [
+        "license"
+      ]
+    },
+    {
+      "name": "react",
+      "version": "18.3.1",
+      "package_path": "node_modules/react",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react/v/18.3.1",
+      "source_repository": "https://github.com/facebook/react.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-compiler-runtime",
+      "version": "19.1.0-rc.1",
+      "package_path": "node_modules/react-compiler-runtime",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react-compiler-runtime/v/19.1.0-rc.1",
+      "source_repository": "git+https://github.com/facebook/react.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-dom",
+      "version": "18.3.1",
+      "package_path": "node_modules/react-dom",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react-dom/v/18.3.1",
+      "source_repository": "https://github.com/facebook/react.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-remove-scroll",
+      "version": "2.7.2",
+      "package_path": "node_modules/react-remove-scroll",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react-remove-scroll/v/2.7.2",
+      "source_repository": "https://github.com/theKashey/react-remove-scroll",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-remove-scroll-bar",
+      "version": "2.3.8",
+      "package_path": "node_modules/react-remove-scroll-bar",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react-remove-scroll-bar/v/2.3.8",
+      "source_repository": "https://github.com/theKashey/react-remove-scroll-bar",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "react-style-singleton",
+      "version": "2.2.3",
+      "package_path": "node_modules/react-style-singleton",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/react-style-singleton/v/2.2.3",
+      "source_repository": "https://github.com/theKashey/react-style-singleton",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "package_path": "node_modules/regenerator-runtime",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/regenerator-runtime/v/0.13.11",
+      "source_repository": "https://github.com/facebook/regenerator/tree/main/packages/runtime",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "rope-sequence",
+      "version": "1.3.4",
+      "package_path": "node_modules/rope-sequence",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/rope-sequence/v/1.3.4",
+      "source_repository": "git+https://github.com/marijnh/rope-sequence.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "scheduler",
+      "version": "0.23.2",
+      "package_path": "node_modules/scheduler",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/scheduler/v/0.23.2",
+      "source_repository": "https://github.com/facebook/react.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "select",
+      "version": "1.1.2",
+      "package_path": "node_modules/select",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/select/v/1.1.2",
+      "source_repository": "zenorocha/select",
+      "notice_sections": [
+        "Deklaracija paketa i kanonski MIT tekst"
+      ]
+    },
+    {
+      "name": "set-value",
+      "version": "4.1.0",
+      "package_path": "node_modules/set-value",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/set-value/v/4.1.0",
+      "source_repository": "jonschlinkert/set-value",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "style-value-types",
+      "version": "5.0.0",
+      "package_path": "node_modules/style-value-types",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/style-value-types/v/5.0.0",
+      "source_repository": "https://github.com/Popmotion/popmotion/tree/master/packages/style-value-types",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "svg4everybody",
+      "version": "2.1.9",
+      "package_path": "node_modules/svg4everybody",
+      "license": "CC0-1.0",
+      "package_url": "https://www.npmjs.com/package/svg4everybody/v/2.1.9",
+      "source_repository": "jonathantneal/svg4everybody",
+      "notice_sections": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "tailwindcss",
+      "version": "3.4.19",
+      "package_path": "node_modules/tailwindcss",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/tailwindcss/v/3.4.19",
+      "source_repository": "https://github.com/tailwindlabs/tailwindcss.git#v3",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "toggle-selection",
+      "version": "1.0.6",
+      "package_path": "node_modules/toggle-selection",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/toggle-selection/v/1.0.6",
+      "source_repository": "git+https://github.com/sudodoki/toggle-selection",
+      "notice_sections": [
+        "Deklaracija paketa i kanonski MIT tekst"
+      ]
+    },
+    {
+      "name": "tom-select",
+      "version": "2.2.2",
+      "package_path": "node_modules/tom-select",
+      "license": "Apache-2.0",
+      "package_url": "https://www.npmjs.com/package/tom-select/v/2.2.2",
+      "source_repository": "https://github.com/orchidjs/tom-select.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "package_path": "node_modules/tslib",
+      "license": "0BSD",
+      "package_url": "https://www.npmjs.com/package/tslib/v/2.8.1",
+      "source_repository": "https://github.com/Microsoft/tslib.git",
+      "notice_sections": [
+        "CopyrightNotice.txt",
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "name": "uc.micro",
+      "version": "2.1.0",
+      "package_path": "node_modules/uc.micro",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/uc.micro/v/2.1.0",
+      "source_repository": "markdown-it/uc.micro",
+      "notice_sections": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "name": "use-callback-ref",
+      "version": "1.3.3",
+      "package_path": "node_modules/use-callback-ref",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/use-callback-ref/v/1.3.3",
+      "source_repository": "https://github.com/theKashey/use-callback-ref/",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "use-sidecar",
+      "version": "1.1.3",
+      "package_path": "node_modules/use-sidecar",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/use-sidecar/v/1.1.3",
+      "source_repository": "https://github.com/theKashey/use-sidecar",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "vscode-languageserver-types",
+      "version": "3.18.0",
+      "package_path": "node_modules/vscode-languageserver-types",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/vscode-languageserver-types/v/3.18.0",
+      "source_repository": "https://github.com/Microsoft/vscode-languageserver-node.git",
+      "notice_sections": [
+        "License.txt"
+      ]
+    },
+    {
+      "name": "w3c-keyname",
+      "version": "2.2.8",
+      "package_path": "node_modules/w3c-keyname",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/w3c-keyname/v/2.2.8",
+      "source_repository": "git+https://github.com/marijnh/w3c-keyname.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "wc-datepicker",
+      "version": "0.5.3",
+      "package_path": "node_modules/wc-datepicker",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/wc-datepicker/v/0.5.3",
+      "source_repository": "https://github.com/Sqrrl/wc-datepicker.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-cacheable-response",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-cacheable-response",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-cacheable-response/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-core",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-core",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-core/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-expiration",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-expiration",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-expiration/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-precaching",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-precaching",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-precaching/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-recipes",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-recipes",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-recipes/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-routing",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-routing",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-routing/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "workbox-strategies",
+      "version": "7.4.1",
+      "package_path": "node_modules/workbox-strategies",
+      "license": "MIT",
+      "package_url": "https://www.npmjs.com/package/workbox-strategies/v/7.4.1",
+      "source_repository": "git+https://github.com/googlechrome/workbox.git",
+      "notice_sections": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "notices": "BROWSER_THIRD_PARTY_NOTICES.txt"
+}

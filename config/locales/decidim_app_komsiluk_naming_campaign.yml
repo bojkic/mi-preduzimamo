@@ -1,0 +1,64 @@
+sr:
+  decidim_app:
+    bijeljina:
+      komsiluk_naming_campaign:
+        errors:
+          komsiluk_required: "Prvo odaberite svoj komšiluk na stranici Moj komšiluk."
+          campaign_area_locked: "Prijedlog i glas moraju ostati u komšiluku u kojem ste započeli kampanju."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svog komšiluka."
+        authorization:
+          komsiluk_required: "Prvo odaberite svoj komšiluk na stranici Moj komšiluk."
+          campaign_area_locked: "U ovoj kampanji već ste učestvovali u drugom komšiluku."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svog komšiluka."
+
+sr-Cyrl:
+  decidim_app:
+    bijeljina:
+      komsiluk_naming_campaign:
+        errors:
+          komsiluk_required: "Прво одаберите свој комшилук на страници Мој комшилук."
+          campaign_area_locked: "Приједлог и глас морају остати у комшилуку у којем сте започели кампању."
+          wrong_komsiluk: "Можете гласати само за приједлог из свог комшилука."
+        authorization:
+          komsiluk_required: "Прво одаберите свој комшилук на страници Мој комшилук."
+          campaign_area_locked: "У овој кампањи већ сте учествовали у другом комшилуку."
+          wrong_komsiluk: "Можете гласати само за приједлог из свог комшилука."
+
+bs:
+  decidim_app:
+    bijeljina:
+      komsiluk_naming_campaign:
+        errors:
+          komsiluk_required: "Prvo odaberite svoj komšiluk na stranici Moj komšiluk."
+          campaign_area_locked: "Prijedlog i glas moraju ostati u komšiluku u kojem ste započeli kampanju."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svog komšiluka."
+        authorization:
+          komsiluk_required: "Prvo odaberite svoj komšiluk na stranici Moj komšiluk."
+          campaign_area_locked: "U ovoj kampanji već ste učestvovali u drugom komšiluku."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svog komšiluka."
+
+hr:
+  decidim_app:
+    bijeljina:
+      komsiluk_naming_campaign:
+        errors:
+          komsiluk_required: "Prvo odaberite svoje susjedstvo na stranici Moj komšiluk."
+          campaign_area_locked: "Prijedlog i glas moraju ostati u susjedstvu u kojem ste započeli kampanju."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svojeg susjedstva."
+        authorization:
+          komsiluk_required: "Prvo odaberite svoje susjedstvo na stranici Moj komšiluk."
+          campaign_area_locked: "U ovoj kampanji već ste sudjelovali u drugom susjedstvu."
+          wrong_komsiluk: "Možete glasati samo za prijedlog iz svojeg susjedstva."
+
+en:
+  decidim_app:
+    bijeljina:
+      komsiluk_naming_campaign:
+        errors:
+          komsiluk_required: "First choose your neighbourhood on the My neighbourhood page."
+          campaign_area_locked: "Your proposal and vote must stay in the neighbourhood where you started the campaign."
+          wrong_komsiluk: "You can vote only for a proposal from your neighbourhood."
+        authorization:
+          komsiluk_required: "First choose your neighbourhood on the My neighbourhood page."
+          campaign_area_locked: "You have already participated in this campaign from another neighbourhood."
+          wrong_komsiluk: "You can vote only for a proposal from your neighbourhood."

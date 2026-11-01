@@ -1,0 +1,10 @@
+<% add_decidim_page_title("Link više ne važi") %>
+<main class="wrapper">
+  <section class="mi-surface" style="max-width: 36rem; margin: 2rem auto;">
+    <h1>Link više ne važi</h1>
+    <p>Link je iskorišten ili je istekao. Prijavi se na svoj nalog pa nastavi.</p>
+    <%= link_to "Prijavi se", Decidim::Bih.public_path("prijava"), class: "mi-btn mi-btn--primary" %>
+    <%= link_to "Mapa prijava", Decidim::Bih.public_path("mapa"), class: "mi-btn mi-btn--ghost" %>
+    <%= link_to "Anketa", main_app.launch_event_poll_path, class: "mi-btn mi-btn--ghost" %>
+  </section>
+</main>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Doprinosilac">
+  <circle cx="60" cy="60" r="56" fill="#fbe48f" stroke="#1f2d4e" stroke-width="4"/>
+  <path d="M60 28c-8 0-14 6-14 14 0 11 14 28 14 28s14-17 14-28c0-8-6-14-14-14z" fill="#e85a4f"/>
+  <circle cx="60" cy="42" r="6" fill="#fff"/>
+  <text x="60" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#1f2d4e">MI</text>
+</svg>

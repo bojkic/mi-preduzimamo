@@ -1,0 +1,139 @@
+<%
+  # Režim lansiranja (spec §6): while the trka komšiluka window is open the
+  # header carries the three launch actions instead of the browsing shortcuts.
+  # Decided per RENDER, so it lapses by itself at the 14.10.2026 20:00 freeze.
+  launch = DecidimApp::LaunchMode.active?(current_organization)
+  # Delivery A adds Decidim::Bih.registration_path. The host app and the engine
+  # deploy through separate git operations and production loads the engine's
+  # working tree directly, so a host that ships first must fall back to the
+  # Devise path rather than 500 the header on every page.
+  registration_href = Decidim::Bih.respond_to?(:registration_path) ? Decidim::Bih.registration_path : "/users/sign_up"
+  # Same respond_to? guard, same reason: the engine half of the invite work may
+  # not be loaded yet, and without invite_path there is simply no pill rather
+  # than a 500 on every page of the site. The tenant check is the one the verify
+  # nudge already makes — a session belonging to another organization is a
+  # visitor here — and it costs no query, reading the foreign key already on the
+  # user row.
+  invite_href =
+    if Decidim::Bih.respond_to?(:invite_path) && current_user &&
+       current_user.decidim_organization_id == current_organization.id
+      Decidim::Bih.invite_path
+    end
+
+  # Order (2026-09-07): Pitaj Milicu · Registruj se · Uloguj se / account ·
+  # Pomoć. The three actions are soft tinted pills (.mi-main-bar-pill--*);
+  # Pomoć stays a plain text link. The quick-actions bar that used to sit above
+  # this header is gone, so these are the only header actions on desktop.
+%>
+<%# Početna (9.9.2026): the header's top-left is the DDI logo now, not our
+    own mark, so the home button is a pill like the others — first in the row,
+    in and out of launch mode. The mobile toolbar has its own house. %>
+<div>
+  <%= link_to "/", class: "main-bar__links-desktop__item mi-main-bar-pill mi-main-bar-pill--home mi-main-bar-home",
+              "aria-label": t("decidim.bih.mobile_nav.home") do %>
+    <%= icon "home-2-line" %><span><%= t("decidim.bih.mobile_nav.home") %></span>
+  <% end %>
+</div>
+
+<% if launch %>
+  <%# Outside the sign-in/account branches on purpose: asking Milica is offered
+      to signed-in and anonymous visitors alike. data-mi-bot-open is the same
+      hook the mobile bottom nav uses — mi-chat-loader.js opens the chat panel
+      in place and the href stays a real page for a no-JS visitor. %>
+  <div>
+    <%= link_to Decidim::Bih.public_path("mi-bot"),
+                class: "main-bar__links-desktop__item mi-main-bar-pill mi-main-bar-pill--milica mi-main-bar-ask-milica",
+                "aria-label": t("layouts.decidim.header.ask_milica"),
+                data: { mi_bot_open: true } do %>
+      <%= icon "chat-new-line" %><span><%= t("layouts.decidim.header.ask_milica") %></span>
+    <% end %>
+  </div>
+<% end %>
+
+<% unless launch %>
+  <div class="main-bar__links-desktop__item-wrapper">
+    <div>
+      <% if Decidim.module_installed?(:meetings) %>
+        <%= link_to Decidim::Meetings::DirectoryEngine.routes.url_helpers.root_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.pages.home.extended.meetings") do %>
+          <%= icon "road-map-line" %><span><%= t("decidim.pages.home.extended.meetings") %></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to decidim.last_activities_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.profiles.show.activity") do %>
+        <%= icon "bubble-chart-line" %><span><%= t("decidim.profiles.show.activity") %></span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if !current_user %>
+  <% if launch %>
+    <div>
+      <%= link_to registration_href, class: "main-bar__links-desktop__item mi-main-bar-pill mi-main-bar-pill--register mi-main-bar-register", "aria-label": t("layouts.decidim.header.register") do %>
+        <%= icon "user-add-line" %><span><%= t("layouts.decidim.header.register") %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to decidim.new_user_session_path, class: "main-bar__links-desktop__item mi-main-bar-pill mi-main-bar-pill--login", "aria-label": t("layouts.decidim.header.log_in") do %>
+      <%= icon "user-line" %><span><%= t("layouts.decidim.header.log_in") %></span>
+    <% end %>
+  </div>
+<% else %>
+  <%# A signed-in citizen has no "Registruj se" pill, so that slot is free.
+      Putting the invite there costs no header width and keeps the row the same
+      shape in both states. Launch mode only: it lapses at the 14.10.2026
+      freeze with the rest of the campaign furniture, no deploy. %>
+  <% if launch && invite_href %>
+    <div>
+      <%= link_to invite_href, class: "main-bar__links-desktop__item mi-main-bar-pill mi-main-bar-pill--invite", "aria-label": t("decidim.bih.menu.invite") do %>
+        <%= icon "user-add-line" %><span><%= t("decidim.bih.menu.invite") %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="main-bar__dropdown-container">
+    <button id="trigger-dropdown-account"
+            class="main-bar__dropdown-trigger mi-main-bar-account"
+            type="button"
+            data-controller="dropdown"
+            data-target="dropdown-menu-account">
+      <% unread_data = current_user_unread_data %>
+      <% if unread_data[:unread_items] %>
+        <%= content_tag :span, "", class: "main-bar__notification", data: unread_data %>
+        <% if unread_data[:unread_notifications] %>
+          <%= content_tag :span, t("layouts.decidim.user_menu.unread_notifications"), class: "sr-only" %>
+        <% end %>
+        <% if unread_data[:unread_conversations] %>
+          <%= content_tag :span, t("layouts.decidim.user_menu.unread_conversations"), class: "sr-only" %>
+        <% end %>
+      <% end %>
+      <% if current_user.avatar.attached? %>
+        <span class="main-bar__avatar">
+          <span>
+            <%= image_tag(
+                  current_user.attached_uploader(:avatar).variant_url(:big),
+                  alt: t("decidim.author.avatar", name: decidim_sanitize(current_user.avatar.name))
+                ) %>
+          </span>
+        </span>
+      <% else %>
+        <span class="main-bar__links-desktop__item-account">
+          <%= text_initials(current_user.name) %>
+        </span>
+      <% end %>
+      <span class="mi-main-bar-account__name"><%= current_user.name %></span>
+    </button>
+    <div id="dropdown-menu-account" aria-hidden="true">
+      <ul class="dropdown dropdown__bottom main-bar__dropdown">
+        <%= render partial: "layouts/decidim/header/main_links_dropdown", locals: { unread_data: } %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to Decidim::Bih.public_path("vodic"), class: "main-bar__links-desktop__item mi-main-bar-help", "aria-label": t("decidim.menu.help") do %>
+    <%= icon "question-line" %><span><%= t("decidim.menu.help") %></span>
+  <% end %>
+</div>

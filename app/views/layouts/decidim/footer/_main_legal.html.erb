@@ -1,0 +1,20 @@
+<%# Host override of decidim-core 0.31.7 layouts/decidim/footer/_main_legal.html.erb.
+    The single change: a third item linking "Ko smo i ko ovo plaća" (/ko-smo),
+    which until 2026-09-07 had no inbound link anywhere on the site. The legal
+    row is the one footer list that stays the same in and out of launch mode,
+    so the funding explanation is one click from the logos on every page.
+    Re-diff against core on a Decidim upgrade. %>
+<ul class="flex flex-col gap-6 md:flex-row md:gap-10 text-sm text-white [&_a]:underline">
+  <li>
+    <%= link_to t("layouts.decidim.footer.terms_of_service"), decidim.page_path("terms-of-service") %>
+  </li>
+  <li>
+    <a href="#" role="button" data-dialog-open="dc-modal"><%= t("layouts.decidim.footer.data_consent_settings") %></a>
+  </li>
+  <li>
+    <%= link_to t("mi_launch.about.title"), main_app.launch_about_path %>
+  </li>
+  <li>
+    <%= link_to "Otvoreni kod", main_app.open_source_path %>
+  </li>
+</ul>

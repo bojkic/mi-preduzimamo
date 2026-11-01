@@ -1,0 +1,346 @@
+---
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        review_facts:
+          reuse_coverage: Reuse verified areas for the same provider location. New notices still require approval.
+          coverage_valid_until: Mapping valid until (maximum 90 days)
+          title: Correct type, time and area
+          help: Select verified facts and explain the correction in the review note. These are local corrections; the provider revision is preserved.
+          apply: Apply these reviewed facts together
+          event_type: Notice type
+          severity: Severity
+          lifecycle: Event lifecycle
+          targeting_level: Area kind
+          areas: Areas (selected kind only; clear selection for citywide)
+          starts_at: Start in Europe/Sarajevo
+          ends_at: End in Europe/Sarajevo
+          time_help: Use YYYY-MM-DDTHH:MM, optionally with +01:00/+02:00. Nonexistent local times are rejected. Repeated clocks require the correct explicit offset.
+          values:
+            mz: Local community (MZ)
+            komsiluk: Neighborhood
+            citywide: Entire city
+            unknown: Unknown
+            scheduled: Scheduled
+            ongoing: Ongoing
+            resolved: Resolved
+            cancelled: Cancelled
+            planned_outage: Planned outage
+            unplanned_outage: Unplanned outage
+            restoration_update: Restoration update
+            planned_interruption: Planned interruption
+            unplanned_interruption: Unplanned interruption
+            road_closure: Road closure
+            mosquito_spraying: Mosquito spraying
+            public_health_notice: Public health notice
+            emergency_notice: Emergency notice
+            heating_interruption: Heating interruption
+            fuel_supply_warning: Fuel supply warning
+            road_hazard: Road hazard
+            flood_warning: Flood warning
+            storm_warning: Storm warning
+            fire_warning: Fire warning
+            evacuation_notice: Evacuation notice
+            severe_weather: Severe weather
+            heat_warning: Heat warning
+            flood_risk: Flood risk
+            flood_watch: Flood watch
+            level_normalized: Level normalized
+            not_relevant: Not relevant
+            routine_service_info: Routine service info
+            routine: Routine
+            info: Info
+            service_outage: Service outage
+            safety: Safety
+            emergency: Emergency
+        document_history:
+          title: Earlier facts from the same source document
+          help: Up to eight withdrawn records from this document. Rows are not automatically paired with individual new events.
+          event_type: Earlier type
+          starts_at: Earlier start
+          ends_at: Earlier end
+          targeting_level: Earlier area kind
+          affected_area_slugs: Earlier areas
+          version: Source version
+          operator_correction: An operator corrected these facts; the original extraction and provider revision are preserved.
+          original: Original extracted facts
+        update:
+          invalid_facts: Correction was not saved. Check type, area kind, dates, offset and review note.
+          not_authorized: Permission denied.
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        review_facts:
+          reuse_coverage: Ponovo koristi provjerena područja za isti opis lokacije kod istog izvora. Nove objave i dalje zahtijevaju odobrenje.
+          coverage_valid_until: Mapiranje važi do (najviše 90 dana)
+          title: Ispravka vrste, vremena i područja
+          help: Odaberite potvrđene činjenice i upišite osnov ispravke u napomenu pregleda. Ispravka ostaje lokalna; izvorna verzija se čuva.
+          apply: Primijeni ove provjerene činjenice zajedno
+          event_type: Vrsta obavještenja
+          severity: Ozbiljnost
+          lifecycle: Stanje događaja
+          targeting_level: Vrsta područja
+          areas: Područja (samo izabrana vrsta; za cijeli grad uklonite izbor)
+          starts_at: Početak u zoni Europe/Sarajevo
+          ends_at: Kraj u zoni Europe/Sarajevo
+          time_help: 'Format: GGGG-MM-DDTHH:MM ili sa pomakom +01:00/+02:00. Nepostojeća vremena se odbijaju. Pri ponavljanju sata obavezan je tačan pomak.'
+          values:
+            mz: Mjesna zajednica
+            komsiluk: Komšiluk
+            citywide: Cijeli grad
+            unknown: Nepoznato
+            scheduled: Najavljeno
+            ongoing: U toku
+            resolved: Završeno
+            cancelled: Otkazano
+            planned_outage: Planirano isključenje
+            unplanned_outage: Neplanirano isključenje
+            restoration_update: Uspostavljena usluga
+            planned_interruption: Planirani prekid
+            unplanned_interruption: Neplanirani prekid
+            road_closure: Zatvaranje saobraćajnice
+            mosquito_spraying: Tretman protiv komaraca
+            public_health_notice: Javnozdravstveno obavještenje
+            emergency_notice: Vanredno obavještenje
+            heating_interruption: Prekid grijanja
+            fuel_supply_warning: Upozorenje o snabdijevanju gorivom
+            road_hazard: Opasnost na putu
+            flood_warning: Upozorenje na poplavu
+            storm_warning: Upozorenje na oluju
+            fire_warning: Upozorenje na požar
+            evacuation_notice: Obavještenje o evakuaciji
+            severe_weather: Opasne vremenske prilike
+            heat_warning: Upozorenje na vrućinu
+            flood_risk: Rizik od poplave
+            flood_watch: Praćenje poplavne opasnosti
+            level_normalized: Vodostaj normalizovan
+            not_relevant: Nije relevantno
+            routine_service_info: Opšte servisne informacije
+            routine: Redovno
+            info: Informativno
+            service_outage: Prekid usluge
+            safety: Bezbjednost
+            emergency: Hitno
+        document_history:
+          title: Ranije činjenice iz istog izvornog dokumenta
+          help: Najviše osam povučenih zapisa iz ovog dokumenta. Redovi nisu automatski povezani sa pojedinačnim novim događajem.
+          event_type: Ranija vrsta
+          starts_at: Raniji početak
+          ends_at: Raniji kraj
+          targeting_level: Ranija vrsta područja
+          affected_area_slugs: Ranija područja
+          version: Verzija izvora
+          operator_correction: Činjenice je ispravio operater; originalno izdvajanje i verzija izvora su sačuvani.
+          original: Originalno izdvojene činjenice
+        update:
+          invalid_facts: Ispravka nije sačuvana. Provjerite vrstu, područja, datume, pomak i napomenu.
+          not_authorized: Nemate ovlašćenje.
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        review_facts:
+          reuse_coverage: Ponovo koristi provjerena područja za isti opis lokacije kod istog izvora. Nove objave i dalje zahtijevaju odobrenje.
+          coverage_valid_until: Mapiranje važi do (najviše 90 dana)
+          title: Ispravka vrste, vremena i područja
+          help: Odaberite potvrđene činjenice i upišite osnov ispravke u napomenu pregleda. Ispravka ostaje lokalna; izvorna verzija se čuva.
+          apply: Primijeni ove provjerene činjenice zajedno
+          event_type: Vrsta obavještenja
+          severity: Ozbiljnost
+          lifecycle: Stanje događaja
+          targeting_level: Vrsta područja
+          areas: Područja (samo izabrana vrsta; za cijeli grad uklonite izbor)
+          starts_at: Početak u zoni Europe/Sarajevo
+          ends_at: Kraj u zoni Europe/Sarajevo
+          time_help: 'Format: GGGG-MM-DDTHH:MM ili sa pomakom +01:00/+02:00. Nepostojeća vremena se odbijaju. Pri ponavljanju sata obavezan je tačan pomak.'
+          values:
+            mz: Mjesna zajednica
+            komsiluk: Komšiluk
+            citywide: Cijeli grad
+            unknown: Nepoznato
+            scheduled: Najavljeno
+            ongoing: U toku
+            resolved: Završeno
+            cancelled: Otkazano
+            planned_outage: Planirano isključenje
+            unplanned_outage: Neplanirano isključenje
+            restoration_update: Uspostavljena usluga
+            planned_interruption: Planirani prekid
+            unplanned_interruption: Neplanirani prekid
+            road_closure: Zatvaranje saobraćajnice
+            mosquito_spraying: Tretman protiv komaraca
+            public_health_notice: Javnozdravstveno obavještenje
+            emergency_notice: Vanredno obavještenje
+            heating_interruption: Prekid grijanja
+            fuel_supply_warning: Upozorenje o snabdijevanju gorivom
+            road_hazard: Opasnost na putu
+            flood_warning: Upozorenje na poplavu
+            storm_warning: Upozorenje na oluju
+            fire_warning: Upozorenje na požar
+            evacuation_notice: Obavještenje o evakuaciji
+            severe_weather: Opasne vremenske prilike
+            heat_warning: Upozorenje na vrućinu
+            flood_risk: Rizik od poplave
+            flood_watch: Praćenje poplavne opasnosti
+            level_normalized: Vodostaj normalizovan
+            not_relevant: Nije relevantno
+            routine_service_info: Opšte servisne informacije
+            routine: Redovno
+            info: Informativno
+            service_outage: Prekid usluge
+            safety: Bezbjednost
+            emergency: Hitno
+        document_history:
+          title: Ranije činjenice iz istog izvornog dokumenta
+          help: Najviše osam povučenih zapisa iz ovog dokumenta. Redovi nisu automatski povezani sa pojedinačnim novim događajem.
+          event_type: Ranija vrsta
+          starts_at: Raniji početak
+          ends_at: Raniji kraj
+          targeting_level: Ranija vrsta područja
+          affected_area_slugs: Ranija područja
+          version: Verzija izvora
+          operator_correction: Činjenice je ispravio operater; originalno izdvajanje i verzija izvora su sačuvani.
+          original: Originalno izdvojene činjenice
+        update:
+          invalid_facts: Ispravka nije sačuvana. Provjerite vrstu, područja, datume, pomak i napomenu.
+          not_authorized: Nemate ovlašćenje.
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        review_facts:
+          reuse_coverage: Ponovo koristi provjerena područja za isti opis lokacije kod istog izvora. Nove objave i dalje zahtijevaju odobrenje.
+          coverage_valid_until: Mapiranje važi do (najviše 90 dana)
+          title: Ispravka vrste, vremena i područja
+          help: Odaberite potvrđene činjenice i upišite osnov ispravke u napomenu pregleda. Ispravka ostaje lokalna; izvorna verzija se čuva.
+          apply: Primijeni ove provjerene činjenice zajedno
+          event_type: Vrsta obavještenja
+          severity: Ozbiljnost
+          lifecycle: Stanje događaja
+          targeting_level: Vrsta područja
+          areas: Područja (samo izabrana vrsta; za cijeli grad uklonite izbor)
+          starts_at: Početak u zoni Europe/Sarajevo
+          ends_at: Kraj u zoni Europe/Sarajevo
+          time_help: 'Format: GGGG-MM-DDTHH:MM ili sa pomakom +01:00/+02:00. Nepostojeća vremena se odbijaju. Pri ponavljanju sata obavezan je tačan pomak.'
+          values:
+            mz: Mjesna zajednica
+            komsiluk: Komšiluk
+            citywide: Cijeli grad
+            unknown: Nepoznato
+            scheduled: Najavljeno
+            ongoing: U toku
+            resolved: Završeno
+            cancelled: Otkazano
+            planned_outage: Planirano isključenje
+            unplanned_outage: Neplanirano isključenje
+            restoration_update: Uspostavljena usluga
+            planned_interruption: Planirani prekid
+            unplanned_interruption: Neplanirani prekid
+            road_closure: Zatvaranje saobraćajnice
+            mosquito_spraying: Tretman protiv komaraca
+            public_health_notice: Javnozdravstveno obavještenje
+            emergency_notice: Vanredno obavještenje
+            heating_interruption: Prekid grijanja
+            fuel_supply_warning: Upozorenje o snabdijevanju gorivom
+            road_hazard: Opasnost na putu
+            flood_warning: Upozorenje na poplavu
+            storm_warning: Upozorenje na oluju
+            fire_warning: Upozorenje na požar
+            evacuation_notice: Obavještenje o evakuaciji
+            severe_weather: Opasne vremenske prilike
+            heat_warning: Upozorenje na vrućinu
+            flood_risk: Rizik od poplave
+            flood_watch: Praćenje poplavne opasnosti
+            level_normalized: Vodostaj normalizovan
+            not_relevant: Nije relevantno
+            routine_service_info: Opšte servisne informacije
+            routine: Redovno
+            info: Informativno
+            service_outage: Prekid usluge
+            safety: Bezbjednost
+            emergency: Hitno
+        document_history:
+          title: Ranije činjenice iz istog izvornog dokumenta
+          help: Najviše osam povučenih zapisa iz ovog dokumenta. Redovi nisu automatski povezani sa pojedinačnim novim događajem.
+          event_type: Ranija vrsta
+          starts_at: Raniji početak
+          ends_at: Raniji kraj
+          targeting_level: Ranija vrsta područja
+          affected_area_slugs: Ranija područja
+          version: Verzija izvora
+          operator_correction: Činjenice je ispravio operater; originalno izdvajanje i verzija izvora su sačuvani.
+          original: Originalno izdvojene činjenice
+        update:
+          invalid_facts: Ispravka nije sačuvana. Provjerite vrstu, područja, datume, pomak i napomenu.
+          not_authorized: Nemate ovlašćenje.
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        review_facts:
+          reuse_coverage: Поново користи провјерена подручја за исти опис локације код истог извора. Нове објаве и даље захтијевају одобрење.
+          coverage_valid_until: Мапирање важи до (највише 90 дана)
+          title: Исправка врсте, времена и подручја
+          help: Одаберите потврђене чињенице и упишите основ исправке у напомену прегледа. Исправка остаје локална; изворна верзија се чува.
+          apply: Примијени ове провјерене чињенице заједно
+          event_type: Врста обавјештења
+          severity: Озбиљност
+          lifecycle: Стање догађаја
+          targeting_level: Врста подручја
+          areas: Подручја (само изабрана врста; за цијели град уклоните избор)
+          starts_at: Почетак у зони Europe/Sarajevo
+          ends_at: Крај у зони Europe/Sarajevo
+          time_help: 'Формат: ГГГГ-ММ-ДДTHH:MM или са помаком +01:00/+02:00. Непостојећа времена се одбијају. При понављању сата обавезан је тачан помак.'
+          values:
+            mz: Мјесна заједница
+            komsiluk: Комшилук
+            citywide: Цијели град
+            unknown: Непознато
+            scheduled: Најављено
+            ongoing: У току
+            resolved: Завршено
+            cancelled: Отказано
+            planned_outage: Планирано искључење
+            unplanned_outage: Непланирано искључење
+            restoration_update: Успостављена услуга
+            planned_interruption: Планирани прекид
+            unplanned_interruption: Непланирани прекид
+            road_closure: Затварање саобраћајнице
+            mosquito_spraying: Третман против комараца
+            public_health_notice: Јавноздравствено обавјештење
+            emergency_notice: Ванредно обавјештење
+            heating_interruption: Прекид гријања
+            fuel_supply_warning: Упозорење о снабдијевању горивом
+            road_hazard: Опасност на путу
+            flood_warning: Упозорење на поплаву
+            storm_warning: Упозорење на олују
+            fire_warning: Упозорење на пожар
+            evacuation_notice: Обавјештење о евакуацији
+            severe_weather: Опасне временске прилике
+            heat_warning: Упозорење на врућину
+            flood_risk: Ризик од поплаве
+            flood_watch: Праћење поплавне опасности
+            level_normalized: Водостај нормализован
+            not_relevant: Није релевантно
+            routine_service_info: Опште сервисне информације
+            routine: Редовно
+            info: Информативно
+            service_outage: Прекид услуге
+            safety: Безбједност
+            emergency: Хитно
+        document_history:
+          title: Раније чињенице из истог изворног документа
+          help: Највише осам повучених записа из овог документа. Редови нису аутоматски повезани са појединачним новим догађајем.
+          event_type: Ранија врста
+          starts_at: Ранији почетак
+          ends_at: Ранији крај
+          targeting_level: Ранија врста подручја
+          affected_area_slugs: Ранија подручја
+          version: Верзија извора
+          operator_correction: Чињенице је исправио оператер; оригинално издвајање и верзија извора су сачувани.
+          original: Оригинално издвојене чињенице
+        update:
+          invalid_facts: Исправка није сачувана. Провјерите врсту, подручја, датуме, помак и напомену.
+          not_authorized: Немате овлашћење.

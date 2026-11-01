@@ -1,0 +1,686 @@
+---
+# Admin content editor pilot (Milica FAQ overrides + foundation call status).
+# `sr` is the maintained source; `sr-Cyrl` is GENERATED from it with
+# Decidim::Bih::Transliterator (see the parity test in
+# test/integration/decidim_app/admin/city_service_entries_controller_test.rb) —
+# edit `sr`, then regenerate; never hand-edit the Cyrillic block.
+sr:
+  activerecord:
+    attributes:
+      decidim_app/bijeljina/city_service_entry:
+        key: Ključ
+        title: Naslov
+        body: Tekst odgovora
+        source_url: Izvor (link)
+        source_checked_on: Datum provjere izvora
+        state: Stanje
+      decidim_app/bijeljina/foundation_status_override:
+        current_open_status: Status poziva
+        reviewed_on: Datum pregleda
+        review_expires_on: Pregled važi do
+        state: Stanje
+    errors:
+      models:
+        decidim_app/bijeljina/city_service_entry:
+          attributes:
+            key:
+              not_shipped: nije jedan od isporučenih FAQ odgovora
+            source_url:
+              not_public_http: mora biti javni http(s) link bez korisničkog imena i lozinke
+            source_checked_on:
+              in_future: ne može biti u budućnosti
+        decidim_app/bijeljina/foundation_status_override:
+          attributes:
+            reviewed_on:
+              in_future: ne može biti u budućnosti
+            review_expires_on:
+              not_after_reviewed_on: mora biti poslije datuma pregleda
+  decidim_app:
+    admin:
+      city_service_entries:
+        menu: FAQ odgovori (Milica)
+        navigation_description: Ispravi tekst gradskog FAQ odgovora bez novog izdanja; građani ga vide tek nakon odobrenja.
+        states:
+          shipped: Isporučeno (bez izmjene)
+          draft: Nacrt — građani ga ne vide
+          approved: Odobreno — Milica koristi ovaj tekst
+          rolled_back: Povučeno — koristi se isporučeni tekst
+          approval_stale: Izmijenjeno nakon odobrenja — koristi se isporučeni tekst
+        index:
+          title: FAQ odgovori gradskih servisa
+          intro: Svaki red je jedan isporučeni odgovor. Uredi ga u nacrt, pregledaj kako ga Milica izgovara, pa odobri. Građani nikada ne vide nacrt.
+          columns:
+            key: Ključ
+            title: Naslov
+            state: Stanje
+            source_checked_on: Izvor provjeren
+            approved_at: Odobreno
+            actions: Radnje
+          actions:
+            edit: Uredi
+            preview: Pregled odgovora
+            approve: Odobri
+            rollback: Povuci
+            rollback_confirm: Povući odobreni tekst? Milica se odmah vraća na isporučeni odgovor.
+            foundation_status: Status poziva fondacije
+        edit:
+          title: "Uredi odgovor: %{title}"
+          intro: Izmjene se čuvaju kao nacrt. Milica koristi novi tekst tek kad ga odobriš; do tada važi isporučeni odgovor.
+          shipped_heading: Isporučeni tekst
+          fields:
+            title: Naslov
+            body: Tekst odgovora
+            source_url: Izvor (link)
+            source_checked_on: Datum provjere izvora
+          help:
+            source_host: Link ka službenom izvoru. Ako domen nije u pregledanom registru izvora, Milica navodi samo tekst odgovora, bez posebnog linka na izvor.
+            approval: Odobrenje bilježi otisak sadržaja (SHA-256 naslova, teksta i linka), vrijeme i operatera. Svaka kasnija izmjena vraća odgovor u nacrt.
+          source_host_warning: "Domen %{host} nije u pregledanom registru izvora — link se neće posebno navesti uz odgovor."
+          actions:
+            save: Sačuvaj nacrt
+            preview: Pregled odgovora
+            approve: Odobri ovaj tekst
+            rollback: Povuci odobrenje
+            back: Nazad na spisak
+        preview:
+          title: "Pregled odgovora: %{title}"
+          intro: Ovako bi Milica odgovorila na pitanje, s tekstom iz nacrta. Isporučeni odgovor je ispod radi poređenja.
+          query_label: Pitanje građanina
+          locale_label: Jezik odgovora
+          render: Prikaži
+          draft_heading: Odgovor iz nacrta
+          shipped_heading: Isporučeni odgovor
+          state_note: "Stanje: %{state}"
+          back: Nazad na uređivanje
+        update:
+          saved: Nacrt je sačuvan. Građani ga ne vide dok ga ne odobriš.
+        approve:
+          approved: Odobreno. Milica od sada koristi ovaj tekst.
+          invalid: Nacrt nije valjan — provjeri polja.
+          not_authorized: Nemate ovlašćenje da odobrite ovaj odgovor.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Milica koristi isporučeni odgovor.
+          not_approved: Ovaj odgovor nije odobren, nema šta da se povuče.
+          not_authorized: Nemate ovlašćenje da povučete ovo odobrenje.
+      foundation_status:
+        menu: Status poziva fondacije
+        navigation_description: Postavi da li je poziv „Prijavi ideju“ otvoren i do kada pregled važi.
+        show:
+          title: Status poziva „Prijavi ideju“
+          intro: Milica ovim odgovara na pitanja da li je poziv otvoren. Bez odobrenog unosa važi isporučena datoteka; kad pregled istekne, Milica prestaje da tvrdi činjenice i traži novi pregled.
+          effective_heading: Trenutno važi
+          effective_source_yaml: isporučena datoteka (foundation_sources.yml)
+          unconfigured: Referentni čitač nije podešen. Pripremite vlastite pregledane izvore prije uključivanja; sama izmjena statusa ne uključuje čitač.
+          effective_source_override: odobreni unos operatera
+          effective_row: "Status: %{status} · pregledano %{reviewed_on} · važi do %{expires_on} · izvor: %{source}"
+          fields:
+            current_open_status: Status poziva
+            reviewed_on: Datum pregleda
+            review_expires_on: Pregled važi do
+          statuses:
+            open: otvoren
+            closed: zatvoren
+            unverified: neprovjeren
+          help: Izmjene se čuvaju kao nacrt; Milica koristi samo odobreni unos. Podsjetnik stiže u nedjeljnom analitičkom sažetku 14 dana prije isteka.
+          actions:
+            save: Sačuvaj nacrt
+            approve: Odobri
+            rollback: Povuci odobrenje
+            back: Nazad na FAQ odgovore
+        update:
+          saved: Nacrt je sačuvan. Milica ga koristi tek nakon odobrenja.
+        approve:
+          approved: Odobreno. Milica koristi ovaj status i ove datume.
+          invalid: Unos nije valjan — provjeri datume i status.
+          not_authorized: Nemate ovlašćenje da odobrite ovaj unos.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Važi isporučena datoteka.
+          not_approved: Unos nije odobren, nema šta da se povuče.
+          not_authorized: Nemate ovlašćenje da povučete ovo odobrenje.
+        digest_reminder:
+          expiring: "Status poziva fondacije: pregled ističe %{date} (preostalo dana: %{days}). Obnovi ga ovdje: %{url}"
+          expired: "Status poziva fondacije: pregled je istekao %{date} — Milica više ne potvrđuje status poziva. Obnovi ga ovdje: %{url}"
+bs:
+  activerecord:
+    attributes:
+      decidim_app/bijeljina/city_service_entry:
+        key: Ključ
+        title: Naslov
+        body: Tekst odgovora
+        source_url: Izvor (link)
+        source_checked_on: Datum provjere izvora
+        state: Stanje
+      decidim_app/bijeljina/foundation_status_override:
+        current_open_status: Status poziva
+        reviewed_on: Datum pregleda
+        review_expires_on: Pregled važi do
+        state: Stanje
+    errors:
+      models:
+        decidim_app/bijeljina/city_service_entry:
+          attributes:
+            key:
+              not_shipped: nije jedan od isporučenih FAQ odgovora
+            source_url:
+              not_public_http: mora biti javni http(s) link bez korisničkog imena i lozinke
+            source_checked_on:
+              in_future: ne može biti u budućnosti
+        decidim_app/bijeljina/foundation_status_override:
+          attributes:
+            reviewed_on:
+              in_future: ne može biti u budućnosti
+            review_expires_on:
+              not_after_reviewed_on: mora biti poslije datuma pregleda
+  decidim_app:
+    admin:
+      city_service_entries:
+        menu: FAQ odgovori (Milica)
+        navigation_description: Ispravi tekst gradskog FAQ odgovora bez novog izdanja; građani ga vide tek nakon odobrenja.
+        states:
+          shipped: Isporučeno (bez izmjene)
+          draft: Nacrt — građani ga ne vide
+          approved: Odobreno — Milica koristi ovaj tekst
+          rolled_back: Povučeno — koristi se isporučeni tekst
+          approval_stale: Izmijenjeno nakon odobrenja — koristi se isporučeni tekst
+        index:
+          title: FAQ odgovori gradskih servisa
+          intro: Svaki red je jedan isporučeni odgovor. Uredi ga u nacrt, pregledaj kako ga Milica izgovara, pa odobri. Građani nikada ne vide nacrt.
+          columns:
+            key: Ključ
+            title: Naslov
+            state: Stanje
+            source_checked_on: Izvor provjeren
+            approved_at: Odobreno
+            actions: Radnje
+          actions:
+            edit: Uredi
+            preview: Pregled odgovora
+            approve: Odobri
+            rollback: Povuci
+            rollback_confirm: Povući odobreni tekst? Milica se odmah vraća na isporučeni odgovor.
+            foundation_status: Status poziva fondacije
+        edit:
+          title: "Uredi odgovor: %{title}"
+          intro: Izmjene se čuvaju kao nacrt. Milica koristi novi tekst tek kad ga odobriš; do tada važi isporučeni odgovor.
+          shipped_heading: Isporučeni tekst
+          fields:
+            title: Naslov
+            body: Tekst odgovora
+            source_url: Izvor (link)
+            source_checked_on: Datum provjere izvora
+          help:
+            source_host: Link ka službenom izvoru. Ako domen nije u pregledanom registru izvora, Milica navodi samo tekst odgovora, bez posebnog linka na izvor.
+            approval: Odobrenje bilježi otisak sadržaja (SHA-256 naslova, teksta i linka), vrijeme i operatera. Svaka kasnija izmjena vraća odgovor u nacrt.
+          source_host_warning: "Domen %{host} nije u pregledanom registru izvora — link se neće posebno navesti uz odgovor."
+          actions:
+            save: Sačuvaj nacrt
+            preview: Pregled odgovora
+            approve: Odobri ovaj tekst
+            rollback: Povuci odobrenje
+            back: Nazad na spisak
+        preview:
+          title: "Pregled odgovora: %{title}"
+          intro: Ovako bi Milica odgovorila na pitanje, s tekstom iz nacrta. Isporučeni odgovor je ispod radi poređenja.
+          query_label: Pitanje građanina
+          locale_label: Jezik odgovora
+          render: Prikaži
+          draft_heading: Odgovor iz nacrta
+          shipped_heading: Isporučeni odgovor
+          state_note: "Stanje: %{state}"
+          back: Nazad na uređivanje
+        update:
+          saved: Nacrt je sačuvan. Građani ga ne vide dok ga ne odobriš.
+        approve:
+          approved: Odobreno. Milica od sada koristi ovaj tekst.
+          invalid: Nacrt nije valjan — provjeri polja.
+          not_authorized: Nemate ovlaštenje da odobrite ovaj odgovor.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Milica koristi isporučeni odgovor.
+          not_approved: Ovaj odgovor nije odobren, nema šta da se povuče.
+          not_authorized: Nemate ovlaštenje da povučete ovo odobrenje.
+      foundation_status:
+        menu: Status poziva fondacije
+        navigation_description: Postavi da li je poziv „Prijavi ideju“ otvoren i do kada pregled važi.
+        show:
+          title: Status poziva „Prijavi ideju“
+          intro: Milica ovim odgovara na pitanja da li je poziv otvoren. Bez odobrenog unosa važi isporučena datoteka; kad pregled istekne, Milica prestaje da tvrdi činjenice i traži novi pregled.
+          effective_heading: Trenutno važi
+          effective_source_yaml: isporučena datoteka (foundation_sources.yml)
+          unconfigured: Referentni čitač nije podešen. Pripremite vlastite pregledane izvore prije uključivanja; sama izmjena statusa ne uključuje čitač.
+          effective_source_override: odobreni unos operatera
+          effective_row: "Status: %{status} · pregledano %{reviewed_on} · važi do %{expires_on} · izvor: %{source}"
+          fields:
+            current_open_status: Status poziva
+            reviewed_on: Datum pregleda
+            review_expires_on: Pregled važi do
+          statuses:
+            open: otvoren
+            closed: zatvoren
+            unverified: neprovjeren
+          help: Izmjene se čuvaju kao nacrt; Milica koristi samo odobreni unos. Podsjetnik stiže u sedmičnom analitičkom sažetku 14 dana prije isteka.
+          actions:
+            save: Sačuvaj nacrt
+            approve: Odobri
+            rollback: Povuci odobrenje
+            back: Nazad na FAQ odgovore
+        update:
+          saved: Nacrt je sačuvan. Milica ga koristi tek nakon odobrenja.
+        approve:
+          approved: Odobreno. Milica koristi ovaj status i ove datume.
+          invalid: Unos nije valjan — provjeri datume i status.
+          not_authorized: Nemate ovlaštenje da odobrite ovaj unos.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Važi isporučena datoteka.
+          not_approved: Unos nije odobren, nema šta da se povuče.
+          not_authorized: Nemate ovlaštenje da povučete ovo odobrenje.
+        digest_reminder:
+          expiring: "Status poziva fondacije: pregled ističe %{date} (preostalo dana: %{days}). Obnovi ga ovdje: %{url}"
+          expired: "Status poziva fondacije: pregled je istekao %{date} — Milica više ne potvrđuje status poziva. Obnovi ga ovdje: %{url}"
+hr:
+  activerecord:
+    attributes:
+      decidim_app/bijeljina/city_service_entry:
+        key: Ključ
+        title: Naslov
+        body: Tekst odgovora
+        source_url: Izvor (poveznica)
+        source_checked_on: Datum provjere izvora
+        state: Stanje
+      decidim_app/bijeljina/foundation_status_override:
+        current_open_status: Status poziva
+        reviewed_on: Datum pregleda
+        review_expires_on: Pregled vrijedi do
+        state: Stanje
+    errors:
+      models:
+        decidim_app/bijeljina/city_service_entry:
+          attributes:
+            key:
+              not_shipped: nije jedan od isporučenih FAQ odgovora
+            source_url:
+              not_public_http: mora biti javna http(s) poveznica bez korisničkog imena i lozinke
+            source_checked_on:
+              in_future: ne može biti u budućnosti
+        decidim_app/bijeljina/foundation_status_override:
+          attributes:
+            reviewed_on:
+              in_future: ne može biti u budućnosti
+            review_expires_on:
+              not_after_reviewed_on: mora biti poslije datuma pregleda
+  decidim_app:
+    admin:
+      city_service_entries:
+        menu: FAQ odgovori (Milica)
+        navigation_description: Ispravi tekst gradskog FAQ odgovora bez novog izdanja; građani ga vide tek nakon odobrenja.
+        states:
+          shipped: Isporučeno (bez izmjene)
+          draft: Nacrt — građani ga ne vide
+          approved: Odobreno — Milica koristi ovaj tekst
+          rolled_back: Povučeno — koristi se isporučeni tekst
+          approval_stale: Izmijenjeno nakon odobrenja — koristi se isporučeni tekst
+        index:
+          title: FAQ odgovori gradskih servisa
+          intro: Svaki red je jedan isporučeni odgovor. Uredi ga u nacrt, pregledaj kako ga Milica izgovara, pa odobri. Građani nikada ne vide nacrt.
+          columns:
+            key: Ključ
+            title: Naslov
+            state: Stanje
+            source_checked_on: Izvor provjeren
+            approved_at: Odobreno
+            actions: Radnje
+          actions:
+            edit: Uredi
+            preview: Pregled odgovora
+            approve: Odobri
+            rollback: Povuci
+            rollback_confirm: Povući odobreni tekst? Milica se odmah vraća na isporučeni odgovor.
+            foundation_status: Status poziva zaklade
+        edit:
+          title: "Uredi odgovor: %{title}"
+          intro: Izmjene se spremaju kao nacrt. Milica koristi novi tekst tek kad ga odobriš; do tada vrijedi isporučeni odgovor.
+          shipped_heading: Isporučeni tekst
+          fields:
+            title: Naslov
+            body: Tekst odgovora
+            source_url: Izvor (poveznica)
+            source_checked_on: Datum provjere izvora
+          help:
+            source_host: Poveznica na službeni izvor. Ako domena nije u pregledanom registru izvora, Milica navodi samo tekst odgovora, bez posebne poveznice na izvor.
+            approval: Odobrenje bilježi otisak sadržaja (SHA-256 naslova, teksta i poveznice), vrijeme i operatera. Svaka kasnija izmjena vraća odgovor u nacrt.
+          source_host_warning: "Domena %{host} nije u pregledanom registru izvora — poveznica se neće posebno navesti uz odgovor."
+          actions:
+            save: Spremi nacrt
+            preview: Pregled odgovora
+            approve: Odobri ovaj tekst
+            rollback: Povuci odobrenje
+            back: Natrag na popis
+        preview:
+          title: "Pregled odgovora: %{title}"
+          intro: Ovako bi Milica odgovorila na pitanje, s tekstom iz nacrta. Isporučeni odgovor je ispod radi usporedbe.
+          query_label: Pitanje građanina
+          locale_label: Jezik odgovora
+          render: Prikaži
+          draft_heading: Odgovor iz nacrta
+          shipped_heading: Isporučeni odgovor
+          state_note: "Stanje: %{state}"
+          back: Natrag na uređivanje
+        update:
+          saved: Nacrt je spremljen. Građani ga ne vide dok ga ne odobriš.
+        approve:
+          approved: Odobreno. Milica od sada koristi ovaj tekst.
+          invalid: Nacrt nije valjan — provjeri polja.
+          not_authorized: Nemate ovlasti odobriti ovaj odgovor.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Milica koristi isporučeni odgovor.
+          not_approved: Ovaj odgovor nije odobren, nema se što povući.
+          not_authorized: Nemate ovlasti povući ovo odobrenje.
+      foundation_status:
+        menu: Status poziva zaklade
+        navigation_description: Postavi je li poziv „Prijavi ideju“ otvoren i do kada pregled vrijedi.
+        show:
+          title: Status poziva „Prijavi ideju“
+          intro: Milica ovim odgovara na pitanja je li poziv otvoren. Bez odobrenog unosa vrijedi isporučena datoteka; kad pregled istekne, Milica prestaje tvrditi činjenice i traži novi pregled.
+          effective_heading: Trenutno vrijedi
+          effective_source_yaml: isporučena datoteka (foundation_sources.yml)
+          unconfigured: Referentni čitač nije podešen. Pripremite vlastite pregledane izvore prije uključivanja; sama izmjena statusa ne uključuje čitač.
+          effective_source_override: odobreni unos operatera
+          effective_row: "Status: %{status} · pregledano %{reviewed_on} · vrijedi do %{expires_on} · izvor: %{source}"
+          fields:
+            current_open_status: Status poziva
+            reviewed_on: Datum pregleda
+            review_expires_on: Pregled vrijedi do
+          statuses:
+            open: otvoren
+            closed: zatvoren
+            unverified: neprovjeren
+          help: Izmjene se spremaju kao nacrt; Milica koristi samo odobreni unos. Podsjetnik stiže u tjednom analitičkom sažetku 14 dana prije isteka.
+          actions:
+            save: Spremi nacrt
+            approve: Odobri
+            rollback: Povuci odobrenje
+            back: Natrag na FAQ odgovore
+        update:
+          saved: Nacrt je spremljen. Milica ga koristi tek nakon odobrenja.
+        approve:
+          approved: Odobreno. Milica koristi ovaj status i ove datume.
+          invalid: Unos nije valjan — provjeri datume i status.
+          not_authorized: Nemate ovlasti odobriti ovaj unos.
+        rollback:
+          rolled_back: Odobrenje je povučeno. Vrijedi isporučena datoteka.
+          not_approved: Unos nije odobren, nema se što povući.
+          not_authorized: Nemate ovlasti povući ovo odobrenje.
+        digest_reminder:
+          expiring: "Status poziva zaklade: pregled istječe %{date} (preostalo dana: %{days}). Obnovi ga ovdje: %{url}"
+          expired: "Status poziva zaklade: pregled je istekao %{date} — Milica više ne potvrđuje status poziva. Obnovi ga ovdje: %{url}"
+en:
+  activerecord:
+    attributes:
+      decidim_app/bijeljina/city_service_entry:
+        key: Key
+        title: Title
+        body: Answer text
+        source_url: Source (link)
+        source_checked_on: Source checked on
+        state: State
+      decidim_app/bijeljina/foundation_status_override:
+        current_open_status: Call status
+        reviewed_on: Reviewed on
+        review_expires_on: Review valid until
+        state: State
+    errors:
+      models:
+        decidim_app/bijeljina/city_service_entry:
+          attributes:
+            key:
+              not_shipped: is not one of the shipped FAQ answers
+            source_url:
+              not_public_http: must be a public http(s) link without credentials
+            source_checked_on:
+              in_future: cannot be in the future
+        decidim_app/bijeljina/foundation_status_override:
+          attributes:
+            reviewed_on:
+              in_future: cannot be in the future
+            review_expires_on:
+              not_after_reviewed_on: must be after the review date
+  decidim_app:
+    admin:
+      city_service_entries:
+        menu: FAQ answers (Milica)
+        navigation_description: Fix a city-service FAQ answer without a deploy; citizens see it only after approval.
+        states:
+          shipped: Shipped (unchanged)
+          draft: Draft — citizens never see it
+          approved: Approved — Milica uses this text
+          rolled_back: Rolled back — the shipped text is used
+          approval_stale: Edited after approval — the shipped text is used
+        index:
+          title: City-service FAQ answers
+          intro: Each row is one shipped answer. Edit it into a draft, preview how Milica says it, then approve. Citizens never see a draft.
+          columns:
+            key: Key
+            title: Title
+            state: State
+            source_checked_on: Source checked
+            approved_at: Approved
+            actions: Actions
+          actions:
+            edit: Edit
+            preview: Preview answer
+            approve: Approve
+            rollback: Roll back
+            rollback_confirm: Roll back the approved text? Milica returns to the shipped answer immediately.
+            foundation_status: Foundation call status
+        edit:
+          title: "Edit answer: %{title}"
+          intro: Changes are saved as a draft. Milica uses the new text only once you approve it; until then the shipped answer applies.
+          shipped_heading: Shipped text
+          fields:
+            title: Title
+            body: Answer text
+            source_url: Source (link)
+            source_checked_on: Source checked on
+          help:
+            source_host: Link to the official source. If the domain is not in the reviewed source registry, Milica quotes the answer text only, without a separate source link.
+            approval: Approval records a content fingerprint (SHA-256 of title, text and link), the time and the operator. Any later edit returns the answer to draft.
+          source_host_warning: "The domain %{host} is not in the reviewed source registry — the link will not be cited separately with the answer."
+          actions:
+            save: Save draft
+            preview: Preview answer
+            approve: Approve this text
+            rollback: Withdraw approval
+            back: Back to the list
+        preview:
+          title: "Preview answer: %{title}"
+          intro: This is how Milica would answer the question with the draft text. The shipped answer is below for comparison.
+          query_label: Citizen's question
+          locale_label: Answer language
+          render: Render
+          draft_heading: Draft answer
+          shipped_heading: Shipped answer
+          state_note: "State: %{state}"
+          back: Back to editing
+        update:
+          saved: Draft saved. Citizens do not see it until you approve it.
+        approve:
+          approved: Approved. Milica now uses this text.
+          invalid: The draft is not valid — check the fields.
+          not_authorized: You cannot approve this answer.
+        rollback:
+          rolled_back: Approval withdrawn. Milica uses the shipped answer.
+          not_approved: This answer is not approved; there is nothing to roll back.
+          not_authorized: You cannot withdraw this approval.
+      foundation_status:
+        menu: Foundation call status
+        navigation_description: Set whether the "Submit an idea" call is open and until when the review is valid.
+        show:
+          title: "\"Submit an idea\" call status"
+          intro: Milica answers "is the call open" questions from this. Without an approved entry the shipped file applies; once the review expires, Milica stops asserting facts and asks for a new review.
+          effective_heading: Currently in force
+          effective_source_yaml: shipped file (foundation_sources.yml)
+          unconfigured: The reference reader is not configured. Prepare your own reviewed sources before enabling it; changing the status alone does not enable the reader.
+          effective_source_override: approved operator entry
+          effective_row: "Status: %{status} · reviewed %{reviewed_on} · valid until %{expires_on} · source: %{source}"
+          fields:
+            current_open_status: Call status
+            reviewed_on: Review date
+            review_expires_on: Review valid until
+          statuses:
+            open: open
+            closed: closed
+            unverified: unverified
+          help: Changes are saved as a draft; Milica uses only the approved entry. A reminder arrives in the weekly analytics digest 14 days before expiry.
+          actions:
+            save: Save draft
+            approve: Approve
+            rollback: Withdraw approval
+            back: Back to FAQ answers
+        update:
+          saved: Draft saved. Milica uses it only after approval.
+        approve:
+          approved: Approved. Milica uses this status and these dates.
+          invalid: The entry is not valid — check the dates and the status.
+          not_authorized: You cannot approve this entry.
+        rollback:
+          rolled_back: Approval withdrawn. The shipped file applies.
+          not_approved: The entry is not approved; there is nothing to roll back.
+          not_authorized: You cannot withdraw this approval.
+        digest_reminder:
+          expiring: "Foundation call status: the review expires on %{date} (days left: %{days}). Renew it here: %{url}"
+          expired: "Foundation call status: the review expired on %{date} — Milica no longer confirms the call status. Renew it here: %{url}"
+sr-Cyrl:
+  activerecord:
+    attributes:
+      decidim_app/bijeljina/city_service_entry:
+        key: Кључ
+        title: Наслов
+        body: Текст одговора
+        source_url: Извор (линк)
+        source_checked_on: Датум провјере извора
+        state: Стање
+      decidim_app/bijeljina/foundation_status_override:
+        current_open_status: Статус позива
+        reviewed_on: Датум прегледа
+        review_expires_on: Преглед важи до
+        state: Стање
+    errors:
+      models:
+        decidim_app/bijeljina/city_service_entry:
+          attributes:
+            key:
+              not_shipped: није један од испоручених ФАQ одговора
+            source_url:
+              not_public_http: мора бити јавни хттп(с) линк без корисничког имена и лозинке
+            source_checked_on:
+              in_future: не може бити у будућности
+        decidim_app/bijeljina/foundation_status_override:
+          attributes:
+            reviewed_on:
+              in_future: не може бити у будућности
+            review_expires_on:
+              not_after_reviewed_on: мора бити послије датума прегледа
+  decidim_app:
+    admin:
+      city_service_entries:
+        menu: ФАQ одговори (Милица)
+        navigation_description: Исправи текст градског ФАQ одговора без новог издања; грађани га виде тек након одобрења.
+        states:
+          shipped: Испоручено (без измјене)
+          draft: Нацрт — грађани га не виде
+          approved: Одобрено — Милица користи овај текст
+          rolled_back: Повучено — користи се испоручени текст
+          approval_stale: Измијењено након одобрења — користи се испоручени текст
+        index:
+          title: ФАQ одговори градских сервиса
+          intro: Сваки ред је један испоручени одговор. Уреди га у нацрт, прегледај како га Милица изговара, па одобри. Грађани никада не виде нацрт.
+          columns:
+            key: Кључ
+            title: Наслов
+            state: Стање
+            source_checked_on: Извор провјерен
+            approved_at: Одобрено
+            actions: Радње
+          actions:
+            edit: Уреди
+            preview: Преглед одговора
+            approve: Одобри
+            rollback: Повуци
+            rollback_confirm: Повући одобрени текст? Милица се одмах враћа на испоручени одговор.
+            foundation_status: Статус позива фондације
+        edit:
+          title: 'Уреди одговор: %{title}'
+          intro: Измјене се чувају као нацрт. Милица користи нови текст тек кад га одобриш; до тада важи испоручени одговор.
+          shipped_heading: Испоручени текст
+          fields:
+            title: Наслов
+            body: Текст одговора
+            source_url: Извор (линк)
+            source_checked_on: Датум провјере извора
+          help:
+            source_host: Линк ка службеном извору. Ако домен није у прегледаном регистру извора, Милица наводи само текст одговора, без посебног линка на извор.
+            approval: Одобрење биљежи отисак садржаја (СХА-256 наслова, текста и линка), вријеме и оператера. Свака каснија измјена враћа одговор у нацрт.
+          source_host_warning: Домен %{host} није у прегледаном регистру извора — линк се неће посебно навести уз одговор.
+          actions:
+            save: Сачувај нацрт
+            preview: Преглед одговора
+            approve: Одобри овај текст
+            rollback: Повуци одобрење
+            back: Назад на списак
+        preview:
+          title: 'Преглед одговора: %{title}'
+          intro: Овако би Милица одговорила на питање, с текстом из нацрта. Испоручени одговор је испод ради поређења.
+          query_label: Питање грађанина
+          locale_label: Језик одговора
+          render: Прикажи
+          draft_heading: Одговор из нацрта
+          shipped_heading: Испоручени одговор
+          state_note: 'Стање: %{state}'
+          back: Назад на уређивање
+        update:
+          saved: Нацрт је сачуван. Грађани га не виде док га не одобриш.
+        approve:
+          approved: Одобрено. Милица од сада користи овај текст.
+          invalid: Нацрт није ваљан — провјери поља.
+          not_authorized: Немате овлашћење да одобрите овај одговор.
+        rollback:
+          rolled_back: Одобрење је повучено. Милица користи испоручени одговор.
+          not_approved: Овај одговор није одобрен, нема шта да се повуче.
+          not_authorized: Немате овлашћење да повучете ово одобрење.
+      foundation_status:
+        menu: Статус позива фондације
+        navigation_description: Постави да ли је позив „Пријави идеју“ отворен и до када преглед важи.
+        show:
+          title: Статус позива „Пријави идеју“
+          intro: Милица овим одговара на питања да ли је позив отворен. Без одобреног уноса важи испоручена датотека; кад преглед истекне, Милица престаје да тврди чињенице и тражи нови преглед.
+          effective_heading: Тренутно важи
+          effective_source_yaml: испоручена датотека (фоундатион_соурцес.yмл)
+          unconfigured: Референтни читач није подешен. Припремите властите прегледане изворе прије укључивања; сама измјена статуса не укључује читач.
+          effective_source_override: одобрени унос оператера
+          effective_row: 'Статус: %{status} · прегледано %{reviewed_on} · важи до %{expires_on} · извор: %{source}'
+          fields:
+            current_open_status: Статус позива
+            reviewed_on: Датум прегледа
+            review_expires_on: Преглед важи до
+          statuses:
+            open: отворен
+            closed: затворен
+            unverified: непровјерен
+          help: Измјене се чувају као нацрт; Милица користи само одобрени унос. Подсјетник стиже у недјељном аналитичком сажетку 14 дана прије истека.
+          actions:
+            save: Сачувај нацрт
+            approve: Одобри
+            rollback: Повуци одобрење
+            back: Назад на ФАQ одговоре
+        update:
+          saved: Нацрт је сачуван. Милица га користи тек након одобрења.
+        approve:
+          approved: Одобрено. Милица користи овај статус и ове датуме.
+          invalid: Унос није ваљан — провјери датуме и статус.
+          not_authorized: Немате овлашћење да одобрите овај унос.
+        rollback:
+          rolled_back: Одобрење је повучено. Важи испоручена датотека.
+          not_approved: Унос није одобрен, нема шта да се повуче.
+          not_authorized: Немате овлашћење да повучете ово одобрење.
+        digest_reminder:
+          expiring: 'Статус позива фондације: преглед истиче %{date} (преостало дана: %{days}). Обнови га овдје: %{url}'
+          expired: 'Статус позива фондације: преглед је истекао %{date} — Милица више не потврђује статус позива. Обнови га овдје: %{url}'

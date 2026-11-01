@@ -1,0 +1,14 @@
+{
+  "messages": [
+    {
+      "messageId": "test-message-1",
+      "status": {
+        "groupId": 1,
+        "groupName": "PENDING",
+        "id": 7,
+        "name": "PENDING_ACCEPTED",
+        "description": "Message accepted"
+      }
+    }
+  ]
+}

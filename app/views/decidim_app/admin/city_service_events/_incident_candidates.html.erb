@@ -1,0 +1,16 @@
+<% candidates = DecidimApp::Bijeljina::CityServiceIncidentReview.new(event: event, actor: current_user).candidates %>
+<% if candidates.any? %>
+<details><summary><%= t('decidim_app.admin.city_service_events.compact.duplicates') %> (<%= candidates.size %>)</summary>
+<% candidates.each do |candidate| %>
+  <% other = candidate.fetch(:event) %>
+  <article><h4><%= other.title %></h4><p><%= other.summary %></p><p><%= city_alert_time_window(other) %> · <%= other.affected_text %></p>
+    <p><%= other.source_label %> · <%= t("decidim_app.admin.city_service_events.compact.duplicate_reasons.#{candidate[:reason]}", default: candidate[:reason]) %></p>
+    <%= link_to t('decidim_app.admin.city_service_events.compact.compare'), decidim_app_admin_city_service_events_path(anchor: "city-service-event-#{other.id}") %>
+    <%= form_with url: decidim_app_admin_city_service_event_incident_path(event), method: :post, local: true, class: "form form-defaults" do %>
+      <%= hidden_field_tag :other_event_id, other.id %><%= hidden_field_tag :review_token, event.answer_review_token %><%= hidden_field_tag :other_review_token, other.answer_review_token %>
+      <% %w(same separate undo).each do |decision| %><%= button_tag t("decidim_app.admin.city_service_events.compact.#{decision}"), name: :decision, value: decision, class: 'button button__sm button__secondary' %><% end %>
+    <% end %>
+  </article>
+<% end %>
+</details>
+<% end %>

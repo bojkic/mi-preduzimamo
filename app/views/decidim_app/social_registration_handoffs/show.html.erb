@@ -1,0 +1,10 @@
+<main class="wrapper py-8" data-social-registration-handoff>
+  <div class="card max-w-xl mx-auto p-6">
+    <h1 class="h3"><%= t("decidim_app.social_registration_handoff.show.title") %></h1>
+    <p><%= t("decidim_app.social_registration_handoff.show.description") %></p>
+
+    <%= form_with url: social_registration_handoff_path, method: :post, local: true do |form| %>
+      <%= form.submit t("decidim_app.social_registration_handoff.show.continue"), class: "button button__lg button__primary" %>
+    <% end %>
+  </div>
+</main>

@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-divider"><h1 class="card-title"><%= @event_configuration&.title || "Lansiranje zajednice" %></h1></div>
+  <div class="card-section">
+    <p>Dvije odvojene poruke, slanje samo na tvoj znak. Publika se određuje u trenutku klika. Isključeni su nepotvrđeni, obrisani i blokirani nalozi i građani koji su isključili obavještenja platforme.</p>
+    <p>Kanal: <strong><%= @event_configuration&.sms_fallback? ? "Viber, uz SMS ako Viber nije dostupan" : "Viber" %></strong>. <% if @event_configuration %>Termin: <%= @event_configuration.opens_at.in_time_zone("Europe/Sarajevo").strftime("%d.%m.%Y. %H:%M %:z") %> — <%= @event_configuration.closes_at.in_time_zone("Europe/Sarajevo").strftime("%d.%m.%Y. %H:%M %:z") %> (Europe/Sarajevo).<% end %></p>
+    <% unless @event_key %><p role="status"><%= t("mi_launch_event.unavailable") %></p><% end %>
+    <p><%= link_to "Otvori anketu i rezultate", main_app.launch_event_poll_path, target: "_blank", rel: "noopener" %> · <%= link_to "Otvori mapu prijava", Decidim::Bih.public_path("mapa"), target: "_blank", rel: "noopener" %></p>
+    <% DecidimApp::LaunchEvent::MESSAGES.each do |key, message| %>
+      <% preview = @previews.fetch(key) %>
+      <section class="card" style="margin: 1.5rem 0; padding: 1.5rem;">
+        <h2><%= message.fetch(:title) %></h2>
+        <blockquote><%= message.fetch(:text) %> [lični link]</blockquote>
+        <p>Može primiti: <strong><%= preview[:eligible] %></strong> · Preostalo za slanje: <strong><%= preview[:remaining] %></strong> · Nedostupno/isključeno: <%= preview[:excluded] %></p>
+        <p>Stanje: <%= preview[:statuses].map { |status, count| "#{status}: #{count}" }.join(" · ").presence || "Još nije pokrenuto" %></p>
+        <%= form_with url: main_app.launch_event_send_path, method: :post, local: true, class: "form form-defaults" do %>
+          <%= hidden_field_tag :message_key, key %>
+          <%= hidden_field_tag :event_key, @event_key %>
+          <label><%= check_box_tag :confirm, "1", false, required: true %> Potvrđujem slanje ove poruke svim preostalim primaocima.</label>
+          <div style="margin-top: 1rem;">
+            <%= button_tag "Pošalji: #{message.fetch(:title)}", type: :submit,
+                           class: "button button__lg button__secondary",
+                           style: "display: flex; width: 100%; min-height: 3rem; padding: 0.8rem 1.25rem; background: #033653; color: #fff; border-radius: 0.5rem; font-weight: 700;",
+                           disabled: !DecidimApp::LaunchEvent.current_event?(current_organization, @event_key, now: Time.current) || preview[:remaining].zero? %>
+          </div>
+        <% end %>
+        <%= button_to "Probna poruka samo meni", main_app.launch_event_test_path, params: { message_key: key, event_key: @event_key }, method: :post, class: "button button__sm button__transparent-secondary", style: "display: inline-flex; margin-top: 0.75rem; padding: 0.6rem 1rem; border: 1px solid #033653; color: #033653; border-radius: 0.5rem;", disabled: !DecidimApp::LaunchEvent.current_event?(current_organization, @event_key, now: Time.current) %>
+      </section>
+    <% end %>
+    <p>Ponovni klik ne šalje duplikate. Novoregistrovani građani mogu biti obuhvaćeni ponovnim klikom. Status „accepted“ znači da je provajder prihvatio poruku, ne potvrđuje da je pročitana.</p>
+    <%= link_to "Osvježi stanje", main_app.launch_event_admin_path, class: "button button__sm button__secondary" %>
+  </div>
+</div>

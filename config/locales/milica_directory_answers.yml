@@ -1,0 +1,55 @@
+sr:
+  decidim_app:
+    milica:
+      directory_answers:
+        parking_hours_unavailable: "Pregledani podaci ne sadrže radno vrijeme ni termine naplate parkinga. Provjeri ih na službenoj stranici Parking servisa."
+        transport_walk_verified: "Pješke do polaznog stajališta %{stop}. Link vodi do evidentirane tačke stajališta; početak izaberi u Google Maps."
+        transport_walk_provided: "Pješke do polaznog stajališta %{stop}. Koordinate je dostavio lokalni operater; provjeri oznaku stajališta na licu mjesta. Početak izaberi u Google Maps."
+        transport_walk_assumed: "Pješke do polaznog stajališta %{stop}. Položaj je procijenjen, pa provjeri oznaku stajališta na licu mjesta. Početak izaberi u Google Maps."
+        transport_accessibility_unverified: "Nemam provjerene podatke o spuštenim ivičnjacima, sigurnom prelazu, prilazu bez stepenica ni pristupačnosti vozila. Mapa to ne potvrđuje; prije puta provjeri pristup stajalištu i vozilu kod prevoznika."
+        public_mz_map: "%{name} je mjesna zajednica (MZ); njenu javnu mapu granica možeš otvoriti na linku. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+        public_mz_no_map: "%{name} je mjesna zajednica (MZ), ali ovaj zapis nema dostupnu javnu mapu granica. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+sr-Cyrl:
+  decidim_app:
+    milica:
+      directory_answers:
+        parking_hours_unavailable: "Прегледани подаци не садрже радно вријеме ни термине наплате паркинга. Провјери их на службеној страници Паркинг сервиса."
+        transport_walk_verified: "Пјешке до полазног стајалишта %{stop}. Линк води до евидентиране тачке стајалишта; почетак изабери у Google Maps."
+        transport_walk_provided: "Пјешке до полазног стајалишта %{stop}. Координате је доставио локални оператер; провјери ознаку стајалишта на лицу мјеста. Почетак изабери у Google Maps."
+        transport_walk_assumed: "Пјешке до полазног стајалишта %{stop}. Положај је процијењен, па провјери ознаку стајалишта на лицу мјеста. Почетак изабери у Google Maps."
+        transport_accessibility_unverified: "Немам провјерене податке о спуштеним ивичњацима, сигурном прелазу, прилазу без степеница ни приступачности возила. Мапа то не потврђује; прије пута провјери приступ стајалишту и возилу код превозника."
+        public_mz_map: "%{name} је мјесна заједница (МЗ); њену јавну мапу граница можеш отворити на линку. Ово није избор твог комшилука и не даје приступ комшилук објавама."
+        public_mz_no_map: "%{name} је мјесна заједница (МЗ), али овај запис нема доступну јавну мапу граница. Ово није избор твог комшилука и не даје приступ комшилук објавама."
+bs:
+  decidim_app:
+    milica:
+      directory_answers:
+        parking_hours_unavailable: "Pregledani podaci ne sadrže radno vrijeme ni termine naplate parkinga. Provjeri ih na službenoj stranici Parking servisa."
+        transport_walk_verified: "Pješke do polaznog stajališta %{stop}. Link vodi do evidentirane tačke stajališta; početak izaberi u Google Maps."
+        transport_walk_provided: "Pješke do polaznog stajališta %{stop}. Koordinate je dostavio lokalni operater; provjeri oznaku stajališta na licu mjesta. Početak izaberi u Google Maps."
+        transport_walk_assumed: "Pješke do polaznog stajališta %{stop}. Položaj je procijenjen, pa provjeri oznaku stajališta na licu mjesta. Početak izaberi u Google Maps."
+        transport_accessibility_unverified: "Nemam provjerene podatke o spuštenim ivičnjacima, sigurnom prelazu, prilazu bez stepenica ni pristupačnosti vozila. Mapa to ne potvrđuje; prije puta provjeri pristup stajalištu i vozilu kod prevoznika."
+        public_mz_map: "%{name} je mjesna zajednica (MZ); njenu javnu mapu granica možeš otvoriti na linku. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+        public_mz_no_map: "%{name} je mjesna zajednica (MZ), ali ovaj zapis nema dostupnu javnu mapu granica. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+hr:
+  decidim_app:
+    milica:
+      directory_answers:
+        parking_hours_unavailable: "Pregledani podaci ne sadrže radno vrijeme ni termine naplate parkiranja. Provjeri ih na službenoj stranici Parking servisa."
+        transport_walk_verified: "Pješice do polaznog stajališta %{stop}. Poveznica vodi do evidentirane točke stajališta; početak odaberi u Google Maps."
+        transport_walk_provided: "Pješice do polaznog stajališta %{stop}. Koordinate je dostavio lokalni operater; provjeri oznaku stajališta na licu mjesta. Početak odaberi u Google Maps."
+        transport_walk_assumed: "Pješice do polaznog stajališta %{stop}. Položaj je procijenjen, pa provjeri oznaku stajališta na licu mjesta. Početak odaberi u Google Maps."
+        transport_accessibility_unverified: "Nemam provjerene podatke o spuštenim rubnicima, sigurnom prijelazu, prilazu bez stepenica ni pristupačnosti vozila. Karta to ne potvrđuje; prije puta provjeri pristup stajalištu i vozilu kod prijevoznika."
+        public_mz_map: "%{name} je mjesna zajednica (MZ); njezinu javnu kartu granica možeš otvoriti na poveznici. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+        public_mz_no_map: "%{name} je mjesna zajednica (MZ), ali ovaj zapis nema dostupnu javnu kartu granica. Ovo nije izbor tvog komšiluka i ne daje pristup komšiluk objavama."
+en:
+  decidim_app:
+    milica:
+      directory_answers:
+        parking_hours_unavailable: "The reviewed parking entry does not include opening hours or charging hours. Check the Parking Service's official page."
+        transport_walk_verified: "Walk to the boarding stop %{stop}. The link uses the recorded stop point; choose your starting point in Google Maps."
+        transport_walk_provided: "Walk to the boarding stop %{stop}. A local operator supplied these coordinates; check the stop sign on site. Choose your starting point in Google Maps."
+        transport_walk_assumed: "Walk to the boarding stop %{stop}. Its position is estimated, so check the stop sign on site. Choose your starting point in Google Maps."
+        transport_accessibility_unverified: "I have no verified information about lowered kerbs, safe crossings, step-free access or accessible vehicles. The map does not establish this; check stop and vehicle access with the operator before travelling."
+        public_mz_map: "%{name} is a local community (MZ); the link opens its public boundary map. This does not select your komšiluk or grant access to neighborhood posts."
+        public_mz_no_map: "%{name} is a local community (MZ), but this record has no available public boundary map. This does not select your komšiluk or grant access to neighborhood posts."

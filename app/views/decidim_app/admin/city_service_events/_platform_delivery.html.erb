@@ -1,0 +1,22 @@
+<% if event.incident_id %>
+  <% receipts = Decidim::Bih::PlatformDelivery.where(organization: current_organization, identity: DecidimApp::Bijeljina::CityServiceIncidentIdentity.delivery_identity(event)) %>
+  <% if receipts.exists? %>
+    <% counted_at = Time.current %>
+    <% active_receipts = receipts.where(cancelled_at: nil).where("expires_at > ?", counted_at) %>
+    <% retired_receipts = receipts.where(acknowledged_at: nil).where("cancelled_at IS NOT NULL OR expires_at <= ?", counted_at) %>
+    <p data-city-platform-delivery-scope><%= t("decidim_app.admin.city_service_events.compact.delivery_scope", count: receipts.count) %></p>
+    <dl data-city-platform-delivery>
+      <% { inbox_created: receipts.where.not(inbox_created_at: nil).count,
+           push_queued: receipts.where.not(push_queued_at: nil).count,
+           acknowledged: receipts.where.not(acknowledged_at: nil).count,
+           awaiting_acknowledgment: active_receipts.where(acknowledged_at: nil).count,
+           retired_unacknowledged: retired_receipts.count,
+           fallback_requested: receipts.where.not(fallback_requested_at: nil).count }.each do |state, count| %>
+        <dt><%= t("decidim_app.admin.city_service_events.compact.delivery_#{state}") %></dt><dd><%= count %></dd>
+      <% end %>
+    </dl>
+    <p><%= t('decidim_app.admin.city_service_events.compact.delivery_evidence') %></p>
+  <% else %>
+    <p data-city-platform-delivery-empty><%= t("decidim_app.admin.city_service_events.compact.delivery_empty") %></p>
+  <% end %>
+<% end %>

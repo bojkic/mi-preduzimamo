@@ -1,0 +1,132 @@
+# Samostalno autorski QA primjeri, bez preuzetih građanskih pitanja ili ocjena.
+provenance: fully_authored_public_examples
+acceptance_status: requirements_not_execution_evidence
+fragment_matching: case_insensitive
+prompts:
+- id: transport_from_here_to_primjerpolje
+  prompt: Kako da od trenutne lokacije stignem autobusom do Primjerpolja?
+  locale: sr
+  answer_intent: service
+  topic: public_transport
+  failure_type: origin_selection
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: transient_location_and_authored_transport
+  expected_contains:
+  - Najranija
+  - Primjerpolje
+  expected_not_contains:
+  - Primjergrad (Pogrešno stajalište)
+- id: transport_nearest_stop_to_primjerpolje
+  prompt: Gdje da priđem autobusu za Primjerpolje odavde?
+  locale: sr
+  answer_intent: service
+  topic: public_transport
+  failure_type: nearest_stop_scope
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: transient_location_with_consent
+  expected_contains:
+  - stajališt
+  - Primjerpolje
+  expected_not_contains:
+  - Primjergrad (Pogrešno stajalište)
+- id: transport_wrong_authored_stop_followup
+  prompt: To stajalište je pogrešno; koje drugo mogu koristiti za Primjerpolje?
+  locale: sr
+  answer_intent: service
+  topic: public_transport
+  failure_type: wrong_stop_repair
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: authored_prior_transport_answer
+  expected_contains:
+  - stajališt
+  expected_not_contains:
+  - Primjergrad (Pogrešno stajalište)
+- id: parking_pay_current_location
+  prompt: Kako se ovdje plaća parking?
+  locale: sr
+  answer_intent: service
+  topic: parking
+  failure_type: coordinate_zone_inference
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: current_turn_location_without_verified_zone
+  expected_contains:
+  - zon
+  - ulic
+  expected_not_contains:
+  - TEST-B
+  - TEST-W
+- id: parking_zone_current_location
+  prompt: U kojoj sam parking zoni na trenutnoj lokaciji?
+  locale: sr
+  answer_intent: service
+  topic: parking
+  failure_type: coordinate_zone_inference
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: current_turn_location_without_verified_zone
+  expected_contains:
+  - zon
+  - ulic
+  expected_not_contains:
+  - TEST-B
+  - komsiluk-
+- id: report_problem_current_location
+  prompt: Želim prijaviti oštećen trotoar ovdje.
+  locale: sr
+  answer_intent: report_guidance
+  topic: report
+  failure_type: unconfirmed_write
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: current_turn_location_with_consent
+  expected_contains:
+  - lat=
+  expected_not_contains:
+  - Prijava je poslata
+  - Problem je riješen
+- id: electricity_outage_my_neighbourhood
+  prompt: Ima li objavljenog obavještenja o isključenju struje za moj komšiluk?
+  locale: sr
+  answer_intent: service
+  topic: city_service
+  failure_type: area_source_scope
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: authored_reviewed_notice_and_consented_area
+  expected_contains:
+  - https://community.example.invalid/
+  expected_not_contains:
+  - svaka kuća je bez struje
+- id: waste_collection_my_area
+  prompt: Kojim danom je planiran redovni odvoz u mom kraju?
+  locale: sr
+  answer_intent: waste
+  topic: waste
+  failure_type: plan_vs_observed_collection
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: authored_reviewed_schedule_and_area
+  expected_contains:
+  - raspored
+  expected_not_contains:
+  - sigurno je pokupljeno
+  - kamion je prošao
+- id: feedback_not_helpful_meaning
+  prompt: Šta znači dugme Nije korisno ispod odgovora?
+  locale: sr
+  answer_intent: help
+  topic: feedback
+  failure_type: feedback_vs_case_outcome
+  source: authored_public_contract
+  feedback_value: not_helpful
+  context: no_personal_or_citizen_feedback_record
+  expected_contains:
+  - ocjen
+  - odgovor
+  expected_not_contains:
+  - /biceriseno/prijave/new
+  - nova prijava

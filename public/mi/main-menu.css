@@ -1,0 +1,12 @@
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel{width:100%;max-width:880px;margin:0 auto;padding:24px;box-sizing:border-box;color:#193e52;background:#fff}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav ul{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;padding:0!important;margin:20px 0!important;list-style:none}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li{width:auto!important;min-width:0;margin:0!important}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li a{display:flex!important;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:12px 16px!important;border:1px solid #d8e2e5;border-radius:10px;color:#193e52;background:#f8faf9;font-size:16px;line-height:1.4;text-decoration:none}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li a span{overflow:visible!important;text-overflow:clip!important;white-space:normal!important;overflow-wrap:anywhere;max-width:none!important}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li a svg{flex-shrink:0;width:20px;height:20px}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li a:hover,#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li.active a{background:#eaf3f3;border-color:#34776f}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel a:focus-visible,#breadcrumb-main-dropdown-mobile.mi-navigation-panel button:focus-visible{outline:3px solid #1477a0;outline-offset:3px}
+#breadcrumb-main-dropdown-mobile.mi-navigation-panel form{width:100%;max-width:none}
+#dropdown-menu-main-mobile{max-height:calc(100dvh - 100px);overflow-y:auto;overflow-x:hidden}
+@media(max-width:700px){#breadcrumb-main-dropdown-mobile.mi-navigation-panel{padding:18px}#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav ul{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:420px){#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav ul{grid-template-columns:1fr!important;gap:6px!important;margin:14px 0!important}#breadcrumb-main-dropdown-mobile.mi-navigation-panel nav li a{min-height:44px;padding:9px 12px!important}}

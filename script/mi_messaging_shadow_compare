@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Aggregate comparison for one explicitly named organization; sends nothing.
+set -euo pipefail
+ORG_HOST="${1:-${MI_MESSAGING_ORG_HOST:-}}"
+if [[ -z "$ORG_HOST" || $# -gt 1 || ! "$ORG_HOST" =~ ^[A-Za-z0-9][A-Za-z0-9.-]*$ ]]; then
+  echo 'usage: script/mi_messaging_shadow_compare <organization-host>' >&2
+  exit 64
+fi
+export RAILS_ENV="${RAILS_ENV:-development}"
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+exec bundle exec rake "decidim_bih:messaging:shadow_compare[${ORG_HOST}]"

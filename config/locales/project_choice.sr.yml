@@ -1,0 +1,85 @@
+sr:
+  mi_project_choice:
+    eyebrow: Komšiluci biraju
+    title: Odaberi projekat za svoj komšiluk
+    intro: Zajednica otvara izbor projekata za uključene komšiluke. Ovdje su dostupni prijedlozi, razgovor, pravila
+      i glasanje.
+    choose: Izaberi komšiluk
+    choose_help: Prijedlozi i glasovi vode se odvojeno za svaki komšiluk.
+    budget: Budžet je naveden u pravilima procesa
+    submit: Predloži projekat
+    browse: Pogledaj prijedloge i razgovaraj
+    ballot: Pogledaj projekte i glasaj
+    results: Pogledaj rezultate
+    card_help: Imaš ideju za ovaj komšiluk? Opiši je, objasni kome koristi i predloži kako da se izvede.
+    login_hint: Za objavu prijedloga ili komentara potrebno je da se prijaviš i potvrdiš broj telefona.
+    how: Kako biramo projekat
+    now: U toku
+    next: Slijedi
+    done: Završeno
+    phase_0: Predlaganje i razgovor
+    phase_1: Provjera izvodljivosti
+    phase_2: Glasanje
+    phase_3: Rezultati i realizacija
+    step_0: Građani objavljuju ideje i razgovaraju o njima. Prijedlog treba da objasni šta se radi, gdje, kome koristi
+      i koliko okvirno košta.
+    step_1: Tim zajednice provjerava troškove, saglasnosti i izvodljivost prije glasanja.
+    step_2: Članovi uključenih komšiluka biraju projekat prema objavljenim pravilima procesa.
+    step_3: Objavljujemo rezultat izbora i informacije o realizaciji izabranog projekta u svakom komšiluku.
+    open_0: Predlaganje je otvoreno. Glasanje još nije počelo. Rok za prijedloge i termin glasanja biće objavljeni
+      na ovoj stranici.
+    open_1: Novi prijedlozi više se ne primaju. U toku je provjera izvodljivosti, a razgovor o idejama ostaje otvoren.
+      Termin glasanja biće objavljen ovdje.
+    open_2: Glasanje je otvoreno. Izaberi jedan projekat za svoj komšiluk. Ako se predomisliš, prvo povuci prethodni
+      glas, pa izaberi drugi projekat.
+    open_3: Glasanje je završeno. Na stranicama komšiluka možeš pogledati rezultate i pratiti naredne korake.
+    participation: Ko može učestvovati?
+    propose_rule: Pravo predlaganja i komentarisanja uređeno je pravilima procesa i provjerava se kroz nalog.
+    vote_rule: Pravo glasa provjerava se prema potvrđenom nalogu i pripadnosti komšiluku uključenom u proces. Glasanje
+      je moguće dok traje odgovarajuća faza.
+    vote_note: Jedna osoba ima jedan glas u svom komšiluku. Bodovi iz Trke ne donose dodatne glasove.
+    idea_title: Šta treba da sadrži prijedlog?
+    idea_intro: Ne treba ti gotov elaborat. Važno je da komšije razumiju ideju, njenu korist i okvirni trošak.
+    idea_1: Šta želiš da se uradi i na kojoj javnoj lokaciji?
+    idea_2: Kome projekat koristi i koji problem rješava?
+    idea_3: Šta je potrebno kupiti ili uraditi i koliki je okvirni trošak u okviru budžeta procesa?
+    idea_4: Da li su potrebne saglasnosti i kako bi se rezultat održavao?
+    archive: Arhiva prethodnih ciklusa
+    archive_help: Arhiva prikazuje objavljene rezultate i pravila završenih ciklusa ove zajednice.
+    archive_link: Pogledaj arhivu Trke
+    back: Kako biramo i ko može glasati
+    other: Drugi komšiluk
+    component_intro: Ovdje predlažemo i biramo projekat za komšiluk %{name}, u okviru budžeta i pravila procesa.
+    empty_title: Prva ideja može biti tvoja
+    empty_body: Još nema objavljenih prijedloga za ovaj komšiluk. Predloži konkretno poboljšanje i pokreni razgovor
+      s komšijama.
+    empty_wait: Prijedlozi još nisu objavljeni. Informacije o narednim koracima potraži na stranici procesa.
+    filter: Pretraži i filtriraj prijedloge
+    no_results: Nema prijedloga koji odgovaraju izabranim filterima.
+    clear_filters: Prikaži sve prijedloge
+    action_title: Uključi se
+    proposal_help: Opiši izvodljivu ideju za %{name}. Navedi javnu lokaciju, korist, okvirne troškove, saglasnosti
+      i održavanje u okviru budžeta procesa.
+    proposal_template: 'Šta predlažem?
+
+
+      Javna lokacija:
+
+
+      Kome koristi i koji problem rješava?
+
+
+      Šta je potrebno i koliki je okvirni trošak?
+
+
+      Potrebne saglasnosti i održavanje:'
+    form_help: Piši jasno i bez privatnih kontakata ili tuđih ličnih podataka. Prijedlog će biti javan.
+    preview_help: Pročitaj prijedlog i provjeri da je izabran pravi komšiluk. Klikni „Objavi prijedlog” da postane
+      vidljiv drugima — sačuvan nacrt još nije javan.
+    archive_body: <p>Objavljeni rezultati završenih ciklusa dostupni su u arhivi procesa. Ova instalacija ne sadrži
+      rezultate drugih zajednica.</p>
+    archive_results: Konačan poredak i pravila Trke
+    back_process: Nazad na izbor projekata
+    summary: Predloži ideju, razgovaraj s komšijama i učestvuj u izboru projekta prema pravilima ove zajednice.
+    subtitle: Zajednički projekti za uključene komšiluke
+    image_alt: Ilustracija komšija koje razmatraju ideje za zajednički prostor i glasaju za projekat.

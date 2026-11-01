@@ -1,0 +1,11 @@
+{
+  "reference": "BR-2040-0001",
+  "category": "rasvjeta",
+  "department": "Izmišljena komunalna služba",
+  "severity": "normalan",
+  "description": "IZMISLJENA PRIJAVA: ne radi testna rasvjeta.",
+  "address": "Izmišljena ulica 1",
+  "lat": 0.125,
+  "lng": 0.375,
+  "photo_url": null
+}

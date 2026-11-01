@@ -1,0 +1,109 @@
+# Explicit route/effect inventory; guidance never claims completed publication or intake.
+version: 1
+legacy_classifier_intents:
+- status
+- waste
+- service
+- budget
+- gazette
+- donation
+- goodwill
+- data_status
+- setup
+- launch
+- participation_guidance
+- volunteer_guidance
+- local_area_guidance
+- komsiluk_read
+- city_event
+- report
+- help
+handlers:
+  safety_reply:
+    route: deterministic_safety
+    effect: none
+  status_reply:
+    route: report_status
+    effect: authorized_read
+  gazette_reply:
+    route: safe_legacy
+    effect: public_read
+  budget_reply:
+    route: safe_legacy
+    effect: public_read
+  waste_reply:
+    route: city_service
+    effect: public_read
+  donation_reply:
+    route: safe_legacy
+    effect: public_read
+  goodwill_reply:
+    route: safe_legacy
+    effect: scoped_read
+  own_state_reply:
+    route: safe_legacy
+    effect: scoped_read
+  launch_reply:
+    route: safe_legacy
+    effect: public_read
+  race_standings_reply:
+    route: safe_legacy
+    effect: public_read
+  data_status_reply:
+    route: safe_legacy
+    effect: public_read
+  setup_reply:
+    route: registration
+    effect: handoff
+  help_reply:
+    route: deterministic_help
+    effect: none
+  feedback_help_reply:
+    route: safe_legacy
+    effect: none
+  report_guidance_reply:
+    route: report_problem
+    effect: handoff
+  participation_guidance_reply:
+    route: safe_legacy
+    effect: handoff
+  volunteer_guidance_reply:
+    route: safe_legacy
+    effect: handoff
+  local_area_guidance_reply:
+    route: komsiluk
+    effect: handoff
+  komsiluk_post_reply:
+    route: komsiluk
+    effect: handoff
+    retired: implicit_publication
+  komsiluk_board_reply:
+    route: komsiluk
+    effect: scoped_read
+  city_event_reply:
+    route: city_service
+    effect: public_read
+  live_service_reply:
+    route: city_service
+    effect: public_read
+  service_reply:
+    route: city_service
+    effect: public_read
+  report_reply:
+    route: report_problem
+    effect: handoff
+    retired: ambiguous_automatic_intake
+non_handler_contracts:
+  account_linking:
+    route: dedicated_identity_backend
+    effect: separately_authorized
+  cancellation:
+    route: deterministic_control
+    effect: clear_owned_conversation_only
+  location:
+    route: explicit_purpose
+    effect: transient_context
+  feedback:
+    route: existing_rating_endpoint
+    effect: opt_in_sanitized_rating
+scope: public static handler/authority contract; not private release approval

@@ -1,0 +1,262 @@
+<%= stylesheet_link_tag "/mi/city-alerts-admin.css?v=#{File.mtime(Rails.root.join('public/mi/city-alerts-admin.css')).to_i}" %>
+<%= javascript_include_tag "/mi/city-alerts-admin.js?v=#{File.mtime(Rails.root.join('public/mi/city-alerts-admin.js')).to_i}", defer: true %>
+<details class="city-alerts-mobile-disclosure city-alerts-navigation" data-city-mobile-collapse open>
+  <summary><%= t('decidim_app.admin.city_service_events.ui_review.navigation') %></summary>
+  <%= render "decidim/bih/admin/shared/navigation", current_item: :city_alerts %>
+</details>
+<%= render "automation_policy" if @active_city_alert_tab == "settings" %>
+
+<div class="card" id="admin-city-service-events" data-city-alert-active-tab="<%= @active_city_alert_tab %>">
+  <div class="card-divider">
+    <div>
+      <h1 class="h3"><%= t(".title") %></h1>
+      <details class="city-alerts-mobile-disclosure city-alerts-help" data-city-mobile-collapse open>
+        <summary><%= t('decidim_app.admin.city_service_events.ui_review.help') %></summary>
+      <p class="text-muted" style="margin-bottom: 0;"><%= t(".intro") %></p>
+      <p id="milica-source-access-help"><%= t(".milica_source_access_help") %></p>
+      </details>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <nav id="admin-city-alert-workflow-nav" aria-label="<%= t('.workflow_nav_label') %>" style="display:flex; gap:0.45rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <% DecidimApp::Bijeljina::CityServiceWorkflow::TABS.each do |tab, statuses| %>
+        <%= link_to decidim_app_admin_city_service_events_path(tab: tab, source_key: @filters[:source_key]),
+                    class: "button button__sm button__#{@active_city_alert_tab == tab ? 'secondary' : 'transparent-secondary'}",
+                    aria: { current: ('page' if @active_city_alert_tab == tab) }, data: { city_alert_workflow_tab: tab } do %>
+          <%= t("decidim_app.admin.city_service_events.simplified.tabs.#{tab}") %> (<%= @lane_counts.fetch(tab, 0) %>)
+        <% end %>
+      <% end %>
+    </nav>
+    <% if @filters[:source_key].present? %>
+      <p class="city-alerts-filtered-count"><%= t('decidim_app.admin.city_service_events.auto_check.filtered_review', filtered: @lane_counts.fetch('review', 0), total: @review_total) %></p>
+    <% end %>
+    <p><%= link_to t('decidim_app.admin.city_service_events.simplified.settings'), decidim_app_admin_city_service_events_path(tab: 'settings'), id: 'city-alert-settings' %></p>
+
+    <% if @active_city_alert_tab == "done" %>
+      <p><%= link_to t('decidim_app.admin.city_service_events.auto_check.expired_filter', count: @workflow.expired_unchecked_count),
+                     decidim_app_admin_city_service_events_path(tab: 'done', unchecked: '1') %>
+         · <%= t('decidim_app.admin.city_service_events.auto_check.expired_unpublished', count: @workflow.expired_unpublished_count) %></p>
+    <% end %>
+
+    <% if @active_city_alert_tab == "settings" %>
+    <div class="callout warning" id="admin-city-alert-readiness">
+      <strong><%= t(".readiness.title") %></strong>
+      <ol style="margin-bottom:0;">
+        <li><%= t(".readiness.review_source") %></li>
+        <li><%= t(".readiness.preview_policy") %></li>
+        <li><%= t(".readiness.publish_order") %></li>
+      </ol>
+      <details style="margin-top:0.65rem;">
+        <summary><%= t(".readiness.operator_details") %></summary>
+        <p style="margin-top:0.35rem; margin-bottom:0;">
+        <code>bin/city-service-notices-dry-run.sh electricity_outages</code>
+        <code>script/mi_viber_launch_readiness_smoke</code>
+        </p>
+      </details>
+    </div>
+    <%= render "source_health" %>
+    <% end %>
+
+    <% unless @active_city_alert_tab == "settings" %>
+    <details class="city-alerts-mobile-disclosure" data-city-mobile-collapse <%= 'data-city-keep-open' if @filters.values.any?(&:present?) %> open>
+      <summary><%= t('decidim_app.admin.city_service_events.ui_review.filters') %></summary>
+    <div id="admin-city-alert-state-summary" style="display:flex; gap:0.45rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <% DecidimApp::Bijeljina::CityServiceWorkflow::STATUSES.each do |state| %>
+        <% tab = %w(review ready).include?(state) ? "review" : "done" %>
+        <%= link_to decidim_app_admin_city_service_events_path(tab: tab, state: state, source_key: @filters[:source_key]), class: 'button button__sm button__transparent-secondary', data: { city_alert_state: state } do %>
+          <strong><%= @state_counts.fetch(state, 0) %></strong> <span><%= workflow_label(state) %></span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= form_with url: decidim_app_admin_city_service_events_path, method: :get, local: true,
+                  html: { id: "admin-city-alert-filters" }, class: "form form-defaults mi-admin-filter" do %>
+      <%= hidden_field_tag :tab, @active_city_alert_tab %>
+      <%= hidden_field_tag :unchecked, @filters[:unchecked] if @filters[:unchecked].present? %>
+      <label>
+        <%= t(".filters.state") %><br>
+        <%= select_tag :state,
+                       options_for_select([[t(".filters.all_states"), ""]] + @state_options.map { |state| [workflow_label(state), state] }, @filters[:state]) %>
+      </label>
+      <label>
+        <%= t(".filters.source") %><br>
+        <%= select_tag :source_key,
+                       options_for_select([[t(".filters.all_sources"), ""]] + @source_options.map { |source| [city_alert_source_label(source), source] }, @filters[:source_key]) %>
+      </label>
+      <label>
+        <%= t(".filters.exception") %><br>
+        <%= select_tag :exception, options_for_select([[t(".filters.all_exceptions"), ""]] +
+                       DecidimApp::Admin::CityServiceEventsController::REVIEW_EXCEPTIONS.map { |key| [t(".exceptions.#{key}"), key] }, @filters[:exception]) %>
+      </label>
+      <%= submit_tag t(".filters.apply"), class: "button button__sm button__secondary" %>
+      <%= link_to t(".filters.clear"), decidim_app_admin_city_service_events_path(tab: @active_city_alert_tab), class: "button button__sm button__transparent-secondary" %>
+    <% end %>
+
+    </details>
+
+    <% if @events.empty? %>
+      <p>
+        <% if @filters[:state].present? || @filters[:source_key].present? || @filters[:exception].present? %>
+          <%= t(".empty_states.filtered", default: "Nema obavještenja koja odgovaraju odabranim filterima. Očisti filtere i pokušaj ponovo.") %>
+        <% else %>
+          <%= t(".empty_states.#{@active_city_alert_tab}", default: t(".empty")) %>
+        <% end %>
+      </p>
+    <% else %>
+      <%= render "pagination", events: @events %>
+      <%= render "bulk_review" if @active_city_alert_tab == "review" %>
+      <% if @active_city_alert_tab == "automatic" %>
+        <%= form_with url: decidim_app_admin_city_service_events_bulk_check_automatic_path, method: :post, local: true,
+                      html: { id: "city-service-auto-check-bulk" }, class: "form form-defaults" do %>
+          <p><%= t('decidim_app.admin.city_service_events.auto_check.bulk_help') %></p>
+          <%= submit_tag t('decidim_app.admin.city_service_events.auto_check.bulk_submit'), class: "button button__sm button__secondary" %>
+        <% end %>
+      <% end %>
+      <div class="city-alerts-table-wrap">
+        <table class="table-list mi-admin-editor-table city-alerts-table">
+          <thead><tr>
+            <% %w(select source event areas state actions).each do |column| %>
+              <th class="city-alerts-col-<%= column %>" scope="col"><%= column == "select" ? t('.bulk.select') : t(".columns.#{column}") %></th>
+            <% end %>
+          </tr></thead>
+          <tbody>
+            <% @events.each do |event| %>
+              <% preview = @previews[event] %>
+              <tr id="city-service-event-<%= event.id %>" class="city-alerts-summary-row" data-city-service-event-state="<%= workflow_entry(event).status %>">
+                <td class="city-alerts-col-select" data-label="<%= t('.bulk.select') %>">
+                  <% if workflow_entry(event).tab == "automatic" %>
+                    <%= check_box_tag "auto_checks[#{event.id}][selected]", "1", false, form: "city-service-auto-check-bulk",
+                                      aria: { label: t('decidim_app.admin.city_service_events.auto_check.select', title: event.title) } %>
+                    <%= hidden_field_tag "auto_checks[#{event.id}][publication_revision]", event.publication_revision,
+                                         form: "city-service-auto-check-bulk" %>
+                    <%= hidden_field_tag "auto_checks[#{event.id}][evidence_digest]",
+                                         DecidimApp::Bijeljina::CityServiceAutomationDecision.evidence_digest(event),
+                                         form: "city-service-auto-check-bulk" %>
+                  <% elsif workflow_entry(event).editable? %>
+                    <%= check_box_tag "selections[#{event.id}][selected]", "1", false, form: "city-service-bulk-review", class: "city-service-bulk-selection",
+                                      aria: { label: t('.bulk.select_event', title: event.title) } %>
+                    <%= hidden_field_tag "selections[#{event.id}][content_version]", event.content_version, form: "city-service-bulk-review" %>
+                    <%= hidden_field_tag "selections[#{event.id}][review_token]", event.answer_review_token, form: "city-service-bulk-review" %>
+                  <% end %>
+                </td>
+                <td class="city-alerts-col-source" data-label="<%= t('.columns.source') %>">
+                  <strong><%= event.provider.presence || event.source_label_text %></strong>
+                  <% if event.source_url.present? %>
+                    <%= link_to t('.source_link'), event.source_url, target: '_blank', rel: 'noopener noreferrer', class: 'city-alerts-source-link' %>
+                  <% end %>
+                </td>
+                <td class="city-alerts-col-event" data-label="<%= t('.columns.event') %>">
+                  <strong class="city-alerts-title"><%= event.title %></strong>
+                  <span class="city-alerts-severity"><%= severity_label(event.severity) %></span>
+                  <p class="city-alerts-summary"><%= event.summary %></p>
+                  <span class="city-alerts-time"><%= city_alert_time_window(event) %></span>
+                </td>
+                <td class="city-alerts-col-areas" data-label="<%= t('.columns.areas') %>">
+                  <% prepared_coverage = event.extraction_metadata.fetch("coverage", {}) %>
+                  <% prepared_slugs = prepared_coverage["source_content_version"] == event.content_version ? Array(prepared_coverage["affected_places"]).filter_map { |place| place["slug"] } : [] %>
+                  <% shown_slugs = event.area_slugs | prepared_slugs %>
+                  <% context_slugs = DecidimApp::Bijeljina::CityServicePlaceContext.slugs(event) - shown_slugs %>
+                  <p class="city-alerts-area-selection-label"><%= t("decidim_app.admin.city_service_events.area_selection.#{event.area_slugs.any? || event.targeting_level == 'citywide' ? 'selected' : 'none'}") %></p>
+                  <%= render 'area_labels', slugs: event.area_slugs if event.area_slugs.any? %>
+                  <% suggested_slugs = prepared_slugs - event.area_slugs %>
+                  <% if suggested_slugs.any? %>
+                    <p class="city-alerts-exception"><%= t('decidim_app.admin.city_service_events.area_selection.suggestions') %></p>
+                    <%= render 'area_labels', slugs: suggested_slugs %>
+                  <% end %>
+                  <% if prepared_slugs.any? && prepared_coverage["complete"] == false %>
+                    <p class="city-alerts-exception"><%= t('decidim_app.admin.city_service_events.index.layout.partial_map') %></p>
+                  <% end %>
+                  <% if context_slugs.any? %>
+                    <p class="city-alerts-exception"><%= t('decidim_app.admin.city_service_events.index.layout.place_context') %></p>
+                    <%= render 'area_labels', slugs: context_slugs %>
+                  <% end %>
+                </td>
+                <td class="city-alerts-col-state" data-label="<%= t('.columns.state') %>">
+                  <span class="label"><%= workflow_label(workflow_entry(event).status) %></span>
+                  <% explanation = DecidimApp::Bijeljina::CityServiceDecisionExplanation.new(workflow_entry(event)) %>
+                  <p class="city-alerts-decision" data-city-decision-reason="<%= explanation.reason %>">
+                    <span class="city-alerts-decision-method"><%= explanation.method_label %>:</span>
+                    <%= explanation.text(area: city_alert_area_label(event.target_komsiluk_slugs.first || event.area_slugs.first)) %>
+                  </p>
+                  <% review_exceptions(event).each do |exception| %>
+                    <p class="city-alerts-exception" data-city-review-exception="<%= exception %>"><%= t(".exceptions.#{exception}") %></p>
+                  <% end %>
+                  <% if workflow_entry(event).reason %><p class="city-alerts-end-reason"><%= workflow_reason(event) %></p><% end %>
+                  <% if workflow_entry(event).automatic_unchecked? && workflow_entry(event).status == "finished" %>
+                    <p class="city-alerts-exception"><%= t("decidim_app.admin.city_service_events.auto_check.#{workflow_entry(event).reason == 'expired' ? 'expired_unchecked' : 'finished_unchecked'}") %></p>
+                  <% end %>
+                  <% if event.board_published? || event.published? %>
+                    <p class="city-alerts-delivery-status"><%= t("decidim_app.admin.city_service_events.simplified.delivery.#{workflow_entry(event).delivery_status}") %></p>
+                  <% end %>
+                </td>
+                <td class="city-alerts-col-actions" data-label="<%= t('.columns.actions') %>">
+                  <% if workflow_entry(event).tab == "automatic" %>
+                    <%= button_to t('decidim_app.admin.city_service_events.auto_check.ok'),
+                          decidim_app_admin_city_service_event_check_automatic_path(event), method: :post,
+                          params: { publication_revision: event.publication_revision,
+                                    evidence_digest: DecidimApp::Bijeljina::CityServiceAutomationDecision.evidence_digest(event) },
+                          class: 'button button__sm button__secondary' %>
+                    <button type="button" class="button button__sm button__transparent-secondary" data-city-alert-toggle="<%= event.id %>" data-city-correct
+                            aria-expanded="false" aria-controls="city-alert-editor-<%= event.id %>"><%= t('decidim_app.admin.city_service_events.auto_check.correct') %></button>
+                  <% end %>
+                  <% if workflow_entry(event).delivery_action? %>
+                    <%= link_to t('decidim_app.admin.city_service_events.auto_check.send'),
+                          decidim_app_admin_city_service_event_notification_preview_path(event),
+                          class: 'button button__sm button__transparent-secondary' %>
+                  <% end %>
+                  <button type="button" class="button button__sm button__secondary city-alerts-toggle" data-city-alert-toggle="<%= event.id %>"
+                          aria-expanded="false" aria-controls="city-alert-editor-<%= event.id %>"><%= t('decidim_app.admin.city_service_events.simplified.details') %></button>
+                </td>
+              </tr>
+              <tr id="city-alert-editor-<%= event.id %>" class="city-alerts-detail-row" hidden>
+                <td colspan="6">
+                  <div class="city-alerts-editor-grid">
+                    <section class="city-alerts-full-evidence">
+                      <h2 class="h4"><%= event.title %></h2>
+                      <% if event.source_key == 'weather_warnings' && event.extraction_metadata['provider_area_code'] == DecidimApp::Bijeljina::CityServiceEvidenceParser::WEATHER_AREA_CODE %>
+                        <p class="city-alerts-region-context"><%= t('decidim_app.admin.city_service_events.ui_review.weather_region') %></p>
+                      <% end %>
+                      <p><%= event.summary %></p>
+                      <%# Every window on this page is Sarajevo time; printing the zone on
+                          each row was constant noise. It is shown only when the source put
+                          this event in a different zone, which is the only case it matters. %>
+                      <% event_zone = event.extraction_metadata["timezone"].presence %>
+                      <p data-city-alert-window><strong><%= city_alert_time_window(event) %></strong><% if event_zone && event_zone != DecidimApp::Bijeljina::CityServiceTime::ZONE %> · <%= event_zone %><% end %></p>
+                      <%= render 'ai_classification', event: event %>
+                      <section class="city-alerts-source-history">
+                        <h3 class="h5"><%= t('decidim_app.admin.city_service_events.simplified.source_history') %></h3>
+                        <p><%= state_label(event.state) %></p>
+                        <%= render 'source_evidence', event: event %>
+                        <% explanation.secondary_reasons.each do |reason| %>
+                          <p><%= t("decidim_app.admin.city_service_events.decision_explanations.#{reason}", station: event.extraction_metadata['station_label'].presence || '?', area: '?', count: 0) %></p>
+                        <% end %>
+                      </section>
+                      <% if preview %>
+                        <details class="city-alerts-delivery-details">
+                          <summary><%= t('.layout.delivery_details') %></summary>
+                          <%= render "platform_delivery", event: event %>
+                          <% workflow_entry(event).delivery_counts.each do |status, count| %>
+                            <p><%= t("decidim_app.admin.city_service_events.simplified.delivery_counts.#{status}", count: count) %></p>
+                          <% end %>
+                          <p><%= t('decidim_app.admin.city_service_events.auto_check.audience_estimate', count: preview.recipient_count) %></p>
+                          <%= render 'area_labels', slugs: preview.target_komsiluk_slugs %>
+                        </details>
+                      <% end %>
+                      <% if event.target_komsiluk_slugs.present? %>
+                        <p><%= t('.layout.published_areas') %></p>
+                        <%= render 'area_labels', slugs: event.target_komsiluk_slugs %>
+                      <% end %>
+                    </section>
+                    <section class="city-alerts-editor-form"><%= render 'event_editor', event: event %></section>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>

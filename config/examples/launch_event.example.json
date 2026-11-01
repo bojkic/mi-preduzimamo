@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "organization_host": "community.example.invalid",
+  "event_key": "authored-launch-day",
+  "title": "Primjer događaja vaše zajednice",
+  "source_url": "https://community.example.invalid/events/launch",
+  "opens_at": "2040-09-17T18:00:00+02:00",
+  "closes_at": "2040-09-17T20:00:00+02:00",
+  "enabled": false,
+  "sms_fallback": false
+}

@@ -1,0 +1,411 @@
+---
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          superseded: Zamijenjena verzija
+        lifecycles:
+          scheduled: Najavljeno
+          ongoing: U toku
+          resolved: Usluga obnovljena
+          cancelled: Otkazano
+          superseded: Zamijenjeno
+          unknown: Nije utvrđeno
+        source_health:
+          title: Prikupljeni podaci i stanje izvora
+          description: Ovaj pregled čita pripremljene podatke. Uspješna provjera izvora
+            nije odobrenje za objavu i ne potvrđuje da prekida nema.
+          source: Izvor
+          status: Stanje provjere
+          last_attempt: Posljednji pokušaj
+          last_success: Posljednje uspješno čitanje
+          coverage: Dostupne stavke
+          unknown: Nije poznato
+          items:
+            one: "%{count} stavka"
+            few: "%{count} stavke"
+            other: "%{count} stavki"
+          statuses:
+            ok: Sadržaj dostupan
+            empty: Nema prepoznatih stavki
+            unreviewed: Sadržaj čeka pregled
+            unavailable: Nije dostupno
+            malformed: Sadržaj nije pouzdano pročitan
+            stale: Provjera je zastarjela
+        source_evidence:
+          area_suggestions: Prijedlozi područja
+          area_suggestions_note: Provjerite obuhvat izvorne objave. Tačka adrese ili isti naziv ne potvrđuju da je pogođeno cijelo područje.
+          feeder_context_only: Samo naziv mrežnog objekta; pogođeno područje nije potvrđeno.
+          place_containment: "Gradski dokazi o lokacijama"
+          street_scope: "Obuhvat navedene ulice"
+          street_scope_note: "Bez preciznijeg kućnog broja ili dijela ulice, objava je relevantna za sve prikazane MZ i komšiluke kroz koje prolazi navedena ulica."
+          place_containment_note: "Prikazuje vezu imenovanih lokacija sa MZ i komšilucima. Ne potvrđuje prekid na cijelom prikazanom području."
+          place_citation: "Strana %{page}, stavka %{item}"
+          title: Izvorni podaci i verzija
+          affected: Izvorni opis pogođenog područja
+          unknown: Nije poznato
+          tj: Terenska jedinica
+          feeder: Elektroenergetski objekat
+          reason: Razlog prekida
+          precision: Preciznost vremena
+          timezone: Vremenska zona
+          fetched: Vrijeme preuzimanja
+          published: Izvor objavio
+          updated: Izvor izmijenio
+          lifecycle: Tok obavještenja
+          parser: Izdvajanje podataka
+          occurrence: Identitet događaja
+          version: Verzija sadržaja
+          reviewed_version: Pregledana verzija
+          changed_warning: Izvor je promijenio činjenice. Ranije odobrenje ne važi
+            za ovu verziju; provjerite vrijeme i pogođeno područje.
+          replacement: Pogledaj novu verziju
+          withdrawn: Izmijenjeni izvor više ne potvrđuje ovu verziju. Izvorne objave
+            su povučene sa table; raniji pregled je sačuvan.
+        index:
+          filters:
+            exception: Potrebna provjera
+            all_exceptions: Sve stavke
+          exceptions:
+            unknown_area: Područje nije prepoznato; ne pretpostavljajte da je pogođena
+              cijela MZ.
+            invalid_time: Vremenski interval nije ispravan.
+            changed_source: Izvor je promijenjen; potrebna je nova provjera.
+            unavailable_source: Provjera izvora nije dostupna ili je zastarjela.
+            cancelled: Obavještenje je otkazano, završeno ili zamijenjeno.
+        update:
+          stale_review: Ovo obavještenje se promijenilo od otvaranja stranice. Otvorite
+            novu verziju i ponovite pregled.
+    city_service_events:
+      bot: &1
+        partial_coverage: Područje može biti djelimično obuhvaćeno; tačan obuhvat
+          je naveden u obavještenju.
+        possible_overlap: Veza s traženim komšilukom zasniva se samo na preklapanju
+          sa navedenom lokacijom; uticaj na vašu ulicu nije potvrđen.
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          superseded: Zamijenjena verzija
+        lifecycles:
+          scheduled: Najavljeno
+          ongoing: U toku
+          resolved: Usluga obnovljena
+          cancelled: Otkazano
+          superseded: Zamijenjeno
+          unknown: Nije utvrđeno
+        source_health:
+          title: Prikupljeni podaci i stanje izvora
+          description: Ovaj pregled čita pripremljene podatke. Uspješna provjera izvora
+            nije odobrenje za objavu i ne potvrđuje da prekida nema.
+          source: Izvor
+          status: Stanje provjere
+          last_attempt: Posljednji pokušaj
+          last_success: Posljednje uspješno čitanje
+          coverage: Dostupne stavke
+          unknown: Nije poznato
+          items:
+            one: "%{count} stavka"
+            few: "%{count} stavke"
+            other: "%{count} stavki"
+          statuses:
+            ok: Sadržaj dostupan
+            empty: Nema prepoznatih stavki
+            unreviewed: Sadržaj čeka pregled
+            unavailable: Nije dostupno
+            malformed: Sadržaj nije pouzdano pročitan
+            stale: Provjera je zastarjela
+        source_evidence:
+          area_suggestions: Prijedlozi područja
+          area_suggestions_note: Provjerite obuhvat izvorne objave. Točka adrese ili isti naziv ne potvrđuju da je pogođeno cijelo područje.
+          feeder_context_only: Samo naziv mrežnog objekta; pogođeno područje nije potvrđeno.
+          place_containment: "Gradski dokazi o lokacijama"
+          street_scope: "Obuhvat navedene ulice"
+          street_scope_note: "Bez preciznijeg kućnog broja ili dijela ulice, objava je relevantna za sve prikazane MZ i komšiluke kroz koje prolazi navedena ulica."
+          place_containment_note: "Prikazuje vezu imenovanih lokacija sa MZ i komšilucima. Ne potvrđuje prekid na cijelom prikazanom području."
+          place_citation: "Strana %{page}, stavka %{item}"
+          title: Izvorni podaci i verzija
+          affected: Izvorni opis pogođenog područja
+          unknown: Nije poznato
+          tj: Terenska jedinica
+          feeder: Elektroenergetski objekat
+          reason: Razlog prekida
+          precision: Preciznost vremena
+          timezone: Vremenska zona
+          fetched: Vrijeme preuzimanja
+          published: Izvor objavio
+          updated: Izvor izmijenio
+          lifecycle: Tok obavještenja
+          parser: Izdvajanje podataka
+          occurrence: Identitet događaja
+          version: Verzija sadržaja
+          reviewed_version: Pregledana verzija
+          changed_warning: Izvor je promijenio činjenice. Ranije odobrenje ne važi
+            za ovu verziju; provjerite vrijeme i pogođeno područje.
+          replacement: Pogledaj novu verziju
+          withdrawn: Izmijenjeni izvor više ne potvrđuje ovu verziju. Izvorne objave
+            su povučene sa table; raniji pregled je sačuvan.
+        index:
+          filters:
+            exception: Potrebna provjera
+            all_exceptions: Sve stavke
+          exceptions:
+            unknown_area: Područje nije prepoznato; ne pretpostavljajte da je pogođena
+              cijela MZ.
+            invalid_time: Vremenski interval nije ispravan.
+            changed_source: Izvor je promijenjen; potrebna je nova provjera.
+            unavailable_source: Provjera izvora nije dostupna ili je zastarjela.
+            cancelled: Obavještenje je otkazano, završeno ili zamijenjeno.
+        update:
+          stale_review: Ovo obavještenje se promijenilo od otvaranja stranice. Otvorite
+            novu verziju i ponovite pregled.
+    city_service_events:
+      bot: *1
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          superseded: Zamijenjena verzija
+        lifecycles:
+          scheduled: Najavljeno
+          ongoing: U toku
+          resolved: Usluga obnovljena
+          cancelled: Otkazano
+          superseded: Zamijenjeno
+          unknown: Nije utvrđeno
+        source_health:
+          title: Prikupljeni podaci i stanje izvora
+          description: Ovaj pregled čita pripremljene podatke. Uspješna provjera izvora
+            nije odobrenje za objavu i ne potvrđuje da prekida nema.
+          source: Izvor
+          status: Stanje provjere
+          last_attempt: Posljednji pokušaj
+          last_success: Posljednje uspješno čitanje
+          coverage: Dostupne stavke
+          unknown: Nije poznato
+          items:
+            one: "%{count} stavka"
+            few: "%{count} stavke"
+            other: "%{count} stavki"
+          statuses:
+            ok: Sadržaj dostupan
+            empty: Nema prepoznatih stavki
+            unreviewed: Sadržaj čeka pregled
+            unavailable: Nije dostupno
+            malformed: Sadržaj nije pouzdano pročitan
+            stale: Provjera je zastarjela
+        source_evidence:
+          area_suggestions: Prijedlozi područja
+          area_suggestions_note: Provjerite obuhvat izvorne objave. Tačka adrese ili isti naziv ne potvrđuju da je pogođeno cijelo područje.
+          feeder_context_only: Samo naziv mrežnog objekta; pogođeno područje nije potvrđeno.
+          place_containment: "Gradski dokazi o lokacijama"
+          street_scope: "Obuhvat navedene ulice"
+          street_scope_note: "Bez preciznijeg kućnog broja ili dijela ulice, objava je relevantna za sve prikazane MZ i komšiluke kroz koje prolazi navedena ulica."
+          place_containment_note: "Prikazuje vezu imenovanih lokacija sa MZ i komšilucima. Ne potvrđuje prekid na cijelom prikazanom području."
+          place_citation: "Strana %{page}, stavka %{item}"
+          title: Izvorni podaci i verzija
+          affected: Izvorni opis pogođenog područja
+          unknown: Nije poznato
+          tj: Terenska jedinica
+          feeder: Elektroenergetski objekat
+          reason: Razlog prekida
+          precision: Preciznost vremena
+          timezone: Vremenska zona
+          fetched: Vrijeme preuzimanja
+          published: Izvor objavio
+          updated: Izvor izmijenio
+          lifecycle: Tok obavještenja
+          parser: Izdvajanje podataka
+          occurrence: Identitet događaja
+          version: Verzija sadržaja
+          reviewed_version: Pregledana verzija
+          changed_warning: Izvor je promijenio činjenice. Ranije odobrenje ne važi
+            za ovu verziju; provjerite vrijeme i pogođeno područje.
+          replacement: Pogledaj novu verziju
+          withdrawn: Izmijenjeni izvor više ne potvrđuje ovu verziju. Izvorne objave
+            su povučene sa table; raniji pregled je sačuvan.
+        index:
+          filters:
+            exception: Potrebna provjera
+            all_exceptions: Sve stavke
+          exceptions:
+            unknown_area: Područje nije prepoznato; ne pretpostavljajte da je pogođena
+              cijela MZ.
+            invalid_time: Vremenski interval nije ispravan.
+            changed_source: Izvor je promijenjen; potrebna je nova provjera.
+            unavailable_source: Provjera izvora nije dostupna ili je zastarjela.
+            cancelled: Obavještenje je otkazano, završeno ili zamijenjeno.
+        update:
+          stale_review: Ovo obavještenje se promijenilo od otvaranja stranice. Otvorite
+            novu verziju i ponovite pregled.
+    city_service_events:
+      bot: *1
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          superseded: Замијењена верзија
+        lifecycles:
+          scheduled: Најављено
+          ongoing: У току
+          resolved: Услуга обновљена
+          cancelled: Отказано
+          superseded: Замијењено
+          unknown: Није утврђено
+        source_health:
+          title: Прикупљени подаци и стање извора
+          description: Овај преглед чита припремљене податке. Успјешна провјера извора
+            није одобрење за објаву и не потврђује да прекида нема.
+          source: Извор
+          status: Стање провјере
+          last_attempt: Посљедњи покушај
+          last_success: Посљедње успјешно читање
+          coverage: Доступне ставке
+          unknown: Није познато
+          items:
+            one: "%{count} ставка"
+            few: "%{count} ставке"
+            other: "%{count} ставки"
+          statuses:
+            ok: Садржај доступан
+            empty: Нема препознатих ставки
+            unreviewed: Садржај чека преглед
+            unavailable: Није доступно
+            malformed: Садржај није поуздано прочитан
+            stale: Провјера је застарјела
+        source_evidence:
+          area_suggestions: Предлози подручја
+          area_suggestions_note: Провјерите обухват изворне објаве. Тачка адресе или исти назив не потврђују да је погођено цијело подручје.
+          feeder_context_only: Само назив мрежног објекта; погођено подручје није потврђено.
+          place_containment: "Градски докази о локацијама"
+          street_scope: "Обухват наведене улице"
+          street_scope_note: "Без прецизнијег кућног броја или дијела улице, објава је релевантна за све приказане МЗ и комшилуке кроз које пролази наведена улица."
+          place_containment_note: "Приказује везу именованих локација са МЗ и комшилуцима. Не потврђује прекид на цијелом приказаном подручју."
+          place_citation: "Страна %{page}, ставка %{item}"
+          title: Изворни подаци и верзија
+          affected: Изворни опис погођеног подручја
+          unknown: Није познато
+          tj: Теренска јединица
+          feeder: Електроенергетски објекат
+          reason: Разлог прекида
+          precision: Прецизност времена
+          timezone: Временска зона
+          fetched: Вријеме преузимања
+          published: Извор објавио
+          updated: Извор измијенио
+          lifecycle: Ток обавјештења
+          parser: Издвајање података
+          occurrence: Идентитет догађаја
+          version: Верзија садржаја
+          reviewed_version: Прегледана верзија
+          changed_warning: Извор је промијенио чињенице. Раније одобрење не важи за
+            ову верзију; провјерите вријеме и погођено подручје.
+          replacement: Погледај нову верзију
+          withdrawn: Измијењени извор више не потврђује ову верзију. Изворне објаве
+            су повучене са табле; ранији преглед је сачуван.
+        index:
+          filters:
+            exception: Потребна провјера
+            all_exceptions: Све ставке
+          exceptions:
+            unknown_area: Подручје није препознато; не претпостављајте да је погођена
+              цијела МЗ.
+            invalid_time: Временски интервал није исправан.
+            changed_source: Извор је промијењен; потребна је нова провјера.
+            unavailable_source: Провјера извора није доступна или је застарјела.
+            cancelled: Обавјештење је отказано, завршено или замијењено.
+        update:
+          stale_review: Ово обавјештење се промијенило од отварања странице. Отворите
+            нову верзију и поновите преглед.
+    city_service_events:
+      bot:
+        partial_coverage: Подручје може бити дјелимично обухваћено; тачан обухват
+          је наведен у обавјештењу.
+        possible_overlap: Веза с траженим комшилуком заснива се само на преклапању
+          са наведеном локацијом; утицај на вашу улицу није потврђен.
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          superseded: Superseded version
+        lifecycles:
+          scheduled: Scheduled
+          ongoing: Ongoing
+          resolved: Service restored
+          cancelled: Cancelled
+          superseded: Superseded
+          unknown: Unknown
+        source_health:
+          title: Prepared data and source health
+          description: This view reads prepared data. A successful source check is
+            not publication approval or confirmation that no interruption exists.
+          source: Source
+          status: Check status
+          last_attempt: Last attempt
+          last_success: Last successful read
+          coverage: Available items
+          unknown: Unknown
+          items:
+            one: "%{count} item"
+            other: "%{count} items"
+          statuses:
+            ok: Content available
+            empty: No recognized items
+            unreviewed: Content needs review
+            unavailable: Unavailable
+            malformed: Content could not be read reliably
+            stale: Check is stale
+        source_evidence:
+          area_suggestions: Area suggestions
+          area_suggestions_note: Check the source coverage. An address point or matching name does not confirm that the whole area is affected.
+          feeder_context_only: Asset name only; affected coverage is unconfirmed.
+          place_containment: "Municipal place evidence"
+          street_scope: "Named street coverage"
+          street_scope_note: "Without a more precise house number or segment, this notice is relevant to every shown MZ and komšiluk traversed by the named street."
+          place_containment_note: "Shows how named places relate to MZ and komšiluk areas. It does not confirm an outage throughout each shown area."
+          place_citation: "Page %{page}, item %{item}"
+          title: Source evidence and version
+          affected: Original affected-location text
+          unknown: Unknown
+          tj: Field unit
+          feeder: Electricity feeder or transformer
+          reason: Interruption reason
+          precision: Time precision
+          timezone: Time zone
+          fetched: Fetched at
+          published: Source published at
+          updated: Source updated at
+          lifecycle: Notice lifecycle
+          parser: Extraction version
+          occurrence: Occurrence identity
+          version: Content version
+          reviewed_version: Reviewed version
+          changed_warning: The source changed the facts. Previous approval does not
+            apply to this version; check its times and affected places.
+          replacement: View replacement version
+          withdrawn: The updated source no longer supports this version. Generated
+            board posts were withdrawn; the original review is retained.
+        index:
+          filters:
+            exception: Review exception
+            all_exceptions: All items
+          exceptions:
+            unknown_area: Location is unresolved; do not assume the whole MZ is affected.
+            invalid_time: The time interval is invalid.
+            changed_source: Source facts changed; a new review is required.
+            unavailable_source: Source verification is unavailable or stale.
+            cancelled: This notice is cancelled, resolved or superseded.
+        update:
+          stale_review: This notice changed after you opened the page. Open the new
+            version and review it again.
+    city_service_events:
+      bot:
+        partial_coverage: The area may be partially affected; the notice specifies
+          the actual coverage.
+        possible_overlap: The requested neighbourhood overlaps the named location;
+          impact on your street is not confirmed.

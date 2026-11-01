@@ -1,0 +1,13 @@
+<%# Keep core synchronous for legacy inline handlers; registration can defer. %>
+<%= javascript_pack_tag(mi_search_home? && !current_user ? "mi_home" : "decidim_core", defer: false) %>
+<% if Decidim.service_worker_enabled %>
+  <%= javascript_include_tag asset_pack_path("decidim_sw.js"), defer: true %>
+<% end %>
+
+<%= render partial: "layouts/decidim/js_configuration" %>
+
+<%= yield :js_content %>
+
+<%= snippets.display(:foot) %>
+
+<%= render partial: "layouts/decidim/cors" if Decidim.cors_enabled %>

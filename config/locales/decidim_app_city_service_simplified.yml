@@ -1,0 +1,259 @@
+---
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        simplified:
+          statuses:
+            review: Za pregled
+            ready: Spremno za objavu
+            published: Objavljeno
+            finished: Završeno
+          tabs:
+            review: Treba tvoja odluka
+            automatic: Objavljeno automatski — provjeri
+            done: Završeno
+          settings: Postavke
+          details: Detalji
+          source_history: Izvor i istorija
+          archived_help: Obavještenje više nije aktivno. Podaci i prethodne objave
+            ostaju u istoriji.
+          reasons:
+            expired: Isteklo
+            expired_unpublished: Isteklo bez objave — građani nisu obaviješteni
+            withdrawn: Povučeno
+            cancelled: Otkazano
+            dismissed: Odbačeno
+            resolved: Završeno
+            replaced: Zamijenjeno novijom verzijom
+            not_visible: Objava više nije vidljiva
+          delivery:
+            not_requested: 'Dostava: slanje nije zatraženo'
+            requested: 'Dostava: predato za slanje — isporuka nije potvrđena'
+            error: 'Dostava: greška pri slanju'
+            unknown: 'Dostava: ishod nije potvrđen'
+            queued: 'Dostava: čeka slanje'
+            accepted: 'Dostava: pružalac prihvatio — isporuka nije potvrđena'
+            delivered: 'Dostava: isporučeno'
+            skipped: 'Dostava: slanje preskočeno'
+          delivery_counts:
+            pending: 'Čeka slanje: %{count}'
+            sending: 'Slanje u toku: %{count}'
+            accepted: 'Pružalac prihvatio: %{count}'
+            rejected: 'Odbijeno: %{count}'
+            failed: 'Neuspjelo: %{count}'
+            unknown: 'Nepotvrđeno: %{count}'
+            skipped: 'Preskočeno: %{count}'
+            delivered: 'Isporučeno: %{count}'
+          retry_delivery: Ponovi slanje
+          retry_confirmation: Ponovi samo potvrđeno neuspjele isporuke. Uspješne i
+            nepotvrđene isporuke neće biti ponovo poslate.
+          nothing_to_retry: Nema potvrđeno neuspjelih isporuka za ponavljanje.
+          delivery_retry_queued: 'Neuspjele isporuke ponovo čekaju slanje: %{count}.'
+          edit_review: Uredi obavještenje
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        simplified:
+          statuses:
+            review: Za pregled
+            ready: Spremno za objavu
+            published: Objavljeno
+            finished: Završeno
+          tabs:
+            review: Treba tvoja odluka
+            automatic: Objavljeno automatski — provjeri
+            done: Završeno
+          settings: Postavke
+          details: Detalji
+          source_history: Izvor i istorija
+          archived_help: Obavještenje više nije aktivno. Podaci i prethodne objave
+            ostaju u istoriji.
+          reasons:
+            expired: Isteklo
+            expired_unpublished: Isteklo bez objave — građani nisu obaviješteni
+            withdrawn: Povučeno
+            cancelled: Otkazano
+            dismissed: Odbačeno
+            resolved: Završeno
+            replaced: Zamijenjeno novijom verzijom
+            not_visible: Objava više nije vidljiva
+          delivery:
+            not_requested: 'Dostava: slanje nije zatraženo'
+            requested: 'Dostava: predato za slanje — isporuka nije potvrđena'
+            error: 'Dostava: greška pri slanju'
+            unknown: 'Dostava: ishod nije potvrđen'
+            queued: 'Dostava: čeka slanje'
+            accepted: 'Dostava: pružalac prihvatio — isporuka nije potvrđena'
+            delivered: 'Dostava: isporučeno'
+            skipped: 'Dostava: slanje preskočeno'
+          delivery_counts:
+            pending: 'Čeka slanje: %{count}'
+            sending: 'Slanje u toku: %{count}'
+            accepted: 'Pružalac prihvatio: %{count}'
+            rejected: 'Odbijeno: %{count}'
+            failed: 'Neuspjelo: %{count}'
+            unknown: 'Nepotvrđeno: %{count}'
+            skipped: 'Preskočeno: %{count}'
+            delivered: 'Isporučeno: %{count}'
+          retry_delivery: Ponovi slanje
+          retry_confirmation: Ponovi samo potvrđeno neuspjele isporuke. Uspješne i
+            nepotvrđene isporuke neće biti ponovo poslate.
+          nothing_to_retry: Nema potvrđeno neuspjelih isporuka za ponavljanje.
+          delivery_retry_queued: 'Neuspjele isporuke ponovo čekaju slanje: %{count}.'
+          edit_review: Uredi obavještenje
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        simplified:
+          statuses:
+            review: Za pregled
+            ready: Spremno za objavu
+            published: Objavljeno
+            finished: Završeno
+          tabs:
+            review: Treba tvoja odluka
+            automatic: Objavljeno automatski — provjeri
+            done: Završeno
+          settings: Postavke
+          details: Detalji
+          source_history: Izvor i istorija
+          archived_help: Obavještenje više nije aktivno. Podaci i prethodne objave
+            ostaju u istoriji.
+          reasons:
+            expired: Isteklo
+            expired_unpublished: Isteklo bez objave — građani nisu obaviješteni
+            withdrawn: Povučeno
+            cancelled: Otkazano
+            dismissed: Odbačeno
+            resolved: Završeno
+            replaced: Zamijenjeno novijom verzijom
+            not_visible: Objava više nije vidljiva
+          delivery:
+            not_requested: 'Dostava: slanje nije zatraženo'
+            requested: 'Dostava: predato za slanje — isporuka nije potvrđena'
+            error: 'Dostava: greška pri slanju'
+            unknown: 'Dostava: ishod nije potvrđen'
+            queued: 'Dostava: čeka slanje'
+            accepted: 'Dostava: pružalac prihvatio — isporuka nije potvrđena'
+            delivered: 'Dostava: isporučeno'
+            skipped: 'Dostava: slanje preskočeno'
+          delivery_counts:
+            pending: 'Čeka slanje: %{count}'
+            sending: 'Slanje u toku: %{count}'
+            accepted: 'Pružalac prihvatio: %{count}'
+            rejected: 'Odbijeno: %{count}'
+            failed: 'Neuspjelo: %{count}'
+            unknown: 'Nepotvrđeno: %{count}'
+            skipped: 'Preskočeno: %{count}'
+            delivered: 'Isporučeno: %{count}'
+          retry_delivery: Ponovi slanje
+          retry_confirmation: Ponovi samo potvrđeno neuspjele isporuke. Uspješne i
+            nepotvrđene isporuke neće biti ponovo poslate.
+          nothing_to_retry: Nema potvrđeno neuspjelih isporuka za ponavljanje.
+          delivery_retry_queued: 'Neuspjele isporuke ponovo čekaju slanje: %{count}.'
+          edit_review: Uredi obavještenje
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        simplified:
+          statuses:
+            review: Needs review
+            ready: Ready to publish
+            published: Published
+            finished: Finished
+          tabs:
+            review: Needs your decision
+            automatic: Published automatically — check
+            done: Done
+          settings: Settings
+          details: Details
+          source_history: Source and history
+          archived_help: This notice is no longer active. Its facts and previous publications
+            remain in history.
+          reasons:
+            expired: Expired
+            expired_unpublished: Expired unpublished — citizens were never told
+            withdrawn: Withdrawn
+            cancelled: Cancelled
+            dismissed: Dismissed
+            resolved: Resolved
+            replaced: Replaced by a newer version
+            not_visible: Publication is no longer visible
+          delivery:
+            not_requested: 'Delivery: sending not requested'
+            requested: 'Delivery: queued for sending — delivery not confirmed'
+            error: 'Delivery: delivery failed'
+            unknown: 'Delivery: outcome unconfirmed'
+            queued: 'Delivery: waiting to send'
+            accepted: 'Delivery: provider accepted — delivery unconfirmed'
+            delivered: 'Delivery: delivered'
+            skipped: 'Delivery: sending skipped'
+          delivery_counts:
+            pending: 'Pending: %{count}'
+            sending: 'Sending: %{count}'
+            accepted: 'Provider accepted: %{count}'
+            rejected: 'Rejected: %{count}'
+            failed: 'Failed: %{count}'
+            unknown: 'Unconfirmed: %{count}'
+            skipped: 'Skipped: %{count}'
+            delivered: 'Delivered: %{count}'
+          retry_delivery: Retry sending
+          retry_confirmation: Retry only confirmed failed deliveries. Successful or
+            uncertain deliveries will not be resent.
+          nothing_to_retry: No confirmed failed deliveries to retry.
+          delivery_retry_queued: 'Failed deliveries queued again: %{count}.'
+          edit_review: Edit notice
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        simplified:
+          statuses:
+            review: За преглед
+            ready: Спремно за објаву
+            published: Објављено
+            finished: Завршено
+          tabs:
+            review: Потребна је твоја одлука
+            automatic: Објављено аутоматски — провјери
+            done: Завршено
+          settings: Поставке
+          details: Детаљи
+          source_history: Извор и историја
+          archived_help: Обавјештење више није активно. Подаци и претходне објаве остају у историји.
+          reasons:
+            expired: Истекло
+            expired_unpublished: Истекло без објаве — грађани нису обавијештени
+            withdrawn: Повучено
+            cancelled: Отказано
+            dismissed: Одбачено
+            resolved: Завршено
+            replaced: Замијењено новијом верзијом
+            not_visible: Објава више није видљива
+          delivery:
+            not_requested: 'Достава: слање није затражено'
+            requested: 'Достава: предато за слање — испорука није потврђена'
+            error: 'Достава: грешка при слању'
+            unknown: 'Достава: исход није потврђен'
+            queued: 'Достава: чека слање'
+            accepted: 'Достава: пружалац прихватио — испорука није потврђена'
+            delivered: 'Достава: испоручено'
+            skipped: 'Достава: слање прескочено'
+          delivery_counts:
+            pending: 'Чека слање: %{count}'
+            sending: 'Слање у току: %{count}'
+            accepted: 'Пружалац прихватио: %{count}'
+            rejected: 'Одбијено: %{count}'
+            failed: 'Неуспјело: %{count}'
+            unknown: 'Непотврђено: %{count}'
+            skipped: 'Прескочено: %{count}'
+            delivered: 'Испоручено: %{count}'
+          retry_delivery: Понови слање
+          retry_confirmation: Понови само потврђено неуспјеле испоруке. Успјешне и непотврђене испоруке неће бити поново послате.
+          nothing_to_retry: Нема потврђено неуспјелих испорука за понављање.
+          delivery_retry_queued: 'Неуспјеле испоруке поново чекају слање: %{count}.'
+          edit_review: Уреди обавјештење

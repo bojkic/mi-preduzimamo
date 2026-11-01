@@ -1,0 +1,9 @@
+<% add_decidim_page_title(t("mi_launch.neutrality.title")) %>
+<div class="wrapper">
+  <div class="mi-surface mi-launch">
+    <h1><%= t("mi_launch.neutrality.title") %></h1>
+    <% (1..4).each do |i| %>
+      <p><%= t("mi_launch.neutrality.p#{i}") %></p>
+    <% end %>
+  </div>
+</div>

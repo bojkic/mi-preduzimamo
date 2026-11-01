@@ -1,0 +1,17 @@
+version: 1
+language: bs
+templates:
+  otp:
+    category: OTP
+    body: "MI preduzimamo: Vaš kod za potvrdu je {{pin}}. Važi 10 minuta."
+    parameters:
+      - type: TEXT
+        name: pin
+        example: "123456"
+  login:
+    category: TRANSACTIONAL
+    body: "MI preduzimamo: Sigurna prijava je spremna na https://community.example.invalid/v/{{token}} . Link važi kratko i koristi se samo jednom."
+    parameters:
+      - type: TEXT
+        name: token
+        example: "example-single-use-token"

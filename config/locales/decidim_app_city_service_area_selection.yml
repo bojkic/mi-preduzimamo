@@ -1,0 +1,96 @@
+---
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        area_selection:
+          required: Odaberi potvrđena područja za objavu. Odaberi samo MZ ili samo
+            komšiluke; za cijeli grad očisti izbor.
+          help: Pouzdano prepoznata područja već su odabrana. Prijedloge potvrdi ispod
+            ili promijeni izbor.
+          selected: Odabrana područja za objavu
+          none: Područja za objavu nisu odabrana
+          suggestions: Područja prepoznata u izvoru — nisu odabrana za objavu; provjeri
+            moguća preklapanja.
+          proposal_help: Provjeri predložena područja i ukloni ona koja nisu pogođena.
+            Ako su ponuđene i MZ i komšiluci, potvrdi jednu grupu.
+          confirm: Potvrdi ova područja
+          change: Promijeni područja
+          confirmed: 'Potvrđena područja za objavu:'
+          confirmation_note: Potvrđena predložena područja za ovu objavu.
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        area_selection:
+          required: Odaberi potvrđena područja za objavu. Odaberi samo MZ ili samo
+            komšiluke; za cijeli grad očisti izbor.
+          help: Pouzdano prepoznata područja već su odabrana. Prijedloge potvrdi ispod
+            ili promijeni izbor.
+          selected: Odabrana područja za objavu
+          none: Područja za objavu nisu odabrana
+          suggestions: Područja prepoznata u izvoru — nisu odabrana za objavu; provjeri
+            moguća preklapanja.
+          proposal_help: Provjeri predložena područja i ukloni ona koja nisu pogođena.
+            Ako su ponuđene i MZ i komšiluci, potvrdi jednu grupu.
+          confirm: Potvrdi ova područja
+          change: Promijeni područja
+          confirmed: 'Potvrđena područja za objavu:'
+          confirmation_note: Potvrđena predložena područja za ovu objavu.
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        area_selection:
+          required: Odaberi potvrđena područja za objavu. Odaberi samo MZ ili samo
+            komšiluke; za cijeli grad očisti izbor.
+          help: Pouzdano prepoznata područja već su odabrana. Prijedloge potvrdi ispod
+            ili promijeni izbor.
+          selected: Odabrana područja za objavu
+          none: Područja za objavu nisu odabrana
+          suggestions: Područja prepoznata u izvoru — nisu odabrana za objavu; provjeri
+            moguća preklapanja.
+          proposal_help: Provjeri predložena područja i ukloni ona koja nisu pogođena.
+            Ako su ponuđene i MZ i komšiluci, potvrdi jednu grupu.
+          confirm: Potvrdi ova područja
+          change: Promijeni područja
+          confirmed: 'Potvrđena područja za objavu:'
+          confirmation_note: Potvrđena predložena područja za ovu objavu.
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        area_selection:
+          required: Select verified publication areas. Choose only local communities
+            or only neighborhoods; clear the selection for the entire city.
+          help: Reliable matches are already selected. Confirm the suggestions below
+            or change the selection.
+          selected: Selected publication areas
+          none: No publication areas selected
+          suggestions: Areas identified in the source — not selected for publication;
+            check possible overlaps.
+          proposal_help: Check the proposed areas and remove any that are not affected.
+            If both local communities and neighborhoods are offered, confirm one group.
+          confirm: Confirm these areas
+          change: Change areas
+          confirmed: 'Confirmed publication areas:'
+          confirmation_note: Confirmed the proposed areas for this notice.
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        area_selection:
+          required: Одабери потврђена подручја за објаву. Одабери само МЗ или само
+            комшилуке; за цијели град очисти избор.
+          help: Поуздано препозната подручја већ су одабрана. Приједлоге потврди испод
+            или промијени избор.
+          selected: Одабрана подручја за објаву
+          none: Подручја за објаву нису одабрана
+          suggestions: Подручја препозната у извору — нису одабрана за објаву; провјери
+            могућа преклапања.
+          proposal_help: Провјери предложена подручја и уклони она која нису погођена.
+            Ако су понуђене и МЗ и комшилуци, потврди једну групу.
+          confirm: Потврди ова подручја
+          change: Промијени подручја
+          confirmed: 'Потврђена подручја за објаву:'
+          confirmation_note: Потврђена предложена подручја за ову објаву.

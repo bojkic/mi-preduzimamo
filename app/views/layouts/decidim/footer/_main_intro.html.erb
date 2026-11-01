@@ -1,0 +1,15 @@
+<% if current_organization.official_img_footer.attached? %>
+  <%= link_to current_organization.official_url, class: "block mb-6", style: "max-width: 100%;" do %>
+    <%= image_tag current_organization.attached_uploader(:official_img_footer).url,
+                  alt: t("layouts.decidim.footer.current_organization_img", organization: Decidim::Bih::Transliterator.localize(current_organization_name, locale: I18n.locale)),
+                  class: "max-h-16",
+                  width: current_organization.official_img_footer.blob.metadata["width"],
+                  height: current_organization.official_img_footer.blob.metadata["height"],
+                  loading: "lazy", decoding: "async",
+                  style: "max-width: 100%; width: auto; height: auto;" %>
+  <% end %>
+<% end %>
+<div class="text-sm text-white prose">
+  <p><%= t("decidim.pages.home.footer_sub_hero.footer_sub_hero_headline", organization: Decidim::Bih::Transliterator.localize(current_organization_name, locale: I18n.locale)) %></p>
+  <p><%= organization_description_label %></p>
+</div>

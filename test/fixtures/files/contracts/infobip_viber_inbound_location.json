@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "messageId": "synthetic-viber-location-01",
+      "from": "12025550101",
+      "to": "12025550102",
+      "receivedAt": "2040-09-14T10:00:00.000+00:00",
+      "message": {
+        "type": "LOCATION",
+        "text": "Izmišljena lokacija prijave.",
+        "location": {
+          "latitude": 0.125,
+          "longitude": 0.375
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+<% add_decidim_page_title(DecidimApp::LaunchEvent::QUESTION) %>
+<link rel="stylesheet" href="/mi/mi-launch-event.css?v=1">
+<main class="mi-event-poll" data-event-poll data-event-key="<%= @event_key %>" data-changed-message="<%= t("mi_launch_event.changed") %>" data-results-url="<%= main_app.launch_event_poll_results_path %>">
+  <header class="mi-event-poll__header">
+    <span class="mi-event-poll__eyebrow">MI PRE(D)UZIMAMO! · GLAS KOMŠILUKA</span>
+    <h1><%= DecidimApp::LaunchEvent::QUESTION %></h1>
+    <p>Izaberi jedan odgovor. Jedan nalog, jedan glas.</p>
+  </header>
+  <p data-vote-status role="status" class="mi-event-poll__status"><%= @vote ? "Hvala! Tvoj glas je zabilježen." : "" %></p>
+  <% if @event_phase == "unavailable" %>
+    <p><%= t("mi_launch_event.unavailable") %></p>
+  <% elsif @event_phase == "scheduled" %>
+    <p><%= t("mi_launch_event.scheduled") %></p>
+  <% elsif @event_phase == "closed" %>
+    <p><%= t("mi_launch_event.ended") %></p>
+  <% elsif !current_user %>
+    <p>Za glasanje otvori lični link iz poruke ili <%= link_to "prijavi se", Decidim::Bih.public_path("prijava") %>.</p>
+  <% elsif !@vote %>
+    <%= form_with url: main_app.launch_event_poll_vote_path, method: :post, local: true, html: { "data-event-vote" => true } do |form| %>
+      <%= hidden_field_tag :event_key, @event_key %>
+      <fieldset>
+        <legend class="sr-only">Izaberi najveći problem</legend>
+        <% DecidimApp::LaunchEvent::CHOICES.each do |key, label| %>
+          <label class="mi-event-poll__option">
+            <%= radio_button_tag :choice, key, false, required: true %>
+            <span><%= label %></span>
+          </label>
+        <% end %>
+      </fieldset>
+      <%= form.submit "Glasaj", class: "mi-btn mi-btn--primary mi-event-poll__submit" %>
+    <% end %>
+  <% end %>
+  <section class="mi-event-poll__results" aria-label="Rezultati glasanja">
+    <h2>Komšiluk kaže</h2>
+    <p>Ukupno glasova: <strong data-vote-total><%= @results[:total] %></strong> · rezultati se osvježavaju uživo</p>
+    <% @results[:choices].each do |row| %>
+      <article class="mi-event-poll__result" data-result="<%= row[:key] %>">
+        <div class="mi-event-poll__result-label"><strong><%= row[:label] %></strong><span data-count><%= row[:count] %> · <%= row[:percent] %>%</span></div>
+        <progress max="100" value="<%= row[:percent] %>" aria-label="<%= row[:label] %>"></progress>
+      </article>
+    <% end %>
+  </section>
+</main>
+<script defer src="/mi/mi-launch-event.js?v=2"></script>

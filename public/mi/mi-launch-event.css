@@ -1,0 +1,20 @@
+/* The launch poll stays readable on phones and on the venue screen. */
+.mi-event-poll { max-width: 54rem; margin: 2rem auto; padding: 1.5rem; color: #033653; }
+.mi-event-poll__header h1 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; margin: .75rem 0 1rem; }
+.mi-event-poll__eyebrow { font-weight: 700; letter-spacing: .08em; font-size: .85rem; }
+.mi-event-poll fieldset { border: 0; padding: 0; display: grid; gap: .6rem; margin: 1.5rem 0; }
+.mi-event-poll__option { display: flex; align-items: center; gap: .8rem; padding: 1rem; border: 2px solid #dce4e7; border-radius: 14px; background: white; cursor: pointer; font-size: 1.1rem; }
+.mi-event-poll__option:has(input:checked) { border-color: #db7154; background: #fff4ee; }
+.mi-event-poll__option input { width: 1.2rem; height: 1.2rem; accent-color: #033653; margin: 0; }
+.mi-event-poll__option:focus-within { outline: 3px solid #033653; outline-offset: 2px; }
+.mi-event-poll__submit { width: 100%; min-height: 3.25rem; }
+.mi-event-poll__status { font-weight: 700; }
+.mi-event-poll__results { margin-top: 2rem; }
+.mi-event-poll__results h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.mi-event-poll__result { margin: 1.15rem 0; }
+.mi-event-poll__result-label { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .35rem; }
+.mi-event-poll progress { appearance: none; display: block; width: 100%; height: 1.1rem; border: 0; border-radius: 8px; overflow: hidden; background: #e3e9e8; }
+.mi-event-poll progress::-webkit-progress-bar { background: #e3e9e8; border-radius: 8px; }
+.mi-event-poll progress::-webkit-progress-value { background: #db7154; border-radius: 8px; transition: width .3s; }
+.mi-event-poll progress::-moz-progress-bar { background: #db7154; border-radius: 8px; }
+@media (max-width: 600px) { .mi-event-poll { margin: .5rem auto; padding: 1rem; } }

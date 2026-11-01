@@ -1,0 +1,16 @@
+<div data-city-proposed-areas data-confirmation-note="<%= t('decidim_app.admin.city_service_events.area_selection.confirmation_note') %>">
+  <p><%= t('decidim_app.admin.city_service_events.area_selection.proposal_help') %></p>
+  <% areas.group_by(&:kind).each do |kind, group| %>
+    <fieldset data-city-area-proposal="<%= kind %>">
+      <legend><%= t("decidim_app.admin.city_service_events.review_facts.values.#{kind}", default: kind == 'mz' ? 'MZ' : 'Komšiluci') %></legend>
+      <% group.each do |area| %>
+        <label class="city-area-proposal-option">
+          <input type="checkbox" value="<%= area.id %>" data-city-proposed-area checked>
+          <%= city_alert_area_label(area.slug) %>
+        </label>
+      <% end %>
+      <button type="button" class="button small secondary" data-city-confirm-areas="<%= kind %>"><%= t('decidim_app.admin.city_service_events.area_selection.confirm') %></button>
+    </fieldset>
+  <% end %>
+  <p data-city-area-confirmation-status role="status" data-confirmed-label="<%= t('decidim_app.admin.city_service_events.area_selection.confirmed') %>"></p>
+</div>

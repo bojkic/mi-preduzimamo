@@ -1,0 +1,42 @@
+inherit_gem:
+  decidim-dev: rubocop-decidim.yml
+
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+
+# Applied migrations are immutable history. Every cop below gives advice about
+# how a migration should have been WRITTEN, and acting on it now would either
+# change nothing (the migration has already run in production) or, worse, make a
+# freshly migrated database differ from the live one — Rails/AddColumnIndex would
+# literally add indexes production does not have. New migrations stay linted for
+# everything else; only these are silenced, and only here.
+Rails/BulkChangeTable:
+  Exclude:
+    - "db/migrate/**/*"
+Rails/ThreeStateBooleanColumn:
+  Exclude:
+    - "db/migrate/**/*"
+Rails/AddColumnIndex:
+  Exclude:
+    - "db/migrate/**/*"
+Rails/RedundantActiveRecordAllMethod:
+  Exclude:
+    - "db/migrate/**/*"
+Style/SafeNavigationChainLength:
+  Exclude:
+    - "db/migrate/**/*"
+Style/RedundantRegexpArgument:
+  Exclude:
+    - "db/migrate/**/*"
+
+# bin/ scripts are named with dashes by convention here (race-refresh.sh,
+# goodwill-reconcile.sh, backup-decidim-app.sh, …). The one Ruby script among
+# them follows that convention and is invoked by that exact path, which its own
+# usage line documents. Naming/FileName is a file-level cop, so an inline
+# directive cannot express this.
+Naming/FileName:
+  Exclude:
+    # Established operator template filename, referenced by copied apply files.
+    - ".claude/skills/triaging-citizen-reports/apply-template.rb"
+    - "bin/**/*"

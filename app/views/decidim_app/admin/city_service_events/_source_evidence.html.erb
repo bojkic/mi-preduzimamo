@@ -1,0 +1,87 @@
+<section class="city-alert-source-evidence" data-city-source-evidence="<%= event.id %>">
+  <h4 class="h6"><%= t('.title') %></h4>
+  <dl>
+    <dt><%= t('.affected') %></dt><dd><%= event.affected_text.presence || t('.unknown') %></dd>
+    <% { 'tj' => 'tj', 'feeder' => 'feeder', 'reason' => 'reason', 'temporal_precision' => 'precision', 'timezone' => 'timezone' }.each do |key, label| %>
+      <% if event.extraction_metadata[key].present? %>
+        <dt><%= t(".#{label}") %></dt><dd><%= event.extraction_metadata[key] %></dd>
+      <% end %>
+    <% end %>
+    <dt><%= t('.fetched') %></dt><dd><%= event.fetched_at ? l(event.fetched_at, format: :long) : t('.unknown') %></dd>
+    <dt><%= t('.published') %></dt><dd><%= event.source_published_at ? l(event.source_published_at, format: :long) : t('.unknown') %></dd>
+    <% if event.source_updated_at %><dt><%= t('.updated') %></dt><dd><%= l(event.source_updated_at, format: :long) %></dd><% end %>
+    <dt><%= t('.lifecycle') %></dt><dd><%= t("decidim_app.admin.city_service_events.lifecycles.#{event.lifecycle}", default: event.lifecycle) %></dd>
+    <dt><%= t('.parser') %></dt><dd><code><%= event.parser_version %></code></dd>
+    <% if event.source_occurrence_id.present? %><dt><%= t('.occurrence') %></dt><dd><code><%= event.source_occurrence_id %></code></dd><% end %>
+    <% if event.content_version.present? %><dt><%= t('.version') %></dt><dd style="overflow-wrap:anywhere;"><code><%= event.content_version %></code></dd><% end %>
+    <% if event.reviewed_content_version.present? %><dt><%= t('.reviewed_version') %></dt><dd style="overflow-wrap:anywhere;"><code><%= event.reviewed_content_version %></code></dd><% end %>
+  </dl>
+  <% coverage = event.extraction_metadata.fetch("coverage", {}) %>
+  <% if (coverage["crosswalk_revision"].present? || coverage["street_coverage_revision"].present?) && coverage["source_content_version"] == event.content_version %>
+    <section data-city-place-containment="true">
+      <% if coverage["street_coverage_revision"].present? %>
+        <p><strong><%= t('.street_scope') %></strong> <%= t('.street_scope_note') %></p>
+      <% else %>
+        <p><strong><%= t('.place_containment') %></strong> <%= t('.place_containment_note') %></p>
+      <% end %>
+      <ul>
+        <% coverage.fetch("affected_places", []).each do |place| %>
+          <li><%= place["evidence"] %> → <%= place["slug"] %>
+            <% if place["source_url"].to_s.start_with?("https://www.openstreetmap.org/", "https://overpass-api.de/", "https://gis.gradbijeljina.org/wms/") %>
+              <%= link_to t('.title'), place["source_url"], target: "_blank", rel: "noopener noreferrer" %>
+            <% end %>
+            <% Array(place["source_object_urls"]).each do |url| %>
+              <% if url.to_s.match?(%r{\Ahttps://www\.openstreetmap\.org/way/\d+\z}) %>
+                <%= link_to "OSM #{url.split('/').last}", url, target: "_blank", rel: "noopener noreferrer" %>
+              <% end %>
+            <% end %>
+            <% Array(place["citations"]).each do |citation| %>
+              <% if citation["url"].to_s.start_with?("https://www.gradbijeljina.org/") %>
+                <%= link_to t('.place_citation', page: citation["page"], item: citation["item"]), citation["url"], target: "_blank", rel: "noopener noreferrer" %>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <% if coverage.fetch("unresolved_places", []).any? %>
+        <p><strong><%= t('.unknown') %>:</strong> <%= coverage.fetch("unresolved_places").map { |place| place["evidence"] }.join("; ") %></p>
+      <% end %>
+    </section>
+  <% end %>
+  <% context = event.extraction_metadata["place_context"].to_h %>
+  <% if event.content_version.present? && context["source_content_version"] == event.content_version && context["places"].present? %>
+    <section data-city-place-context="true">
+      <p><strong><%= t('.place_context_title') %></strong> <%= t('.place_context_note') %></p>
+      <ul>
+        <% context.fetch("places").each do |place| %>
+          <li><%= place["name"] %> (<%= t(".place_context_kinds.#{place['kind']}") %>) · <%= place["evidence"] %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+  <% suggestions = event.extraction_metadata["area_review_suggestions"].to_h %>
+  <% if suggestions["source_content_version"] == event.content_version && suggestions["candidates"].present? %>
+    <p><strong><%= t('.area_suggestions') %></strong> <%= t('.area_suggestions_note') %></p>
+    <ul data-city-area-suggestions="true">
+      <% suggestions.fetch("candidates").each do |candidate| %>
+        <li><%= candidate["name"].presence || candidate["slug"] %> · <%= candidate["evidence"] %><% if candidate["method"] == "feeder_context_only" %> · <strong><%= t('.feeder_context_only') %></strong><% end %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if event.extraction_metadata["source_withdrawal"].present? %>
+    <p data-city-source-withdrawal="true"><strong><%= t('.withdrawn') %></strong></p>
+    <p><%= event.extraction_metadata.dig("source_withdrawal", "observed_at") %> · <%= event.extraction_metadata.dig("source_withdrawal", "reason") %></p>
+  <% end %>
+  <% if @previous_versions.fetch(event.id, []).any? %>
+    <p><strong><%= t('.changed_warning') %></strong></p>
+    <ul>
+      <% @previous_versions.fetch(event.id).each do |previous| %>
+        <li><details id="city-service-version-<%= previous.id %>"><summary><%= previous.title %> · <%= city_alert_time_window(previous) %></summary><p><%= previous.summary %></p><p><%= state_label(previous.state) %></p></details></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if event.superseded_by_id.present? %>
+    <p><%= link_to t('.replacement'), decidim_app_admin_city_service_events_path(tab: 'all', source_key: event.source_key, anchor: "city-service-event-#{event.superseded_by_id}") %></p>
+  <% end %>
+  <%= render "document_history", event: event %>
+</section>

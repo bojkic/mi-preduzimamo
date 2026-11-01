@@ -1,0 +1,309 @@
+---
+sr:
+  decidim_app:
+    komsiluk_boards:
+      manage_source: Upravljaj izvornim obavještenjem
+      source_title: Gradsko obavještenje i povezane table
+      back_to_review: Nazad na pregled objave
+      local_hide_help: Za skrivanje samo na ovoj tabli koristite odluku „Sakrij“ na pregledu objave. Ovdje upravljate izvornim obavještenjem i svim povezanim tablama.
+      impact: Obuhvat odluke
+      pending:
+        one: "%{count} član još nema stavku u prijemnom sandučetu."
+        few: "%{count} člana još nemaju stavku u prijemnom sandučetu."
+        other: "%{count} članova još nema stavku u prijemnom sandučetu."
+      phone_records:
+        one: "%{count} evidentiran telefonski nalog."
+        few: "%{count} evidentirana telefonska naloga."
+        other: "%{count} evidentiranih telefonskih naloga."
+      handoff_help: Povlačenje zaustavlja preostale aplikacijske isporuke. Poruke koje je pružalac već prihvatio mogu nastaviti isporuku; njihov status je na pregledu objave.
+      reason: Razlog odluke
+      one_source_help: Ova odluka povlači ovaj izvor. Drugi važeći izvori istog obavještenja mogu zadržati objavu na tablama.
+      correct_source: Povuci ovaj izvor radi ispravke
+      withdraw_source: Povuci ovaj izvor
+      open_source_review: Otvori pregled izvora
+      withdraw_all: Povuci obavještenje sa svih tabli
+      all_sources_help: Povlačenje svih trenutno objavljenih izvora utiče na %{count} povezanih tabli. Pregledajte njihov spisak iznad.
+      confirm_withdraw_all: Potvrdi povlačenje sa svih povezanih tabli
+      scope:
+        citywide: Područje grada
+        part: 'Dio navedenog područja: %{area}. Objava na tabli ne potvrđuje da je svako domaćinstvo pogođeno.'
+        affected: 'Navedeno područje: %{area}'
+      phone_scope:
+        blocked: 'Telefonsko slanje nije dozvoljeno: izvor određuje širi obuhvat table, bez potvrđenog obuhvata domaćinstava.'
+        review: Telefonsko slanje traži zaseban pregled primaoca, kanala, roka i sadržaja.
+      results:
+        withdrawn: Obavještenje je povučeno u izabranom obuhvatu.
+        correction: Izvor je povučen radi ispravke. Pregledajte izmjene i ponovo odobrite objavu.
+        stale_review: Obavještenje se promijenilo ili je pregled istekao. Pregledajte trenutni obuhvat i ponovite odluku.
+        not_authorized: Nemate ovlašćenje za upravljanje gradskim obavještenjima.
+        invalid_action: Izaberite ponuđenu odluku.
+        note_required: Unesite razlog odluke, do 2.000 znakova.
+        not_publishable: Nema trenutno objavljenog izvora za ovu odluku.
+      context:
+        services: Usluge i pregledani kontakti
+        reports: Javne prijave i njihov status
+        projects: Projekti zajednice
+        citywide: Pregled za cijeli grad; geografska povezanost projekata nije potvrđena.
+        volunteer: Volontiranje i javne aktivnosti
+        ask: Pitaj Milicu
+        report_problem: Prijavi povezan problem
+        source_record: Otvori povezani zapis
+        source_changed: Izvor je izmijenjen. Provjerite njegov trenutni status.
+        read_reference: 'Pročitaj objavu sa table #%{id}.'
+        private_help: Milica će pročitati ovu objavu samo dok je dostupna u vašem komšiluku. Pitanje možete pregledati prije slanja.
+        open_question: Pripremi pitanje Milici
+        back_to_notice: Nazad na objavu
+        services_help: Pregledani kontakti i uputstva iz gradskog imenika. Aktuelna servisna obavještenja su na vašoj tabli.
+        official_source: Otvori zvanični izvor
+        milica_notice: |-
+          %{text}
+
+          Trenutna objava: %{url}
+          Za povezan komunalni problem možete pripremiti prijavu: %{report_url}. Lokaciju i slanje potvrđujete vi.
+        milica_unavailable: Ova objava trenutno nije dostupna na vašoj tabli. Prijavite se i provjerite dodijeljeni komšiluk ili otvorite trenutne objave.
+bs:
+  decidim_app:
+    komsiluk_boards:
+      manage_source: Upravljaj izvornim obavještenjem
+      source_title: Gradsko obavještenje i povezane table
+      back_to_review: Nazad na pregled objave
+      local_hide_help: Za skrivanje samo na ovoj tabli koristite odluku „Sakrij“ na pregledu objave. Ovdje upravljate izvornim obavještenjem i svim povezanim tablama.
+      impact: Obuhvat odluke
+      pending:
+        one: "%{count} član još nema stavku u prijemnom sandučetu."
+        few: "%{count} člana još nemaju stavku u prijemnom sandučetu."
+        other: "%{count} članova još nema stavku u prijemnom sandučetu."
+      phone_records:
+        one: "%{count} evidentiran telefonski nalog."
+        few: "%{count} evidentirana telefonska naloga."
+        other: "%{count} evidentiranih telefonskih naloga."
+      handoff_help: Povlačenje zaustavlja preostale aplikacijske isporuke. Poruke koje je pružalac već prihvatio mogu nastaviti isporuku; njihov status je na pregledu objave.
+      reason: Razlog odluke
+      one_source_help: Ova odluka povlači ovaj izvor. Drugi važeći izvori istog obavještenja mogu zadržati objavu na tablama.
+      correct_source: Povuci ovaj izvor radi ispravke
+      withdraw_source: Povuci ovaj izvor
+      open_source_review: Otvori pregled izvora
+      withdraw_all: Povuci obavještenje sa svih tabli
+      all_sources_help: Povlačenje svih trenutno objavljenih izvora utiče na %{count} povezanih tabli. Pregledajte njihov spisak iznad.
+      confirm_withdraw_all: Potvrdi povlačenje sa svih povezanih tabli
+      scope:
+        citywide: Područje grada
+        part: 'Dio navedenog područja: %{area}. Objava na tabli ne potvrđuje da je svako domaćinstvo pogođeno.'
+        affected: 'Navedeno područje: %{area}'
+      phone_scope:
+        blocked: 'Telefonsko slanje nije dozvoljeno: izvor određuje širi obuhvat table, bez potvrđenog obuhvata domaćinstava.'
+        review: Telefonsko slanje traži zaseban pregled primaoca, kanala, roka i sadržaja.
+      results:
+        withdrawn: Obavještenje je povučeno u izabranom obuhvatu.
+        correction: Izvor je povučen radi ispravke. Pregledajte izmjene i ponovo odobrite objavu.
+        stale_review: Obavještenje se promijenilo ili je pregled istekao. Pregledajte trenutni obuhvat i ponovite odluku.
+        not_authorized: Nemate ovlašćenje za upravljanje gradskim obavještenjima.
+        invalid_action: Izaberite ponuđenu odluku.
+        note_required: Unesite razlog odluke, do 2.000 znakova.
+        not_publishable: Nema trenutno objavljenog izvora za ovu odluku.
+      context:
+        services: Usluge i pregledani kontakti
+        reports: Javne prijave i njihov status
+        projects: Projekti zajednice
+        citywide: Pregled za cijeli grad; geografska povezanost projekata nije potvrđena.
+        volunteer: Volontiranje i javne aktivnosti
+        ask: Pitaj Milicu
+        report_problem: Prijavi povezan problem
+        source_record: Otvori povezani zapis
+        source_changed: Izvor je izmijenjen. Provjerite njegov trenutni status.
+        read_reference: 'Pročitaj objavu sa table #%{id}.'
+        private_help: Milica će pročitati ovu objavu samo dok je dostupna u vašem komšiluku. Pitanje možete pregledati prije slanja.
+        open_question: Pripremi pitanje Milici
+        back_to_notice: Nazad na objavu
+        services_help: Pregledani kontakti i uputstva iz gradskog imenika. Aktuelna servisna obavještenja su na vašoj tabli.
+        official_source: Otvori zvanični izvor
+        milica_notice: |-
+          %{text}
+
+          Trenutna objava: %{url}
+          Za povezan komunalni problem možete pripremiti prijavu: %{report_url}. Lokaciju i slanje potvrđujete vi.
+        milica_unavailable: Ova objava trenutno nije dostupna na vašoj tabli. Prijavite se i provjerite dodijeljeni komšiluk ili otvorite trenutne objave.
+hr:
+  decidim_app:
+    komsiluk_boards:
+      manage_source: Upravljaj izvornim obavještenjem
+      source_title: Gradsko obavještenje i povezane table
+      back_to_review: Nazad na pregled objave
+      local_hide_help: Za skrivanje samo na ovoj tabli koristite odluku „Sakrij“ na pregledu objave. Ovdje upravljate izvornim obavještenjem i svim povezanim tablama.
+      impact: Obuhvat odluke
+      pending:
+        one: "%{count} član još nema stavku u prijemnom sandučetu."
+        few: "%{count} člana još nemaju stavku u prijemnom sandučetu."
+        other: "%{count} članova još nema stavku u prijemnom sandučetu."
+      phone_records:
+        one: "%{count} evidentiran telefonski nalog."
+        few: "%{count} evidentirana telefonska naloga."
+        other: "%{count} evidentiranih telefonskih naloga."
+      handoff_help: Povlačenje zaustavlja preostale aplikacijske isporuke. Poruke koje je pružalac već prihvatio mogu nastaviti isporuku; njihov status je na pregledu objave.
+      reason: Razlog odluke
+      one_source_help: Ova odluka povlači ovaj izvor. Drugi važeći izvori istog obavještenja mogu zadržati objavu na tablama.
+      correct_source: Povuci ovaj izvor radi ispravke
+      withdraw_source: Povuci ovaj izvor
+      open_source_review: Otvori pregled izvora
+      withdraw_all: Povuci obavještenje sa svih tabli
+      all_sources_help: Povlačenje svih trenutno objavljenih izvora utiče na %{count} povezanih tabli. Pregledajte njihov spisak iznad.
+      confirm_withdraw_all: Potvrdi povlačenje sa svih povezanih tabli
+      scope:
+        citywide: Područje grada
+        part: 'Dio navedenog područja: %{area}. Objava na tabli ne potvrđuje da je svako domaćinstvo pogođeno.'
+        affected: 'Navedeno područje: %{area}'
+      phone_scope:
+        blocked: 'Telefonsko slanje nije dozvoljeno: izvor određuje širi obuhvat table, bez potvrđenog obuhvata domaćinstava.'
+        review: Telefonsko slanje traži zaseban pregled primaoca, kanala, roka i sadržaja.
+      results:
+        withdrawn: Obavještenje je povučeno u izabranom obuhvatu.
+        correction: Izvor je povučen radi ispravke. Pregledajte izmjene i ponovo odobrite objavu.
+        stale_review: Obavještenje se promijenilo ili je pregled istekao. Pregledajte trenutni obuhvat i ponovite odluku.
+        not_authorized: Nemate ovlašćenje za upravljanje gradskim obavještenjima.
+        invalid_action: Izaberite ponuđenu odluku.
+        note_required: Unesite razlog odluke, do 2.000 znakova.
+        not_publishable: Nema trenutno objavljenog izvora za ovu odluku.
+      context:
+        services: Usluge i pregledani kontakti
+        reports: Javne prijave i njihov status
+        projects: Projekti zajednice
+        citywide: Pregled za cijeli grad; geografska povezanost projekata nije potvrđena.
+        volunteer: Volontiranje i javne aktivnosti
+        ask: Pitaj Milicu
+        report_problem: Prijavi povezan problem
+        source_record: Otvori povezani zapis
+        source_changed: Izvor je izmijenjen. Provjerite njegov trenutni status.
+        read_reference: 'Pročitaj objavu sa table #%{id}.'
+        private_help: Milica će pročitati ovu objavu samo dok je dostupna u vašem komšiluku. Pitanje možete pregledati prije slanja.
+        open_question: Pripremi pitanje Milici
+        back_to_notice: Nazad na objavu
+        services_help: Pregledani kontakti i uputstva iz gradskog imenika. Aktuelna servisna obavještenja su na vašoj tabli.
+        official_source: Otvori zvanični izvor
+        milica_notice: |-
+          %{text}
+
+          Trenutna objava: %{url}
+          Za povezan komunalni problem možete pripremiti prijavu: %{report_url}. Lokaciju i slanje potvrđujete vi.
+        milica_unavailable: Ova objava trenutno nije dostupna na vašoj tabli. Prijavite se i provjerite dodijeljeni komšiluk ili otvorite trenutne objave.
+en:
+  decidim_app:
+    komsiluk_boards:
+      manage_source: Manage source notice
+      source_title: City notice and linked boards
+      back_to_review: Back to notice review
+      local_hide_help: Use Hide on the notice review to hide only this board placement. This page manages source notices across their linked boards.
+      impact: Decision scope
+      pending:
+        one: "%{count} member does not yet have an inbox item."
+        other: "%{count} members do not yet have inbox items."
+      phone_records:
+        one: "%{count} recorded phone request."
+        other: "%{count} recorded phone requests."
+      handoff_help: Withdrawal stops remaining application dispatch. Messages already accepted by the provider may continue delivery; inspect their status on the notice review.
+      reason: Reason
+      one_source_help: This decision withdraws this source. Other valid supporting sources may keep the notice on the boards.
+      correct_source: Withdraw this source for correction
+      withdraw_source: Withdraw this source
+      open_source_review: Open source review
+      withdraw_all: Withdraw notice from all boards
+      all_sources_help: Withdrawing all currently published sources affects %{count} linked boards. Review the list above.
+      confirm_withdraw_all: Confirm withdrawal from all linked boards
+      scope:
+        citywide: City area
+        part: 'Part of the stated area: %{area}. A board notice does not establish that every household is affected.'
+        affected: 'Stated area: %{area}'
+      phone_scope:
+        blocked: 'Phone delivery is blocked: broad board relevance does not establish the affected households.'
+        review: Phone delivery requires a separate audience, channel, expiry and content review.
+      results:
+        withdrawn: Notice withdrawn within the selected scope.
+        correction: Source withdrawn for correction. Review changes and approve publication again.
+        stale_review: The notice changed or the preview expired. Review the current scope and repeat the decision.
+        not_authorized: City-notice management permission is required.
+        invalid_action: Choose an available decision.
+        note_required: Enter a reason of up to 2,000 characters.
+        not_publishable: No currently published source matches this decision.
+      context:
+        services: Services and reviewed contacts
+        reports: Public reports and status
+        projects: Community projects
+        citywide: City-wide catalog; project geography has not been verified.
+        volunteer: Volunteering and public activities
+        ask: Ask Milica
+        report_problem: Report a related problem
+        source_record: Open linked record
+        source_changed: The source changed. Check its current status.
+        read_reference: 'Read board notice #%{id}.'
+        private_help: Milica can read this notice while it is available in your neighborhood. Review the question before sending it.
+        open_question: Prepare a question for Milica
+        back_to_notice: Back to notice
+        services_help: Reviewed guidance and contacts from the city directory. Current service notices are on your board.
+        official_source: Open official source
+        milica_notice: |-
+          %{text}
+
+          Current notice: %{url}
+          Prepare a related civic report: %{report_url}. You confirm its location and submission.
+        milica_unavailable: This notice is currently unavailable on your board. Sign in and check your assigned neighborhood or open current notices.
+sr-Cyrl:
+  decidim_app:
+    komsiluk_boards:
+      manage_source: Управљај изворним обавјештењем
+      source_title: Градско обавјештење и повезане табле
+      back_to_review: Назад на преглед објаве
+      local_hide_help: За скривање само на овој табли користите одлуку „Сакриј“ на прегледу објаве. Овдје управљате изворним обавјештењем и свим повезаним таблама.
+      impact: Обухват одлуке
+      pending:
+        one: "%{count} члан још нема ставку у пријемном сандучету."
+        few: "%{count} члана још немају ставку у пријемном сандучету."
+        other: "%{count} чланова још нема ставку у пријемном сандучету."
+      phone_records:
+        one: "%{count} евидентиран телефонски налог."
+        few: "%{count} евидентирана телефонска налога."
+        other: "%{count} евидентираних телефонских налога."
+      handoff_help: Повлачење зауставља преостале апликацијске испоруке. Поруке које је пружалац већ прихватио могу наставити испоруку; њихов статус је на прегледу објаве.
+      reason: Разлог одлуке
+      one_source_help: Ова одлука повлачи овај извор. Други важећи извори истог обавјештења могу задржати објаву на таблама.
+      correct_source: Повуци овај извор ради исправке
+      withdraw_source: Повуци овај извор
+      open_source_review: Отвори преглед извора
+      withdraw_all: Повуци обавјештење са свих табли
+      all_sources_help: Повлачење свих тренутно објављених извора утиче на %{count} повезаних табли. Прегледајте њихов списак изнад.
+      confirm_withdraw_all: Потврди повлачење са свих повезаних табли
+      scope:
+        citywide: Подручје града
+        part: 'Дио наведеног подручја: %{area}. Објава на табли не потврђује да је свако домаћинство погођено.'
+        affected: 'Наведено подручје: %{area}'
+      phone_scope:
+        blocked: 'Телефонско слање није дозвољено: извор одређује шири обухват табле, без потврђеног обухвата домаћинстава.'
+        review: Телефонско слање тражи засебан преглед примаоца, канала, рока и садржаја.
+      results:
+        withdrawn: Обавјештење је повучено у изабраном обухвату.
+        correction: Извор је повучен ради исправке. Прегледајте измјене и поново одобрите објаву.
+        stale_review: Обавјештење се промијенило или је преглед истекао. Прегледајте тренутни обухват и поновите одлуку.
+        not_authorized: Немате овлашћење за управљање градским обавјештењима.
+        invalid_action: Изаберите понуђену одлуку.
+        note_required: Унесите разлог одлуке, до 2.000 знакова.
+        not_publishable: Нема тренутно објављеног извора за ову одлуку.
+      context:
+        services: Услуге и прегледани контакти
+        reports: Јавне пријаве и њихов статус
+        projects: Пројекти заједнице
+        citywide: Преглед за цијели град; географска повезаност пројеката није потврђена.
+        volunteer: Волонтирање и јавне активности
+        ask: Питај Милицу
+        report_problem: Пријави повезан проблем
+        source_record: Отвори повезани запис
+        source_changed: Извор је измијењен. Провјерите његов тренутни статус.
+        read_reference: 'Прочитај објаву са табле #%{id}.'
+        private_help: Милица ће прочитати ову објаву само док је доступна у вашем комшилуку. Питање можете прегледати прије слања.
+        open_question: Припреми питање Милици
+        back_to_notice: Назад на објаву
+        services_help: Прегледани контакти и упутства из градског именика. Актуелна сервисна обавјештења су на вашој табли.
+        official_source: Отвори званични извор
+        milica_notice: |-
+          %{text}
+
+          Тренутна објава: %{url}
+          За повезан комунални проблем можете припремити пријаву: %{report_url}. Локацију и слање потврђујете ви.
+        milica_unavailable: Ова објава тренутно није доступна на вашој табли. Пријавите се и провјерите додијељени комшилук или отворите тренутне објаве.

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+if [[ "${RAILS_ENV:-test}" != test || "${RACK_ENV:-test}" != test ]]; then
+  echo "Verification requires test environment." >&2
+  exit 64
+fi
+: "${DATABASE_URL:?Set an explicit isolated test DATABASE_URL}"
+: "${REDIS_URL:?Set an explicit isolated test REDIS_URL}"
+export RAILS_ENV=test RACK_ENV=test
+bundle exec ruby script/verify_engine_binding.rb
+bundle exec ruby -I script/lib -r mi_test_guard -r decidim/bih/redis_endpoint -e '
+  begin
+    MiTestGuard.reject_named_database_urls!(ENV)
+    MiTestGuard.database_from_url!(ENV.fetch("DATABASE_URL"))
+    MiTestGuard.validate_filters!(ENV)
+    Decidim::Bih::RedisEndpoint.guard_test_environment!(ENV)
+  rescue MiTestGuard::Invalid, Decidim::Bih::RedisEndpoint::Error => error
+    warn "Refusing unsafe verification environment: #{error.message}"
+    exit 64
+  end
+'
+bundle exec rails runner 'abort "Wrong application root" unless Rails.root.realpath.to_s == File.realpath(Dir.pwd)'
+bundle exec rails zeitwerk:check
+bundle exec rails test

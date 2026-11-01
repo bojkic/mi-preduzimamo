@@ -1,0 +1,66 @@
+---
+en:
+  decidim_app:
+    report_rollout_readiness:
+      notification: "%{stage} – %{label}: ready to prepare and review this step. Deployment and activation require separate approval."
+      review: "Review release conditions"
+      stages:
+        R2: "email intake"
+        R3: "tasks and evidence"
+        R4: "prepare the new statuses"
+        R5: "switch to the new statuses"
+        R6: "verify automation"
+        R7: "remove the legacy fields"
+        R8: "trial policy activation"
+sr:
+  decidim_app:
+    report_rollout_readiness:
+      notification: "%{stage} – %{label}: naredni korak je spreman za pripremu i pregled. Objava i aktivacija zahtijevaju posebno odobrenje."
+      review: "Pregledaj uslove i odobrenje"
+      stages:
+        R2: "prijem e-pošte"
+        R3: "zadaci i dokazi"
+        R4: "priprema novih statusa"
+        R5: "prelazak na nove statuse"
+        R6: "provjera automatizacije"
+        R7: "uklanjanje starih polja"
+        R8: "probno uključivanje pravila"
+sr-Cyrl:
+  decidim_app:
+    report_rollout_readiness:
+      notification: "%{stage} – %{label}: наредни корак је спреман за припрему и преглед. Објава и активација захтијевају посебно одобрење."
+      review: "Прегледај услове и одобрење"
+      stages:
+        R2: "пријем е-поште"
+        R3: "задаци и докази"
+        R4: "припрема нових статуса"
+        R5: "прелазак на нове статусе"
+        R6: "провјера аутоматизације"
+        R7: "уклањање старих поља"
+        R8: "пробно укључивање правила"
+bs:
+  decidim_app:
+    report_rollout_readiness:
+      notification: "%{stage} – %{label}: naredni korak je spreman za pripremu i pregled. Objava i aktivacija zahtijevaju posebno odobrenje."
+      review: "Pregledaj uslove i odobrenje"
+      stages:
+        R2: "prijem e-pošte"
+        R3: "zadaci i dokazi"
+        R4: "priprema novih statusa"
+        R5: "prelazak na nove statuse"
+        R6: "provjera automatizacije"
+        R7: "uklanjanje starih polja"
+        R8: "probno uključivanje pravila"
+hr:
+  decidim_app:
+    report_rollout_readiness:
+      notification: "%{stage} – %{label}: sljedeći korak je spreman za pripremu i pregled. Objava i aktivacija zahtijevaju posebno odobrenje."
+      review: "Pregledaj uvjete i odobrenje"
+      stages:
+        R2: "prijem e-pošte"
+        R3: "zadaci i dokazi"
+        R4: "priprema novih statusa"
+        R5: "prelazak na nove statuse"
+        R6: "provjera automatizacije"
+        R7: "uklanjanje starih polja"
+        R8: "probno uključivanje pravila"

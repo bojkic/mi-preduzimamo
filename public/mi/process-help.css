@@ -1,0 +1,5 @@
+/* Keep process help in the page flow, within the available content width. */
+[data-floating-help]{position:static;inset:auto;transform:none;display:flex;justify-content:flex-end;width:100%;max-width:100%;margin:0 0 24px;box-sizing:border-box}
+[data-floating-help] button{max-width:100%;min-height:44px;padding:10px 14px;border:1px solid #91abb8;border-radius:8px;white-space:normal;overflow-wrap:anywhere;gap:8px}
+[data-floating-help] button:focus-visible{outline:3px solid #1477a0;outline-offset:3px}
+@media(max-width:640px){[data-floating-help]{justify-content:flex-start;margin-bottom:20px}}

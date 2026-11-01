@@ -1,0 +1,61 @@
+---
+sr:
+  mi_race_projects:
+    archive_title: Trka komšiluka 2026 — konačni rezultati
+    choose_title: Odaberi projekat za svoj komšiluk
+    choose_intro: Filipa Višnjića i Novi Dvorovi osvojili su po 3.000 KM za zajednički
+      projekat. Predloži ideju i razgovaraj sa komšijama.
+    process_link: Otvori proces izbora projekata
+    vote_ineligible: Za glasanje potvrdi broj telefona i u svom profilu izaberi ovaj
+      komšiluk. Novi članovi takođe imaju pravo glasa. Glasanje je dostupno u fazi
+      glasanja.
+    one_vote: Imaš jedan glas u svom komšiluku. Ukloni prethodni glas ako želiš izabrati
+      drugi projekat.
+bs:
+  mi_race_projects:
+    archive_title: Trka komšiluka 2026 — konačni rezultati
+    choose_title: Odaberi projekat za svoj komšiluk
+    choose_intro: Filipa Višnjića i Novi Dvorovi osvojili su po 3.000 KM za zajednički
+      projekat. Predloži ideju i razgovaraj sa komšijama.
+    process_link: Otvori proces izbora projekata
+    vote_ineligible: Za glasanje potvrdi broj telefona i u svom profilu izaberi ovaj
+      komšiluk. Novi članovi takođe imaju pravo glasa. Glasanje je dostupno u fazi
+      glasanja.
+    one_vote: Imaš jedan glas u svom komšiluku. Ukloni prethodni glas ako želiš izabrati
+      drugi projekat.
+hr:
+  mi_race_projects:
+    archive_title: Trka komšiluka 2026 — konačni rezultati
+    choose_title: Odaberi projekt za svoj komšiluk
+    choose_intro: Filipa Višnjića i Novi Dvorovi osvojili su po 3.000 KM za zajednički
+      projekt. Predloži ideju i razgovaraj sa susjedima.
+    process_link: Otvori proces izbora projekata
+    vote_ineligible: Za glasanje potvrdi broj telefona i u svom profilu izaberi ovaj
+      komšiluk. Novi članovi takođe imaju pravo glasa. Glasanje je dostupno u fazi
+      glasanja.
+    one_vote: Imaš jedan glas u svom komšiluku. Ukloni prethodni glas ako želiš izabrati
+      drugi projekt.
+sr-Cyrl:
+  mi_race_projects:
+    archive_title: Трка комшилука 2026 — коначни резултати
+    choose_title: Одабери пројекат за свој комшилук
+    choose_intro: Филипа Вишњића и Нови Дворови освојили су по 3.000 КМ за заједнички
+      пројекат. Предложи идеју и разговарај са комшијама.
+    process_link: Отвори процес избора пројеката
+    vote_ineligible: За гласање потврди број телефона и у свом профилу изабери овај
+      комшилук. Нови чланови такође имају право гласа. Гласање је доступно у фази
+      гласања.
+    one_vote: Имаш један глас у свом комшилуку. Уклони претходни глас ако желиш изабрати
+      други пројекат.
+en:
+  mi_race_projects:
+    archive_title: Neighbourhood race 2026 — final results
+    choose_title: Choose a project for your neighbourhood
+    choose_intro: Filipa Višnjića and Novi Dvorovi each won 3,000 KM for a community
+      project. Submit an idea and discuss it with your neighbours.
+    process_link: Open the project selection process
+    vote_ineligible: To vote, verify your phone number and select this neighbourhood
+      in your profile. New members are also eligible. Voting is available during the
+      voting phase.
+    one_vote: You have one vote in your neighbourhood. Remove your previous vote to
+      choose another project.

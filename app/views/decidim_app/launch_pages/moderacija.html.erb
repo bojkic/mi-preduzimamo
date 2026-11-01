@@ -1,0 +1,14 @@
+<% add_decidim_page_title(t("mi_launch.moderation.title")) %>
+<div class="wrapper">
+  <div class="mi-surface mi-launch">
+    <h1><%= t("mi_launch.moderation.title") %></h1>
+    <ul>
+      <% (1..7).each do |i| %>
+        <li><%= t("mi_launch.moderation.item_#{i}") %></li>
+      <% end %>
+    </ul>
+    <p><%= t("mi_launch.moderation.sharp") %></p>
+    <p><%= t("mi_launch.moderation.appeal") %></p>
+    <p class="mi-launch__notice"><%= t("mi_launch.moderation.campaign_period") %></p>
+  </div>
+</div>

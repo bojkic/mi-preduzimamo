@@ -1,0 +1,200 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+RB="${RBENV_ROOT:-${HOME}/.rbenv}"
+if ! command -v ruby >/dev/null 2>&1 && [[ -x "$RB/versions/3.4.12/bin/ruby" ]]; then
+  export RBENV_ROOT="$RB"
+  export PATH="$RB/versions/3.4.12/bin:$PATH"
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APP_ROOT="${APP_ROOT:-$(dirname "$SCRIPT_DIR")}"
+export BUNDLE_GEMFILE="$APP_ROOT/Gemfile"
+
+if command -v bundle >/dev/null 2>&1; then
+  exec bundle exec ruby -x "$0" "$@"
+fi
+
+exec ruby -x "$0" "$@"
+#!ruby
+# frozen_string_literal: true
+
+ENV["RAILS_ENV"] ||= "production"
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+
+require "bundler/setup"
+require_relative "../config/environment"
+
+FAIL_ON_WARN = ENV.fetch("FAIL_ON_WARN", "0") == "1"
+
+@warnings = []
+
+def sanitize(value)
+  value.to_s.split.join(" ")[0, 240]
+end
+
+def emit(section, metric, value, status: "ok", detail: nil)
+  status = status.to_s
+  @warnings << [section, metric, status] if %w[warn fail].include?(status)
+  puts [section, metric, value, status, sanitize(detail)].join("\t")
+end
+
+def organization
+  @organization ||= begin
+    requested_host = ENV.fetch("MI_CITY_SERVICE_HEALTH_HOST", nil).presence || ENV.fetch("HOST", nil).presence
+    if requested_host
+      Decidim::Organization.find_by(host: requested_host)
+    else
+      Decidim::Organization.count == 1 ? Decidim::Organization.first : nil
+    end
+  end
+end
+
+def enabled_delivery_status(org)
+  unless DecidimApp::Bijeljina::CityServiceSources.alerts_enabled?
+    emit("city_service_viber", "provider_readiness", "skipped", detail: "alerts disabled")
+    emit("city_service_viber", "provider_health", "skipped", detail: "alerts disabled")
+    emit("city_service_viber", "launch_approval", "skipped", detail: "alerts disabled")
+    return
+  end
+
+  infobip = Decidim::Bih::Config.infobip
+  provider_ready = [:base_url, :api_key, :viber_bm_sender].all? { |key| infobip[key].present? }
+  emit("city_service_viber", "provider_readiness", provider_ready ? "configured" : "incomplete",
+       status: provider_ready ? "ok" : "warn", detail: "base URL, API key, and Business Messages sender")
+
+  health = Decidim::Bih::IntegrationHealth.instance.state(provider: "infobip")
+  health_status = health.to_h[:status].to_s
+  emit("city_service_viber", "provider_health", health_status.presence || "unknown",
+       status: health_status == "ok" ? "ok" : "warn", detail: "current aggregate Infobip health observation required")
+
+  approval = org && Decidim::Bih::GovernanceApproval.current_for(org, "viber_launch")
+  emit("city_service_viber", "launch_approval", approval ? "current" : "missing_or_expired",
+       status: approval ? "ok" : "warn",
+       detail: approval ? "valid_until=#{approval.valid_until.utc.iso8601}" : "current viber_launch owner approval required")
+rescue StandardError => e
+  emit("city_service_viber", "enabled_delivery_readiness", "unavailable",
+       status: DecidimApp::Bijeljina::CityServiceSources.alerts_enabled? ? "warn" : "ok", detail: e.class.name)
+end
+
+puts "# mi city-service viber readiness smoke"
+puts "# generated_at_utc=#{Time.now.utc.iso8601}"
+puts "# rails_env=#{Rails.env}"
+puts "section\tmetric\tvalue\tstatus\tdetail"
+
+begin
+  org = organization
+  if org
+    emit("city_service_viber", "organization", org.host, detail: "organization_id=#{org.id}")
+  else
+    emit("city_service_viber", "organization", "missing", status: "fail")
+  end
+rescue StandardError => e
+  org = nil
+  emit("city_service_viber", "organization", "unavailable", status: "fail", detail: e.class.name)
+end
+
+begin
+  route = Rails.application.routes.recognize_path("/admin/bih/city-alerts", method: :get)
+  expected = route[:controller] == "decidim_app/admin/city_service_events" && route[:action] == "index"
+  emit("city_service_viber", "admin_route", expected ? "present" : "mismatch", status: expected ? "ok" : "fail",
+       detail: route.inspect)
+rescue ActionController::RoutingError => e
+  emit("city_service_viber", "admin_route", "missing", status: "fail", detail: e.message)
+end
+
+registered = DecidimApp::Bijeljina::CityServiceEventIngestor::PARSER_SOURCE_KEYS
+viber_candidates = DecidimApp::Bijeljina::CityServiceSources.alert_candidates.map { |source| source.fetch(:key) }
+alerts_enabled = DecidimApp::Bijeljina::CityServiceSources.alerts_enabled?
+emit("city_service_viber", "registered_parsers", registered.size, detail: registered.sort.join(","))
+emit("city_service_viber", "source_catalogue", viber_candidates.size,
+     status: alerts_enabled && viber_candidates.empty? ? "warn" : "ok",
+     detail: "only explicitly configured enabled sources are considered")
+
+viber_candidates.sort.each do |source_key|
+  if DecidimApp::Bijeljina::CityServiceEventIngestor.parser_registered?(source_key)
+    emit("city_service_viber", "parser:#{source_key}", "registered")
+  elsif alerts_enabled
+    emit("city_service_viber", "parser:#{source_key}", "collection_only", status: "warn",
+         detail: "alerts enabled; requires source-specific parser before automatic event rows")
+  else
+    emit("city_service_viber", "parser:#{source_key}", "collection_only",
+         detail: "skipped until MI_CITY_SERVICE_VIBER_ALERTS_ENABLED=1")
+  end
+end
+
+sample_source = DecidimApp::Bijeljina::CityServiceSources.find("electricity_outages")
+if org
+  sample_area = Decidim::Bih::LocalArea.where(organization: org).order(:kind, :slug).first
+  if sample_area && sample_source && sample_source.fetch(:enabled, true)
+    decision = DecidimApp::Bijeljina::CityServiceAlertPolicy.evaluate(
+      source_key: "electricity_outages",
+      event_type: "planned_outage",
+      severity: "service_outage",
+      target_area_slugs: [sample_area.slug],
+      fingerprint: "readiness-smoke",
+      starts_at: Time.current,
+      operator_approved: true
+    )
+    emit("city_service_viber", "policy_sample", decision.fetch(:delivery),
+         detail: "reason=#{decision.fetch(:reason)} target=#{sample_area.slug} cooldown=#{decision.fetch(:cooldown_minutes)}")
+  elsif !sample_source || !sample_source.fetch(:enabled, true)
+    emit("city_service_viber", "policy_sample", "skipped", status: alerts_enabled ? "warn" : "ok",
+         detail: "sample source is not configured or enabled")
+  else
+    emit(
+      "city_service_viber",
+      "policy_sample",
+      alerts_enabled ? "no_local_area" : "skipped",
+      status: alerts_enabled ? "warn" : "ok",
+      detail: alerts_enabled ? "cannot prove area-required alert targeting without LocalArea rows" : "alerts disabled"
+    )
+  end
+
+  if sample_source && sample_source.fetch(:enabled, true)
+    event = DecidimApp::Bijeljina::CityServiceEvent.new(
+      organization: org,
+      source_key: "electricity_outages",
+      source_label: "Readiness smoke",
+      provider: "Readiness smoke",
+      source_url: "https://example.invalid/readiness",
+      source_fingerprint: "readiness-smoke",
+      fetched_at: Time.current,
+      parser_version: "readiness_smoke",
+      event_type: "planned_outage",
+      severity: "service_outage",
+      targeting_level: sample_area ? sample_area.kind : "unknown",
+      affected_area_slugs: sample_area ? [sample_area.slug] : [],
+      title: "Readiness smoke",
+      summary: "Readiness smoke",
+      recommended_action: "Readiness smoke",
+      viber_text: "Readiness smoke"
+    )
+    preview = DecidimApp::Bijeljina::CityServiceEventPreview.new(event).call
+    emit("city_service_viber", "target_preview", preview.target_komsiluk_slugs.size,
+         detail: "areas=#{preview.target_area_slugs.join(",")} recipients=#{preview.recipient_count}")
+  else
+    emit("city_service_viber", "target_preview", "skipped", detail: "sample source is not configured or enabled")
+  end
+end
+
+enabled_delivery_status(org)
+
+if alerts_enabled
+  emit("city_service_viber", DecidimApp::Bijeljina::CityServiceSources::ALERTS_ENABLED_ENV,
+       "enabled", detail: "provider, parser, approval, and policy rows are required")
+else
+  emit("city_service_viber", DecidimApp::Bijeljina::CityServiceSources::ALERTS_ENABLED_ENV,
+       "disabled", detail: "safe default; Viber publish remains dry-run")
+end
+
+failures = @warnings.count { |_section, _metric, status| status == "fail" }
+warnings = @warnings.count
+overall = failures.positive? ? "fail" : (warnings.positive? ? "warn" : "ok")
+emit("city_service_viber", "overall", overall, status: overall,
+     detail: "warnings=#{warnings} failures=#{failures}")
+
+if failures.positive? || (warnings.positive? && FAIL_ON_WARN)
+  warn "city-service Viber readiness warnings/failures: #{@warnings.map { |row| row.join(":") }.join(", ")}"
+  exit 1
+end

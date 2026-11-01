@@ -1,0 +1,41 @@
+/* Project selection: native participation routes, focused presentation. */
+.mi-project-choice,.mi-project-component{max-width:1160px;margin:0 auto;padding:40px 24px;color:#193e52;line-height:1.65}
+.mi-project-choice h1,.mi-project-component h1{font-size:clamp(1.85rem,4vw,2.7rem);line-height:1.18;font-weight:750;letter-spacing:-.025em;margin:12px 0 20px;max-width:850px}
+.mi-project-choice h2,.mi-project-empty h2{font-size:clamp(1.3rem,2.8vw,1.7rem);line-height:1.3;font-weight:700;margin:0 0 14px}
+.mi-project-choice h3{font-size:1.25rem;line-height:1.35;font-weight:700;margin:0 0 12px}
+.mi-project-choice p,.mi-project-component p{margin:0 0 16px}
+.mi-project-choice__eyebrow{color:#a73e23;font-size:.8rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.mi-project-choice__lead{max-width:850px;font-size:1.1rem}
+.mi-project-choice__hero{padding:30px 34px;background:#fff;border:1px solid #d8e2e5;border-top:5px solid #cc5636;border-radius:18px}
+.mi-project-choice__status{margin-top:24px;padding:18px 22px;background:#edf5f4;border-left:4px solid #26716a;border-radius:8px}
+.mi-project-choice__status>span{font-weight:750}.mi-project-choice__status p{margin:5px 0 0;font-size:.98rem}
+.mi-project-choice__section{margin-top:42px}.mi-project-choice__cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:22px 0 14px}
+.mi-project-choice__card{background:#fff;border:1px solid #d8e2e5;border-radius:16px;padding:28px;box-shadow:0 5px 20px #193e5208;display:flex;flex-direction:column}
+.mi-project-choice__card h3{font-size:1.7rem}.mi-project-choice__budget{font-size:.85rem;font-weight:650;color:#426574}
+.mi-project-choice__actions{display:flex;flex-direction:column;gap:12px;margin-top:auto;padding-top:10px}
+.mi-project-choice__button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;gap:8px;padding:11px 20px;border:2px solid #ba4528;border-radius:9px;background:#ba4528;color:#fff!important;font-weight:700;line-height:1.35;text-align:center;text-decoration:none!important;overflow-wrap:anywhere}
+.mi-project-choice__button:hover{background:#96351f;border-color:#96351f}.mi-project-choice__button:focus-visible,.mi-project-filters summary:focus-visible{outline:3px solid #1477a0;outline-offset:4px}
+.mi-project-choice__button--outline{background:transparent;color:#214e65!important;border-color:#91abb8}.mi-project-choice__button--outline:hover{background:#eaf1f4;border-color:#214e65}
+.mi-project-choice__hint{color:#4b6674;font-size:.92rem}.mi-project-choice__steps{list-style:none!important;padding:0!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mi-project-choice__steps li{display:flex;align-items:flex-start;gap:16px;padding:22px;background:#fff;border:1px solid #d8e2e5;border-radius:12px;margin:0}
+.mi-project-choice__steps li.is-current{border-color:#26716a;background:#edf5f4}.mi-project-choice__number{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;border-radius:50%;background:#dce8ed;font-weight:750}.is-current .mi-project-choice__number{background:#26716a;color:#fff}
+.mi-project-choice__step-status{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin:0 0 5px!important;color:#4b6674}.mi-project-choice__steps p:last-child{margin:0;font-size:.95rem}
+.mi-project-choice__details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:42px 0}.mi-project-choice__details section{padding:24px;background:#fff;border:1px solid #d8e2e5;border-radius:12px}.mi-project-choice__details ul{list-style:disc;padding-left:22px;margin:16px 0}.mi-project-choice__details li{margin:10px 0}
+.mi-project-choice__archive{display:flex;align-items:center;gap:24px;padding:26px;background:#eaf0f2;border-radius:14px}.mi-project-choice__archive>div{flex:1}.mi-project-choice__archive h2{font-size:1.2rem}.mi-project-choice__archive p{margin:0}.mi-project-choice__archive>a{flex-shrink:0;max-width:280px}
+.mi-project-component{padding-bottom:24px}.mi-project-component__back{display:inline-block;margin-bottom:22px;text-decoration:underline;text-underline-offset:3px}.mi-project-component h1{margin-bottom:12px}.mi-project-component__navigation{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding-top:12px}.mi-project-component__phase{background:#edf5f4;color:#205f59;border:1px solid #afceca;border-radius:50px;padding:7px 14px;font-size:.9rem;font-weight:650}
+.mi-project-component__navigation nav{display:flex;flex-wrap:wrap;gap:8px}.mi-project-component__navigation nav a{padding:8px 16px;border:1px solid #b6c8ce;border-radius:8px;text-decoration:none}.mi-project-component__navigation nav a[aria-current=page]{background:#214e65;color:#fff;border-color:#214e65}
+.mi-project-empty{padding:36px;border:1px dashed #9db5be;border-radius:14px;background:#fff}.mi-project-empty p{max-width:600px;margin:0 0 24px;line-height:1.65}.mi-project-empty .mi-project-choice__button{width:auto}
+.mi-project-filters{margin-top:24px;border-top:1px solid #d8e2e5;padding-top:18px}.mi-project-filters summary{font-weight:700;cursor:pointer;margin-bottom:20px;list-style:revert}.proposal-list__aside__button-container{margin-bottom:16px}
+.layout-main__section{scroll-margin-top:100px}.editor-content a{color:#215e78;text-underline-offset:3px}.layout-main__section input,.layout-main__section textarea{border-radius:8px}
+@media(max-width:700px){.mi-project-choice,.mi-project-component{padding:26px 16px}.mi-project-choice__hero{padding:24px 20px;border-radius:12px}.mi-project-choice__cards,.mi-project-choice__steps,.mi-project-choice__details{grid-template-columns:1fr;gap:16px}.mi-project-choice__card{padding:24px}.mi-project-choice__status{padding:14px 16px}.mi-project-choice__section{margin-top:30px}.mi-project-choice__archive{flex-direction:column;align-items:stretch;padding:22px}.mi-project-choice__archive>a{max-width:none}.mi-project-empty{padding:24px}.mi-project-component__navigation{align-items:flex-start}.mi-project-component__navigation nav{width:100%}.mi-project-component__navigation nav a{flex:1;text-align:center}.mi-project-choice__steps li{padding:20px}.mi-project-choice__details{margin:30px 0}}
+
+/* Keep the component introduction aligned with the native columns. */
+.mi-project-component{width:calc(100% - 48px);padding:28px 32px;margin:32px auto 0;background:#fff;border:1px solid #d8e2e5;border-top:4px solid #cc5636;border-radius:14px}
+.mi-project-component ~ .layout-2col .layout-2col__aside{gap:20px}
+.mi-project-component ~ .layout-2col .layout-2col__aside:before{display:none}
+.mi-project-component ~ .layout-2col .layout-2col__main{border-radius:14px;padding:28px;margin-top:24px;margin-bottom:32px}
+.mi-project-component ~ .layout-2col .proposal-list__aside__button-container .button__secondary{background:#ba4528;border-color:#ba4528;border-radius:9px;min-height:48px;font-size:1rem}
+@media(max-width:700px){.mi-project-component{width:calc(100% - 32px);margin-top:20px;padding:24px 20px}.mi-project-component ~ .layout-2col .layout-2col__main{padding:16px;margin-top:0}.mi-project-component ~ .layout-2col .layout-2col__aside{padding-bottom:12px}.mi-project-component ~ .layout-2col .mi-project-filters{margin-top:4px}}
+
+.mi-project-cover{display:block;width:100%;height:auto;max-height:300px;aspect-ratio:3/1;object-fit:contain;background:#f6f1df;border-radius:10px;margin:0 0 24px}
+@media(max-width:700px){.mi-project-cover{margin-bottom:20px;border-radius:8px}}

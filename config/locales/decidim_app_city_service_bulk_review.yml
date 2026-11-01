@@ -1,0 +1,110 @@
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          milica_source_access_help: "Milica can use collected source information before review and states what remains unconfirmed. Review improves the facts; board publication and notifications have separate controls."
+          reviewed_source_help: "These source facts were reviewed. Milica also uses unreviewed sources with their uncertainty."
+          actions:
+            save_review: Save review
+          bulk:
+            title: "Bulk review"
+            select: "Select"
+            select_event: "Select %{title}"
+            select_page: "Select all eligible notices on this page"
+            help: "Acts only on selected pending or failed notices. A review note is required. These actions do not publish posts or send notifications."
+            review: "Mark selected as reviewed"
+            dismiss: "Dismiss selected"
+        bulk_review:
+          updated: "Updated %{count} selected notices."
+          invalid_selection: "Select 1–80 notices, choose an action and enter a review note."
+          stale_review: "A selected notice changed or is no longer editable. Reload the page; nothing was changed."
+          not_authorized: "You cannot review these notices."
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          milica_source_access_help: "Milica može koristiti prikupljene podatke i prije pregleda, uz jasno označene neprovjerene činjenice. Pregled poboljšava podatke; objave na tabli i obavještenja imaju zasebne kontrole."
+          reviewed_source_help: "Izvorne činjenice su pregledane. Milica koristi i nepregledane izvore uz oznaku neizvjesnosti."
+          actions:
+            save_review: Sačuvaj pregled
+          bulk:
+            title: "Grupni pregled"
+            select: "Odaberi"
+            select_event: "Odaberi: %{title}"
+            select_page: "Odaberi sva dostupna obavještenja na ovoj stranici"
+            help: "Radnja obuhvata samo odabrana obavještenja na čekanju ili s greškom. Napomena je obavezna. Ove radnje ne objavljuju na tabli niti šalju obavještenja."
+            review: "Označi odabrano kao pregledano"
+            dismiss: "Odbaci odabrano"
+        bulk_review:
+          updated: "Ažurirano je %{count} odabranih obavještenja."
+          invalid_selection: "Odaberite 1–80 obavještenja, radnju i unesite napomenu."
+          stale_review: "Odabrano obavještenje je izmijenjeno ili više nije moguće uređivanje. Osvježite stranicu; ništa nije promijenjeno."
+          not_authorized: "Nemate ovlaštenje za pregled ovih obavještenja."
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          milica_source_access_help: "Milica može koristiti prikupljene podatke i prije pregleda, uz jasno označene neprovjerene činjenice. Pregled poboljšava podatke; objave na ploči i obavijesti imaju zasebne kontrole."
+          reviewed_source_help: "Izvorne činjenice su pregledane. Milica koristi i nepregledane izvore uz oznaku neizvjesnosti."
+          actions:
+            save_review: Spremi pregled
+          bulk:
+            title: "Grupni pregled"
+            select: "Odaberi"
+            select_event: "Odaberi: %{title}"
+            select_page: "Odaberi sve dostupne obavijesti na ovoj stranici"
+            help: "Radnja obuhvaća samo odabrane obavijesti na čekanju ili s pogreškom. Napomena je obvezna. Ove radnje ne objavljuju na ploči niti šalju obavijesti."
+            review: "Označi odabrano kao pregledano"
+            dismiss: "Odbaci odabrano"
+        bulk_review:
+          updated: "Ažurirano je %{count} odabranih obavijesti."
+          invalid_selection: "Odaberite 1–80 obavijesti, radnju i unesite napomenu."
+          stale_review: "Odabrana obavijest je izmijenjena ili više nije moguće uređivanje. Osvježite stranicu; ništa nije promijenjeno."
+          not_authorized: "Nemate ovlasti za pregled ovih obavijesti."
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          milica_source_access_help: "Milica može koristiti prikupljene podatke i prije pregleda, uz jasno označene neprovjerene činjenice. Pregled poboljšava podatke; objave na tabli i obavještenja imaju zasebne kontrole."
+          reviewed_source_help: "Izvorne činjenice su pregledane. Milica koristi i nepregledane izvore uz oznaku neizvjesnosti."
+          actions:
+            save_review: Sačuvaj pregled
+          bulk:
+            title: "Grupni pregled"
+            select: "Odaberi"
+            select_event: "Odaberi: %{title}"
+            select_page: "Odaberi sva dostupna obavještenja na ovoj stranici"
+            help: "Radnja obuhvata samo odabrana obavještenja na čekanju ili s greškom. Napomena je obavezna. Ove radnje ne objavljuju na tabli niti šalju obavještenja."
+            review: "Označi odabrano kao pregledano"
+            dismiss: "Odbaci odabrano"
+        bulk_review:
+          updated: "Ažurirano je %{count} odabranih obavještenja."
+          invalid_selection: "Odaberite 1–80 obavještenja, radnju i unesite napomenu."
+          stale_review: "Odabrano obavještenje je izmijenjeno ili više nije moguće uređivanje. Osvježite stranicu; ništa nije promijenjeno."
+          not_authorized: "Nemate ovlašćenje za pregled ovih obavještenja."
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          milica_source_access_help: "Милица може користити прикупљене податке и прије прегледа, уз јасно означене непровјерене чињенице. Преглед побољшава податке; објаве на табли и обавјештења имају засебне контроле."
+          reviewed_source_help: "Изворне чињенице су прегледане. Милица користи и непрегледане изворе уз ознаку неизвјесности."
+          actions:
+            save_review: Сачувај преглед
+          bulk:
+            title: "Групни преглед"
+            select: "Одабери"
+            select_event: "Одабери: %{title}"
+            select_page: "Одабери сва доступна обавјештења на овој страници"
+            help: "Радња обухвата само одабрана обавјештења на чекању или с грешком. Напомена је обавезна. Ове радње не објављују на табли нити шаљу обавјештења."
+            review: "Означи одабрано као прегледано"
+            dismiss: "Одбаци одабрано"
+        bulk_review:
+          updated: "Ажурирано је %{count} одабраних обавјештења."
+          invalid_selection: "Одаберите 1–80 обавјештења, радњу и унесите напомену."
+          stale_review: "Одабрано обавјештење је измијењено или више није могуће уређивање. Освјежите страницу; ништа није промијењено."
+          not_authorized: "Немате овлашћење за преглед ових обавјештења."

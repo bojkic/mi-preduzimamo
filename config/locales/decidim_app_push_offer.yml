@@ -1,0 +1,44 @@
+en:
+  decidim_app:
+    push_offer:
+      title: "Stay up to date"
+      description: "Get notifications about your activity and messages on this device. You choose whether to allow them."
+      enable: "Enable notifications"
+      settings: "Notification settings"
+      dismiss: "No thanks"
+
+sr:
+  decidim_app:
+    push_offer:
+      title: "Budite u toku"
+      description: "Primajte obavještenja o svojim aktivnostima i porukama na ovom uređaju. Vi birate da li ih dozvoljavate."
+      enable: "Uključi obavještenja"
+      settings: "Podešavanja obavještenja"
+      dismiss: "Ne, hvala"
+
+bs:
+  decidim_app:
+    push_offer:
+      title: "Budite u toku"
+      description: "Primajte obavještenja o svojim aktivnostima i porukama na ovom uređaju. Vi birate da li ih dozvoljavate."
+      enable: "Uključi obavještenja"
+      settings: "Postavke obavještenja"
+      dismiss: "Ne, hvala"
+
+hr:
+  decidim_app:
+    push_offer:
+      title: "Budite u tijeku"
+      description: "Primajte obavijesti o svojim aktivnostima i porukama na ovom uređaju. Vi birate hoćete li ih dopustiti."
+      enable: "Uključi obavijesti"
+      settings: "Postavke obavijesti"
+      dismiss: "Ne, hvala"
+
+sr-Cyrl:
+  decidim_app:
+    push_offer:
+      title: "Будите у току"
+      description: "Примајте обавјештења о својим активностима и порукама на овом уређају. Ви бирате да ли их дозвољавате."
+      enable: "Укључи обавјештења"
+      settings: "Подешавања обавјештења"
+      dismiss: "Не, хвала"

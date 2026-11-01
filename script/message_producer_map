@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require File.join(Gem.loaded_specs.fetch("decidim-bih").full_gem_path, "app/services/decidim/bih/messaging/message_class")
+
+# Registry-only public documentation: no Rails, database, transport or secrets.
+module PublicMessageProducerMap
+  BOUNDARIES = {
+    "boundary.public_pages" => "Javne stranice i table prikazuju sadržaj posjetiocu.",
+    "boundary.venue_screen" => "Javni ekran prikazuje sadržaj bez liste primalaca.",
+    "boundary.referral_share" => "Dijeljenje otvara korisnikovu aplikaciju; korisnik šalje poruku.",
+    "boundary.printed_qr" => "QR kod ili plakat se priprema za štampu.",
+    "boundary.postal_posting" => "Štampanje ili označavanje pisma ne potvrđuje predaju ni prijem.",
+    "boundary.support_mailbox" => "Klik na kontakt otvara spoljnu aplikaciju.",
+    "boundary.odoo_campaigns" => "Publika i slanje kampanja vode se u zasebnom Odoo sistemu.",
+    "boundary.browser_consent" => "Saglasnost za skripte u browseru nije izbor kanala poruka.",
+    "boundary.page_nudges" => "Baner i ponuda instalacije ili push-a prikazuju se na stranici.",
+    "boundary.admin_read_screens" => "Administratorski pregled prikazuje sačuvano stanje."
+  }.freeze
+
+  def self.cell(value)
+    value.to_s.gsub("|", "&#124;").gsub(/\s+/, " ").strip
+  end
+
+  def self.render(registry = Decidim::Bih::Messaging::MessageClass)
+    rows = [
+      "# Mapa izvora poruka", "",
+      "Ovaj pregled nastaje isključivo iz registra u engine-u; ne sadrži liste primalaca, pristupne podatke niti dokaz stvarnog slanja.", "",
+      "Brojevi: #{registry.all.size} izvora poruka — #{registry.enrolled.size} shadow, #{registry.legacy_unmigrated.size} legacy/unmigrated.", "",
+      "`shadow` prati odluke; postojeći pozivalac zadržava odluku o slanju. `legacy/unmigrated` označava zaseban postojeći put. Prisustvo klase u registru ne uključuje kanal ni pružaoca.", "",
+      "| Klasa | Namjena | Primalac | Pravilo izbora | Kanali | Stanje | Izvor koda |",
+      "|---|---|---|---|---|---|---|"
+    ]
+    registry.all.each_value do |entry|
+      cells = ["`#{entry.key}`", entry.purpose, entry.recipient_kinds.join(", "), entry.preference_adapter,
+               entry.channel_groups.map { |group| "#{group.fetch(:channels).join(', ')} (#{group.fetch(:mode)})" }.join("; "),
+               entry.enrollment, entry.producer]
+      rows << "| #{cells.map { |value| cell(value) }.join(' | ')} |"
+    end
+    rows += ["", "## Površine koje ne šalju poruke", "", "| Granica | Značenje |", "|---|---|"]
+    registry::EXTERNAL_BOUNDARIES.each do |boundary|
+      rows << "| `#{cell(boundary.fetch(:key))}` | #{cell(BOUNDARIES.fetch(boundary.fetch(:key)))} |"
+    end
+    rows += ["", "Pri izmjeni registra ažurirajte ovaj pregled komandom `bundle exec ruby script/message_producer_map --write`. Provjera bez upisa je `bundle exec ruby script/message_producer_map --check`.", "",
+             "Za stvarnu isporuku svaka instalacija podešava svoje naloge, primaoce, dozvole, odjave i kanale. Uspješan scheduler, red za slanje ili prihvatanje od pružaoca nisu dokaz prijema ili čitanja poruke.", ""]
+    rows.join("\n")
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  mode = ARGV.shift || "--check"
+  abort "Usage: script/message_producer_map [--check|--write]" unless %w(--check --write).include?(mode) && ARGV.empty?
+  path = File.expand_path("../docs/PORUKE.md", __dir__)
+  content = PublicMessageProducerMap.render
+  if mode == "--write"
+    File.write(path, content)
+  else
+    abort "Mapa poruka nije usklađena; pokrenite --write i pregledajte izmjenu." unless File.file?(path) && File.read(path) == content
+  end
+end

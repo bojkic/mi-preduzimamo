@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "messageId": "synthetic-viber-image-01",
+      "from": "12025550101",
+      "to": "12025550102",
+      "receivedAt": "2040-09-14T10:00:00.000+00:00",
+      "message": {
+        "type": "IMAGE",
+        "text": "Izmišljena fotografija problema.",
+        "url": "https://media.example.invalid/authored-photo.jpg"
+      }
+    }
+  ]
+}

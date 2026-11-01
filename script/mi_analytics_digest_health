@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Inspect one operator-provided analytics log; never run jobs or print its data.
+require "optparse"
+require "json"
+require "time"
+
+options = { max_age: 8 * 24 * 60 * 60 }
+begin
+  OptionParser.new do |parser|
+    parser.banner = "usage: script/mi_analytics_digest_health --log PATH [--max-age-seconds N]"
+    parser.on("--log PATH") { |value| options[:path] = value }
+    parser.on("--max-age-seconds N", Integer) { |value| options[:max_age] = value }
+  end.parse!
+  raise OptionParser::InvalidArgument unless ARGV.empty? && options[:path] && (1..2_592_000).cover?(options[:max_age])
+rescue OptionParser::ParseError
+  warn "usage: script/mi_analytics_digest_health --log PATH [--max-age-seconds N]"
+  exit 64
+end
+
+status = "unavailable"
+reason = "log_unreadable"
+skipped = delivered = 0
+begin
+  text = File.open(options.fetch(:path), "rb") do |file|
+    offset = [file.size - 2_097_152, 0].max
+    file.seek(offset)
+    value = file.read(2_097_152).force_encoding(Encoding::UTF_8).scrub
+    offset.positive? ? value.sub(/\A[^\n]*\n?/, "") : value
+  end
+  lines = text.lines
+  start = lines.rindex { |line| line.match?(/analytics-digest START\b/) }
+  if start
+    run = lines[start..]
+    finish = run.index { |line| line.match?(/analytics-digest END\b/) }
+    if finish
+      run = run[0..finish]
+      stamp = run.last[/\A\[([^\]]+)\]/, 1]
+      completed_at = Time.iso8601(stamp.to_s)
+      age = Time.now - completed_at
+      skipped = run.count { |line| line.include?("skipped=no_opt_in_recipient") }
+      delivered = run.count { |line| line.include?("sent digest for ") }
+      reason = if age < -60 then "future_completion_time"
+               elsif age > options.fetch(:max_age) then "stale_completion"
+               elsif run.any? { |line| line.match?(/\b(?:FAILED|FATAL|ERROR)\b/) } then "job_failed"
+               elsif skipped.positive? then "no_opt_in_recipient"
+               elsif delivered.zero? then "no_delivery_marker"
+               else "completed_with_delivery_log"
+               end
+      status = reason == "completed_with_delivery_log" ? "ok" : "warn"
+    else
+      status = "warn"
+      reason = "incomplete_latest_run"
+    end
+  else
+    reason = "start_marker_missing"
+  end
+rescue ArgumentError
+  status = "warn"
+  reason = "invalid_completion_time"
+rescue SystemCallError, IOError
+  # Emit no file path, citizen, organization or raw log line.
+end
+puts JSON.generate(status:, reason:, skipped_organizations: skipped, delivery_log_count: delivered,
+                   evidence: "local_log_only_not_provider_or_recipient_receipt")
+exit(status == "ok" ? 0 : 1)

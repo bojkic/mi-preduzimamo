@@ -1,0 +1,211 @@
+---
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        ui_review:
+          navigation: Administration navigation
+          help: How to review notices
+          filters: Filters and status overview
+          diagnostics: Technical details
+          pages: Notice pages
+          page: Page %{current} of %{total}
+          previous: Previous
+          next: Next
+          unknown_start: Start unknown · end %{finish}
+          weather_region: MeteoAlarm calls this region Prijedor (BA002). The reviewed
+            map includes Bijeljina in this region. A regional warning does not establish
+            that every neighbourhood is affected.
+          sources:
+            electricity_outages: Elektro Bijeljina — electricity outages
+            water_service: Water supply
+            heating_service: District heating
+            city_official_notices: City notices
+            road_conditions: AMS RS — road conditions
+            weather_warnings: MeteoAlarm — weather warnings
+            civil_protection: Civil protection warnings
+            bulky_waste: Bulky waste
+            waste_schedule: Waste collection schedule
+            public_transport: Public transport
+            air_quality: Air quality
+            air_quality_realtime: Live air quality
+            sistem48_public_archive: System 48 reports
+            water_levels: Sava and Drina water levels
+            police_service_information: Police notices
+          references:
+            gazette: Official gazette
+            procedure: Administrative procedure
+            public_calls: Public calls
+            other: Prepared reference
+            procedure_maticar: Civil registry
+            procedure_pracenje_predmeta: Case tracking
+            procedure_e_registar: Electronic register
+            procedure_registry_b4_1: Procedure B4.1
+        review_facts:
+          values:
+            bulky_waste_collection: Bulky waste collection
+        source_health:
+          statuses:
+            not_checked: Not checked
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        ui_review:
+          navigation: Navigacija administracije
+          help: Kako pregledati obavještenja
+          filters: Filteri i pregled statusa
+          diagnostics: Tehnički detalji
+          pages: Stranice obavještenja
+          page: Stranica %{current} od %{total}
+          previous: Prethodna
+          next: Sljedeća
+          unknown_start: Početak nije poznat · kraj %{finish}
+          weather_region: MeteoAlarm ovu regiju naziva Prijedor (BA002). Prema provjerenoj
+            karti regija obuhvata i Bijeljinu. Regionalno upozorenje ne potvrđuje
+            da je svaki komšiluk pogođen.
+          sources: &1
+            electricity_outages: Elektro Bijeljina — isključenja struje
+            water_service: Vodovod — vodosnabdijevanje
+            heating_service: Gradska toplana — grijanje
+            city_official_notices: Grad Bijeljina — obavještenja
+            road_conditions: AMS RS — stanje na putevima
+            weather_warnings: MeteoAlarm — vremenska upozorenja
+            civil_protection: Civilna zaštita — upozorenja
+            bulky_waste: Komunalac — kabasti otpad
+            waste_schedule: Komunalac — raspored odvoza
+            public_transport: Javni prevoz
+            air_quality: Kvalitet vazduha
+            air_quality_realtime: Kvalitet vazduha uživo
+            sistem48_public_archive: Sistem 48 — prijave
+            water_levels: Vodostaj Save i Drine
+            police_service_information: Policijska obavještenja
+          references:
+            gazette: Službeni glasnik
+            procedure: Upravni postupak
+            public_calls: Javni pozivi
+            other: Pripremljeni podaci
+            procedure_maticar: Matičar
+            procedure_pracenje_predmeta: Praćenje predmeta
+            procedure_e_registar: Elektronski registar
+            procedure_registry_b4_1: Postupak B4.1
+        review_facts:
+          values:
+            bulky_waste_collection: Odvoz kabastog otpada
+        source_health:
+          statuses:
+            not_checked: Nije provjereno
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        ui_review:
+          navigation: Navigacija administracije
+          help: Kako pregledati obavještenja
+          filters: Filteri i pregled statusa
+          diagnostics: Tehnički detalji
+          pages: Stranice obavještenja
+          page: Stranica %{current} od %{total}
+          previous: Prethodna
+          next: Sljedeća
+          unknown_start: Početak nije poznat · kraj %{finish}
+          weather_region: MeteoAlarm ovu regiju naziva Prijedor (BA002). Prema provjerenoj
+            karti regija obuhvata i Bijeljinu. Regionalno upozorenje ne potvrđuje
+            da je svaki komšiluk pogođen.
+          sources: *1
+          references:
+            gazette: Službeni glasnik
+            procedure: Upravni postupak
+            public_calls: Javni pozivi
+            other: Pripremljeni podaci
+            procedure_maticar: Matičar
+            procedure_pracenje_predmeta: Praćenje predmeta
+            procedure_e_registar: Elektronski registar
+            procedure_registry_b4_1: Postupak B4.1
+        review_facts:
+          values:
+            bulky_waste_collection: Odvoz kabastog otpada
+        source_health:
+          statuses:
+            not_checked: Nije provjereno
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        ui_review:
+          navigation: Navigacija administracije
+          help: Kako pregledati obavještenja
+          filters: Filteri i pregled statusa
+          diagnostics: Tehnički detalji
+          pages: Stranice obavještenja
+          page: Stranica %{current} od %{total}
+          previous: Prethodna
+          next: Sljedeća
+          unknown_start: Početak nije poznat · kraj %{finish}
+          weather_region: MeteoAlarm ovu regiju naziva Prijedor (BA002). Prema provjerenoj
+            karti regija obuhvata i Bijeljinu. Regionalno upozorenje ne potvrđuje
+            da je svaki komšiluk pogođen.
+          sources: *1
+          references:
+            gazette: Službeni glasnik
+            procedure: Upravni postupak
+            public_calls: Javni pozivi
+            other: Pripremljeni podaci
+            procedure_maticar: Matičar
+            procedure_pracenje_predmeta: Praćenje predmeta
+            procedure_e_registar: Elektronski registar
+            procedure_registry_b4_1: Postupak B4.1
+        review_facts:
+          values:
+            bulky_waste_collection: Odvoz kabastog otpada
+        source_health:
+          statuses:
+            not_checked: Nije provjereno
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        ui_review:
+          navigation: Навигација администрације
+          help: Како прегледати обавјештења
+          filters: Филтери и преглед статуса
+          diagnostics: Технички детаљи
+          pages: Странице обавјештења
+          page: Страница %{current} од %{total}
+          previous: Претходна
+          next: Сљедећа
+          unknown_start: Почетак није познат · крај %{finish}
+          weather_region: МетеоАларм ову регију назива Приједор (БА002). Према провјереној
+            карти регија обухвата и Бијељину. Регионално упозорење не потврђује да
+            је сваки комшилук погођен.
+          sources:
+            electricity_outages: Електро Бијељина — искључења струје
+            water_service: Водовод — водоснабдијевање
+            heating_service: Градска топлана — гријање
+            city_official_notices: Град Бијељина — обавјештења
+            road_conditions: АМС РС — стање на путевима
+            weather_warnings: МетеоАларм — временска упозорења
+            civil_protection: Цивилна заштита — упозорења
+            bulky_waste: Комуналац — кабасти отпад
+            waste_schedule: Комуналац — распоред одвоза
+            public_transport: Јавни превоз
+            air_quality: Квалитет ваздуха
+            air_quality_realtime: Квалитет ваздуха уживо
+            sistem48_public_archive: Систем 48 — пријаве
+            water_levels: Водостај Саве и Дрине
+            police_service_information: Полицијска обавјештења
+          references:
+            gazette: Службени гласник
+            procedure: Управни поступак
+            public_calls: Јавни позиви
+            other: Припремљени подаци
+            procedure_maticar: Матичар
+            procedure_pracenje_predmeta: Праћење предмета
+            procedure_e_registar: Електронски регистар
+            procedure_registry_b4_1: Поступак Б4.1
+        review_facts:
+          values:
+            bulky_waste_collection: Одвоз кабастог отпада
+        source_health:
+          statuses:
+            not_checked: Није провјерено

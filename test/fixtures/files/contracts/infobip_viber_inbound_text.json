@@ -1,0 +1,14 @@
+{
+  "results": [
+    {
+      "messageId": "synthetic-viber-text-01",
+      "from": "12025550101",
+      "to": "12025550102",
+      "receivedAt": "2040-09-14T10:00:00.000+00:00",
+      "message": {
+        "type": "TEXT",
+        "text": "Izmišljeno pitanje o usluzi."
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "upstream": "https://github.com/SamVerschueren/decode-uri-component",
+  "version": "0.5.1",
+  "license": "MIT",
+  "upstream_files": {
+    "index.js": {
+      "url": "https://raw.githubusercontent.com/SamVerschueren/decode-uri-component/v0.5.1/index.js",
+      "sha256": "6a86ac891edf15c5efa0841ebb31935e3669d58b98318b57d7b08a4530317cb0"
+    },
+    "license": {
+      "url": "https://raw.githubusercontent.com/SamVerschueren/decode-uri-component/v0.5.1/license",
+      "sha256": "ed7a9a0f74e43951b2520efe1a4349cb9ed5f3dff0b0f268e2e51a4d38df7ea4"
+    },
+    "package.json": {
+      "url": "https://raw.githubusercontent.com/SamVerschueren/decode-uri-component/v0.5.1/package.json",
+      "sha256": "8822236f8ec0fc7c8f540812dda32b81797bec92e51bd567fbb196fda04a7f13"
+    }
+  },
+  "adaptation": "Two provenance comments and one export-default declaration changed to module.exports. Decoder algorithm otherwise byte-preserved.",
+  "scope": "Exact webpack alias for legacy CommonJS imports. Installed dependency package versions/audit counts remain unchanged.",
+  "advisories": [
+    "https://github.com/SamVerschueren/decode-uri-component/security/advisories/GHSA-vcc3-ghjq-m6fr",
+    "https://github.com/SamVerschueren/decode-uri-component/security/advisories/GHSA-qr28-fpjm-wq7f"
+  ]
+}

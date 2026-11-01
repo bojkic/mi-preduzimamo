@@ -1,0 +1,211 @@
+<%
+  # The bar is the WHOLE mobile navigation (2026-09-07): Decidim's mobile header
+  # is hidden on every public page, so the bar has to be there on every public
+  # page too — including the sign-in, account and report forms it used to step
+  # aside for when it sat at the bottom. It sits fixed at the TOP now, and the
+  # body carries matching top padding (mi-theme.css), so it never covers a
+  # form's first field. Only the admin, system and API surfaces go without it.
+  hidden_prefixes = [
+    "/admin",
+    "/system",
+    "/api"
+  ]
+  hide_mobile_nav = hidden_prefixes.any? { |prefix| request.path.start_with?(prefix) }
+
+  # Režim lansiranja (spec §6). The bar keeps its four slots — a fifth would not
+  # fit a 320px phone — so "Odlučuj" steps aside for the race and moves into the
+  # "Još" sheet rather than disappearing. Decided per RENDER: at the 14.10.2026
+  # 20:00 freeze the ordinary bar is back with no deploy.
+  launch = DecidimApp::LaunchMode.active?(current_organization)
+  # See _main_links_desktop: Decidim::Bih.registration_path arrives with the
+  # engine half of this delivery, so never assume it is already there.
+  registration_href = Decidim::Bih.respond_to?(:registration_path) ? Decidim::Bih.registration_path : "/users/sign_up"
+
+  decide_item = {
+    key: "decide",
+    href: "/processes",
+    icon: "checkbox-multiple-line",
+    label: t("decidim.bih.mobile_nav.decide")
+  }
+  race_item = {
+    key: "race",
+    href: "/trka",
+    icon: "trophy-line",
+    label: t("decidim.bih.mobile_nav.race")
+  }
+  unread_data = current_user_unread_data
+  unread_activity = unread_data[:unread_items]
+  account_href = Decidim::Bih.public_path("moj-nalog")
+  if unread_data[:unread_notifications]
+    account_href = decidim.notifications_path
+  elsif unread_data[:unread_conversations]
+    account_href = decidim.conversations_path
+  end
+  bottom_items = [
+    {
+      key: "report",
+      href: Decidim::Bih.public_path("prijave/new"),
+      icon: "add-circle-line",
+      label: t("decidim.bih.mobile_nav.report")
+    },
+    launch ? race_item : decide_item,
+    {
+      key: "bot",
+      href: Decidim::Bih.public_path("mi-bot"),
+      icon: "chat-new-line",
+      label: t("decidim.bih.mobile_nav.bot"),
+      item_class: "mi-mobile-bottom-nav__item--bot",
+      data: { mi_bot_open: true }
+    },
+    if current_user
+      { key: "account", href: account_href, icon: "user-line", avatar: true,
+        item_class: ("mi-mobile-bottom-nav__item--unread" if unread_activity),
+        label: t("decidim.bih.mobile_nav.#{unread_activity ? 'new_message' : 'account'}") }
+    elsif launch
+      { key: "account", href: registration_href, icon: "user-line", label: t("decidim.bih.mobile_nav.register") }
+    else
+      { key: "account", href: decidim.new_user_session_path, icon: "user-line", label: t("decidim.bih.mobile_nav.login") }
+    end
+  ]
+  home_item = { href: "/", icon: "home-2-line", label: t("decidim.bih.mobile_nav.home") }
+  # In launch mode the account slot says "Registruj se", so a returning citizen
+  # has no sign-in on the bar; the sheet carries it until the freeze.
+  login_item = { href: decidim.new_user_session_path, icon: "login-box-line", label: t("decidim.bih.mobile_nav.login") }
+  sheet_login_items = launch && !current_user ? [login_item] : []
+  # The 17.9. event page is retired; the race itself is already on the bar
+  # (race_item), so the sheet only carries what the bar pushed aside.
+  launch_more_items = [
+    decide_item.slice(:href, :icon, :label)
+  ]
+  # The bar itself is full: four slots plus "Još", and a fifth will not fit a
+  # 320px phone (see the note above). So the invite lives in the sheet.
+  #
+  # Unlike the header pill and the top nudge, this entry is PERMANENT — it is
+  # the sheet's ordinary home for inviting, not campaign furniture, so it
+  # survives the 14.10.2026 freeze the way the account checklist step does.
+  # What the campaign changes is only its POSITION: first in the sheet while
+  # the race runs, because it is then the action with the most leverage, and
+  # back below "Početna" afterwards, where a permanent menu item belongs.
+  # Signed-in only either way: the invite tab builds a link from the citizen's
+  # own nickname, which a visitor has not got.
+  invite_items =
+    if current_user && current_user.decidim_organization_id == current_organization.id &&
+       Decidim::Bih.respond_to?(:invite_path)
+      [{ href: Decidim::Bih.invite_path, icon: "user-add-line", label: t("decidim.bih.menu.invite") }]
+    else
+      []
+    end
+  # "Početna" first: with the header gone on mobile the logo no longer takes a
+  # citizen home, so the sheet does.
+  leading_items = launch ? invite_items + [home_item] : [home_item] + invite_items
+  account_items = current_user ? [
+    { href: decidim.notifications_path, icon: "notification-3-line", label: t("decidim.bih.mobile_nav.notifications") },
+    { href: Decidim::Bih.public_path("moj-nalog"), icon: "user-line", label: t("decidim.bih.mobile_nav.account") }
+  ] : []
+  more_items = leading_items + account_items + sheet_login_items + (launch ? launch_more_items : (DecidimApp::LaunchMode.race_archived?(current_organization) ? [] : [race_item.slice(:href, :icon, :label)])) + [
+    { href: Decidim::Bih.public_path("volontiranje"), icon: "hand-heart-line", label: t("decidim.bih.menu.volunteer_action") },
+    { href: Decidim::Bih.public_path("projekti"), icon: "heart-2-line", label: t("decidim.bih.menu.donate_action") },
+    { href: Decidim::Bih.public_path("zajednistvo"), icon: "star-line", label: t("decidim.bih.menu.community") },
+    { href: Decidim::Bih.public_path("komsiluk-board"), icon: "home-heart-line", label: t("decidim.bih.menu.komsiluk") },
+    { href: Decidim::Bih.public_path("uticaj"), icon: "bubble-chart-line", label: t("decidim.bih.menu.impact_public") },
+    { href: Decidim::Bih.public_path("vodic"), icon: "question-line", label: t("decidim.bih.menu.onboarding_short") }
+  ]
+  active_path = lambda do |href|
+    normalized = href.to_s.split("?").first
+    request.path == normalized || (normalized == "/processes" && request.path.start_with?("/processes/"))
+  end
+  locale_labels = {
+    "sr" => "Srpski",
+    "sr-Cyrl" => "Српски",
+    "bs" => "Bosanski",
+    "hr" => "Hrvatski"
+  }
+%>
+
+<% unless hide_mobile_nav %>
+  <nav class="mi-mobile-bottom-nav"
+       data-mi-mobile-nav
+       data-sheet="mi-mobile-more-sheet"
+       aria-label="<%= t("decidim.bih.mobile_nav.aria") %>">
+    <% bottom_items.each do |item| %>
+      <% is_active = active_path.call(item[:href]) %>
+      <%= link_to item[:href],
+                  class: ["mi-mobile-bottom-nav__item", item[:item_class], ("is-active" if is_active)].compact.join(" "),
+                  data: item[:data],
+                  aria: { current: is_active ? "page" : nil } do %>
+        <% if item[:avatar] && current_user %>
+          <%# The signed-in citizen's own face (or initials) instead of the generic
+              user icon — the :big variant (80px) stays sharp on a 2x screen. %>
+          <span class="mi-mobile-bottom-nav__avatar" aria-hidden="true">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.attached_uploader(:avatar).variant_url(:big), alt: "" %>
+            <% else %>
+              <%= text_initials(current_user.name) %>
+            <% end %>
+          </span>
+        <% else %>
+          <%= icon item[:icon], role: "img", "aria-hidden": true %>
+        <% end %>
+        <span><%= item[:label] %></span>
+      <% end %>
+    <% end %>
+
+    <button type="button"
+            class="mi-mobile-bottom-nav__item mi-mobile-bottom-nav__more"
+            data-mi-mobile-more-open
+            aria-controls="mi-mobile-more-sheet"
+            aria-expanded="false">
+      <%= icon "menu-line", role: "img", "aria-hidden": true %>
+      <span><%= t("decidim.bih.mobile_nav.more") %></span>
+    </button>
+  </nav>
+
+  <div id="mi-mobile-more-sheet"
+       class="mi-mobile-more-sheet"
+       data-mi-mobile-more-backdrop
+       hidden>
+    <div class="mi-mobile-more-sheet__panel"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="mi-mobile-more-title">
+      <div class="mi-mobile-more-sheet__head">
+        <h2 id="mi-mobile-more-title"><%= t("decidim.bih.mobile_nav.more_title") %></h2>
+        <button type="button"
+                class="mi-mobile-more-sheet__close"
+                data-mi-mobile-more-close
+                aria-label="<%= t("decidim.bih.mobile_nav.close") %>">
+          <%= icon "close-line", role: "img", "aria-hidden": true %>
+        </button>
+      </div>
+
+      <form class="mi-mobile-more-sheet__search" action="/search" method="get" role="search">
+        <label class="sr-only" for="mi-mobile-more-search"><%= t("decidim.bih.mobile_nav.search_label") %></label>
+        <input id="mi-mobile-more-search"
+               type="search"
+               name="term"
+               placeholder="<%= t("decidim.bih.mobile_nav.search_placeholder") %>">
+        <button type="submit" aria-label="<%= t("decidim.bih.mobile_nav.search_label") %>">
+          <%= icon "search-line", role: "img", "aria-hidden": true %>
+        </button>
+      </form>
+
+      <div class="mi-mobile-more-sheet__links">
+        <% more_items.each do |item| %>
+          <%= link_to item[:href], class: "mi-mobile-more-sheet__link" do %>
+            <%= icon item[:icon], role: "img", "aria-hidden": true %>
+            <span><%= item[:label] %></span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="mi-mobile-more-sheet__language" aria-label="<%= t("decidim.bih.mobile_nav.language") %>">
+        <span><%= t("decidim.bih.mobile_nav.language") %></span>
+        <div>
+          <% locale_labels.each do |locale, label| %>
+            <%= link_to label, "/locale?locale=#{locale}", rel: "nofollow", data: { method: :post } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

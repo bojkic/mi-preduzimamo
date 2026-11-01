@@ -1,0 +1,10 @@
+<h2><%= t('decidim_app.admin.city_service_events.compact.automation') %></h2>
+<p><%= t('decidim_app.admin.city_service_events.compact.automation_help') %></p>
+<% DecidimApp::Bijeljina::CityServiceAutomationPolicy.new(organization: current_organization).rows.each do |row| %>
+  <%= form_with url: decidim_app_admin_city_service_automation_policy_path, method: :post, local: true, class: "form form-defaults" do %>
+    <%= hidden_field_tag :source_key, row.fetch(:source_key) %>
+    <%= label_tag "policy_#{row.fetch(:source_key)}", DecidimApp::Bijeljina::CityServiceSources.fetch(row.fetch(:source_key)).fetch(:label) %>
+    <%= select_tag :mode, options_for_select((row[:automatic_allowed] ? %w(off shadow automatic) : %w(off shadow)).map { |mode| [t("decidim_app.admin.city_service_events.compact.#{mode}"), mode] }, row.fetch(:mode)), id: "policy_#{row.fetch(:source_key)}" %>
+    <%= submit_tag t('decidim_app.admin.city_service_events.compact.save_policy'), class: 'button button__sm button__secondary' %>
+  <% end %>
+<% end %>

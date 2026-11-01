@@ -1,0 +1,111 @@
+---
+en:
+  decidim_app:
+    city_data:
+      datasets:
+        waste_schedule: Waste schedule
+        parking_zones: Parking zones
+        budget_snapshot: Budget snapshot
+        gazette_index: Gazette index
+        service_directory: Service directory
+        service_alert_sources: Service and alert sources
+        local_areas: Local areas
+    city_data_preview:
+      not_found: No match
+      waste:
+        label: Waste schedule
+        placeholder: Area or street
+      parking:
+        label: Parking zones
+        placeholder: Street
+      budget:
+        label: Budget snapshot
+        placeholder: Category
+sr:
+  decidim_app:
+    city_data:
+      datasets:
+        waste_schedule: Raspored odvoza otpada
+        parking_zones: Parking zone
+        budget_snapshot: Pregled budžeta
+        gazette_index: Pregled službenih glasnika
+        service_directory: Imenik gradskih službi
+        service_alert_sources: Izvori servisnih i hitnih obavještenja
+        local_areas: Lokalna područja
+    city_data_preview:
+      not_found: Nema rezultata
+      waste:
+        label: Raspored odvoza otpada
+        placeholder: Naselje ili ulica
+      parking:
+        label: Parking zone
+        placeholder: Ulica
+      budget:
+        label: Pregled budžeta
+        placeholder: Kategorija
+sr-Cyrl:
+  decidim_app:
+    city_data:
+      datasets:
+        waste_schedule: Распоред одвоза отпада
+        parking_zones: Паркинг зоне
+        budget_snapshot: Преглед буџета
+        gazette_index: Преглед службених гласника
+        service_directory: Именик градских служби
+        service_alert_sources: Извори сервисних и хитних обавјештења
+        local_areas: Локална подручја
+    city_data_preview:
+      not_found: Нема резултата
+      waste:
+        label: Распоред одвоза отпада
+        placeholder: Насеље или улица
+      parking:
+        label: Паркинг зоне
+        placeholder: Улица
+      budget:
+        label: Преглед буџета
+        placeholder: Категорија
+bs:
+  decidim_app:
+    city_data:
+      datasets:
+        waste_schedule: Raspored odvoza otpada
+        parking_zones: Parking zone
+        budget_snapshot: Pregled budžeta
+        gazette_index: Pregled službenih glasnika
+        service_directory: Imenik gradskih službi
+        service_alert_sources: Izvori servisnih i hitnih obavještenja
+        local_areas: Lokalna područja
+    city_data_preview:
+      not_found: Nema rezultata
+      waste:
+        label: Raspored odvoza otpada
+        placeholder: Naselje ili ulica
+      parking:
+        label: Parking zone
+        placeholder: Ulica
+      budget:
+        label: Pregled budžeta
+        placeholder: Kategorija
+hr:
+  decidim_app:
+    city_data:
+      datasets:
+        waste_schedule: Raspored odvoza otpada
+        parking_zones: Parkirne zone
+        budget_snapshot: Pregled proračuna
+        gazette_index: Pregled službenih glasnika
+        service_directory: Imenik gradskih službi
+        service_alert_sources: Izvori servisnih i hitnih obavijesti
+        local_areas: Lokalna područja
+    city_data_preview:
+      not_found: Nema rezultata
+      waste:
+        label: Raspored odvoza otpada
+        placeholder: Naselje ili ulica
+      parking:
+        label: Parkirne zone
+        placeholder: Ulica
+      budget:
+        label: Pregled proračuna
+        placeholder: Kategorija

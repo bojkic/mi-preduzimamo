@@ -1,0 +1,134 @@
+<% race_vars = { registration_points: @race_config.weights[:registered], report_points: @race_config.weights[:report], proposal_points: @race_config.weights[:proposal], report_cap: @race_config.caps[:report], proposal_cap: @race_config.caps[:proposal], window_from: l(@race_config.window_from, format: :long), window_to: l(@race_config.window_to, format: :long) } %>
+<%#
+  "Trka komšiluka" — the public race page.
+
+  ORDER IS THE ARGUMENT. A citizen arriving from the top strip or the homepage
+  button wants one thing: where is my komšiluk. So the prize and the standings
+  come first, and the rules — which only matter once you care about the
+  result — come after. The old page was rules-first with no standings at all.
+
+  The standings themselves are the engine partial the hub's ?tab=trka renders,
+  so the two surfaces can never disagree about who is leading.
+%>
+<% add_decidim_page_title(t("mi_launch.race_rules.title")) %>
+<div class="wrapper mi-trka">
+
+  <%# ---- Hero: what is at stake, and how long is left ------------------- %>
+  <header class="mi-surface mi-trka__hero <%= "mi-trka__hero--registration" unless user_signed_in? %>">
+    <p class="mi-eyebrow"><%= t("mi_launch.race_rules.window", **race_vars) %></p>
+    <h1><%= t(@race_frozen ? "mi_race_projects.archive_title" : "decidim.bih.community_hub.race.title") %></h1>
+    <p class="mi-trka__lead"><%= t("mi_launch.race_rules.intro") %></p>
+
+    <% unless user_signed_in? || @race_frozen %>
+      <p class="mi-trka__registration-offer"><%= t((@race_config.open? && !@race_frozen && !@race_closed) ? "mi_registration.race_offer" : "mi_registration.closed_offer", points: @race_config.weights[:registered]) %></p>
+      <p class="mi-trka__clock">
+        <% if @race_frozen %>
+          <strong><%= t("decidim.bih.community_hub.race.finished") %></strong>
+        <% elsif @race_closed || @race_config.finished? %>
+          <strong><%= t("decidim.bih.community_hub.race.under_review") %></strong>
+        <% elsif @race_config.open? %>
+          <strong><%= t("decidim.bih.community_hub.race.remaining", time: distance_of_time_in_words(Time.current, @race_config.window_to)) %></strong>
+        <% else %>
+          <strong><%= t("mi_registration.race_starts", date: l(@race_config.window_from, format: :long)) %></strong>
+        <% end %>
+      </p>
+      <p class="mi-action-row"><%= link_to t("mi_registration.register"), "#{Decidim::Bih.registration_path_for}?izvor=trka", class: "mi-btn mi-btn--primary" %></p>
+    <% end %>
+
+    <% if user_signed_in? && !@race_closed %>
+    <p class="mi-action-row">
+      <%= link_to t("decidim.bih.community_hub.race.invite_cta"),
+                  Decidim::Bih.invite_path,
+                  class: "mi-btn mi-btn--primary" %>
+      <%= link_to t("decidim.bih.public_actions.report"),
+                  Decidim::Bih.public_path("prijave/new"),
+                  class: "mi-btn mi-btn--ghost" %>
+    </p>
+    <% end %>
+
+    <div class="mi-trka__prizes">
+      <% [["grad", "🏙️"], ["selo", "🌾"]].each do |zone, mark| %>
+        <article class="mi-trka__prize mi-trka__prize--<%= zone %>">
+          <span class="mi-trka__prize-mark" aria-hidden="true"><%= mark %></span>
+          <strong class="mi-trka__prize-amount"><%= t("mi_launch.race_rules.prize_amount") %></strong>
+          <span class="mi-trka__prize-label"><%= t("mi_launch.race_rules.prize_#{zone}") %></span>
+          <span class="mi-trka__prize-note"><%= t("mi_launch.race_rules.prize_note") %></span>
+        </article>
+      <% end %>
+    </div>
+
+    <p class="mi-trka__clock">
+      <% if @race_frozen %>
+        <strong><%= t("decidim.bih.community_hub.race.finished") %></strong>
+      <% elsif @race_closed %>
+        <strong><%= t("decidim.bih.community_hub.race.under_review") %></strong>
+      <% else %>
+        <strong><%= t("decidim.bih.community_hub.race.remaining",
+                      time: distance_of_time_in_words(Time.current, @race_config.window_to)) %></strong>
+      <% end %>
+    </p>
+
+    <% if @race_computed_at %><p><%= t("decidim.bih.community_hub.race.updated_at", time: l(@race_computed_at, format: :short)) %></p><% end %>
+
+  </header>
+
+  <% if @race_frozen && @race_project_links.present? %>
+    <section class="mi-surface" data-race-project-selection>
+      <h2><%= t("mi_race_projects.choose_title") %></h2>
+      <p><%= t("mi_race_projects.choose_intro") %></p>
+      <div class="mi-action-row">
+        <% @race_project_links.each do |project| %>
+          <%= link_to translated_attribute(project[:name]), project[:path], class: "mi-btn mi-btn--primary" %>
+        <% end %>
+      </div>
+      <p><%= link_to t("mi_race_projects.process_link"), DecidimApp::Bijeljina::RaceProjectSelection.process_path %></p>
+    </section>
+  <% end %>
+
+  <%# ---- The standings, from the cached Race::Standing rows -------------- %>
+  <%= render "decidim/bih/community_hub/trka",
+             race_url: ->(opts) { launch_race_rules_path(**opts.compact) },
+             show_header: false %>
+
+  <% unless user_signed_in? || @race_frozen %>
+    <p class="mi-action-row mi-trka__register-repeat"><%= link_to t("mi_registration.register"), "#{Decidim::Bih.registration_path_for}?izvor=trka", class: "mi-btn mi-btn--primary" %></p>
+  <% end %>
+
+  <%# ---- How a point is earned ------------------------------------------ %>
+  <section class="mi-surface mi-trka__rules">
+    <h2><%= t("mi_launch.race_rules.points_title") %></h2>
+    <div class="mi-trka__points">
+      <% @race_config.weights.map { |key, value| [key.to_s, value] }.each do |key, weight| %>
+        <article class="mi-trka__point">
+          <strong class="mi-trka__point-weight">&times;<%= weight %></strong>
+          <span class="mi-trka__point-label"><%= t("mi_launch.race_rules.points_#{key}") %></span>
+        </article>
+      <% end %>
+    </div>
+    <p class="mi-trka__formula"><%= t("mi_launch.race_rules.formula", **race_vars) %></p>
+
+    <h2><%= t("mi_launch.race_rules.rules_title") %></h2>
+    <ul class="mi-trka__list">
+      <% (1..5).each do |i| %>
+        <li><%= t("mi_launch.race_rules.rule_#{i}", **race_vars) %></li>
+      <% end %>
+    </ul>
+
+    <dl class="mi-trka__facts">
+      <% %w(time announce build).each do |key| %>
+        <div class="mi-trka__fact">
+          <dt><%= t("mi_launch.race_rules.#{key}_title") %></dt>
+          <dd><%= t("mi_launch.race_rules.#{key}", **race_vars) %></dd>
+        </div>
+      <% end %>
+    </dl>
+
+    <p class="mi-trka__notice"><%= t("mi_launch.race_rules.no_politics") %></p>
+
+    <p class="mi-action-row">
+      <%= link_to t("mi_launch.faq.title"), launch_faq_path, class: "mi-btn mi-btn--ghost mi-btn--sm" %>
+      <%= link_to t("mi_launch.moderation.title"), launch_moderation_path, class: "mi-btn mi-btn--ghost mi-btn--sm" %>
+      <%= link_to t("mi_launch.neutrality.title"), launch_neutrality_path, class: "mi-btn mi-btn--ghost mi-btn--sm" %>
+    </p>
+  </section>
+</div>

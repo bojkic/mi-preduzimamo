@@ -1,0 +1,36 @@
+<% history = @document_history.fetch(event, []) %>
+<% if history.any? %>
+  <details data-city-document-history="<%= event.id %>">
+    <summary><%= t('.title') %></summary>
+    <p><%= t('.help') %></p>
+    <% history.each do |previous| %>
+      <article data-city-document-version="<%= previous.id %>">
+        <strong><%= previous.title %></strong>
+        <p><%= previous.affected_text %></p>
+        <p><%= previous.summary %></p>
+        <dl>
+          <% %w(event_type starts_at ends_at targeting_level affected_area_slugs).each do |field| %>
+            <dt><%= t(".#{field}") %></dt>
+            <dd><%= Array(previous.public_send(field)).join(', ') %></dd>
+          <% end %>
+          <dt><%= t('.version') %></dt><dd><code><%= previous.content_version %></code></dd>
+        </dl>
+      </article>
+    <% end %>
+  </details>
+<% end %>
+<% if event.extraction_metadata['operator_review'].present? %>
+  <p data-city-operator-correction="true"><%= t('.operator_correction') %></p>
+  <p><%= event.review_note %></p>
+  <details>
+    <summary><%= t('.original') %></summary>
+    <% original = event.extraction_metadata.dig('operator_review', 'original').to_h %>
+    <p><%= original.dig('text', 'affected_text') %></p>
+    <p><%= original.dig('text', 'summary') %></p>
+    <dl>
+      <% %w(event_type starts_at ends_at targeting_level affected_area_slugs).each do |field| %>
+        <dt><%= t(".#{field}") %></dt><dd><%= Array(original.dig('facts', field)).join(', ') %></dd>
+      <% end %>
+    </dl>
+  </details>
+<% end %>

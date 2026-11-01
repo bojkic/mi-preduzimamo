@@ -1,0 +1,6 @@
+# Crawl policy; use noindex metadata for pages that must stay out of search.
+User-agent: *
+Disallow: /profiles/
+Disallow: /search
+
+Sitemap: https://mi.fondacijabijeljina.com/sitemap.xml

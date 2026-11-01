@@ -1,0 +1,42 @@
+<%= render "decidim/bih/admin/shared/navigation", current_item: :city_service_entries %>
+
+<div class="card" id="admin-city-service-entry-preview" data-city-service-entry-key="<%= @shipped.fetch(:key) %>" data-preview-locale="<%= @locale %>">
+  <div class="card-divider">
+    <div>
+      <h1 class="h3"><%= t(".title", title: @shipped.fetch(:title)) %></h1>
+      <p class="text-muted" style="margin-bottom: 0;"><%= t(".intro") %></p>
+      <p style="margin-bottom: 0;"><small><%= t(".state_note", state: entry_state_label(@entry)) %></small></p>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <%= form_with url: decidim_app_admin_city_service_entry_preview_path(@shipped.fetch(:key)),
+                  method: :get,
+                  local: true,
+                  html: { style: "display:grid; gap:0.65rem; max-width:52rem;" },
+                  class: "form form-defaults mi-admin-form" do %>
+      <div class="mi-admin-form__field">
+        <%= label_tag :query, t(".query_label") %>
+        <%= text_field_tag :query, @query, maxlength: 300 %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= label_tag :answer_locale, t(".locale_label") %>
+        <%= select_tag :answer_locale, options_for_select(preview_locales.map { |code| [code, code] }, @locale) %>
+      </div>
+      <div class="mi-admin-record-editor__footer">
+        <%= submit_tag t(".render"), class: "button button__sm button__secondary", name: nil %>
+      </div>
+    <% end %>
+
+    <h2 class="h4" style="margin-top:1.25rem;"><%= t(".draft_heading") %></h2>
+    <blockquote id="city-service-entry-draft-answer" style="white-space:pre-wrap;"><%= @draft_answer %></blockquote>
+
+    <h2 class="h4"><%= t(".shipped_heading") %></h2>
+    <blockquote id="city-service-entry-shipped-answer" style="white-space:pre-wrap;"><%= @shipped_answer %></blockquote>
+
+    <p>
+      <%= link_to t(".back"), decidim_app_admin_city_service_entry_edit_path(@shipped.fetch(:key)),
+                  class: "button button__sm button__transparent-secondary" %>
+    </p>
+  </div>
+</div>

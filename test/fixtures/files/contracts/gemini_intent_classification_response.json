@@ -1,0 +1,13 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "{\"intent\":\"service\",\"query\":\"izvod iz maticne knjige rodjenih\"}"
+          }
+        ]
+      }
+    }
+  ]
+}

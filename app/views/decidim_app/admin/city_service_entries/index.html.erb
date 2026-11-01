@@ -1,0 +1,75 @@
+<%= render "decidim/bih/admin/shared/navigation", current_item: :city_service_entries %>
+
+<div class="card" id="admin-city-service-entries">
+  <div class="card-divider">
+    <div>
+      <h1 class="h3"><%= t(".title") %></h1>
+      <p class="text-muted" style="margin-bottom: 0;"><%= t(".intro") %></p>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <p style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+      <%= link_to t(".actions.foundation_status"), decidim_app_admin_foundation_status_path,
+                  class: "button button__sm button__transparent-secondary", id: "admin-foundation-status-link" %>
+      <% if @foundation_status %>
+        <small><%= t("decidim_app.admin.foundation_status.show.effective_row",
+                     status: t("decidim_app.admin.foundation_status.show.statuses.#{@foundation_status.current_open_status}"),
+                     reviewed_on: @foundation_status.reviewed_on.strftime("%d.%m.%Y."),
+                     expires_on: @foundation_status.review_expires_on.strftime("%d.%m.%Y."),
+                     source: t("decidim_app.admin.foundation_status.show.effective_source_override")) %></small>
+      <% end %>
+    </p>
+
+    <div class="table-stacked">
+      <table class="table-list mi-admin-editor-table" id="admin-city-service-entries-table">
+        <thead>
+          <tr>
+            <th><%= t(".columns.key") %></th>
+            <th><%= t(".columns.title") %></th>
+            <th><%= t(".columns.state") %></th>
+            <th><%= t(".columns.source_checked_on") %></th>
+            <th><%= t(".columns.approved_at") %></th>
+            <th><%= t(".columns.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rows.each do |row| %>
+            <% shipped = row[:shipped] %>
+            <% record = row[:record] %>
+            <% key = shipped.fetch(:key).to_s %>
+            <% checked_on = record&.source_checked_on || Date.iso8601(shipped.fetch(:source_checked_on)) %>
+            <tr id="city-service-entry-<%= key %>" data-city-service-entry-state="<%= entry_state_key(record) %>">
+              <td data-label="<%= t(".columns.key") %>"><code><%= key %></code></td>
+              <td data-label="<%= t(".columns.title") %>"><%= record&.title.presence || shipped.fetch(:title) %></td>
+              <td data-label="<%= t(".columns.state") %>"><%= entry_state_label(record) %></td>
+              <td data-label="<%= t(".columns.source_checked_on") %>"><%= checked_on.strftime("%d.%m.%Y.") %></td>
+              <td data-label="<%= t(".columns.approved_at") %>">
+                <%= record&.approved_at ? record.approved_at.in_time_zone("Europe/Sarajevo").strftime("%d.%m.%Y. %H:%M") : "—" %>
+              </td>
+              <td data-label="<%= t(".columns.actions") %>">
+                <div class="mi-admin-record-editor__actions" style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+                  <%= link_to t(".actions.edit"), decidim_app_admin_city_service_entry_edit_path(key),
+                              class: "button button__sm button__transparent-secondary" %>
+                  <% if record&.persisted? %>
+                    <%= link_to t(".actions.preview"), decidim_app_admin_city_service_entry_preview_path(key),
+                                class: "button button__sm button__transparent-secondary" %>
+                    <% unless record.live? %>
+                      <%= button_to t(".actions.approve"), decidim_app_admin_city_service_entry_approve_path(key),
+                                    method: :post, class: "button button__sm button__secondary" %>
+                    <% end %>
+                    <% if record.approved? %>
+                      <%= button_to t(".actions.rollback"), decidim_app_admin_city_service_entry_rollback_path(key),
+                                    method: :post, class: "button button__sm button__transparent-secondary mi-admin-action--danger",
+                                    data: { confirm: t(".actions.rollback_confirm") } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

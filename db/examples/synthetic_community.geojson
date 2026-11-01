@@ -1,0 +1,190 @@
+{
+  "type": "FeatureCollection",
+  "name": "SYNTHETIC_NOT_A_REAL_COMMUNITY",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "mz",
+        "slug": "primjer-mz",
+        "name": {
+          "sr": "Izmišljena zajednica",
+          "sr-Cyrl": "Izmišljena zajednica",
+          "bs": "Izmišljena zajednica",
+          "hr": "Izmišljena zajednica"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.02,
+              0
+            ],
+            [
+              0.02,
+              0.02
+            ],
+            [
+              0,
+              0.02
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 1,
+        "naziv": "Izmišljeni komšiluk 1",
+        "slug": "primjer-komsiluk-1"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0.01,
+              0
+            ],
+            [
+              0.01,
+              0.01
+            ],
+            [
+              0,
+              0.01
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 2,
+        "naziv": "Izmišljeni komšiluk 2",
+        "slug": "primjer-komsiluk-2"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.01,
+              0
+            ],
+            [
+              0.02,
+              0
+            ],
+            [
+              0.02,
+              0.01
+            ],
+            [
+              0.01,
+              0.01
+            ],
+            [
+              0.01,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 3,
+        "naziv": "Izmišljeni komšiluk 3",
+        "slug": "primjer-komsiluk-3"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0.01
+            ],
+            [
+              0.01,
+              0.01
+            ],
+            [
+              0.01,
+              0.02
+            ],
+            [
+              0,
+              0.02
+            ],
+            [
+              0,
+              0.01
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "komsiluk",
+        "id": 4,
+        "naziv": "Izmišljeni komšiluk 4",
+        "slug": "primjer-komsiluk-4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.01,
+              0.01
+            ],
+            [
+              0.02,
+              0.01
+            ],
+            [
+              0.02,
+              0.02
+            ],
+            [
+              0.01,
+              0.02
+            ],
+            [
+              0.01,
+              0.01
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

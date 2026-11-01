@@ -1,0 +1,55 @@
+sr:
+  bijeljina:
+    milica_chat_photo:
+      disabled: "Fotografije za sada ne mogu primiti na ovom kanalu. Prijavu mogu zaprimiti i bez slike, a fotografiju možeš dodati kroz obrazac na /biceriseno/prijave."
+      stored: "Sačuvala sam fotografiju uz ovu prijavu. Šaljem je tek kad potvrdiš prijavu."
+      too_large: "Slika je prevelika — mogu primiti fotografiju do 5 MB. Pošalji manju ili je dodaj kroz obrazac na /biceriseno/prijave."
+      invalid_type: "Ovaj format slike ne mogu prihvatiti. Pošalji fotografiju kao JPG, PNG ili WEBP."
+      fetch_failed: "Nisam uspjela preuzeti sliku. Pošalji je ponovo pa ću je zakačiti uz prijavu."
+      expired: "Slika više nije dostupna kod pošiljaoca. Pošalji je ponovo pa ću je zakačiti uz prijavu."
+      disclosure: "Fotografija nije javno objavljena uz prijavu: vide je samo ovlašteni operateri i nadležna gradska služba. Javni su broj prijave, kategorija, tačka na mapi i adresa, status i datum."
+      preview_line: "Fotografija: priložena."
+bs:
+  bijeljina:
+    milica_chat_photo:
+      disabled: "Fotografije za sada ne mogu primiti na ovom kanalu. Prijavu mogu zaprimiti i bez slike, a fotografiju možeš dodati kroz obrazac na /biceriseno/prijave."
+      stored: "Sačuvala sam fotografiju uz ovu prijavu. Šaljem je tek kad potvrdiš prijavu."
+      too_large: "Slika je prevelika — mogu primiti fotografiju do 5 MB. Pošalji manju ili je dodaj kroz obrazac na /biceriseno/prijave."
+      invalid_type: "Ovaj format slike ne mogu prihvatiti. Pošalji fotografiju kao JPG, PNG ili WEBP."
+      fetch_failed: "Nisam uspjela preuzeti sliku. Pošalji je ponovo pa ću je zakačiti uz prijavu."
+      expired: "Slika više nije dostupna kod pošiljaoca. Pošalji je ponovo pa ću je zakačiti uz prijavu."
+      disclosure: "Fotografija nije javno objavljena uz prijavu: vide je samo ovlašteni operateri i nadležna gradska služba. Javni su broj prijave, kategorija, tačka na mapi i adresa, status i datum."
+      preview_line: "Fotografija: priložena."
+hr:
+  bijeljina:
+    milica_chat_photo:
+      disabled: "Fotografije zasad ne mogu primiti na ovom kanalu. Prijavu mogu zaprimiti i bez slike, a fotografiju možeš dodati kroz obrazac na /biceriseno/prijave."
+      stored: "Spremila sam fotografiju uz ovu prijavu. Šaljem je tek kad potvrdiš prijavu."
+      too_large: "Slika je prevelika — mogu primiti fotografiju do 5 MB. Pošalji manju ili je dodaj kroz obrazac na /biceriseno/prijave."
+      invalid_type: "Ovaj format slike ne mogu prihvatiti. Pošalji fotografiju kao JPG, PNG ili WEBP."
+      fetch_failed: "Nisam uspjela preuzeti sliku. Pošalji je ponovno pa ću je zakačiti uz prijavu."
+      expired: "Slika više nije dostupna kod pošiljatelja. Pošalji je ponovno pa ću je zakačiti uz prijavu."
+      disclosure: "Fotografija nije javno objavljena uz prijavu: vide je samo ovlašteni operateri i nadležna gradska služba. Javni su broj prijave, kategorija, točka na karti i adresa, status i datum."
+      preview_line: "Fotografija: priložena."
+sr-Cyrl:
+  bijeljina:
+    milica_chat_photo:
+      disabled: "Фотографије за сада не могу примити на овом каналу. Пријаву могу запримити и без слике, а фотографију можеш додати кроз образац на /biceriseno/prijave."
+      stored: "Сачувала сам фотографију уз ову пријаву. Шаљем је тек кад потврдиш пријаву."
+      too_large: "Слика је превелика — могу примити фотографију до 5 MB. Пошаљи мању или је додај кроз образац на /biceriseno/prijave."
+      invalid_type: "Овај формат слике не могу прихватити. Пошаљи фотографију као JPG, PNG или WEBP."
+      fetch_failed: "Нисам успјела преузети слику. Пошаљи је поново па ћу је закачити уз пријаву."
+      expired: "Слика више није доступна код пошиљаоца. Пошаљи је поново па ћу је закачити уз пријаву."
+      disclosure: "Фотографија није јавно објављена уз пријаву: виде је само овлаштени оператери и надлежна градска служба. Јавни су број пријаве, категорија, тачка на мапи и адреса, статус и датум."
+      preview_line: "Фотографија: приложена."
+en:
+  bijeljina:
+    milica_chat_photo:
+      disabled: "I cannot accept photos on this channel yet. I can still take your report without one, and you can add a photo through the form at /biceriseno/prijave."
+      stored: "I have kept the photo with this report. I only send it once you confirm the report."
+      too_large: "The photo is too large — I can take a photo up to 5 MB. Send a smaller one, or add it through the form at /biceriseno/prijave."
+      invalid_type: "I cannot accept this image format. Send the photo as JPG, PNG or WEBP."
+      fetch_failed: "I could not download the photo. Send it again and I will attach it to the report."
+      expired: "The photo is no longer available from the sender. Send it again and I will attach it to the report."
+      disclosure: "The photo is not published publicly with the report: only authorised operators and the responsible city service see it. What is public is the report number, category, map point and address, status and date."
+      preview_line: "Photo: attached."

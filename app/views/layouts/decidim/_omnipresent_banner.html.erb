@@ -1,0 +1,20 @@
+<span hidden id="mi-install-context"
+      data-signed-in="<%= current_user ? 1 : 0 %>"
+      data-allowed="<%= mi_install_suppressed? ? 0 : 1 %>"></span>
+<% if current_organization.enable_omnipresent_banner %>
+  <%= link_to current_organization.omnipresent_banner_url, class: "omnipresent-banner" do %>
+    <span>
+      <%= translated_attribute current_organization.omnipresent_banner_title %>
+    </span>
+    -
+    <span>
+      <%= translated_attribute current_organization.omnipresent_banner_short_description %>
+    </span>
+    <%= icon "play-fill" %>
+  <% end %>
+<% end %>
+<%= render "decidim/bih/shared/verify_nudge" %>
+<%= render "decidim_app/shared/invite_nudge" %>
+<%= render "decidim/bih/shared/mobile_bottom_nav" %>
+
+<%= render "decidim_app/shared/push_offer" %>

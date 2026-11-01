@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wholly invented parser fixture. Not a captured warning or a real event. -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel><title>Izmišljeni testni feed</title><link>https://ruczrs.org/</link>
+<lastBuildDate>Sun, 08 Apr 2040 12:00:00 +0000</lastBuildDate>
+<item><title>UPOZORENJE — IZMIŠLJENI TEST</title><link>https://ruczrs.org/synthetic-warning</link>
+<pubDate>Sun, 08 Apr 2040 12:00:00 +0000</pubDate>
+<content:encoded><![CDATA[<p>LOKACIJA: CIJELA REPUBLIKA SRPSKA VRIJEME: 09.04.2040. Izmišljeni sadržaj samo za izolovani test.</p>]]></content:encoded></item>
+<item><title>JAVNI KONKURS — IZMIŠLJENI TEST</title><link>https://ruczrs.org/synthetic-recruitment</link>
+<pubDate>Sun, 08 Apr 2040 12:00:00 +0000</pubDate>
+<content:encoded><![CDATA[<p>Izmišljeni tekst koji nikada ne smije postati servisno upozorenje.</p>]]></content:encoded></item>
+<item><title>UPOZORENJE — ISTEKLI IZMIŠLJENI TEST</title><link>https://ruczrs.org/synthetic-expired</link>
+<pubDate>Sun, 01 Apr 2040 12:00:00 +0000</pubDate>
+<content:encoded><![CDATA[<p>LOKACIJA: CIJELA REPUBLIKA SRPSKA VRIJEME: 02.04.2040. Izmišljeni istekli sadržaj.</p>]]></content:encoded></item>
+</channel></rss>

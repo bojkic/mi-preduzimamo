@@ -1,0 +1,187 @@
+---
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          save_publish: Save review and publish to board
+          reviewed_tab: Reviewed — awaiting publication
+          withdraw_help: Withdrawal removes these board posts and stops pending alerts.
+            Messages already accepted by the provider cannot be recalled. Corrections
+            require a new publication.
+          correct: Withdraw and correct
+          withdraw: Withdraw notice
+          withdrawn: Notice withdrawn. Its board posts are no longer visible and pending
+            alerts are invalidated.
+          note_required: Enter a reason for withdrawal (up to 2000 characters).
+          not_authorized: You do not have permission for this action.
+          stale_review: The notice changed after you opened it. Reload and review
+            the current version; nothing was published.
+          no_target: 'Not published: choose affected areas supported by the source,
+            save and publish again.'
+          invalid_lifecycle: 'Not publishable: this notice is cancelled, resolved,
+            replaced or has an unknown status.'
+          incomplete_source: 'Not published: source evidence is incomplete.'
+          missing_time: 'Not published: both start and end time are required.'
+          invalid_time: 'Not published: the end must follow the start.'
+          expired: The notice has ended and cannot be published or sent.
+          not_publishable: The notice cannot be published in its current state.
+          no_publish: No board posts were created. Review the notice and try again.
+          already_published: This notice is already published; no duplicate posts
+            or messages were created.
+          board_published: 'Published to the board: %{posts} posts. Notification delivery was not
+            requested.'
+          delivery_queued: Notification delivery queued for %{recipients} recipients. This
+            is not a delivery confirmation.
+          delivery_skipped: Notification delivery was not queued (%{reason}). Board publication remains
+            available for review.
+        update:
+          facts_confirmation_required: Confirm the fact changes before saving or publishing.
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          save_publish: Sačuvaj pregled i objavi na tabli
+          reviewed_tab: Pregledano — čeka objavu
+          withdraw_help: Povlačenje uklanja objave sa table i zaustavlja poruke koje
+            čekaju slanje. Poruke koje je pružalac već prihvatio nije moguće opozvati.
+            Ispravku treba ponovo objaviti.
+          correct: Povuci i ispravi
+          withdraw: Povuci obavještenje
+          withdrawn: Obavještenje je povučeno. Objave više nisu vidljive, a poruke
+            koje čekaju slanje su zaustavljene.
+          note_required: Unesite razlog povlačenja (najviše 2000 znakova).
+          not_authorized: Nemate ovlašćenje za ovu radnju.
+          stale_review: Obavještenje je izmijenjeno nakon otvaranja. Osvježite stranicu
+            i pregledajte novu verziju; ništa nije objavljeno.
+          no_target: 'Nije objavljeno: odaberite pogođena područja na osnovu izvora,
+            sačuvajte i ponovite objavu.'
+          invalid_lifecycle: 'Objava nije moguća: obavještenje je otkazano, završeno,
+            zamijenjeno ili nema poznat status.'
+          incomplete_source: 'Nije objavljeno: podaci iz izvora nisu potpuni.'
+          missing_time: 'Nije objavljeno: unesite vrijeme početka i završetka.'
+          invalid_time: 'Nije objavljeno: završetak mora biti poslije početka.'
+          expired: Obavještenje je isteklo i ne može se objaviti ili poslati.
+          not_publishable: Obavještenje u ovom stanju nije moguće objaviti.
+          no_publish: Nijedna objava nije napravljena. Pregledajte obavještenje i
+            pokušajte ponovo.
+          already_published: Obavještenje je već objavljeno; nisu napravljene dodatne
+            objave niti poruke.
+          board_published: 'Objavljeno na tabli: %{posts} objava. Slanje obavještenja nije
+            zatraženo.'
+          delivery_queued: Obavještenja čekaju slanje za %{recipients} primalaca.
+            Ovo nije potvrda dostave.
+          delivery_skipped: Obavještenja nisu stavljene na slanje (%{reason}). Objava
+            na tabli ostaje dostupna za pregled.
+        update:
+          facts_confirmation_required: Potvrdite izmjene podataka prije čuvanja ili
+            objave.
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          save_publish: Sačuvaj pregled i objavi na tabli
+          reviewed_tab: Pregledano — čeka objavu
+          withdraw_help: Povlačenje uklanja objave sa table i zaustavlja poruke koje
+            čekaju slanje. Poruke koje je pružalac već prihvatio nije moguće opozvati.
+            Ispravku treba ponovo objaviti.
+          correct: Povuci i ispravi
+          withdraw: Povuci obavještenje
+          withdrawn: Obavještenje je povučeno. Objave više nisu vidljive, a poruke
+            koje čekaju slanje su zaustavljene.
+          note_required: Unesite razlog povlačenja (najviše 2000 znakova).
+          not_authorized: Nemate ovlašćenje za ovu radnju.
+          stale_review: Obavještenje je izmijenjeno nakon otvaranja. Osvježite stranicu
+            i pregledajte novu verziju; ništa nije objavljeno.
+          no_target: 'Nije objavljeno: odaberite pogođena područja na osnovu izvora,
+            sačuvajte i ponovite objavu.'
+          invalid_lifecycle: 'Objava nije moguća: obavještenje je otkazano, završeno,
+            zamijenjeno ili nema poznat status.'
+          incomplete_source: 'Nije objavljeno: podaci iz izvora nisu potpuni.'
+          missing_time: 'Nije objavljeno: unesite vrijeme početka i završetka.'
+          invalid_time: 'Nije objavljeno: završetak mora biti poslije početka.'
+          expired: Obavještenje je isteklo i ne može se objaviti ili poslati.
+          not_publishable: Obavještenje u ovom stanju nije moguće objaviti.
+          no_publish: Nijedna objava nije napravljena. Pregledajte obavještenje i
+            pokušajte ponovo.
+          already_published: Obavještenje je već objavljeno; nisu napravljene dodatne
+            objave niti poruke.
+          board_published: 'Objavljeno na tabli: %{posts} objava. Slanje obavještenja nije
+            zatraženo.'
+          delivery_queued: Obavještenja čekaju slanje za %{recipients} primalaca.
+            Ovo nije potvrda dostave.
+          delivery_skipped: Obavještenja nisu stavljene na slanje (%{reason}). Objava
+            na tabli ostaje dostupna za pregled.
+        update:
+          facts_confirmation_required: Potvrdite izmjene podataka prije čuvanja ili
+            objave.
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          save_publish: Sačuvaj pregled i objavi na tabli
+          reviewed_tab: Pregledano — čeka objavu
+          withdraw_help: Povlačenje uklanja objave sa table i zaustavlja poruke koje
+            čekaju slanje. Poruke koje je pružalac već prihvatio nije moguće opozvati.
+            Ispravku treba ponovo objaviti.
+          correct: Povuci i ispravi
+          withdraw: Povuci obavještenje
+          withdrawn: Obavještenje je povučeno. Objave više nisu vidljive, a poruke
+            koje čekaju slanje su zaustavljene.
+          note_required: Unesite razlog povlačenja (najviše 2000 znakova).
+          not_authorized: Nemate ovlašćenje za ovu radnju.
+          stale_review: Obavještenje je izmijenjeno nakon otvaranja. Osvježite stranicu
+            i pregledajte novu verziju; ništa nije objavljeno.
+          no_target: 'Nije objavljeno: odaberite pogođena područja na osnovu izvora,
+            sačuvajte i ponovite objavu.'
+          invalid_lifecycle: 'Objava nije moguća: obavještenje je otkazano, završeno,
+            zamijenjeno ili nema poznat status.'
+          incomplete_source: 'Nije objavljeno: podaci iz izvora nisu potpuni.'
+          missing_time: 'Nije objavljeno: unesite vrijeme početka i završetka.'
+          invalid_time: 'Nije objavljeno: završetak mora biti poslije početka.'
+          expired: Obavještenje je isteklo i ne može se objaviti ili poslati.
+          not_publishable: Obavještenje u ovom stanju nije moguće objaviti.
+          no_publish: Nijedna objava nije napravljena. Pregledajte obavještenje i
+            pokušajte ponovo.
+          already_published: Obavještenje je već objavljeno; nisu napravljene dodatne
+            objave niti poruke.
+          board_published: 'Objavljeno na tabli: %{posts} objava. Slanje obavještenja nije
+            zatraženo.'
+          delivery_queued: Obavještenja čekaju slanje za %{recipients} primalaca.
+            Ovo nije potvrda dostave.
+          delivery_skipped: Obavještenja nisu stavljene na slanje (%{reason}). Objava
+            na tabli ostaje dostupna za pregled.
+        update:
+          facts_confirmation_required: Potvrdite izmjene podataka prije čuvanja ili
+            objave.
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          save_publish: Сачувај преглед и објави на табли
+          reviewed_tab: Прегледано — чека објаву
+          withdraw_help: Повлачење уклања објаве са табле и зауставља поруке које чекају слање. Поруке које је пружалац већ прихватио није могуће опозвати. Исправку треба поново објавити.
+          correct: Повуци и исправи
+          withdraw: Повуци обавјештење
+          withdrawn: Обавјештење је повучено. Објаве више нису видљиве, а поруке које чекају слање су заустављене.
+          note_required: Унесите разлог повлачења (највише 2000 знакова).
+          not_authorized: Немате овлашћење за ову радњу.
+          stale_review: Обавјештење је измијењено након отварања. Освјежите страницу и прегледајте нову верзију; ништа није објављено.
+          no_target: 'Није објављено: одаберите погођена подручја на основу извора, сачувајте и поновите објаву.'
+          invalid_lifecycle: 'Објава није могућа: обавјештење је отказано, завршено, замијењено или нема познат статус.'
+          incomplete_source: 'Није објављено: подаци из извора нису потпуни.'
+          missing_time: 'Није објављено: унесите вријеме почетка и завршетка.'
+          invalid_time: 'Није објављено: завршетак мора бити послије почетка.'
+          expired: Обавјештење је истекло и не може се објавити или послати.
+          not_publishable: Обавјештење у овом стању није могуће објавити.
+          no_publish: Ниједна објава није направљена. Прегледајте обавјештење и покушајте поново.
+          already_published: Обавјештење је већ објављено; нису направљене додатне објаве нити поруке.
+          board_published: 'Објављено на табли: %{posts} објава. Слање обавјештења није затражено.'
+          delivery_queued: Обавјештења чекају слање за %{recipients} прималаца. Ово није потврда доставе.
+          delivery_skipped: Обавјештења нису стављене на слање (%{reason}). Објава на табли остаје доступна за преглед.
+        update:
+          facts_confirmation_required: Потврдите измјене података прије чувања или објаве.

@@ -1,0 +1,65 @@
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          layout:
+            partial_map: "Moguća područja prema dijelu mapirane ulice; potpuni obuhvat nije potvrđen."
+            open_review: "Pregledaj"
+            delivery_details: "Podaci za objavu i Viber"
+            published_areas: "Objavljeno za područja"
+            more_areas: "Još %{count} područja"
+            komsiluk_number: "Komšiluk %{number}"
+            unknown_time: "Termin nije potvrđen"
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          layout:
+            partial_map: "Moguća područja prema dijelu mapirane ulice; potpuni obuhvat nije potvrđen."
+            open_review: "Pregledaj"
+            delivery_details: "Podaci za objavu i Viber"
+            published_areas: "Objavljeno za područja"
+            more_areas: "Još %{count} područja"
+            komsiluk_number: "Komšiluk %{number}"
+            unknown_time: "Termin nije potvrđen"
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          layout:
+            partial_map: "Moguća područja prema dijelu mapirane ulice; potpuni obuhvat nije potvrđen."
+            open_review: "Pregledaj"
+            delivery_details: "Podaci za objavu i Viber"
+            published_areas: "Objavljeno za područja"
+            more_areas: "Još %{count} područja"
+            komsiluk_number: "Susjedstvo %{number}"
+            unknown_time: "Termin nije potvrđen"
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          layout:
+            partial_map: "Possible areas along the mapped street segment; full coverage is unconfirmed."
+            open_review: "Review"
+            delivery_details: "Board and Viber details"
+            published_areas: "Published areas"
+            more_areas: "Show %{count} more areas"
+            komsiluk_number: "Neighbourhood %{number}"
+            unknown_time: "Time unconfirmed"
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        index:
+          layout:
+            partial_map: "Могућа подручја према дијелу мапиране улице; потпуни обухват није потврђен."
+            open_review: "Прегледај"
+            delivery_details: "Подаци за објаву и Viber"
+            published_areas: "Објављено за подручја"
+            more_areas: "Још %{count} подручја"
+            komsiluk_number: "Комшилук %{number}"
+            unknown_time: "Термин није потврђен"

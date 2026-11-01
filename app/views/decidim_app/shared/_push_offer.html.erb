@@ -1,0 +1,26 @@
+<% if current_user && current_user.confirmed? && !current_user.blocked? && !current_user.ephemeral? && current_user.organization == current_organization && Decidim::Bih::WebPush.enabled? %>
+  <span hidden data-push-offer-key="mi:push-offer:<%= current_user.id %>"></span>
+  <%# Never offered on a page that already owns the control: the legacy
+      notifications page and the canonical communication page. %>
+  <% unless %w(notifications_settings account_notification_settings).include?(controller_name) %>
+    <section class="mi-push-offer" hidden data-push-offer data-push-notifications-container
+             aria-label="<%= t("decidim_app.push_offer.title") %>"
+             <% %w[install unsupported blocked enabled disabled ready failed test_queued].each do |key| %>
+               data-<%= key %>="<%= t("decidim.bih.web_push.#{key}") %>"
+             <% end %>>
+      <div>
+        <strong><%= t("decidim_app.push_offer.title") %></strong>
+        <p><%= t("decidim_app.push_offer.description") %></p>
+        <p data-push-status role="status" aria-live="polite"></p>
+      </div>
+      <div class="mi-push-offer__actions">
+        <input type="checkbox" hidden data-push-notifications-toggle>
+        <button type="button" class="button button__sm button__secondary" data-push-enable disabled><%= t("decidim_app.push_offer.enable") %></button>
+        <%= link_to t("decidim_app.push_offer.settings"), decidim_bih.account_notification_settings_path, class: "mi-push-offer__settings" %>
+        <button type="button" class="button button__sm button__transparent-secondary" data-push-dismiss><%= t("decidim_app.push_offer.dismiss") %></button>
+      </div>
+      <input type="hidden" data-push-vapid-public-key value="<%= Base64.urlsafe_decode64(Decidim.vapid_public_key.to_s).bytes.to_json %>">
+      <input type="hidden" data-push-sub-fingerprints value="<%= current_user.notifications_subscriptions.values.filter_map { |subscription| Decidim::Bih::WebPush.fingerprint(subscription) }.to_json %>">
+    </section>
+  <% end %>
+<% end %>

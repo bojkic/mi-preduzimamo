@@ -1,0 +1,18 @@
+# SYNTHETIC citizen-budget fixture for the GENERIC parser test. Fictional
+# categories and amounts in the shape of a RS/BiH "Буџет за грађане" — NO real
+# municipal data. Exercises: single-column rows, two interleaved side-by-side
+# columns on one line, leading ordinals + budget codes, wrapped names, a stated
+# grand total, subtotal rows, the fiscal year, and US-format debt figures that
+# must NOT be parsed as amounts.
+
+Буџет Општине Измишљена за 2025. годину — укупни приходи и примици 5.000.000,00 КМ
+
+Корисници буџета (План 2025.):
+1.  0009100  Зелена библиотека        120.000,00 КМ     1.  0009200  Сектор за магију   850.000,00 КМ
+2.  0009101  Виноградски центар       340.500,00 КМ     2.  0009201  Сектор за облаке    12.000,00 КМ
+3.  0009102  Дом за змајеве           1.250.000,00 КМ                одио за кишу
+4.  0009103  Чаршијска пијаца         75.250,00 КМ      3.  0009202  Сектор за путеве   430.000,00 КМ
+УКУПНО корисници                      1.785.750,00 КМ   УКУПНО сектори             1.292.000,00 КМ
+
+Кредитна задужења (US-format, не смију се парсирати као ставке):
+1  Банка Облака   2019.  2030.   Изградња торња   10,000,000.00   2,416,666.88   142,565.96

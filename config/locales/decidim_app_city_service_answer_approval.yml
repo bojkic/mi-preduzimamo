@@ -1,0 +1,105 @@
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          answer_approved: "Reviewed source facts"
+        index:
+          actions:
+            revoke_answers: "Withdraw answer approval"
+            approve_answers: "Approve for Milica answers"
+            approve_answers_help: "Makes these reviewed facts available on request. Creates no board post and sends no notifications."
+            answers_approved_help: "Milica can use these facts. Board publication is a separate action."
+        approve_answers:
+          approved: "Reviewed source facts. No board post or notification was created."
+          stale_review: "The source version or displayed facts changed. Reload and review again."
+          incomplete_evidence: "Approval requires complete source evidence and valid type, time and area."
+          not_authorized: "You cannot approve this notice."
+        revoke_answers:
+          revoked: "Review withdrawn. Milica retains source information with its uncertainty."
+          stale_review: "The event changed. Reload before withdrawing approval."
+          not_authorized: "You cannot withdraw this approval."
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          answer_approved: "Pregledane izvorne činjenice"
+        index:
+          actions:
+            revoke_answers: "Povuci odobrenje za odgovore"
+            approve_answers: "Odobri za Miličine odgovore"
+            approve_answers_help: "Provjerene činjenice postaju dostupne na upit. Ne kreira objavu na tabli niti šalje obavještenja."
+            answers_approved_help: "Milica može koristiti ove činjenice. Objava na tabli je zaseban korak."
+        approve_answers:
+          approved: "Pregledane izvorne činjenice. Nema nove objave ni obavještenja."
+          stale_review: "Izvorna verzija ili prikazane činjenice su izmijenjene. Osvježite stranicu i pregledajte ponovo."
+          incomplete_evidence: "Odobrenje zahtijeva potpun izvor i valjanu vrstu, vrijeme i područje."
+          not_authorized: "Nemate ovlaštenje da odobrite ovo obavještenje."
+        revoke_answers:
+          revoked: "Pregled je povučen. Milica zadržava izvorne podatke uz oznaku neizvjesnosti."
+          stale_review: "Obavještenje je izmijenjeno. Osvježite stranicu prije povlačenja odobrenja."
+          not_authorized: "Nemate ovlaštenje da povučete ovo odobrenje."
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          answer_approved: "Pregledane izvorne činjenice"
+        index:
+          actions:
+            revoke_answers: "Povuci odobrenje za odgovore"
+            approve_answers: "Odobri za Miličine odgovore"
+            approve_answers_help: "Provjerene činjenice postaju dostupne na upit. Ne stvara objavu na ploči niti šalje obavijesti."
+            answers_approved_help: "Milica može koristiti ove činjenice. Objava na ploči je zaseban korak."
+        approve_answers:
+          approved: "Pregledane izvorne činjenice. Nema nove objave ni obavijesti."
+          stale_review: "Izvorna verzija ili prikazane činjenice su izmijenjene. Osvježite stranicu i pregledajte ponovno."
+          incomplete_evidence: "Odobrenje zahtijeva potpun izvor i valjanu vrstu, vrijeme i područje."
+          not_authorized: "Nemate ovlasti odobriti ovu obavijest."
+        revoke_answers:
+          revoked: "Pregled je povučen. Milica zadržava izvorne podatke uz oznaku neizvjesnosti."
+          stale_review: "Obavijest je izmijenjena. Osvježite stranicu prije povlačenja odobrenja."
+          not_authorized: "Nemate ovlasti povući ovo odobrenje."
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          answer_approved: "Pregledane izvorne činjenice"
+        index:
+          actions:
+            revoke_answers: "Povuci odobrenje za odgovore"
+            approve_answers: "Odobri za Miličine odgovore"
+            approve_answers_help: "Provjerene činjenice postaju dostupne na upit. Ne kreira objavu na tabli niti šalje obavještenja."
+            answers_approved_help: "Milica može koristiti ove činjenice. Objava na tabli je zaseban korak."
+        approve_answers:
+          approved: "Pregledane izvorne činjenice. Nema nove objave ni obavještenja."
+          stale_review: "Izvorna verzija ili prikazane činjenice su izmijenjene. Osvježite stranicu i pregledajte ponovo."
+          incomplete_evidence: "Odobrenje zahtijeva potpun izvor i valjanu vrstu, vrijeme i područje."
+          not_authorized: "Nemate ovlašćenje da odobrite ovo obavještenje."
+        revoke_answers:
+          revoked: "Pregled je povučen. Milica zadržava izvorne podatke uz oznaku neizvjesnosti."
+          stale_review: "Obavještenje je izmijenjeno. Osvježite stranicu prije povlačenja odobrenja."
+          not_authorized: "Nemate ovlašćenje da povučete ovo odobrenje."
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        states:
+          answer_approved: "Прегледане изворне чињенице"
+        index:
+          actions:
+            revoke_answers: "Повуци одобрење за одговоре"
+            approve_answers: "Одобри за Миличине одговоре"
+            approve_answers_help: "Провјерене чињенице постају доступне на упит. Не креира објаву на табли нити шаље обавјештења."
+            answers_approved_help: "Милица може користити ове чињенице. Објава на табли је засебан корак."
+        approve_answers:
+          approved: "Прегледане изворне чињенице. Нема нове објаве ни обавјештења."
+          stale_review: "Изворна верзија или приказане чињенице су измијењене. Освјежите страницу и прегледајте поново."
+          incomplete_evidence: "Одобрење захтијева потпун извор и ваљану врсту, вријеме и подручје."
+          not_authorized: "Немате овлашћење да одобрите ово обавјештење."
+        revoke_answers:
+          revoked: "Преглед је повучен. Милица задржава изворне податке уз ознаку неизвјесности."
+          stale_review: "Обавјештење је измијењено. Освјежите страницу прије повлачења одобрења."
+          not_authorized: "Немате овлашћење да повучете ово одобрење."

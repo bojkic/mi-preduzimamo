@@ -1,0 +1,57 @@
+<%#
+  Host-app override of the SMS authorization "new" (enter phone number) page.
+
+  CORRECTED MODEL (Round 14):
+  The verification link is delivered TO THE PHONE — over SMS and (when Viber is
+  configured) over Viber as well. The page itself NEVER embeds any token.
+  Possessing the link proves phone control; activating it grants the
+  authorization via the canonical ConfirmUserAuthorization command.
+
+  The previous design (displaying a "viber://pa?...context=verify_<token>"
+  deep link on the page) was UNSOUND: a token on the page does not prove the
+  phone — only delivery to the phone does. That block has been removed.
+
+  Phone verification is REQUIRED for the binding vote (sms authorization).
+  Viber delivery is an additional convenience channel; it does NOT change the
+  phone-possession proof — the same token is delivered over both channels.
+%>
+<div class="text-center py-10">
+  <h1 class="title-decorator inline-block text-left">
+    <%= t("decidim.verifications.sms.authorizations.new.title") %>
+  </h1>
+</div>
+
+<%= decidim_form_for(@form, url: authorization_path(redirect_url:)) do |form| %>
+  <%= form_required_explanation %>
+
+  <div class="form__wrapper">
+    <%= form.text_field :mobile_phone_number %>
+  </div>
+
+  <div class="form__wrapper-block flex-col-reverse md:flex-row justify-between">
+    <%= link_to authorizations_back_path(current_user, redirect_url:), class: "button button__sm md:button__lg button__text-secondary" do %>
+      <%= icon "arrow-left-line", class: "fill-current" %>
+      <span><%= t("decidim.wizard_step_form.wizard_aside.back") %></span>
+    <% end %>
+    <button type="submit" class="button button__sm md:button__lg button__secondary">
+      <span><%= t("decidim.verifications.sms.authorizations.new.send") %></span>
+      <%= icon "arrow-right-line", class: "fill-current" %>
+    </button>
+  </div>
+<% end %>
+
+<%#
+  Informational block: tells the user they will receive the link over both
+  channels.  No token is embedded here.  Shown only when Viber is configured
+  so SMS-only deployments get the plain form.
+%>
+<% if Decidim::Bih::Config.infobip[:viber_bm_sender].present? %>
+  <div style="margin-top: 2rem; padding: 1.25rem; border: 1px solid var(--mi-line, #e0d9cf); border-radius: 0.5rem; text-align: center;">
+    <p class="mi-eyebrow" style="margin-bottom: 0.25rem;">
+      <%= t("decidim.bih.goodwill.verify_cta.viber.delivery_title") %>
+    </p>
+    <p style="color: var(--mi-text-muted, #5a6a8a); font-size: 0.9rem; margin-bottom: 0;">
+      <%= t("decidim.bih.goodwill.verify_cta.viber.delivery_description") %>
+    </p>
+  </div>
+<% end %>

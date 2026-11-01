@@ -1,0 +1,30 @@
+en:
+  decidim_app:
+    city_service_events:
+      source_disabled_by_owner: "Disabled by owner"
+      bot:
+        source_disabled_by_owner: "Current district-heating notices are not monitored here. Check Gradska toplana's public notices directly."
+bs:
+  decidim_app:
+    city_service_events:
+      source_disabled_by_owner: "Isključeno odlukom organizatora"
+      bot:
+        source_disabled_by_owner: "Trenutna obavještenja o gradskom grijanju ovdje se ne prate. Provjerite javna obavještenja Gradske toplane."
+hr:
+  decidim_app:
+    city_service_events:
+      source_disabled_by_owner: "Isključeno odlukom organizatora"
+      bot:
+        source_disabled_by_owner: "Trenutačne obavijesti o gradskom grijanju ovdje se ne prate. Provjerite javne obavijesti Gradske toplane."
+sr:
+  decidim_app:
+    city_service_events:
+      source_disabled_by_owner: "Isključeno odlukom organizatora"
+      bot:
+        source_disabled_by_owner: "Trenutna obavještenja o gradskom grijanju ovdje se ne prate. Provjerite javna obavještenja Gradske toplane."
+sr-Cyrl:
+  decidim_app:
+    city_service_events:
+      source_disabled_by_owner: "Искључено одлуком организатора"
+      bot:
+        source_disabled_by_owner: "Тренутна обавјештења о градском гријању овдје се не прате. Провјерите јавна обавјештења Градске топлане."

@@ -1,0 +1,21 @@
+<% add_decidim_page_title(t("mi_launch.invitation_rules.title")) %>
+<div class="wrapper">
+  <div class="mi-surface mi-launch">
+    <h1><%= t("mi_launch.invitation_rules.title") %></h1>
+
+    <dl class="mi-launch__rules">
+      <% %w(who condition count confirm entry waitlist forbidden not_money).each do |key| %>
+        <div class="mi-launch__rule">
+          <dt><%= t("mi_launch.invitation_rules.#{key}_title") %></dt>
+          <dd><%= t("mi_launch.invitation_rules.#{key}") %></dd>
+        </div>
+      <% end %>
+    </dl>
+
+    <p class="mi-launch__notice"><%= t("mi_launch.invitation_rules.correction") %></p>
+
+    <p class="mi-action-row">
+      <%= link_to t("mi_launch.race_rules.title"), launch_race_rules_path, class: "mi-btn mi-btn--ghost" %>
+    </p>
+  </div>
+</div>

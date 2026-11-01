@@ -1,0 +1,71 @@
+<%= render "decidim/bih/admin/shared/navigation", current_item: :foundation_status %>
+
+<div class="card" id="admin-foundation-status" data-foundation-status-state="<%= @override.new_record? ? "none" : @override.state %>">
+  <div class="card-divider">
+    <div>
+      <h1 class="h3"><%= t(".title") %></h1>
+      <p class="text-muted" style="margin-bottom: 0;"><%= t(".intro") %></p>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <div class="callout <%= @effective[:source] == :override ? "success" : "secondary" %>" id="admin-foundation-status-effective">
+      <strong><%= t(".effective_heading") %></strong><br>
+      <% if @effective[:source] == :unconfigured %>
+        <%= t(".unconfigured") %>
+      <% else %>
+      <%= t(".effective_row",
+            status: status_label(@effective[:status]),
+            reviewed_on: @effective[:reviewed_on].strftime("%d.%m.%Y."),
+            expires_on: @effective[:expires_on].strftime("%d.%m.%Y."),
+            source: t(@effective[:source] == :override ? ".effective_source_override" : ".effective_source_yaml")) %>
+      <% end %>
+    </div>
+
+    <%= form_with model: @override, scope: :foundation_status_override,
+                  url: decidim_app_admin_foundation_status_path,
+                  method: :patch,
+                  local: true,
+                  html: { style: "display:grid; gap:0.65rem; max-width:32rem;" },
+                  class: "form form-defaults mi-admin-form mi-admin-record-editor" do |form| %>
+      <% if @override.errors.any? %>
+        <div class="mi-admin-form__error-summary" role="alert" id="foundation-status-errors">
+          <ul>
+            <% @override.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="mi-admin-form__field">
+        <%= form.label :current_open_status, t(".fields.current_open_status") %>
+        <%= form.select :current_open_status,
+                        DecidimApp::Bijeljina::FoundationStatusOverride::OPEN_STATUSES.map { |value| [status_label(value), value] } %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.label :reviewed_on, t(".fields.reviewed_on") %>
+        <%= form.date_field :reviewed_on, max: Date.current.iso8601 %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.label :review_expires_on, t(".fields.review_expires_on") %>
+        <%= form.date_field :review_expires_on %>
+      </div>
+      <p><small><%= t(".help") %></small></p>
+      <div class="mi-admin-record-editor__footer">
+        <%= form.submit t(".actions.save"), class: "button button__sm button__secondary" %>
+      </div>
+    <% end %>
+
+    <div class="mi-admin-record-editor__actions" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+      <% if @override.persisted? && !@override.approved? %>
+        <%= button_to t(".actions.approve"), decidim_app_admin_foundation_status_approve_path,
+                      method: :post, class: "button button__sm button__secondary" %>
+      <% end %>
+      <% if @override.persisted? && @override.approved? %>
+        <%= button_to t(".actions.rollback"), decidim_app_admin_foundation_status_rollback_path,
+                      method: :post, class: "button button__sm button__transparent-secondary mi-admin-action--danger" %>
+      <% end %>
+      <%= link_to t(".actions.back"), decidim_app_admin_city_service_entries_path, class: "button button__sm button__transparent-secondary" %>
+    </div>
+  </div>
+</div>

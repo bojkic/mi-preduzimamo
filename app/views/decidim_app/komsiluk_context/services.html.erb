@@ -1,0 +1,16 @@
+<% add_decidim_page_title(t("decidim_app.komsiluk_boards.context.services")) %>
+<div class="wrapper"><div class="mi-surface">
+  <h1><%= t("decidim_app.komsiluk_boards.context.services") %></h1>
+  <p><%= t("decidim_app.komsiluk_boards.context.services_help") %></p>
+  <p><%= link_to @profile.komsiluk.translated_name, decidim_bih.komsiluk_board_index_path %></p>
+  <% @entries.each do |entry| %>
+    <details class="mi-surface-card" id="service-<%= entry.fetch(:key) %>">
+      <summary><%= entry.fetch(:title) %></summary>
+      <p><%= simple_format(entry.fetch(:answer)) %></p>
+      <% uri = URI.parse(entry[:source_url].to_s) rescue nil %>
+      <% if uri.is_a?(URI::HTTPS) && uri.host.present? && uri.userinfo.nil? %>
+        <p><%= link_to t("decidim_app.komsiluk_boards.context.official_source"), uri.to_s, rel: "noopener noreferrer", target: "_blank" %></p>
+      <% end %>
+    </details>
+  <% end %>
+</div></div>

@@ -1,0 +1,2231 @@
+bs:
+  decidim:
+    bih:
+      reporter_mailer:
+        status_update:
+          footer: S poštovanjem, tim vaše zajednice.
+          viber_text: 'Prijava %{reference} — status: %{status}.'
+      admin:
+        analytics:
+          datasets:
+            mi_bot_usage: Korištenje Milice
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_review: Pregled odgovora Milice
+          trend_metrics:
+            mi_bot_requests: Upiti MIlici
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_helpful_feedback: Korisne ocjene odgovora Milice
+            mi_bot_not_helpful_feedback: Nekorisne ocjene odgovora Milice
+          index:
+            title: LFBN analitički izvozi
+            mi_bot_review_title: Red za pregled odgovora Milice
+            mi_bot_review_intro: Visoki i praćeni zbirni redovi iz ocjena odgovora Milice, poredani za redovni pregled
+              kvaliteta odgovora.
+            mi_bot_examples_title: Primjeri ocijenjenih odgovora Milice
+            mi_bot_examples_intro: Najnoviji anonimni klikovi na "Nije korisno" i zatim "Korisno" pomažu da operater
+              vidi konkretno pitanje i odgovor Milice koji treba popraviti ili zadržati kao dobar obrazac.
+            mi_bot_examples_privacy: Prikazuje samo poruku i odgovor sačuvane nakon klika na ocjenu. Ne prikazuje
+              korisnički nalog, reply ID, session digest, token, IP, user-agent, Viber identifikator ili kontakt
+              podatke.
+            mi_bot_examples_empty: Još nema ocijenjenih odgovora Milice sa sačuvanim primjerom za pregled.
+      goodwill:
+        invite:
+          share_message: Pridruži se zajednici Mi pre(d)uzimamo! 👋
+        verify_cta:
+          viber:
+            description: Povežite Viber nalog s platformom — Milica će vas prepoznati za bodove i prijave. Verifikacija
+              telefonom ostaje poseban korak iznad.
+            welcome: Broj telefona je potvrđen. Za pristup nalogu i ličnim bodovima i dalje može biti potrebna prijava
+              na portal.
+      content_blocks:
+        mi_cta:
+          sub: Tvoja ideja, tvoja prijava, tvoj glas. Učestvuj u svojoj zajednici.
+          hashtag: '#MojaZajednica'
+        mi_hero:
+          eyebrow: Portal vaše zajednice
+          poster:
+            mi: MI
+          sub_html: Pokreni temu, prijavi problem i učestvuj u izboru projekata. Procese i pravila objavljuje tim
+            zajednice.
+        mi_hub:
+          name: MI! hub (modul-kartice + Milica na dostupnim kanalima)
+          tiles:
+            prefix: MI
+          omni:
+            eyebrow: Komšinica Milica · uvijek dostupna
+            title: Razgovaraj sa Milicom na dostupnom kanalu.
+            lead: Milica odgovara na pitanja i vodi do zvaničnog obrasca. Prijava nastaje tek nakon pregleda, tvoje
+              potvrde porukom i broja prijave.
+            sms_html: SMS koristimo za verifikacione kodove, linkove za prijavu i obavještenja. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na sajtu.
+      concierge:
+        budget:
+          ask: Za budžet napiši oblast ili naziv ustanove. Budžet ima mnogo nula; tražimo baš one koje te zanimaju.
+          found: Za „%{category}“ je u obrađenom pregledu budžeta za %{year}. godinu izdvojeno %{amount} KM. Ovo
+            je pregled dostupnih stavki, ne cijeli budžetski dokument.
+          not_found: Nisam pronašla stavku „%{category}“ u podacima koje trenutno imamo. Pokušaj s nazivom oblasti
+            ili ustanove.
+        donation:
+          found: 'U posljednjem zbiru koji smo uspjeli provjeriti zabilježeno je %{amount} %{currency} kroz %{count}
+            donacija. Projekti i provjeren link za podršku: %{url}. Milica nikada ne traži podatke kartice u razgovoru.'
+        gazette:
+          not_found: Nisam pronašla rezultat u obrađenom katalogu Službenog glasnika. To ne dokazuje da odluka ne
+            postoji; pokušaj s drugom temom, godinom ili brojem izdanja.
+        goodwill:
+          found: 'Imaš %{balance} bodova zajedništva. Nivo: %{level}; rang: #%{rank}. Do sljedećeg nivoa nedostaje
+            %{to_next}. Detalji: %{url}'
+          found_top: 'Imaš %{balance} bodova i dostignut najviši nivo %{level}. Rang: #%{rank}. Detalji: %{url}'
+          none: 'Još nemaš bodove. Stiču se kroz priznate doprinose na platformi; pravila i pregled: %{url}'
+          not_linked: 'Za prikaz tvojih bodova potrebno je da se prijaviš i povežeš nalog: %{url}'
+        help: 'Ne treba ti naziv odjeljenja ni broj kancelarije. Reci ljudski šta ti treba: prijava problema, status,
+          gradska usluga, odvoz otpada, parking, autobus, budžet, Službeni glasnik, tvoj Komšiluk, ideja, glasanje,
+          volontiranje, bodovi ili projekti. Ja ću pohvatati konce.'
+        komsiluk:
+          post:
+            choose_category: 'Izaberi kategoriju brojem: 1) Izgubljen ljubimac · 2) Bezbjednost · 3) Aktivnost ·
+              4) Opšte.'
+            created: Objava je potvrđeno objavljena na tabli tvog Komšiluka.
+            failed: Objava nije sačuvana. Pokušaj ponovo kasnije.
+            not_member: 'Za objavu prvo potvrdi broj telefona i izaberi svoj Komšiluk: %{url}'
+            rate_limited: Dostignut je dnevni broj objava. Pokušaj ponovo sutra.
+            usage: 'Napiši: „objavi u komšiluku: tvoja poruka“.'
+            web_guidance: 'Za objavu otvori tablu: %{url}. Tamo biraš kategoriju i potvrđuješ sadržaj prije slanja.'
+          read:
+            anon: član zajednice
+            empty: Trenutno nema objava u tvom Komšiluku.
+            header: Najnovije iz tvog Komšiluka
+            item: • [%{category}] %{title} — %{author}
+            not_member: 'Za personalizovanu tablu prvo izaberi svoj Komšiluk: %{url}'
+            web_guidance: 'Objave možeš čitati na tabli: %{board_url}. Za personalizovanu tablu prijavi se, potvrdi
+              broj i izaberi Komšiluk: %{setup_url}'
+        local_area_guidance:
+          location_not_found: 'Za poslanu lokaciju nisam našla MZ/Komšiluk u mapi koju imam. Provjeri adresu na
+            stranici Komšiluk: %{url}'
+        link:
+          ask_phone: Pošalji broj telefona koji želiš potvrditi, sa pozivnim brojem.
+          code_sent: Verifikacioni kod je poslan SMS-om. Pošalji šestocifreni kod.
+          expired: Kod je istekao. Pokreni povezivanje ponovo.
+          invalid_code: Kod nije tačan. Provjeri cifre ili zatraži novi kod.
+          invalid_phone: Broj telefona nije u ispravnom formatu. Pošalji ga sa pozivnim brojem.
+          rate_limited: Dostignut je broj zahtjeva za kod. Sačekaj kratko pa pokušaj ponovo.
+          send_failed: Slanje koda nije uspjelo. Pokušaj ponovo kasnije ili koristi drugi ponuđeni način verifikacije.
+          sms: Tvoj verifikacioni kod za Mi pre(d)uzimamo! je %{code}. Važi 10 minuta.
+          verified: Broj telefona je potvrđen. Za pristup nalogu i ličnim bodovima i dalje može biti potrebna prijava
+            na portal.
+        report:
+          confirmation: Prijava je zabilježena pod brojem %{reference}. Sačuvaj broj i pošalji ga Milici kada želiš
+            provjeriti javni status.
+        status:
+          found: 'Prijava %{reference} — trenutni javni status: %{status}. Status provjeravaj ovim brojem; obavještenje
+            stiže samo ako si prijavljen/a, povezan/a i uključio/la obavještenja.'
+          not_found: Nisam pronašla prijavu %{reference}. Provjeri broj — format je BR-GGGG-NNNN.
+        waste:
+          ask_area: Napiši naziv ulice ili naselja pa ću provjeriti raspored odvoza.
+          found: 'Odvoz otpada za „%{area}“: %{days}. Ovo je posljednji raspored koji smo uspjeli provjeriti.'
+          not_found: Nisam pronašla pouzdan raspored odvoza za „%{area}“. Provjeri tačan naziv ulice ili naselja.
+        web_fallback: Nešto je zapelo na našoj strani. Pokušaj ponovo. U međuvremenu možeš otvoriti prijavu, ideje
+          ili katalog projekata na sajtu.
+        location_save_unavailable: Lokacija nije sačuvana za ovaj razgovor. Možeš je ponovo podijeliti ili navesti
+          polazište.
+        web_report_guidance: 'Poruka na sajtu sama ne kreira prijavu. Otvori zvanični obrazac: %{url}. Tamo možeš
+          označiti lokaciju, dodati opis i fotografiju, a nakon slanja dobijaš broj za praćenje.'
+        public_neighborhood_guide: 'Javni vodič za komšiluke je ovdje: %{url}. Za izbor svog komšiluka i pristup
+          tabli potrebna je prijava na nalog.'
+        media:
+          milica_wave:
+            alt: Komšinica Milica maše u znak pozdrava.
+          milica_tablet:
+            alt: Komšinica Milica pokazuje informacije na tabletu.
+          milica_map:
+            alt: Komšinica Milica pokazuje označeno mjesto na mapi.
+          milica_heart:
+            alt: Komšinica Milica rukama pokazuje srce.
+          milica_sleeves:
+            alt: Komšinica Milica zasuče rukave i sprema se za akciju.
+          milica_thumbs_up:
+            alt: Komšinica Milica pokazuje palac gore.
+        widget:
+          aria_open: Otvori razgovor s Komšinicom Milicom
+          aria_close: Zatvori razgovor
+          aria_send: Pošalji poruku
+          aria_location: Koristi trenutnu lokaciju za ovo pitanje
+          bubble_label: Pitaj Milicu
+          greeting: Ćao! Ja sam Komšinica Milica. Ti objasni ljudski, ja ću prevesti na formularski — bez šaltera
+            i lutanja po portalu. 😄 Od čega krećemo?
+          return_greeting: Evo te opet — znači da grad još nije ostao bez tema. 😄 Šta danas ganjamo?
+          header_title: Komšinica Milica
+          header_status: tu sam
+          input_placeholder: Piši kao komšinici…
+          loading: Da vidimo šta piše, a ne šta se priča…
+          long_loading: Ovo se malo zavuklo među papire. Tražim dalje…
+          location_ready: Lokacija je stigla.
+          location_consent_copy: Ako podijeliš lokaciju, Milica će je šifrovano koristiti za javna pitanja u ovom
+            razgovoru. Nestaje nakon 30 minuta neaktivnosti; možeš je zaboraviti ranije.
+          location_active: Dijeljena lokacija aktivna
+          forget_location: Zaboravi lokaciju
+          forget_location_send: zaboravi moju lokaciju
+          location_error: Telefon i lokacija se danas ne poznaju. Napiši ulicu, naselje ili najbliže stajalište.
+          error: Nešto je zapelo na našoj strani. Pokušaj ponovo.
+          greeting_media_alt: Komšinica Milica maše u znak pozdrava.
+          feedback:
+            prompt: 'Pomozi da Milica nauči:'
+          quick:
+            report: Prijavi problem
+            report_describe: Opiši problem Milici
+            idea: Ideje i glasanje
+            budget: Budžet grada
+            donate: Podrži projekat
+            goodwill: Moji bodovi
+            setup: Podesi nalog
+            komsiluk: Moj Komšiluk
+        mi_hub:
+          omni:
+            sms_html: SMS koristimo za verifikacione kodove, linkove za prijavu i obavještenja. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na sajtu.
+      komsiluk:
+        edit:
+          address_placeholder: npr. Izmišljena ulica 12, vaša zajednica
+      report_heatmap:
+        index:
+          eyebrow: Biće riješeno!
+      reports:
+        index:
+          eyebrow: Biće riješeno!
+        show:
+          eyebrow: Biće riješeno!
+      reports_map:
+        show:
+          eyebrow: Biće riješeno!
+          title: Mapa prijava — Biće riješeno!
+      onboarding:
+        guide:
+          actions:
+            bot:
+              title: Pitaj Milicu
+      menu:
+        mi_bot: Milica
+        mi_bot_short: Milica
+        launch_event: Događaj zajednice
+        race: Trka komšiluka
+      menu_groups:
+        help:
+          body: Pitaj Milicu ili otvori vodič kroz platformu.
+      public_actions:
+        register: Registriraj se
+        ask: Pitaj Milicu
+        account: Moj nalog
+        bot: Pitaj Milicu
+      mobile_nav:
+        new_message: Nova poruka
+        notifications: Obavještenja
+        login: Uloguj se
+        home: Početna
+        report: Problem
+        race: Trka
+        register: Registriraj se
+        bot: Milica
+      pwa:
+        install_title: MI! kao aplikacija
+        install_text: Brži pristup prijavama, bodovima i Milici — direktno s početnog ekrana.
+        ios_text: 'Dodaj MI! na početni ekran: dodirni ⎖ Share pa "Add to Home Screen".'
+        manual_text: Otvori meni preglednika i izaberi „Dodaj na početni ekran“ ili „Instaliraj aplikaciju“.
+        webview_text: Otvori MI! u Chromeu ili Safariju da bi je dodao/dodala na početni ekran.
+      sms:
+        login_link: 'Tvoj link za prijavu na MI pre(d)uzimamo: %{url} Vrijedi 10 minuta. Možeš razgovarati s Milicom
+          ovdje — odgovori na ovu poruku.'
+        login_link_and_code: 'MI: link za prijavu: %{url} Rezervni kod: %{code}. Vrijedi 10 min. Ne dijeli ga.'
+      mi_bot:
+        show:
+          phone_header: Milica
+          viber_business_onboarding:
+            kicker: Viber poruke
+            title: Milica je dostupna u Viber porukama
+            desc: Razgovaraj s Milicom odgovorom na poruku koju si dobio/la od MI pre(d)uzimamo.
+            start: Odgovori na našu Viber poruku i napiši pitanje. Ako je još nemaš, razgovor možeš početi na ovom
+              sajtu.
+            report_note: Prijava problema nastaje tek kada potvrdiš Milicin pregled porukom „Potvrdi prijavu DA”
+              i dobiješ broj prijave.
+          external_chat_onboarding:
+            kicker: Milica na drugim kanalima
+            title: Razgovaraj sa Komšinicom Milicom u aplikaciji koju već koristiš
+            desc: Kada kanal bude spreman za javnost, otvori provjereni razgovor sa Milicom i postavi pitanje kao
+              na sajtu.
+            channels_title: Kanali za razgovor
+            channels:
+              whatsapp: WhatsApp
+              messenger: Messenger
+              instagram: Instagram
+            boundary_title: Važna granica
+            boundary_body: Milica odgovara na pitanja. Na WhatsAppu i Messengeru prijava nastaje tek nakon pregleda
+              i potvrde porukom; na Instagramu Milica daje smjernice. Razgovor ne povezuje tvoj nalog.
+            privacy_note: Ne šalji JMBG, lozinke, podatke s kartice niti druge osjetljive podatke u chatu.
+          capabilities:
+            desc: Asistent koristi podatke koje zajednica izričito poveže. Dostupnost zavisi od konfiguracije i
+              lokalnih podataka.
+            kicker: Šta Milica zna
+            note: Za podatke koji se mijenjaju Milica čita najnoviji povezani izvor i u odgovoru navodi izvor. Za
+              službenu radnju vodi na obrazac, nadležnu službu ili provjeren kanal.
+            source_label: 'Izvori:'
+            title: Od voznog reda do parking zone, sve kroz jednu poruku.
+            items:
+              transport:
+                title: Javni prevoz
+                body: Planira rute po linijama i stajalištima, pronalazi presjedanja i čita naredne polaske za jutro,
+                  danas ili sutra.
+                source: Redovi vožnje i stajališta koje zajednica uveze i provjeri.
+              parking:
+                title: Parking zone
+                body: Prepoznaje ulicu, vraća zonu kada je poznata, cijenu, radno vrijeme i SMS način plaćanja za
+                  parking.
+                source: Tarife i zone parkinga koje zajednica unese i provjeri.
+              waste:
+                title: Odvoz otpada
+                body: Odgovara za naselje ili ulicu kada je raspored dostupan i razlikuje redovni odvoz od posebnih
+                  komunalnih informacija.
+                source: Rasporedi odvoza otpada održavani u podacima koje Milica koristi.
+              service_notices:
+                title: Servisne informacije
+                body: Prati pitanja o isključenjima struje, servisnim informacijama Vodovoda, grijanju, putevima,
+                  gradskim obavještenjima, civilnoj zaštiti i policijskim servisima.
+                source: Izričito povezani izvori komunalnih i javnih službi.
+              environment:
+                title: Vrijeme, vodostaj i vazduh
+                body: Odgovara na vremenska upozorenja, vodostaje Save i Drine, kvalitet vazduha uživo i gradske
+                  izvještaje o kvalitetu vazduha.
+                source: Izričito povezani meteorološki, hidrološki i senzorski izvori.
+              city_services:
+                title: Gradske usluge i dokumenti
+                body: Pomaže oko matičnih izvoda, kontakata, mjesnih zajednica, službenog glasnika, odluka, budžeta
+                  i donacija.
+                source: Lokalni propisi, registri i tabele koje zajednica poveže.
+              reports:
+                title: Prijave i status
+                body: Objašnjava kako poslati komunalnu prijavu, kako provjeriti status po broju predmeta i gdje
+                  se vidi javna mapa.
+                source: Biće riješeno/Sistem48 podaci, statusi prijava i javni pregled prijava na MI! platformi.
+              community:
+                title: Komšiluk i učešće
+                body: Vodi kroz prijedloge, glasanje, volontiranje, Komšiluk tablu, bodove zajedništva, nalog, verifikaciju
+                  i donacije.
+                source: Podaci platforme i podešavanja zajednice.
+          cta:
+            try_bot: Probaj Milicu
+          hero:
+            eyebrow: Digitalna komšinica kroz MI platformu
+            title_lead: Komšinica
+            title_accent: Milica
+            lead: Razgovaraj sa Milicom na sajtu i pronađi pravi naredni korak za prijave, gradske podatke, učešće,
+              volontiranje i donacije.
+          signoff:
+            line: Asistent platforme vaše zajednice
+      launch:
+        messages:
+          p8:
+            viber: 'U pregledanim podacima ima %{broj} prijava; zapis ne potvrđuje prosljeđivanje ili rješenje.
+              Komšiluk %{komsiluk}, zabilježeni poredak %{mjesto}. Pravila i aktuelni pregled: %{link}'
+          p11:
+            email_subject: Poziv za uključivanje u platformu zajednice
+            email: 'Pozivamo vas da otvorite nalog: %{link}
+
+              Tim zajednice prije pokretanja objavljuje odgovornosti i postupak obrade prijava. Ovaj obrazac ne
+              potvrđuje datum događaja, finansiranje niti rok odgovora.'
+  layouts:
+    decidim:
+      header:
+        register: Registriraj se
+        ask_milica: Pitaj Milicu
+  mi_launch:
+    invitation_rules:
+      title: Pravila pozivnica zajednice
+      who_title: Ko može učestvovati.
+      who: Pozivnice su bile namijenjene osobama s potvrđenim telefonom. Jedna osoba — jedan nalog — jedna pozivnica.
+      condition_title: Uslov.
+      condition: Uslove za pozivnice određuje tim zajednice prije aktivacije.
+      count_title: Broj pozivnica.
+      count: Broj pozivnica prikazuje se nakon konfiguracije događaja.
+      confirm_title: Potvrda dolaska.
+      confirm: Potvrda dolaska bila je molba, ne uslov. Evidencija izdate pozivnice i potvrde dolaska nije sama
+        po sebi dokaz ulaska na događaj.
+      entry_title: Ulaz.
+      entry: Događaj je završen. Ranije izdata pozivnica ostaje dio tvoje evidencije.
+      waitlist_title: Ako ostaneš bez pozivnice.
+      waitlist: Izdavanje i lista čekanja za ovaj događaj su završeni. Bodovi ostaju za aktivnosti i raspoložive
+        nagrade zajednice.
+      forbidden_title: Šta ne prolazi.
+      forbidden: Lažni nalozi, više naloga jedne osobe i naduvavanje bodova ponavljanjem istih radnji. Takvi nalozi
+        gube pravo na pozivnicu.
+      not_money_title: Bodovi nisu novac.
+      not_money: Nemaju novčanu vrijednost, ne mogu se zamijeniti za novac i ne utiču na glasanje, na rang prijedloga
+        ni na vidljivost sadržaja.
+      correction: Organizator zadržava pravo da ispravi očiglednu grešku u obračunu i da o tome javno obavijesti.
+    race_rules:
+      window: '%{window_from} – %{window_to}'
+      prize_amount: Prema pravilima zajednice
+      prize_grad: Gradski komšiluk
+      prize_selo: Seoski komšiluk
+      prize_note: za projekat koji komšiluk sam izabere
+      points_title: Šta koliko nosi
+      points_registered: registrovan komšija
+      points_report: prijava problema
+      points_proposal: prijedlog
+      rules_title: Pravila trke
+      title: Trka komšiluka
+      intro: Obuhvat takmičenja, nagrade i uslove zajednica objavljuje prije početka.
+      formula_title: 'Kako se broji:'
+      formula: registrovani × %{registration_points} + prijave × %{report_points} + prijedlozi × %{proposal_points}
+      rule_1: Za svaku bodovanu radnju potreban je potvrđen telefon. Boduje se aktivnost u objavljenom periodu trke;
+        anonimnost kontakta prema službi ne umanjuje rezultat.
+      rule_2: Duplikati, potvrde „Isti problem” i odbijene prijave ne donose bodove trke. Objavljen prijedlog građanina
+        koji nije izabran za realizaciju ostaje prihvatljiv; skriven ili obrisan nedozvoljen sadržaj se isključuje.
+      rule_3: Po osobi se boduje najviše %{report_cap} prijava i %{proposal_cap} prijedloga tokom cijele trke. To
+        su zasebne granice od ličnih bodova zajedništva.
+      rule_4: Kod istog rezultata prednost ima komšiluk koji je ranije dostigao taj rezultat. Potpuno izjednačenje
+        razrješava administrator uz zabilježen razlog.
+      time_title: 'Vrijeme:'
+      time: Radnje se računaju od %{window_from} do %{window_to} po vremenu u Sarajevu; krajnji trenutak ne ulazi
+        u obračun. Poslije zatvaranja slijedi pregled. Javne bodove administrator kasnije može ručno sakriti.
+      announce_title: 'Proglašenje:'
+      announce: Nakon zatvaranja, pregleda izvora i potvrde konačnog poretka. Zatvaranje trke samo po sebi nije
+        proglašenje pobjednika.
+      build_title: 'Šta se gradi:'
+      build: Izbor projekata, budžet, datumi i biračko pravo uređuju se pravilima procesa. Bodovi sami ne dodjeljuju
+        dodatne glasove.
+      no_politics: Trka nema veze sa političkim organizovanjem i ne može se koristiti u predizbornoj kampanji. Prijave
+        i prijedlozi sa stranačkim sadržajem se brišu i ne računaju.
+      rule_5: Doprinos ostaje prvom komšiluku pouzdano utvrđenom za ovu trku. Promjena komšiluka ne premješta ranije
+        bodove. I zaposleni mogu doprinijeti trci; njihov pojedinačni doprinos nije u javnom poretku građana.
+    moderation:
+      title: Šta se briše sa platforme MI
+      item_1: govor mržnje i vrijeđanje po nacionalnoj, vjerskoj, polnoj i svakoj drugoj osnovi
+      item_2: lični napadi na imenovane osobe
+      item_3: stranačka kampanja i poziv na glasanje za bilo koga
+      item_4: fotografije na kojima se jasno vide lica ili registarske tablice, kada to nije nužno za prijavu
+      item_5: lični podaci drugih ljudi — ime i adresa komšije, broj telefona, slika tuđeg dvorišta
+      item_6: reklame i ponavljani isti sadržaj
+      item_7: očigledno neistinite prijave
+      sharp: Prijavu i prijedlog možeš uvijek napisati oštro. Razlika je u tome da li govoriš o problemu ili o čovjeku.
+      appeal: Tim zajednice objavljuje postupak moderacije i žalbe. Obrati mu se za preispitivanje odluke.
+      campaign_period: Posebne periode i pravila moderacije zajednica objavljuje prije primjene.
+    neutrality:
+      title: MI nije ničija kampanja.
+      p1: Organizator i finansijeri navode se u pravilima vaše zajednice.
+      p2: Pravila događaja i učešća javnih predstavnika objavljuje organizator zajednice.
+      p3: Stranačka obilježja u sali nisu dozvoljena. Stranački sadržaj na platformi se briše.
+      p4: Ovo pišemo unaprijed, dok kampanja traje, da niko ne bi morao da nagađa.
+    faq:
+      title: Često postavljana pitanja
+      q1: Da li još mogu dobiti pozivnicu za lansiranje?
+      a1: Datumi događaja i pozivnice zavise od podešavanja zajednice.
+      q2: Šta sada mogu uraditi na platformi?
+      a2: Prijavi stvaran problem, učestvuj u otvorenim procesima, volontiraj ili pozovi komšije. Pravila bodovanja
+        i granice su na kartici Zajedništvo.
+      q3: Koliko mi treba za registraciju?
+      a3: Potreban je pristup platformi i vlastiti telefon za SMS potvrdu. Vrijeme zavisi od dostave koda i unosa
+        podataka.
+      q4: Šta ako nemam pametni telefon?
+      a4: 'Pametni telefon nije uslov: platformu možeš otvoriti na računaru i samostalno unijeti kod primljen na
+        vlastiti telefon. Ne nudimo službu otvaranja naloga umjesto građana. Telefon koji prima SMS ostaje uslov
+        verifikacije.'
+      q5: Kako se računaju pozivi komšijama?
+      a5: Podijeli lični link. Potvrđen telefon i izabran komšiluk dovoljni su za kvalifikaciju; postoje odgoda
+        i mjesečni limit, a višak kvalifikovanih poziva prelazi u naredni mjesec. Komšija doprinosi vlastitom komšiluku.
+      q6: Da li bodovi nestaju poslije događaja ili trke?
+      a6: Ne. Novčanik i priznati doprinos odvojeni su od trke. Trošenje, pokloni i obrazložene ispravke imaju svoja
+        pravila u istoriji naloga.
+      q7: Ko vidi moju prijavu?
+      a7: Javno se vide broj, kategorija, adresa problema, tačka na mapi, status i datum. Ime prijavioca nije prikazano.
+        Opis, fotografija i kontakt dostupni su ovlaštenom timu i nadležnoj službi prema pravilima pristupa; predaja
+        službi slijedi pregled, nije automatska objava svake prijave.
+      q8: Da li čuvate moju adresu?
+      a8: Registracija čuva telefon i izabrani komšiluk. Ako zatražiš provjeru adrese pismom, adresa je potrebna
+        za dostavu i privremeno se obrađuje prema pravilima tog postupka. Adresa problema i označena tačka na mapi
+        jesu javni podaci prijave.
+      q9: Šta znače bodovi?
+      a9: Bodovi zajedništva su priznanje i stanje za simbolične nagrade, bez novčane vrijednosti ili dodatne glasačke
+        moći. Trka ima zaseban obračun. Javna priznanja možeš isključiti u svom nalogu.
+      q10: Ko ovo plaća?
+      a10: Zajednica objavljuje svog organizatora i finansijere.
+    about:
+      title: Ko smo i ko ovo plaća
+      body: Platformom upravlja organizator vaše zajednice. Kontakti i odgovornosti uređuju se prije pokretanja.
+      funding_title: Izvori finansiranja
+      funding: Zajednica objavljuje sopstvene izvore finansiranja i izvještaje.
+      grant_title: Projektna podrška
+      grant: Zajednica dodaje sopstvene odobrene navode o podršci i obavezne napomene.
+  mi_funders:
+    eyebrow: Partneri zajednice
+    line: Podršku ovoj instalaciji navodi vaša zajednica.
+hr:
+  decidim:
+    bih:
+      reporter_mailer:
+        status_update:
+          footer: S poštovanjem, tim vaše zajednice.
+          viber_text: 'Prijava %{reference} — status: %{status}.'
+      admin:
+        analytics:
+          datasets:
+            mi_bot_usage: Korištenje Milice
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_review: Pregled odgovora Milice
+          trend_metrics:
+            mi_bot_requests: Upiti MIlici
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_helpful_feedback: Korisne ocjene odgovora Milice
+            mi_bot_not_helpful_feedback: Nekorisne ocjene odgovora Milice
+          index:
+            title: LFBN analitički izvozi
+            mi_bot_review_title: Red za pregled odgovora Milice
+            mi_bot_review_intro: Visoki i praćeni zbirni redovi iz ocjena odgovora Milice, poredani za redovni pregled
+              kvalitete odgovora.
+            mi_bot_examples_title: Primjeri ocijenjenih odgovora Milice
+            mi_bot_examples_intro: Najnoviji anonimni klikovi na "Nije korisno" i zatim "Korisno" pomažu da operater
+              vidi konkretno pitanje i odgovor Milice koji treba popraviti ili zadržati kao dobar obrazac.
+            mi_bot_examples_privacy: Prikazuje samo poruku i odgovor sačuvane nakon klika na ocjenu. Ne prikazuje
+              korisnički nalog, reply ID, session digest, token, IP, user-agent, Viber identifikator ili kontakt
+              podatke.
+            mi_bot_examples_empty: Još nema ocijenjenih odgovora Milice sa sačuvanim primjerom za pregled.
+      goodwill:
+        invite:
+          share_message: Pridruži se zajednici Mi pre(d)uzimamo! 👋
+        verify_cta:
+          viber:
+            description: Povežite Viber račun s platformom — Milica će vas prepoznati za bodove i prijave. Verifikacija
+              telefonom ostaje poseban korak iznad.
+            welcome: Broj telefona je potvrđen. Za pristup računu i osobnim bodovima i dalje može biti potrebna
+              prijava na portal.
+      content_blocks:
+        mi_cta:
+          sub: Tvoja ideja, tvoja prijava, tvoj glas. Učestvuj u svojoj zajednici.
+          hashtag: '#MojaZajednica'
+        mi_hero:
+          eyebrow: Portal vaše zajednice
+          poster:
+            mi: MI
+          sub_html: Pokreni temu, prijavi problem i učestvuj u izboru projekata. Procese i pravila objavljuje tim
+            zajednice.
+        mi_hub:
+          name: MI! hub (modul-kartice + Milica na dostupnim kanalima)
+          tiles:
+            prefix: MI
+          omni:
+            eyebrow: Komšinica Milica · uvijek dostupna
+            title: Razgovaraj s Milicom na dostupnom kanalu.
+            lead: Milica odgovara na pitanja i vodi do službenog obrasca. Prijava nastaje tek nakon pregleda, tvoje
+              potvrde porukom i broja prijave.
+            sms_html: SMS koristimo za verifikacijske kodove, poveznice za prijavu i obavijesti. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na stranici.
+      concierge:
+        budget:
+          ask: Za proračun napiši područje ili naziv ustanove. Proračun ima mnogo nula; tražimo baš one koje te
+            zanimaju.
+          found: Za „%{category}“ je u obrađenom pregledu proračuna za %{year}. godinu izdvojeno %{amount} KM. Ovo
+            je pregled dostupnih stavki, ne cijeli proračunski dokument.
+          not_found: Nisam pronašla stavku „%{category}“ u podacima koje trenutačno imamo. Pokušaj s nazivom područja
+            ili ustanove.
+        donation:
+          found: 'U posljednjem zbroju koji smo uspjeli provjeriti zabilježeno je %{amount} %{currency} kroz %{count}
+            donacija. Projekti i provjerena poveznica za podršku: %{url}. Milica nikada ne traži podatke kartice
+            u razgovoru.'
+        gazette:
+          not_found: Nisam pronašla rezultat u obrađenom katalogu Službenog glasnika. To ne dokazuje da odluka ne
+            postoji; pokušaj s drugom temom, godinom ili brojem izdanja.
+        goodwill:
+          found: 'Imaš %{balance} bodova zajedništva. Razina: %{level}; rang: #%{rank}. Do sljedeće razine nedostaje
+            %{to_next}. Detalji: %{url}'
+          found_top: 'Imaš %{balance} bodova i dosegnutu najvišu razinu %{level}. Rang: #%{rank}. Detalji: %{url}'
+          none: 'Još nemaš bodove. Stječu se kroz priznate doprinose na platformi; pravila i pregled: %{url}'
+          not_linked: 'Za prikaz tvojih bodova potrebno je prijaviti se i povezati račun: %{url}'
+        help: 'Ne treba ti naziv odjela ni broj ureda. Reci ljudski što ti treba: prijava problema, status, gradska
+          usluga, odvoz otpada, parking, autobus, proračun, Službeni glasnik, tvoj Komšiluk, ideja, glasanje, volontiranje,
+          bodovi ili projekti. Ja ću pohvatati konce.'
+        komsiluk:
+          post:
+            choose_category: 'Odaberi kategoriju brojem: 1) Izgubljeni ljubimac · 2) Sigurnost · 3) Aktivnost ·
+              4) Općenito.'
+            created: Objava je potvrđeno objavljena na ploči tvog Komšiluka.
+            failed: Objava nije spremljena. Pokušaj ponovno kasnije.
+            not_member: 'Za objavu prvo potvrdi broj telefona i odaberi svoj Komšiluk: %{url}'
+            rate_limited: Dosegnut je dnevni broj objava. Pokušaj ponovno sutra.
+            usage: 'Napiši: „objavi u komšiluku: tvoja poruka“.'
+            web_guidance: 'Za objavu otvori ploču: %{url}. Tamo odabireš kategoriju i potvrđuješ sadržaj prije slanja.'
+          read:
+            anon: član zajednice
+            empty: Trenutno nema objava u tvom Komšiluku.
+            header: Najnovije iz tvog Komšiluka
+            item: • [%{category}] %{title} — %{author}
+            not_member: 'Za personaliziranu ploču prvo odaberi svoj Komšiluk: %{url}'
+            web_guidance: 'Objave možeš čitati na ploči: %{board_url}. Za personaliziranu ploču prijavi se, potvrdi
+              broj i odaberi Komšiluk: %{setup_url}'
+        local_area_guidance:
+          location_not_found: 'Za poslanu lokaciju nisam našla MZ/Komšiluk u karti koju imam. Provjeri adresu na
+            stranici Komšiluk: %{url}'
+        link:
+          ask_phone: Pošalji broj telefona koji želiš potvrditi, s pozivnim brojem.
+          code_sent: Verifikacijski kod je poslan SMS-om. Pošalji šesteroznamenkasti kod.
+          expired: Kod je istekao. Pokreni povezivanje ponovno.
+          invalid_code: Kod nije točan. Provjeri znamenke ili zatraži novi kod.
+          invalid_phone: Broj telefona nije u ispravnom formatu. Pošalji ga s pozivnim brojem.
+          rate_limited: Dosegnut je broj zahtjeva za kod. Pričekaj kratko pa pokušaj ponovno.
+          send_failed: Slanje koda nije uspjelo. Pokušaj ponovno kasnije ili koristi drugi ponuđeni način verifikacije.
+          sms: Tvoj verifikacijski kod za Mi pre(d)uzimamo! je %{code}. Vrijedi 10 minuta.
+          verified: Broj telefona je potvrđen. Za pristup računu i osobnim bodovima i dalje može biti potrebna prijava
+            na portal.
+        report:
+          confirmation: Prijava je zabilježena pod brojem %{reference}. Sačuvaj broj i pošalji ga Milici kada želiš
+            provjeriti javni status.
+        status:
+          found: 'Prijava %{reference} — trenutačni javni status: %{status}. Status provjeravaj ovim brojem; obavijest
+            stiže samo ako si prijavljen/a, povezan/a i uključio/la obavijesti.'
+          not_found: Nisam pronašla prijavu %{reference}. Provjeri broj — format je BR-GGGG-NNNN.
+        waste:
+          ask_area: Napiši naziv ulice ili naselja pa ću provjeriti raspored odvoza.
+          found: 'Odvoz otpada za „%{area}“: %{days}. Ovo je posljednji raspored koji smo uspjeli provjeriti.'
+          not_found: Nisam pronašla pouzdan raspored odvoza za „%{area}“. Provjeri točan naziv ulice ili naselja.
+        web_fallback: Nešto je zapelo na našoj strani. Pokušaj ponovno. U međuvremenu možeš otvoriti prijavu, ideje
+          ili katalog projekata na stranici.
+        location_save_unavailable: Lokacija nije spremljena za ovaj razgovor. Možeš je ponovno podijeliti ili navesti
+          polazište.
+        web_report_guidance: 'Poruka na stranici sama ne stvara prijavu. Otvori službeni obrazac: %{url}. Tamo možeš
+          označiti lokaciju, dodati opis i fotografiju, a nakon slanja dobivaš broj za praćenje.'
+        public_neighborhood_guide: 'Javni vodič za komšiluke je ovdje: %{url}. Za odabir svojeg komšiluka i pristup
+          ploči potrebna je prijava na račun.'
+        media:
+          milica_wave:
+            alt: Komšinica Milica maše u znak pozdrava.
+          milica_tablet:
+            alt: Komšinica Milica pokazuje informacije na tabletu.
+          milica_map:
+            alt: Komšinica Milica pokazuje označeno mjesto na karti.
+          milica_heart:
+            alt: Komšinica Milica rukama pokazuje srce.
+          milica_sleeves:
+            alt: Komšinica Milica zasuče rukave i sprema se za akciju.
+          milica_thumbs_up:
+            alt: Komšinica Milica pokazuje palac gore.
+        widget:
+          aria_open: Otvori razgovor s Komšinicom Milicom
+          aria_close: Zatvori razgovor
+          aria_send: Pošalji poruku
+          aria_location: Koristi trenutačnu lokaciju za ovo pitanje
+          bubble_label: Pitaj Milicu
+          greeting: Bok! Ja sam Komšinica Milica. Ti objasni ljudski, ja ću prevesti na formularski — bez šaltera
+            i lutanja po portalu. 😄 Od čega krećemo?
+          return_greeting: Evo te opet — znači da grad još nije ostao bez tema. 😄 Što danas rješavamo?
+          header_title: Komšinica Milica
+          header_status: tu sam
+          input_placeholder: Piši kao susjedi…
+          loading: Da vidimo što piše, a ne što se priča…
+          long_loading: Ovo se malo zavuklo među papire. Tražim dalje…
+          location_ready: Lokacija je stigla.
+          location_consent_copy: Ako podijeliš lokaciju, Milica će je šifrirano koristiti za javna pitanja u ovom
+            razgovoru. Nestaje nakon 30 minuta neaktivnosti; možeš je zaboraviti ranije.
+          location_active: Podijeljena lokacija aktivna
+          forget_location: Zaboravi lokaciju
+          forget_location_send: zaboravi moju lokaciju
+          location_error: Telefon i lokacija se danas ne poznaju. Napiši ulicu, naselje ili najbliže stajalište.
+          error: Nešto je zapelo na našoj strani. Pokušaj ponovno.
+          greeting_media_alt: Komšinica Milica maše u znak pozdrava.
+          feedback:
+            prompt: 'Pomozi da Milica nauči:'
+          quick:
+            report: Prijavi problem
+            report_describe: Opiši problem Milici
+            idea: Ideje i glasanje
+            budget: Proračun grada
+            donate: Podrži projekt
+            goodwill: Moji bodovi
+            setup: Podesi račun
+            komsiluk: Moj Komšiluk
+        mi_hub:
+          omni:
+            sms_html: SMS koristimo za verifikacijske kodove, poveznice za prijavu i obavijesti. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na stranici.
+      komsiluk:
+        edit:
+          address_placeholder: npr. Izmišljena ulica 12, vaša zajednica
+      report_heatmap:
+        index:
+          eyebrow: Biće riješeno!
+      reports:
+        index:
+          eyebrow: Biće riješeno!
+        show:
+          eyebrow: Biće riješeno!
+      reports_map:
+        show:
+          eyebrow: Biće riješeno!
+          title: Karta prijava — Biće riješeno!
+      onboarding:
+        guide:
+          actions:
+            bot:
+              title: Pitaj Milicu
+      menu:
+        mi_bot: Milica
+        mi_bot_short: Milica
+        launch_event: Događaj zajednice
+        race: Trka komšiluka
+      menu_groups:
+        help:
+          body: Pitaj Milicu ili otvori vodič kroz platformu.
+      public_actions:
+        register: Registriraj se
+        ask: Pitaj Milicu
+        account: Moj račun
+        bot: Pitaj Milicu
+      mobile_nav:
+        new_message: Nova poruka
+        notifications: Obavještenja
+        login: Uloguj se
+        home: Početna
+        report: Problem
+        race: Trka
+        register: Registriraj se
+        bot: Milica
+      pwa:
+        install_title: MI! kao aplikacija
+        install_text: Brži pristup prijavama, bodovima i Milici — izravno s početnog zaslona.
+        ios_text: 'Dodaj MI! na početni ekran: dodirni ⎖ Share pa "Add to Home Screen".'
+        manual_text: Otvori meni preglednika i izaberi „Dodaj na početni ekran“ ili „Instaliraj aplikaciju“.
+        webview_text: Otvori MI! u Chromeu ili Safariju da bi je dodao/dodala na početni ekran.
+      sms:
+        login_link: 'Tvoja poveznica za prijavu na MI pre(d)uzimamo: %{url} Vrijedi 10 minuta. Možeš razgovarati
+          s Milicom ovdje — odgovori na ovu poruku.'
+        login_link_and_code: 'MI: poveznica za prijavu: %{url} Rezervni kod: %{code}. Vrijedi 10 min. Ne dijeli
+          je.'
+      mi_bot:
+        show:
+          phone_header: Milica
+          viber_business_onboarding:
+            kicker: Viber poruke
+            title: Milica je dostupna u Viber porukama
+            desc: Razgovaraj s Milicom odgovorom na poruku koju si dobio/dobila od MI pre(d)uzimamo.
+            start: Odgovori na našu Viber poruku i napiši pitanje. Ako je još nemaš, razgovor možeš početi na ovoj
+              stranici.
+            report_note: Prijava problema nastaje tek kada potvrdiš Miličin pregled porukom „Potvrdi prijavu DA”
+              i dobiješ broj prijave.
+          external_chat_onboarding:
+            kicker: Milica na drugim kanalima
+            title: Razgovaraj s Komšinicom Milicom u aplikaciji koju već koristiš
+            desc: Kada kanal bude spreman za javnost, otvori provjereni razgovor s Milicom i postavi pitanje kao
+              na stranici.
+            channels_title: Kanali za razgovor
+            channels:
+              whatsapp: WhatsApp
+              messenger: Messenger
+              instagram: Instagram
+            boundary_title: Važna granica
+            boundary_body: Milica odgovara na pitanja. Na WhatsAppu i Messengeru prijava nastaje tek nakon pregleda
+              i potvrde porukom; na Instagramu Milica daje smjernice. Razgovor ne povezuje tvoj račun.
+            privacy_note: Ne šalji osobni identifikacijski broj, lozinke, podatke s kartice ni druge osjetljive
+              podatke u chatu.
+          capabilities:
+            desc: Asistent koristi podatke koje zajednica izričito poveže. Dostupnost zavisi od konfiguracije i
+              lokalnih podataka.
+            kicker: Što Milica zna
+            note: Za podatke koji se mijenjaju Milica čita najnoviji povezani izvor i u odgovoru navodi izvor. Za
+              službenu radnju vodi na obrazac, nadležnu službu ili provjeren kanal.
+            source_label: 'Izvori:'
+            title: Od voznog reda do parking zone, sve kroz jednu poruku.
+            items:
+              transport:
+                title: Javni prijevoz
+                body: Planira rute po linijama i stajalištima, pronalazi presjedanja i čita sljedeće polaske za
+                  jutro, danas ili sutra.
+                source: Redovi vožnje i stajališta koje zajednica uveze i provjeri.
+              parking:
+                title: Parking zone
+                body: Prepoznaje ulicu, vraća zonu kada je poznata, cijenu, radno vrijeme i SMS način plaćanja za
+                  parking.
+                source: Tarife i zone parkinga koje zajednica unese i provjeri.
+              waste:
+                title: Odvoz otpada
+                body: Odgovara za naselje ili ulicu kada je raspored dostupan i razlikuje redovni odvoz od posebnih
+                  komunalnih informacija.
+                source: Rasporedi odvoza otpada održavani u podacima koje Milica koristi.
+              service_notices:
+                title: Servisne informacije
+                body: Prati pitanja o isključenjima struje, servisnim informacijama Vodovoda, grijanju, cestama,
+                  gradskim obavijestima, civilnoj zaštiti i policijskim servisima.
+                source: Izričito povezani izvori komunalnih i javnih službi.
+              environment:
+                title: Vrijeme, vodostaj i zrak
+                body: Odgovara na vremenska upozorenja, vodostaje Save i Drine, kvalitetu zraka uživo i gradske
+                  izvještaje o kvaliteti zraka.
+                source: Izričito povezani meteorološki, hidrološki i senzorski izvori.
+              city_services:
+                title: Gradske usluge i dokumenti
+                body: Pomaže oko matičnih izvoda, kontakata, mjesnih zajednica, službenog glasnika, odluka, proračuna
+                  i donacija.
+                source: Lokalni propisi, registri i tabele koje zajednica poveže.
+              reports:
+                title: Prijave i status
+                body: Objašnjava kako poslati komunalnu prijavu, kako provjeriti status po broju predmeta i gdje
+                  se vidi javna karta.
+                source: Biće riješeno/Sistem48 podaci, statusi prijava i javni pregled prijava na MI! platformi.
+              community:
+                title: Komšiluk i sudjelovanje
+                body: Vodi kroz prijedloge, glasanje, volontiranje, Komšiluk ploču, bodove zajedništva, račun, verifikaciju
+                  i donacije.
+                source: Podaci platforme i podešavanja zajednice.
+          cta:
+            try_bot: Probaj Milicu
+          hero:
+            eyebrow: Digitalna susjeda kroz MI platformu
+            title_lead: Komšinica
+            title_accent: Milica
+            lead: Razgovaraj s Milicom na stranici i pronađi pravi sljedeći korak za prijave, gradske podatke, sudjelovanje,
+              volontiranje i donacije.
+          signoff:
+            line: Asistent platforme vaše zajednice
+      launch:
+        messages:
+          p8:
+            viber: 'U pregledanim podacima ima %{broj} prijava; zapis ne potvrđuje prosljeđivanje ili rješenje.
+              Komšiluk %{komsiluk}, zabilježeni poredak %{mjesto}. Pravila i aktuelni pregled: %{link}'
+          p11:
+            email_subject: Poziv za uključivanje u platformu zajednice
+            email: 'Pozivamo vas da otvorite nalog: %{link}
+
+              Tim zajednice prije pokretanja objavljuje odgovornosti i postupak obrade prijava. Ovaj obrazac ne
+              potvrđuje datum događaja, finansiranje niti rok odgovora.'
+  layouts:
+    decidim:
+      header:
+        register: Registriraj se
+        ask_milica: Pitaj Milicu
+  mi_launch:
+    invitation_rules:
+      title: Pravila pozivnica zajednice
+      who_title: Ko može sudjelovati.
+      who: Pozivnice su bile namijenjene osobama s potvrđenim telefonom. Jedna osoba — jedan nalog — jedna pozivnica.
+      condition_title: Uvjet.
+      condition: Uslove za pozivnice određuje tim zajednice prije aktivacije.
+      count_title: Broj pozivnica.
+      count: Broj pozivnica prikazuje se nakon konfiguracije događaja.
+      confirm_title: Potvrda dolaska.
+      confirm: Potvrda dolaska bila je molba, ne uslov. Evidencija izdate pozivnice i potvrde dolaska nije sama
+        po sebi dokaz ulaska na događaj.
+      entry_title: Ulaz.
+      entry: Događaj je završen. Ranije izdata pozivnica ostaje dio tvoje evidencije.
+      waitlist_title: Ako ostaneš bez pozivnice.
+      waitlist: Izdavanje i lista čekanja za ovaj događaj su završeni. Bodovi ostaju za aktivnosti i raspoložive
+        nagrade zajednice.
+      forbidden_title: Što ne prolazi.
+      forbidden: Lažni računi, više računa jedne osobe i naduvavanje bodova ponavljanjem istih radnji. Takvi računi
+        gube pravo na pozivnicu.
+      not_money_title: Bodovi nisu novac.
+      not_money: Nemaju novčanu vrijednost, ne mogu se zamijeniti za novac i ne utječu na glasanje, na rang prijedloga
+        ni na vidljivost sadržaja.
+      correction: Organizator zadržava pravo da ispravi očiglednu grešku u obračunu i da o tome javno obavijesti.
+    race_rules:
+      window: '%{window_from} – %{window_to}'
+      prize_amount: Prema pravilima zajednice
+      prize_grad: Gradsko susjedstvo
+      prize_selo: Seosko susjedstvo
+      prize_note: za projekt koji susjedstvo samo izabere
+      points_title: Što koliko nosi
+      points_registered: registriran susjed
+      points_report: prijava problema
+      points_proposal: prijedlog
+      rules_title: Pravila utrke
+      title: Trka komšiluka
+      intro: Obuhvat takmičenja, nagrade i uslove zajednica objavljuje prije početka.
+      formula_title: 'Kako se broji:'
+      formula: registrovani × %{registration_points} + prijave × %{report_points} + prijedlozi × %{proposal_points}
+      rule_1: Za svaku bodovanu radnju potreban je potvrđen telefon. Boduje se aktivnost u objavljenom periodu trke;
+        anonimnost kontakta prema službi ne umanjuje rezultat.
+      rule_2: Duplikati, potvrde „Isti problem” i odbijene prijave ne donose bodove trke. Objavljen prijedlog građanina
+        koji nije izabran za realizaciju ostaje prihvatljiv; skriven ili obrisan nedozvoljen sadržaj se isključuje.
+      rule_3: Po osobi se boduje najviše %{report_cap} prijava i %{proposal_cap} prijedloga tokom cijele trke. To
+        su zasebne granice od ličnih bodova zajedništva.
+      rule_4: Kod istog rezultata prednost ima komšiluk koji je ranije dostigao taj rezultat. Potpuno izjednačenje
+        razrješava administrator uz zabilježen razlog.
+      time_title: 'Vrijeme:'
+      time: Radnje se računaju od %{window_from} do %{window_to} po vremenu u Sarajevu; krajnji trenutak ne ulazi
+        u obračun. Poslije zatvaranja slijedi pregled. Javne bodove administrator kasnije može ručno sakriti.
+      announce_title: 'Proglašenje:'
+      announce: Nakon zatvaranja, pregleda izvora i potvrde konačnog poretka. Zatvaranje trke samo po sebi nije
+        proglašenje pobjednika.
+      build_title: 'Što se gradi:'
+      build: Izbor projekata, budžet, datumi i biračko pravo uređuju se pravilima procesa. Bodovi sami ne dodjeljuju
+        dodatne glasove.
+      no_politics: Trka nema veze s političkim organiziranjem i ne može se koristiti u predizbornoj kampanji. Prijave
+        i prijedlozi sa stranačkim sadržajem se brišu i ne računaju.
+      rule_5: Doprinos ostaje prvom komšiluku pouzdano utvrđenom za ovu trku. Promjena komšiluka ne premješta ranije
+        bodove. I zaposleni mogu doprinijeti trci; njihov pojedinačni doprinos nije u javnom poretku građana.
+    moderation:
+      title: Što se briše s platforme MI
+      item_1: govor mržnje i vrijeđanje po nacionalnoj, vjerskoj, spolnoj i svakoj drugoj osnovi
+      item_2: osobni napadi na imenovane osobe
+      item_3: stranačka kampanja i poziv na glasanje za bilo koga
+      item_4: fotografije na kojima se jasno vide lica ili registarske tablice, kada to nije nužno za prijavu
+      item_5: osobni podaci drugih ljudi — ime i adresa komšije, broj telefona, slika tuđeg dvorišta
+      item_6: reklame i ponavljani isti sadržaj
+      item_7: očigledno neistinite prijave
+      sharp: Prijavu i prijedlog možeš uvijek napisati oštro. Razlika je u tome da li govoriš o problemu ili o čovjeku.
+      appeal: Tim zajednice objavljuje postupak moderacije i žalbe. Obrati mu se za preispitivanje odluke.
+      campaign_period: Posebne periode i pravila moderacije zajednica objavljuje prije primjene.
+    neutrality:
+      title: MI nije ničija kampanja.
+      p1: Organizator i finansijeri navode se u pravilima vaše zajednice.
+      p2: Pravila događaja i učešća javnih predstavnika objavljuje organizator zajednice.
+      p3: Stranačka obilježja u sali nisu dozvoljena. Stranački sadržaj na platformi se briše.
+      p4: Ovo pišemo unaprijed, dok kampanja traje, da niko ne bi morao da nagađa.
+    faq:
+      title: Često postavljana pitanja
+      q1: Da li još mogu dobiti pozivnicu za lansiranje?
+      a1: Datumi događaja i pozivnice zavise od podešavanja zajednice.
+      q2: Šta sada mogu uraditi na platformi?
+      a2: Prijavi stvaran problem, učestvuj u otvorenim procesima, volontiraj ili pozovi komšije. Pravila bodovanja
+        i granice su na kartici Zajedništvo.
+      q3: Koliko mi treba za registraciju?
+      a3: Potreban je pristup platformi i vlastiti telefon za SMS potvrdu. Vrijeme zavisi od dostave koda i unosa
+        podataka.
+      q4: Što ako nemam pametni telefon?
+      a4: 'Pametni telefon nije uslov: platformu možeš otvoriti na računaru i samostalno unijeti kod primljen na
+        vlastiti telefon. Ne nudimo službu otvaranja naloga umjesto građana. Telefon koji prima SMS ostaje uslov
+        verifikacije.'
+      q5: Kako se računaju pozivi komšijama?
+      a5: Podijeli lični link. Potvrđen telefon i izabran komšiluk dovoljni su za kvalifikaciju; postoje odgoda
+        i mjesečni limit, a višak kvalifikovanih poziva prelazi u naredni mjesec. Komšija doprinosi vlastitom komšiluku.
+      q6: Da li bodovi nestaju poslije događaja ili trke?
+      a6: Ne. Novčanik i priznati doprinos odvojeni su od trke. Trošenje, pokloni i obrazložene ispravke imaju svoja
+        pravila u istoriji naloga.
+      q7: Ko vidi moju prijavu?
+      a7: Javno se vide broj, kategorija, adresa problema, tačka na mapi, status i datum. Ime prijavioca nije prikazano.
+        Opis, fotografija i kontakt dostupni su ovlaštenom timu i nadležnoj službi prema pravilima pristupa; predaja
+        službi slijedi pregled, nije automatska objava svake prijave.
+      q8: Da li čuvate moju adresu?
+      a8: Registracija čuva telefon i izabrani komšiluk. Ako zatražiš provjeru adrese pismom, adresa je potrebna
+        za dostavu i privremeno se obrađuje prema pravilima tog postupka. Adresa problema i označena tačka na mapi
+        jesu javni podaci prijave.
+      q9: Što znače bodovi?
+      a9: Bodovi zajedništva su priznanje i stanje za simbolične nagrade, bez novčane vrijednosti ili dodatne glasačke
+        moći. Trka ima zaseban obračun. Javna priznanja možeš isključiti u svom nalogu.
+      q10: Ko ovo plaća?
+      a10: Zajednica objavljuje svog organizatora i finansijere.
+    about:
+      title: Ko smo i ko ovo plaća
+      body: Platformom upravlja organizator vaše zajednice. Kontakti i odgovornosti uređuju se prije pokretanja.
+      funding_title: Izvori financiranja
+      funding: Zajednica objavljuje sopstvene izvore finansiranja i izvještaje.
+      grant_title: Projektna potpora
+      grant: Zajednica dodaje sopstvene odobrene navode o podršci i obavezne napomene.
+  mi_funders:
+    eyebrow: Partneri zajednice
+    line: Podršku ovoj instalaciji navodi vaša zajednica.
+sr:
+  decidim:
+    bih:
+      reporter_mailer:
+        status_update:
+          footer: S poštovanjem, tim vaše zajednice.
+          viber_text: 'Prijava %{reference} — status: %{status}.'
+      admin:
+        analytics:
+          datasets:
+            mi_bot_usage: Korištenje Milice
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_review: Pregled odgovora Milice
+          trend_metrics:
+            mi_bot_requests: Upiti MIlici
+            mi_bot_feedback: Povratne informacije za Milicu
+            mi_bot_helpful_feedback: Korisne ocjene odgovora Milice
+            mi_bot_not_helpful_feedback: Nekorisne ocjene odgovora Milice
+          index:
+            title: LFBN analitički izvozi
+            mi_bot_review_title: Red za pregled odgovora Milice
+            mi_bot_review_intro: Visoki i praćeni zbirni redovi iz ocjena odgovora Milice, poredani za redovni pregled
+              kvaliteta odgovora.
+            mi_bot_examples_title: Primjeri ocijenjenih odgovora Milice
+            mi_bot_examples_intro: Najnoviji anonimni klikovi na "Nije korisno" i zatim "Korisno" pomažu da operater
+              vidi konkretno pitanje i odgovor Milice koji treba popraviti ili zadržati kao dobar obrazac.
+            mi_bot_examples_privacy: Prikazuje samo poruku i odgovor sačuvane nakon klika na ocjenu. Ne prikazuje
+              korisnički nalog, reply ID, session digest, token, IP, user-agent, Viber identifikator ili kontakt
+              podatke.
+            mi_bot_examples_empty: Još nema ocijenjenih odgovora Milice sa sačuvanim primjerom za pregled.
+      goodwill:
+        invite:
+          share_message: Pridruži se zajednici Mi pre(d)uzimamo! 👋
+        verify_cta:
+          viber:
+            description: Povežite Viber nalog s platformom — Milica će vas prepoznati za bodove i prijave. Verifikacija
+              telefonom ostaje poseban korak iznad.
+            welcome: Broj telefona je potvrđen. Za pristup nalogu i ličnim bodovima i dalje može biti potrebna prijava
+              na portal.
+      content_blocks:
+        mi_cta:
+          sub: Tvoja ideja, tvoja prijava, tvoj glas. Učestvuj u svojoj zajednici.
+          hashtag: '#MojaZajednica'
+        mi_hero:
+          eyebrow: Portal vaše zajednice
+          poster:
+            mi: MI
+          sub_html: Pokreni temu, prijavi problem i učestvuj u izboru projekata. Procese i pravila objavljuje tim
+            zajednice.
+        mi_hub:
+          name: MI! hub (modul-kartice + Milica na dostupnim kanalima)
+          tiles:
+            prefix: MI
+          omni:
+            eyebrow: Komšinica Milica · uvijek dostupna
+            title: Razgovaraj sa Milicom na dostupnom kanalu.
+            lead: Milica odgovara na pitanja i vodi do zvaničnog obrasca. Prijava nastaje tek nakon pregleda, tvoje
+              potvrde porukom i broja prijave.
+            sms_html: SMS koristimo za verifikacione kodove, linkove za prijavu i obavještenja. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na sajtu.
+      concierge:
+        budget:
+          ask: Za budžet napiši oblast ili naziv ustanove. Budžet ima mnogo nula; tražimo baš one koje te zanimaju.
+          found: Za „%{category}“ je u obrađenom pregledu budžeta za %{year}. godinu izdvojeno %{amount} KM. Ovo
+            je pregled dostupnih stavki, ne cijeli budžetski dokument.
+          not_found: Nisam pronašla stavku „%{category}“ u podacima koje trenutno imamo. Pokušaj s nazivom oblasti
+            ili ustanove.
+        donation:
+          found: 'U posljednjem zbiru koji smo uspjeli provjeriti zabilježeno je %{amount} %{currency} kroz %{count}
+            donacija. Projekti i provjeren link za podršku: %{url}. Milica nikada ne traži podatke kartice u razgovoru.'
+        gazette:
+          not_found: Nisam pronašla rezultat u obrađenom katalogu Službenog glasnika. To ne dokazuje da odluka ne
+            postoji; pokušaj s drugom temom, godinom ili brojem izdanja.
+        goodwill:
+          found: 'Imaš %{balance} bodova zajedništva. Nivo: %{level}; rang: #%{rank}. Do sljedećeg nivoa nedostaje
+            %{to_next}. Detalji: %{url}'
+          found_top: 'Imaš %{balance} bodova i dostignut najviši nivo %{level}. Rang: #%{rank}. Detalji: %{url}'
+          none: 'Još nemaš bodove. Stiču se kroz priznate doprinose na platformi; pravila i pregled: %{url}'
+          not_linked: 'Za prikaz tvojih bodova potrebno je da se prijaviš i povežeš nalog: %{url}'
+        help: 'Ne treba ti naziv odjeljenja ni broj kancelarije. Reci ljudski šta ti treba: prijava problema, status,
+          gradska usluga, odvoz otpada, parking, autobus, budžet, Službeni glasnik, tvoj Komšiluk, ideja, glasanje,
+          volontiranje, bodovi ili projekti. Ja ću pohvatati konce.'
+        komsiluk:
+          post:
+            choose_category: 'Izaberi kategoriju brojem: 1) Izgubljen ljubimac · 2) Bezbjednost · 3) Aktivnost ·
+              4) Opšte.'
+            created: Objava je potvrđeno objavljena na tabli tvog Komšiluka.
+            failed: Objava nije sačuvana. Pokušaj ponovo kasnije.
+            not_member: 'Za objavu prvo potvrdi broj telefona i izaberi svoj Komšiluk: %{url}'
+            rate_limited: Dostignut je dnevni broj objava. Pokušaj ponovo sutra.
+            usage: 'Napiši: „objavi u komšiluku: tvoja poruka“.'
+            web_guidance: 'Za objavu otvori tablu: %{url}. Tamo biraš kategoriju i potvrđuješ sadržaj prije slanja.'
+          read:
+            anon: član zajednice
+            empty: Trenutno nema objava u tvom Komšiluku.
+            header: Najnovije iz tvog Komšiluka
+            item: • [%{category}] %{title} — %{author}
+            not_member: 'Za personalizovanu tablu prvo izaberi svoj Komšiluk: %{url}'
+            web_guidance: 'Objave možeš čitati na tabli: %{board_url}. Za personalizovanu tablu prijavi se, potvrdi
+              broj i izaberi Komšiluk: %{setup_url}'
+        local_area_guidance:
+          location_not_found: 'Za poslanu lokaciju nisam našla MZ/Komšiluk u mapi koju imam. Provjeri adresu na
+            stranici Komšiluk: %{url}'
+        link:
+          ask_phone: Pošalji broj telefona koji želiš potvrditi, sa pozivnim brojem.
+          code_sent: Verifikacioni kod je poslan SMS-om. Pošalji šestocifreni kod.
+          expired: Kod je istekao. Pokreni povezivanje ponovo.
+          invalid_code: Kod nije tačan. Provjeri cifre ili zatraži novi kod.
+          invalid_phone: Broj telefona nije u ispravnom formatu. Pošalji ga sa pozivnim brojem.
+          rate_limited: Dostignut je broj zahtjeva za kod. Sačekaj kratko pa pokušaj ponovo.
+          send_failed: Slanje koda nije uspjelo. Pokušaj ponovo kasnije ili koristi drugi ponuđeni način verifikacije.
+          sms: Tvoj verifikacioni kod za Mi pre(d)uzimamo! je %{code}. Važi 10 minuta.
+          verified: Broj telefona je potvrđen. Za pristup nalogu i ličnim bodovima i dalje može biti potrebna prijava
+            na portal.
+        report:
+          confirmation: Prijava je zabilježena pod brojem %{reference}. Sačuvaj broj i pošalji ga Milici kada želiš
+            provjeriti javni status.
+        status:
+          found: 'Prijava %{reference} — trenutni javni status: %{status}. Status provjeravaj ovim brojem; obavještenje
+            stiže samo ako si prijavljen/a, povezan/a i uključio/la obavještenja.'
+          not_found: Nisam pronašla prijavu %{reference}. Provjeri broj — format je BR-GGGG-NNNN.
+        waste:
+          ask_area: Napiši naziv ulice ili naselja pa ću provjeriti raspored odvoza.
+          found: 'Odvoz otpada za „%{area}“: %{days}. Ovo je posljednji raspored koji smo uspjeli provjeriti.'
+          not_found: Nisam pronašla pouzdan raspored odvoza za „%{area}“. Provjeri tačan naziv ulice ili naselja.
+        web_fallback: Nešto je zapelo na našoj strani. Pokušaj ponovo. U međuvremenu možeš otvoriti prijavu, ideje
+          ili katalog projekata na sajtu.
+        location_save_unavailable: Lokacija nije sačuvana za ovaj razgovor. Možeš je ponovo podijeliti ili navesti
+          polazište.
+        web_report_guidance: 'Poruka na sajtu sama ne kreira prijavu. Otvori zvanični obrazac: %{url}. Tamo možeš
+          označiti lokaciju, dodati opis i fotografiju, a nakon slanja dobijaš broj za praćenje.'
+        public_neighborhood_guide: 'Javni vodič za komšiluke je ovdje: %{url}. Za izbor svog komšiluka i pristup
+          tabli potrebna je prijava na nalog.'
+        media:
+          milica_wave:
+            alt: Komšinica Milica maše u znak pozdrava.
+          milica_tablet:
+            alt: Komšinica Milica pokazuje informacije na tabletu.
+          milica_map:
+            alt: Komšinica Milica pokazuje označeno mjesto na mapi.
+          milica_heart:
+            alt: Komšinica Milica rukama pokazuje srce.
+          milica_sleeves:
+            alt: Komšinica Milica zasuče rukave i sprema se za akciju.
+          milica_thumbs_up:
+            alt: Komšinica Milica pokazuje palac gore.
+        widget:
+          aria_open: Otvori razgovor s Komšinicom Milicom
+          aria_close: Zatvori razgovor
+          aria_send: Pošalji poruku
+          aria_location: Koristi trenutnu lokaciju za ovo pitanje
+          bubble_label: Pitaj Milicu
+          greeting: Ćao! Ja sam Komšinica Milica. Ti objasni ljudski, ja ću prevesti na formularski — bez šaltera
+            i lutanja po portalu. 😄 Od čega krećemo?
+          return_greeting: Evo te opet — znači da grad još nije ostao bez tema. 😄 Šta danas ganjamo?
+          header_title: Komšinica Milica
+          header_status: tu sam
+          input_placeholder: Piši kao komšinici…
+          loading: Da vidimo šta piše, a ne šta se priča…
+          long_loading: Ovo se malo zavuklo među papire. Tražim dalje…
+          location_ready: Lokacija je stigla.
+          location_consent_copy: Ako podijeliš lokaciju, Milica će je šifrovano koristiti za javna pitanja u ovom
+            razgovoru. Nestaje nakon 30 minuta neaktivnosti; možeš je zaboraviti ranije.
+          location_active: Dijeljena lokacija aktivna
+          forget_location: Zaboravi lokaciju
+          forget_location_send: zaboravi moju lokaciju
+          location_error: Telefon i lokacija se danas ne poznaju. Napiši ulicu, naselje ili najbliže stajalište.
+          error: Nešto je zapelo na našoj strani. Pokušaj ponovo.
+          greeting_media_alt: Komšinica Milica maše u znak pozdrava.
+          feedback:
+            prompt: 'Pomozi da Milica nauči:'
+          quick:
+            report: Prijavi problem
+            report_describe: Opiši problem Milici
+            idea: Ideje i glasanje
+            budget: Budžet grada
+            donate: Podrži projekat
+            goodwill: Moji bodovi
+            setup: Podesi nalog
+            komsiluk: Moj Komšiluk
+        mi_hub:
+          omni:
+            sms_html: SMS koristimo za verifikacione kodove, linkove za prijavu i obavještenja. Milici možeš odgovoriti
+              na dostupnom kanalu ili pisati na sajtu.
+      komsiluk:
+        edit:
+          address_placeholder: npr. Izmišljena ulica 12, vaša zajednica
+      report_heatmap:
+        index:
+          eyebrow: Biće riješeno!
+      reports:
+        index:
+          eyebrow: Biće riješeno!
+        show:
+          eyebrow: Biće riješeno!
+      reports_map:
+        show:
+          eyebrow: Biće riješeno!
+          title: Mapa prijava — Biće riješeno!
+      onboarding:
+        guide:
+          actions:
+            bot:
+              title: Pitaj Milicu
+      menu:
+        mi_bot: Milica
+        mi_bot_short: Milica
+        launch_event: Događaj zajednice
+        race: Trka komšiluka
+      menu_groups:
+        help:
+          body: Pitaj Milicu ili otvori vodič kroz platformu.
+      public_actions:
+        register: Registruj se
+        ask: Pitaj Milicu
+        account: Moj nalog
+        bot: Pitaj Milicu
+      mobile_nav:
+        new_message: Nova poruka
+        notifications: Obavještenja
+        login: Uloguj se
+        home: Početna
+        report: Problem
+        race: Trka
+        register: Registruj se
+        bot: Milica
+      pwa:
+        install_title: MI! kao aplikacija
+        install_text: Brži pristup prijavama, bodovima i Milici — direktno sa početnog ekrana.
+        ios_text: 'Dodaj MI! na početni ekran: dodirni ⎖ Share pa "Add to Home Screen".'
+        manual_text: Otvori meni preglednika i izaberi „Dodaj na početni ekran“ ili „Instaliraj aplikaciju“.
+        webview_text: Otvori MI! u Chromeu ili Safariju da bi je dodao/dodala na početni ekran.
+      sms:
+        login_link: 'Tvoj link za prijavu na MI pre(d)uzimamo: %{url} Važi 10 minuta. Možeš razgovarati s Milicom
+          ovdje — odgovori na ovu poruku.'
+        login_link_and_code: 'MI: link za prijavu: %{url} Rezervni kod: %{code}. Vazi 10 min. Ne dijeli ga.'
+      mi_bot:
+        show:
+          phone_header: Milica
+          viber_business_onboarding:
+            kicker: Viber poruke
+            title: Milica je dostupna u Viber porukama
+            desc: Razgovaraj sa Milicom odgovorom na poruku koju si dobio/la od MI pre(d)uzimamo.
+            start: Odgovori na našu Viber poruku i napiši pitanje. Ako je još nemaš, razgovor možeš početi na ovom
+              sajtu.
+            report_note: Prijava problema nastaje tek kada potvrdiš Milicin pregled porukom „Potvrdi prijavu DA”
+              i dobiješ broj prijave.
+          external_chat_onboarding:
+            kicker: Milica na drugim kanalima
+            title: Razgovaraj sa Komšinicom Milicom u aplikaciji koju već koristiš
+            desc: Kada kanal bude spreman za javnost, otvori provjereni razgovor sa Milicom i postavi pitanje kao
+              na sajtu.
+            channels_title: Kanali za razgovor
+            channels:
+              whatsapp: WhatsApp
+              messenger: Messenger
+              instagram: Instagram
+            boundary_title: Važna granica
+            boundary_body: Milica odgovara na pitanja. Na WhatsAppu i Messengeru prijava nastaje tek nakon pregleda
+              i potvrde porukom; na Instagramu Milica daje smjernice. Razgovor ne povezuje tvoj nalog.
+            privacy_note: Ne šalji JMBG, lozinke, podatke s kartice niti druge osjetljive podatke u chatu.
+          capabilities:
+            desc: Asistent koristi podatke koje zajednica izričito poveže. Dostupnost zavisi od konfiguracije i
+              lokalnih podataka.
+            kicker: Šta Milica zna
+            note: Za podatke koji se mijenjaju Milica čita najnoviji povezani izvor i u odgovoru navodi izvor. Za
+              službenu radnju vodi na obrazac, nadležnu službu ili provjeren kanal.
+            source_label: 'Izvori:'
+            title: Od voznog reda do parking zone, sve kroz jednu poruku.
+            items:
+              transport:
+                title: Javni prevoz
+                body: Planira rute po linijama i stajalištima, pronalazi presjedanja i čita naredne polaske za jutro,
+                  danas ili sutra.
+                source: Redovi vožnje i stajališta koje zajednica uveze i provjeri.
+              parking:
+                title: Parking zone
+                body: Prepoznaje ulicu, vraća zonu kada je poznata, cijenu, radno vrijeme i SMS način plaćanja za
+                  parking.
+                source: Tarife i zone parkinga koje zajednica unese i provjeri.
+              waste:
+                title: Odvoz otpada
+                body: Odgovara za naselje ili ulicu kada je raspored dostupan i razlikuje redovni odvoz od posebnih
+                  komunalnih informacija.
+                source: Rasporedi odvoza otpada održavani u podacima koje Milica koristi.
+              service_notices:
+                title: Servisne informacije
+                body: Prati pitanja o isključenjima struje, servisnim informacijama Vodovoda, grijanju, putevima,
+                  gradskim obavještenjima, civilnoj zaštiti i policijskim servisima.
+                source: Izričito povezani izvori komunalnih i javnih službi.
+              environment:
+                title: Vrijeme, vodostaj i vazduh
+                body: Odgovara na vremenska upozorenja, vodostaje Save i Drine, kvalitet vazduha uživo i gradske
+                  izvještaje o kvalitetu vazduha.
+                source: Izričito povezani meteorološki, hidrološki i senzorski izvori.
+              city_services:
+                title: Gradske usluge i dokumenti
+                body: Pomaže oko matičnih izvoda, kontakata, mjesnih zajednica, službenog glasnika, odluka, budžeta
+                  i donacija.
+                source: Lokalni propisi, registri i tabele koje zajednica poveže.
+              reports:
+                title: Prijave i status
+                body: Objašnjava kako poslati komunalnu prijavu, kako provjeriti status po broju predmeta i gdje
+                  se vidi javna mapa.
+                source: Biće riješeno/Sistem48 podaci, statusi prijava i javni pregled prijava na MI! platformi.
+              community:
+                title: Komšiluk i učešće
+                body: Vodi kroz prijedloge, glasanje, volontiranje, Komšiluk tablu, bodove zajedništva, nalog, verifikaciju
+                  i donacije.
+                source: Podaci platforme i podešavanja zajednice.
+          cta:
+            try_bot: Probaj Milicu
+          hero:
+            eyebrow: Digitalna komšinica kroz MI platformu
+            title_lead: Komšinica
+            title_accent: Milica
+            lead: Razgovaraj sa Milicom na sajtu i pronađi pravi naredni korak za prijave, gradske podatke, učešće,
+              volontiranje i donacije.
+          signoff:
+            line: Asistent platforme vaše zajednice
+      launch:
+        messages:
+          p8:
+            viber: 'U pregledanim podacima ima %{broj} prijava; zapis ne potvrđuje prosljeđivanje ili rješenje.
+              Komšiluk %{komsiluk}, zabilježeni poredak %{mjesto}. Pravila i aktuelni pregled: %{link}'
+          p11:
+            email_subject: Poziv za uključivanje u platformu zajednice
+            email: 'Pozivamo vas da otvorite nalog: %{link}
+
+              Tim zajednice prije pokretanja objavljuje odgovornosti i postupak obrade prijava. Ovaj obrazac ne
+              potvrđuje datum događaja, finansiranje niti rok odgovora.'
+  layouts:
+    decidim:
+      header:
+        register: Registruj se
+        ask_milica: Pitaj Milicu
+  mi_launch:
+    invitation_rules:
+      title: Pravila pozivnica zajednice
+      who_title: Ko može učestvovati.
+      who: Pozivnice su bile namijenjene osobama s potvrđenim telefonom. Jedna osoba — jedan nalog — jedna pozivnica.
+      condition_title: Uslov.
+      condition: Uslove za pozivnice određuje tim zajednice prije aktivacije.
+      count_title: Broj pozivnica.
+      count: Broj pozivnica prikazuje se nakon konfiguracije događaja.
+      confirm_title: Potvrda dolaska.
+      confirm: Potvrda dolaska bila je molba, ne uslov. Evidencija izdate pozivnice i potvrde dolaska nije sama
+        po sebi dokaz ulaska na događaj.
+      entry_title: Ulaz.
+      entry: Događaj je završen. Ranije izdata pozivnica ostaje dio tvoje evidencije.
+      waitlist_title: Ako ostaneš bez pozivnice.
+      waitlist: Izdavanje i lista čekanja za ovaj događaj su završeni. Bodovi ostaju za aktivnosti i raspoložive
+        nagrade zajednice.
+      forbidden_title: Šta ne prolazi.
+      forbidden: Lažni nalozi, više naloga jedne osobe i naduvavanje bodova ponavljanjem istih radnji. Takvi nalozi
+        gube pravo na pozivnicu.
+      not_money_title: Bodovi nisu novac.
+      not_money: Nemaju novčanu vrijednost, ne mogu se zamijeniti za novac i ne utiču na glasanje, na rang prijedloga
+        ni na vidljivost sadržaja.
+      correction: Organizator zadržava pravo da ispravi očiglednu grešku u obračunu i da o tome javno obavijesti.
+    race_rules:
+      window: '%{window_from} – %{window_to}'
+      prize_amount: Prema pravilima zajednice
+      prize_grad: Gradski komšiluk
+      prize_selo: Seoski komšiluk
+      prize_note: za projekat koji komšiluk sam izabere
+      points_title: Šta koliko nosi
+      points_registered: registrovan komšija
+      points_report: prijava problema
+      points_proposal: prijedlog
+      rules_title: Pravila trke
+      title: Trka komšiluka
+      intro: Obuhvat takmičenja, nagrade i uslove zajednica objavljuje prije početka.
+      formula_title: 'Kako se broji:'
+      formula: registrovani × %{registration_points} + prijave × %{report_points} + prijedlozi × %{proposal_points}
+      rule_1: Za svaku bodovanu radnju potreban je potvrđen telefon. Boduje se aktivnost u objavljenom periodu trke;
+        anonimnost kontakta prema službi ne umanjuje rezultat.
+      rule_2: Duplikati, potvrde „Isti problem” i odbijene prijave ne donose bodove trke. Objavljen prijedlog građanina
+        koji nije izabran za realizaciju ostaje prihvatljiv; skriven ili obrisan nedozvoljen sadržaj se isključuje.
+      rule_3: Po osobi se boduje najviše %{report_cap} prijava i %{proposal_cap} prijedloga tokom cijele trke. To
+        su zasebne granice od ličnih bodova zajedništva.
+      rule_4: Kod istog rezultata prednost ima komšiluk koji je ranije dostigao taj rezultat. Potpuno izjednačenje
+        razrješava administrator uz zabilježen razlog.
+      time_title: 'Vrijeme:'
+      time: Radnje se računaju od %{window_from} do %{window_to} po vremenu u Sarajevu; krajnji trenutak ne ulazi
+        u obračun. Poslije zatvaranja slijedi pregled. Javne bodove administrator kasnije može ručno sakriti.
+      announce_title: 'Proglašenje:'
+      announce: Nakon zatvaranja, pregleda izvora i potvrde konačnog poretka. Zatvaranje trke samo po sebi nije
+        proglašenje pobjednika.
+      build_title: 'Šta se gradi:'
+      build: Izbor projekata, budžet, datumi i biračko pravo uređuju se pravilima procesa. Bodovi sami ne dodjeljuju
+        dodatne glasove.
+      no_politics: Trka nema veze sa političkim organizovanjem i ne može se koristiti u predizbornoj kampanji. Prijave
+        i prijedlozi sa stranačkim sadržajem se brišu i ne računaju.
+      rule_5: Doprinos ostaje prvom komšiluku pouzdano utvrđenom za ovu trku. Promjena komšiluka ne premješta ranije
+        bodove. I zaposleni mogu doprinijeti trci; njihov pojedinačni doprinos nije u javnom poretku građana.
+    moderation:
+      title: Šta se briše sa platforme MI
+      item_1: govor mržnje i vrijeđanje po nacionalnoj, vjerskoj, polnoj i svakoj drugoj osnovi
+      item_2: lični napadi na imenovane osobe
+      item_3: stranačka kampanja i poziv na glasanje za bilo koga
+      item_4: fotografije na kojima se jasno vide lica ili registarske tablice, kada to nije nužno za prijavu
+      item_5: lični podaci drugih ljudi — ime i adresa komšije, broj telefona, slika tuđeg dvorišta
+      item_6: reklame i ponavljani isti sadržaj
+      item_7: očigledno neistinite prijave
+      sharp: Prijavu i prijedlog možeš uvijek napisati oštro. Razlika je u tome da li govoriš o problemu ili o čovjeku.
+      appeal: Tim zajednice objavljuje postupak moderacije i žalbe. Obrati mu se za preispitivanje odluke.
+      campaign_period: Posebne periode i pravila moderacije zajednica objavljuje prije primjene.
+    neutrality:
+      title: MI nije ničija kampanja.
+      p1: Organizator i finansijeri navode se u pravilima vaše zajednice.
+      p2: Pravila događaja i učešća javnih predstavnika objavljuje organizator zajednice.
+      p3: Stranačka obilježja u sali nisu dozvoljena. Stranački sadržaj na platformi se briše.
+      p4: Ovo pišemo unaprijed, dok kampanja traje, da niko ne bi morao da nagađa.
+    faq:
+      title: Često postavljana pitanja
+      q1: Da li još mogu dobiti pozivnicu za lansiranje?
+      a1: Datumi događaja i pozivnice zavise od podešavanja zajednice.
+      q2: Šta sada mogu uraditi na platformi?
+      a2: Prijavi stvaran problem, učestvuj u otvorenim procesima, volontiraj ili pozovi komšije. Pravila bodovanja
+        i granice su na kartici Zajedništvo.
+      q3: Koliko mi treba za registraciju?
+      a3: Potreban je pristup platformi i vlastiti telefon za SMS potvrdu. Vrijeme zavisi od dostave koda i unosa
+        podataka.
+      q4: Šta ako nemam pametni telefon?
+      a4: 'Pametni telefon nije uslov: platformu možeš otvoriti na računaru i samostalno unijeti kod primljen na
+        vlastiti telefon. Ne nudimo službu otvaranja naloga umjesto građana. Telefon koji prima SMS ostaje uslov
+        verifikacije.'
+      q5: Kako se računaju pozivi komšijama?
+      a5: Podijeli lični link. Potvrđen telefon i izabran komšiluk dovoljni su za kvalifikaciju; postoje odgoda
+        i mjesečni limit, a višak kvalifikovanih poziva prelazi u naredni mjesec. Komšija doprinosi vlastitom komšiluku.
+      q6: Da li bodovi nestaju poslije događaja ili trke?
+      a6: Ne. Novčanik i priznati doprinos odvojeni su od trke. Trošenje, pokloni i obrazložene ispravke imaju svoja
+        pravila u istoriji naloga.
+      q7: Ko vidi moju prijavu?
+      a7: Javno se vide broj, kategorija, adresa problema, tačka na mapi, status i datum. Ime prijavioca nije prikazano.
+        Opis, fotografija i kontakt dostupni su ovlaštenom timu i nadležnoj službi prema pravilima pristupa; predaja
+        službi slijedi pregled, nije automatska objava svake prijave.
+      q8: Da li čuvate moju adresu?
+      a8: Registracija čuva telefon i izabrani komšiluk. Ako zatražiš provjeru adrese pismom, adresa je potrebna
+        za dostavu i privremeno se obrađuje prema pravilima tog postupka. Adresa problema i označena tačka na mapi
+        jesu javni podaci prijave.
+      q9: Šta znače bodovi?
+      a9: Bodovi zajedništva su priznanje i stanje za simbolične nagrade, bez novčane vrijednosti ili dodatne glasačke
+        moći. Trka ima zaseban obračun. Javna priznanja možeš isključiti u svom nalogu.
+      q10: Ko ovo plaća?
+      a10: Zajednica objavljuje svog organizatora i finansijere.
+    about:
+      title: Ko smo i ko ovo plaća
+      body: Platformom upravlja organizator vaše zajednice. Kontakti i odgovornosti uređuju se prije pokretanja.
+      funding_title: Izvori finansiranja
+      funding: Zajednica objavljuje sopstvene izvore finansiranja i izvještaje.
+      grant_title: Projektna podrška
+      grant: Zajednica dodaje sopstvene odobrene navode o podršci i obavezne napomene.
+  mi_funders:
+    eyebrow: Partneri zajednice
+    line: Podršku ovoj instalaciji navodi vaša zajednica.
+sr-Cyrl:
+  decidim:
+    bih:
+      reporter_mailer:
+        status_update:
+          footer: С поштовањем, тим ваше заједнице.
+          viber_text: 'Пријава %{reference} — статус: %{status}.'
+      admin:
+        analytics:
+          datasets:
+            mi_bot_usage: Кориштење Милице
+            mi_bot_feedback: Повратне информације за Милицу
+            mi_bot_review: Преглед одговора Милице
+          trend_metrics:
+            mi_bot_requests: Упити МИлици
+            mi_bot_feedback: Повратне информације за Милицу
+            mi_bot_helpful_feedback: Корисне оцјене одговора Милице
+            mi_bot_not_helpful_feedback: Некорисне оцјене одговора Милице
+          index:
+            title: ЛФБН аналитички извози
+            mi_bot_review_title: Ред за преглед одговора Милице
+            mi_bot_review_intro: Високи и праћени збирни редови из оцјена одговора Милице, поредани за редовни преглед
+              квалитета одговора.
+            mi_bot_examples_title: Примјери оцијењених одговора Милице
+            mi_bot_examples_intro: Најновији анонимни кликови на "Није корисно" и затим "Корисно" помажу да оператер
+              види конкретно питање и одговор Милице који треба поправити или задржати као добар образац.
+            mi_bot_examples_privacy: Приказује само поруку и одговор сачуване након клика на оцјену. Не приказује
+              кориснички налог, реплy ИД, сессион дигест, токен, ИП, усер-агент, Вибер идентификатор или контакт
+              податке.
+            mi_bot_examples_empty: Још нема оцијењених одговора Милице са сачуваним примјером за преглед.
+      goodwill:
+        invite:
+          share_message: Придружи се заједници Ми пре(д)узимамо! 👋
+        verify_cta:
+          viber:
+            description: Повежите Вибер налог с платформом — Милица ће вас препознати за бодове и пријаве. Верификација
+              телефоном остаје посебан корак изнад.
+            welcome: Број телефона је потврђен. За приступ налогу и личним бодовима и даље може бити потребна пријава
+              на портал.
+      content_blocks:
+        mi_cta:
+          sub: Твоја идеја, твоја пријава, твој глас. Учествуј у својој заједници.
+          hashtag: '#МојаЗаједница'
+        mi_hero:
+          eyebrow: Портал ваше заједнице
+          poster:
+            mi: МИ
+          sub_html: Покрени тему, пријави проблем и учествуј у избору пројеката. Процесе и правила објављује тим
+            заједнице.
+        mi_hub:
+          name: МИ! хуб (модул-картице + Милица на доступним каналима)
+          tiles:
+            prefix: МИ
+          omni:
+            eyebrow: Комшиница Милица · увијек доступна
+            title: Разговарај са Милицом на доступном каналу.
+            lead: Милица одговара на питања и води до званичног обрасца. Пријава настаје тек након прегледа, твоје
+              потврде поруком и броја пријаве.
+            sms_html: СМС користимо за верификационе кодове, линкове за пријаву и обавјештења. Милици можеш одговорити
+              на доступном каналу или писати на сајту.
+      concierge:
+        budget:
+          ask: За буџет напиши област или назив установе. Буџет има много нула; тражимо баш оне које те занимају.
+          found: За „%{category}“ је у обрађеном прегледу буџета за %{year}. годину издвојено %{amount} КМ. Ово
+            је преглед доступних ставки, не цијели буџетски документ.
+          not_found: Нисам пронашла ставку „%{category}“ у подацима које тренутно имамо. Покушај с називом области
+            или установе.
+        donation:
+          found: 'У посљедњем збиру који смо успјели провјерити забиљежено је %{amount} %{currency} кроз %{count}
+            донација. Пројекти и провјерен линк за подршку: %{url}. Милица никада не тражи податке картице у разговору.'
+        gazette:
+          not_found: Нисам пронашла резултат у обрађеном каталогу Службеног гласника. То не доказује да одлука не
+            постоји; покушај с другом темом, годином или бројем издања.
+        goodwill:
+          found: 'Имаш %{balance} бодова заједништва. Ниво: %{level}; ранг: #%{rank}. До сљедећег нивоа недостаје
+            %{to_next}. Детаљи: %{url}'
+          found_top: 'Имаш %{balance} бодова и достигнут највиши ниво %{level}. Ранг: #%{rank}. Детаљи: %{url}'
+          none: 'Још немаш бодове. Стичу се кроз признате доприносе на платформи; правила и преглед: %{url}'
+          not_linked: 'За приказ твојих бодова потребно је да се пријавиш и повежеш налог: %{url}'
+        help: 'Не треба ти назив одјељења ни број канцеларије. Реци људски шта ти треба: пријава проблема, статус,
+          градска услуга, одвоз отпада, паркинг, аутобус, буџет, Службени гласник, твој Комшилук, идеја, гласање,
+          волонтирање, бодови или пројекти. Ја ћу похватати конце.'
+        komsiluk:
+          post:
+            choose_category: 'Изабери категорију бројем: 1) Изгубљен љубимац · 2) Безбједност · 3) Активност · 4)
+              Опште.'
+            created: Објава је потврђено објављена на табли твог Комшилука.
+            failed: Објава није сачувана. Покушај поново касније.
+            not_member: 'За објаву прво потврди број телефона и изабери свој Комшилук: %{url}'
+            rate_limited: Достигнут је дневни број објава. Покушај поново сутра.
+            usage: 'Напиши: „објави у комшилуку: твоја порука“.'
+            web_guidance: 'За објаву отвори таблу: %{url}. Тамо бираш категорију и потврђујеш садржај прије слања.'
+          read:
+            anon: члан заједнице
+            empty: Тренутно нема објава у твом Комшилуку.
+            header: Најновије из твог Комшилука
+            item: • [%{category}] %{title} — %{author}
+            not_member: 'За персонализовану таблу прво изабери свој Комшилук: %{url}'
+            web_guidance: 'Објаве можеш читати на табли: %{board_url}. За персонализовану таблу пријави се, потврди
+              број и изабери Комшилук: %{setup_url}'
+        local_area_guidance:
+          location_not_found: 'За послану локацију нисам нашла МЗ/Комшилук у мапи коју имам. Провјери адресу на
+            страници Комшилук: %{url}'
+        link:
+          ask_phone: Пошаљи број телефона који желиш потврдити, са позивним бројем.
+          code_sent: Верификациони код је послан СМС-ом. Пошаљи шестоцифрени код.
+          expired: Код је истекао. Покрени повезивање поново.
+          invalid_code: Код није тачан. Провјери цифре или затражи нови код.
+          invalid_phone: Број телефона није у исправном формату. Пошаљи га са позивним бројем.
+          rate_limited: Достигнут је број захтјева за код. Сачекај кратко па покушај поново.
+          send_failed: Слање кода није успјело. Покушај поново касније или користи други понуђени начин верификације.
+          sms: Твој верификациони код за Ми пре(д)узимамо! је %{code}. Важи 10 минута.
+          verified: Број телефона је потврђен. За приступ налогу и личним бодовима и даље може бити потребна пријава
+            на портал.
+        report:
+          confirmation: Пријава је забиљежена под бројем %{reference}. Сачувај број и пошаљи га Милици када желиш
+            провјерити јавни статус.
+        status:
+          found: 'Пријава %{reference} — тренутни јавни статус: %{status}. Статус провјеравај овим бројем; обавјештење
+            стиже само ако си пријављен/а, повезан/а и укључио/ла обавјештења.'
+          not_found: Нисам пронашла пријаву %{reference}. Провјери број — формат је BR-ГГГГ-НННН.
+        waste:
+          ask_area: Напиши назив улице или насеља па ћу провјерити распоред одвоза.
+          found: 'Одвоз отпада за „%{area}“: %{days}. Ово је посљедњи распоред који смо успјели провјерити.'
+          not_found: Нисам пронашла поуздан распоред одвоза за „%{area}“. Провјери тачан назив улице или насеља.
+        web_fallback: Нешто је запело на нашој страни. Покушај поново. У међувремену можеш отворити пријаву, идеје
+          или каталог пројеката на сајту.
+        location_save_unavailable: Локација није сачувана за овај разговор. Можеш је поново подијелити или навести
+          полазиште.
+        web_report_guidance: 'Порука на сајту сама не креира пријаву. Отвори званични образац: %{url}. Тамо можеш
+          означити локацију, додати опис и фотографију, а након слања добијаш број за праћење.'
+        public_neighborhood_guide: 'Јавни водич за комшилуке је овдје: %{url}. За избор свог комшилука и приступ
+          табли потребна је пријава на налог.'
+        media:
+          milica_wave:
+            alt: Комшиница Милица маше у знак поздрава.
+          milica_tablet:
+            alt: Комшиница Милица показује информације на таблету.
+          milica_map:
+            alt: Комшиница Милица показује означено мјесто на мапи.
+          milica_heart:
+            alt: Комшиница Милица рукама показује срце.
+          milica_sleeves:
+            alt: Комшиница Милица засуче рукаве и спрема се за акцију.
+          milica_thumbs_up:
+            alt: Комшиница Милица показује палац горе.
+        widget:
+          aria_open: Отвори разговор с Комшиницом Милицом
+          aria_close: Затвори разговор
+          aria_send: Пошаљи поруку
+          aria_location: Користи тренутну локацију за ово питање
+          bubble_label: Питај Милицу
+          greeting: Ћао! Ја сам Комшиница Милица. Ти објасни људски, ја ћу превести на формуларски — без шалтера
+            и лутања по порталу. 😄 Од чега крећемо?
+          return_greeting: Ево те опет — значи да град још није остао без тема. 😄 Шта данас гањамо?
+          header_title: Комшиница Милица
+          header_status: ту сам
+          input_placeholder: Пиши као комшиници…
+          loading: Да видимо шта пише, а не шта се прича…
+          long_loading: Ово се мало завукло међу папире. Тражим даље…
+          location_ready: Локација је стигла.
+          location_consent_copy: Ако подијелиш локацију, Милица ће је шифровано користити за јавна питања у овом
+            разговору. Нестаје након 30 минута неактивности; можеш је заборавити раније.
+          location_active: Дијељена локација активна
+          forget_location: Заборави локацију
+          forget_location_send: заборави моју локацију
+          location_error: Телефон и локација се данас не познају. Напиши улицу, насеље или најближе стајалиште.
+          error: Нешто је запело на нашој страни. Покушај поново.
+          greeting_media_alt: Комшиница Милица маше у знак поздрава.
+          feedback:
+            prompt: 'Помози да Милица научи:'
+          quick:
+            report: Пријави проблем
+            report_describe: Опиши проблем Милици
+            idea: Идеје и гласање
+            budget: Буџет града
+            donate: Подржи пројекат
+            goodwill: Моји бодови
+            setup: Подеси налог
+            komsiluk: Мој Комшилук
+        mi_hub:
+          omni:
+            sms_html: СМС користимо за верификационе кодове, линкове за пријаву и обавјештења. Милици можеш одговорити
+              на доступном каналу или писати на сајту.
+      komsiluk:
+        edit:
+          address_placeholder: нпр. Измишљена улица 12, ваша заједница
+      report_heatmap:
+        index:
+          eyebrow: Биће ријешено!
+      reports:
+        index:
+          eyebrow: Биће ријешено!
+        show:
+          eyebrow: Биће ријешено!
+      reports_map:
+        show:
+          eyebrow: Биће ријешено!
+          title: Мапа пријава — Биће ријешено!
+      onboarding:
+        guide:
+          actions:
+            bot:
+              title: Питај Милицу
+      menu:
+        mi_bot: Милица
+        mi_bot_short: Милица
+        launch_event: Догађај заједнице
+        race: Трка комшилука
+      menu_groups:
+        help:
+          body: Питај Милицу или отвори водич кроз платформу.
+      public_actions:
+        register: Региструј се
+        ask: Питај Милицу
+        account: Мој налог
+        bot: Питај Милицу
+      mobile_nav:
+        new_message: Нова порука
+        notifications: Обавјештења
+        login: Улогуј се
+        home: Почетна
+        report: Проблем
+        race: Трка
+        register: Региструј се
+        bot: Милица
+      pwa:
+        install_title: МИ! као апликација
+        install_text: Бржи приступ пријавама, бодовима и Милици — директно са почетног екрана.
+        ios_text: 'Додај МИ! на почетни екран: додирни ⎖ Схаре па "Адд то Хоме Сцреен".'
+        manual_text: Отвори мени прегледника и изабери „Додај на почетни екран“ или „Инсталирај апликацију“.
+        webview_text: Отвори МИ! у Цхромеу или Сафарију да би је додао/додала на почетни екран.
+      sms:
+        login_link: 'Твој линк за пријаву на МИ пре(д)узимамо: %{url} Важи 10 минута. Можеш разговарати с Милицом
+          овдје — одговори на ову поруку.'
+        login_link_and_code: 'МИ: линк за пријаву: %{url} Резервни код: %{code}. Вази 10 мин. Не дијели га.'
+      mi_bot:
+        show:
+          phone_header: Милица
+          viber_business_onboarding:
+            kicker: Вибер поруке
+            title: Милица је доступна у Вибер порукама
+            desc: Разговарај са Милицом одговором на поруку коју си добио/ла од МИ пре(д)узимамо.
+            start: Одговори на нашу Вибер поруку и напиши питање. Ако је још немаш, разговор можеш почети на овом
+              сајту.
+            report_note: Пријава проблема настаје тек када потврдиш Милицин преглед поруком „Потврди пријаву ДА”
+              и добијеш број пријаве.
+          external_chat_onboarding:
+            kicker: Милица на другим каналима
+            title: Разговарај са Комшиницом Милицом у апликацији коју већ користиш
+            desc: Када канал буде спреман за јавност, отвори провјерени разговор са Милицом и постави питање као
+              на сајту.
+            channels_title: Канали за разговор
+            channels:
+              whatsapp: WhatsApp
+              messenger: Messenger
+              instagram: Инстаграм
+            boundary_title: Важна граница
+            boundary_body: Милица одговара на питања. На WhatsAppu и Messengeru пријава настаје тек након прегледа
+              и потврде поруком; на Instagramu Милица даје смјернице. Разговор не повезује твој налог.
+            privacy_note: Не шаљи ЈМБГ, лозинке, податке с картице нити друге осјетљиве податке у цхату.
+          capabilities:
+            desc: Асистент користи податке које заједница изричито повеже. Доступност зависи од конфигурације и
+              локалних података.
+            kicker: Шта Милица зна
+            note: За податке који се мијењају Милица чита најновији повезани извор и у одговору наводи извор. За
+              службену радњу води на образац, надлежну службу или провјерен канал.
+            source_label: 'Извори:'
+            title: Од возног реда до паркинг зоне, све кроз једну поруку.
+            items:
+              transport:
+                title: Јавни превоз
+                body: Планира руте по линијама и стајалиштима, проналази пресједања и чита наредне поласке за јутро,
+                  данас или сутра.
+                source: Редови вожње и стајалишта које заједница увезе и провјери.
+              parking:
+                title: Паркинг зоне
+                body: Препознаје улицу, враћа зону када је позната, цијену, радно вријеме и СМС начин плаћања за
+                  паркинг.
+                source: Тарифе и зоне паркинга које заједница унесе и провјери.
+              waste:
+                title: Одвоз отпада
+                body: Одговара за насеље или улицу када је распоред доступан и разликује редовни одвоз од посебних
+                  комуналних информација.
+                source: Распореди одвоза отпада одржавани у подацима које Милица користи.
+              service_notices:
+                title: Сервисне информације
+                body: Прати питања о искључењима струје, сервисним информацијама Водовода, гријању, путевима, градским
+                  обавјештењима, цивилној заштити и полицијским сервисима.
+                source: Изричито повезани извори комуналних и јавних служби.
+              environment:
+                title: Вријеме, водостај и ваздух
+                body: Одговара на временска упозорења, водостаје Саве и Дрине, квалитет ваздуха уживо и градске
+                  извјештаје о квалитету ваздуха.
+                source: Изричито повезани метеоролошки, хидролошки и сензорски извори.
+              city_services:
+                title: Градске услуге и документи
+                body: Помаже око матичних извода, контаката, мјесних заједница, службеног гласника, одлука, буџета
+                  и донација.
+                source: Локални прописи, регистри и табеле које заједница повеже.
+              reports:
+                title: Пријаве и статус
+                body: Објашњава како послати комуналну пријаву, како провјерити статус по броју предмета и гдје
+                  се види јавна мапа.
+                source: Биће ријешено/Систем48 подаци, статуси пријава и јавни преглед пријава на МИ! платформи.
+              community:
+                title: Комшилук и учешће
+                body: Води кроз приједлоге, гласање, волонтирање, Комшилук таблу, бодове заједништва, налог, верификацију
+                  и донације.
+                source: Подаци платформе и подешавања заједнице.
+          cta:
+            try_bot: Пробај Милицу
+          hero:
+            eyebrow: Дигитална комшиница кроз МИ платформу
+            title_lead: Комшиница
+            title_accent: Милица
+            lead: Разговарај са Милицом на сајту и пронађи прави наредни корак за пријаве, градске податке, учешће,
+              волонтирање и донације.
+          signoff:
+            line: Асистент платформе ваше заједнице
+      launch:
+        messages:
+          p8:
+            viber: 'У прегледаним подацима има %{broj} пријава; запис не потврђује просљеђивање или рјешење. Комшилук
+              %{komsiluk}, забиљежени поредак %{mjesto}. Правила и актуелни преглед: %{link}'
+          p11:
+            email_subject: Позив за укључивање у платформу заједнице
+            email: 'Позивамо вас да отворите налог: %{link}
+
+              Тим заједнице прије покретања објављује одговорности и поступак обраде пријава. Овај образац не потврђује
+              датум догађаја, финансирање нити рок одговора.'
+  layouts:
+    decidim:
+      header:
+        register: Региструј се
+        ask_milica: Питај Милицу
+  mi_launch:
+    invitation_rules:
+      title: Правила позивница заједнице
+      who_title: Ко може учествовати.
+      who: Позивнице су биле намијењене особама с потврђеним телефоном. Једна особа — један налог — једна позивница.
+      condition_title: Услов.
+      condition: Услове за позивнице одређује тим заједнице прије активације.
+      count_title: Број позивница.
+      count: Број позивница приказује се након конфигурације догађаја.
+      confirm_title: Потврда доласка.
+      confirm: Потврда доласка била је молба, не услов. Евиденција издате позивнице и потврде доласка није сама
+        по себи доказ уласка на догађај.
+      entry_title: Улаз.
+      entry: Догађај је завршен. Раније издата позивница остаје дио твоје евиденције.
+      waitlist_title: Ако останеш без позивнице.
+      waitlist: Издавање и листа чекања за овај догађај су завршени. Бодови остају за активности и расположиве награде
+        заједнице.
+      forbidden_title: Шта не пролази.
+      forbidden: Лажни налози, више налога једне особе и надувавање бодова понављањем истих радњи. Такви налози
+        губе право на позивницу.
+      not_money_title: Бодови нису новац.
+      not_money: Немају новчану вриједност, не могу се замијенити за новац и не утичу на гласање, на ранг приједлога
+        ни на видљивост садржаја.
+      correction: Организатор задржава право да исправи очигледну грешку у обрачуну и да о томе јавно обавијести.
+    race_rules:
+      window: '%{window_from} – %{window_to}'
+      prize_amount: Према правилима заједнице
+      prize_grad: Градски комшилук
+      prize_selo: Сеоски комшилук
+      prize_note: за пројекат који комшилук сам изабере
+      points_title: Шта колико носи
+      points_registered: регистрован комшија
+      points_report: пријава проблема
+      points_proposal: приједлог
+      rules_title: Правила трке
+      title: Трка комшилука
+      intro: Обухват такмичења, награде и услове заједница објављује прије почетка.
+      formula_title: 'Како се броји:'
+      formula: регистровани × %{registration_points} + пријаве × %{report_points} + приједлози × %{proposal_points}
+      rule_1: За сваку бодовану радњу потребан је потврђен телефон. Бодује се активност у објављеном периоду трке;
+        анонимност контакта према служби не умањује резултат.
+      rule_2: Дупликати, потврде „Исти проблем” и одбијене пријаве не доносе бодове трке. Објављен приједлог грађанина
+        који није изабран за реализацију остаје прихватљив; скривен или обрисан недозвољен садржај се искључује.
+      rule_3: По особи се бодује највише %{report_cap} пријава и %{proposal_cap} приједлога током цијеле трке. То
+        су засебне границе од личних бодова заједништва.
+      rule_4: Код истог резултата предност има комшилук који је раније достигао тај резултат. Потпуно изједначење
+        разрјешава администратор уз забиљежен разлог.
+      time_title: 'Вријеме:'
+      time: Радње се рачунају од %{window_from} до %{window_to} по времену у Сарајеву; крајњи тренутак не улази
+        у обрачун. Послије затварања слиједи преглед. Јавне бодове администратор касније може ручно сакрити.
+      announce_title: 'Проглашење:'
+      announce: Након затварања, прегледа извора и потврде коначног поретка. Затварање трке само по себи није проглашење
+        побједника.
+      build_title: 'Шта се гради:'
+      build: Избор пројеката, буџет, датуми и бирачко право уређују се правилима процеса. Бодови сами не додјељују
+        додатне гласове.
+      no_politics: Трка нема везе са политичким организовањем и не може се користити у предизборној кампањи. Пријаве
+        и приједлози са страначким садржајем се бришу и не рачунају.
+      rule_5: Допринос остаје првом комшилуку поуздано утврђеном за ову трку. Промјена комшилука не премјешта раније
+        бодове. И запослени могу допринијети трци; њихов појединачни допринос није у јавном поретку грађана.
+    moderation:
+      title: Шта се брише са платформе МИ
+      item_1: говор мржње и вријеђање по националној, вјерској, полној и свакој другој основи
+      item_2: лични напади на именоване особе
+      item_3: страначка кампања и позив на гласање за било кога
+      item_4: фотографије на којима се јасно виде лица или регистарске таблице, када то није нужно за пријаву
+      item_5: лични подаци других људи — име и адреса комшије, број телефона, слика туђег дворишта
+      item_6: рекламе и понављани исти садржај
+      item_7: очигледно неистините пријаве
+      sharp: Пријаву и приједлог можеш увијек написати оштро. Разлика је у томе да ли говориш о проблему или о човјеку.
+      appeal: Тим заједнице објављује поступак модерације и жалбе. Обрати му се за преиспитивање одлуке.
+      campaign_period: Посебне периоде и правила модерације заједница објављује прије примјене.
+    neutrality:
+      title: МИ није ничија кампања.
+      p1: Организатор и финансијери наводе се у правилима ваше заједнице.
+      p2: Правила догађаја и учешћа јавних представника објављује организатор заједнице.
+      p3: Страначка обиљежја у сали нису дозвољена. Страначки садржај на платформи се брише.
+      p4: Ово пишемо унапријед, док кампања траје, да нико не би морао да нагађа.
+    faq:
+      title: Често постављана питања
+      q1: Да ли још могу добити позивницу за лансирање?
+      a1: Датуми догађаја и позивнице зависе од подешавања заједнице.
+      q2: Шта сада могу урадити на платформи?
+      a2: Пријави стваран проблем, учествуј у отвореним процесима, волонтирај или позови комшије. Правила бодовања
+        и границе су на картици Заједништво.
+      q3: Колико ми треба за регистрацију?
+      a3: Потребан је приступ платформи и властити телефон за СМС потврду. Вријеме зависи од доставе кода и уноса
+        података.
+      q4: Шта ако немам паметни телефон?
+      a4: 'Паметни телефон није услов: платформу можеш отворити на рачунару и самостално унијети код примљен на
+        властити телефон. Не нудимо службу отварања налога умјесто грађана. Телефон који прима СМС остаје услов
+        верификације.'
+      q5: Како се рачунају позиви комшијама?
+      a5: Подијели лични линк. Потврђен телефон и изабран комшилук довољни су за квалификацију; постоје одгода и
+        мјесечни лимит, а вишак квалификованих позива прелази у наредни мјесец. Комшија доприноси властитом комшилуку.
+      q6: Да ли бодови нестају послије догађаја или трке?
+      a6: Не. Новчаник и признати допринос одвојени су од трке. Трошење, поклони и образложене исправке имају своја
+        правила у историји налога.
+      q7: Ко види моју пријаву?
+      a7: Јавно се виде број, категорија, адреса проблема, тачка на мапи, статус и датум. Име пријавиоца није приказано.
+        Опис, фотографија и контакт доступни су овлаштеном тиму и надлежној служби према правилима приступа; предаја
+        служби слиједи преглед, није аутоматска објава сваке пријаве.
+      q8: Да ли чувате моју адресу?
+      a8: Регистрација чува телефон и изабрани комшилук. Ако затражиш провјеру адресе писмом, адреса је потребна
+        за доставу и привремено се обрађује према правилима тог поступка. Адреса проблема и означена тачка на мапи
+        јесу јавни подаци пријаве.
+      q9: Шта значе бодови?
+      a9: Бодови заједништва су признање и стање за симболичне награде, без новчане вриједности или додатне гласачке
+        моћи. Трка има засебан обрачун. Јавна признања можеш искључити у свом налогу.
+      q10: Ко ово плаћа?
+      a10: Заједница објављује свог организатора и финансијере.
+    about:
+      title: Ко смо и ко ово плаћа
+      body: Платформом управља организатор ваше заједнице. Контакти и одговорности уређују се прије покретања.
+      funding_title: Извори финансирања
+      funding: Заједница објављује сопствене изворе финансирања и извјештаје.
+      grant_title: Пројектна подршка
+      grant: Заједница додаје сопствене одобрене наводе о подршци и обавезне напомене.
+  mi_funders:
+    eyebrow: Партнери заједнице
+    line: Подршку овој инсталацији наводи ваша заједница.
+en:
+  decidim:
+    bih:
+      reporter_mailer:
+        status_update:
+          footer: Kind regards, your community team.
+          viber_text: 'Report %{reference} — status: %{status}.'
+      admin:
+        analytics:
+          datasets:
+            mi_bot_usage: Milica usage
+            mi_bot_feedback: Milica feedback
+            mi_bot_review: Milica answer review
+          trend_metrics:
+            mi_bot_requests: Milica requests
+            mi_bot_feedback: Milica feedback
+            mi_bot_helpful_feedback: Helpful Milica feedback
+            mi_bot_not_helpful_feedback: Not-helpful Milica feedback
+          index:
+            title: LFBN analytics exports
+            mi_bot_review_title: Milica answer review queue
+            mi_bot_review_intro: High and watch aggregate rows from Milica ratings, ordered for routine answer-quality
+              review.
+            mi_bot_examples_title: Rated Milica answer examples
+            mi_bot_examples_intro: The newest anonymous "Not helpful" clicks, then "Helpful" clicks, help operators
+              see the concrete Milica question and answer to fix or keep as a good pattern.
+            mi_bot_examples_privacy: Shows only the message and answer saved after a rating click. It does not show
+              account identity, reply ID, session digest, token, IP, user-agent, Viber identifier or contact data.
+            mi_bot_examples_empty: No rated Milica answers with a saved review example yet.
+        goodwill:
+          index:
+            match_payouts_intro: Record the manual grant/bookkeeping reference after LFBN pays an approved match
+              request.
+      goodwill:
+        invite:
+          share_message: Join the Mi pre(d)uzimamo! community 👋
+        verify_cta:
+          viber:
+            description: Link your Viber account to the platform so Milica can recognise you for points and reports.
+              Phone verification remains a separate step above.
+            welcome: Your phone number is confirmed. You may still need to sign in to access your account and personal
+              points.
+      content_blocks:
+        mi_cta:
+          sub: Your idea, your report, your vote. Take part in your community.
+          hashtag: '#MyCommunity'
+        mi_hero:
+          eyebrow: Your community platform
+          poster:
+            mi: WE
+          sub_html: Start a discussion, report an issue and help choose projects. Your community team publishes
+            processes and rules.
+        mi_hub:
+          name: MI! hub (module tiles + Milica on available channels)
+          tiles:
+            prefix: MI
+          omni:
+            eyebrow: Komšinica Milica · always available
+            title: Chat with Milica on an available channel.
+            lead: Milica answers questions and guides you to the official form. A report is filed only after you
+              confirm the preview by message and receive a report number.
+            sms_html: SMS is used for verification codes, sign-in links and notifications. Reply to Milica on an
+              available channel or chat on the website.
+      concierge:
+        budget:
+          ask: Tell me the area or institution name. The budget has many zeroes; we are looking for the ones relevant
+            to you.
+          found: The processed %{year} budget overview allocates %{amount} KM to "%{category}". This is an overview
+            of available items, not the complete budget document.
+          not_found: I could not find "%{category}" in the data currently available. Try the area or institution
+            name.
+        donation:
+          found: 'The last total we successfully checked records %{amount} %{currency} across %{count} donations.
+            Projects and the verified support link: %{url}. Milica never asks for card details in chat.'
+        gazette:
+          not_found: I did not find a result in the processed Official Gazette catalogue. That does not prove the
+            decision does not exist; try another topic, year or issue number.
+        goodwill:
+          found: 'You have %{balance} community points. Level: %{level}; rank: #%{rank}. You need %{to_next} to
+            reach the next level. Details: %{url}'
+          found_top: 'You have %{balance} points and have reached the highest level, %{level}. Rank: #%{rank}. Details:
+            %{url}'
+          none: 'You do not have points yet. They recognise approved contributions on the platform; rules and overview:
+            %{url}'
+          not_linked: 'To see your points, sign in and link your account: %{url}'
+        help: 'You do not need the department name or office number. Tell me plainly what you need: a problem report,
+          status, city service, waste collection, parking, bus, budget, Official Gazette, your neighbourhood, an
+          idea, voting, volunteering, points or projects. I will find the right thread.'
+        komsiluk:
+          post:
+            choose_category: 'Choose a category number: 1) Lost pet · 2) Safety · 3) Activity · 4) General.'
+            created: Your post was confirmed as published on your neighbourhood board.
+            failed: The post was not saved. Try again later.
+            not_member: 'Before posting, verify your phone and select your neighbourhood: %{url}'
+            rate_limited: The daily post limit has been reached. Try again tomorrow.
+            usage: 'Write: “post in my neighbourhood: your message”.'
+            web_guidance: 'Open the board to post: %{url}. Select a category and confirm the content before sending.'
+          read:
+            anon: community member
+            empty: There are currently no posts in your neighbourhood.
+            header: Latest from your neighbourhood
+            item: • [%{category}] %{title} — %{author}
+            not_member: 'Select your neighbourhood first to see a personalised board: %{url}'
+            web_guidance: 'Read posts on the board: %{board_url}. For a personalised board, sign in, verify your
+              phone, and select your neighbourhood: %{setup_url}'
+        local_area_guidance:
+          location_not_found: 'I could not place the location you sent in any MZ or neighbourhood on the map I have.
+            Check the address on the Komšiluk page: %{url}'
+        link:
+          ask_phone: Send the phone number you want to confirm, including its country or area code.
+          code_sent: The verification code was sent by SMS. Send the six-digit code.
+          expired: The code has expired. Start linking again.
+          invalid_code: The code is not correct. Check the digits or request a new code.
+          invalid_phone: The phone number is not in a valid format. Include its country or area code.
+          rate_limited: The code-request limit has been reached. Wait briefly, then try again.
+          send_failed: The code could not be sent. Try again later or use another offered verification method.
+          sms: Your Mi pre(d)uzimamo! verification code is %{code}. Valid for 10 minutes.
+          verified: Your phone number is confirmed. You may still need to sign in to access your account and personal
+            points.
+        report:
+          confirmation: Your report was recorded as %{reference}. Keep the reference and send it to Milica when
+            you want to check its public status.
+        status:
+          found: 'Report %{reference} — current public status: %{status}. Use this reference to check status; notifications
+            arrive only when you are signed in, linked and have enabled them.'
+          not_found: I could not find report %{reference}. Check the number — the format is BR-YYYY-NNNN.
+        waste:
+          ask_area: Type the street or neighbourhood and I will check the collection schedule.
+          found: 'Waste collection for "%{area}": %{days}. This is the last schedule we successfully checked.'
+          not_found: I could not find a reliable collection schedule for "%{area}". Check the exact street or neighbourhood
+            name.
+        web_fallback: Something went wrong on our side. Please try again. In the meantime, you can open reports,
+          ideas or the project catalogue on the website.
+        location_save_unavailable: Your location was not saved for this conversation. Share it again or name your
+          starting point.
+        web_report_guidance: 'A website chat message does not create a report. Open the official form: %{url}. There
+          you can mark the location, add details and a photo; after submission, you receive a tracking reference.'
+        public_neighborhood_guide: 'The public neighborhood guide is here: %{url}. Sign in to choose your neighborhood
+          or access its board.'
+        media:
+          milica_wave:
+            alt: Komšinica Milica waves hello.
+          milica_tablet:
+            alt: Komšinica Milica shows information on a tablet.
+          milica_map:
+            alt: Komšinica Milica points to a marked place on a map.
+          milica_heart:
+            alt: Komšinica Milica makes a heart with her hands.
+          milica_sleeves:
+            alt: Komšinica Milica rolls up her sleeves, ready for action.
+          milica_thumbs_up:
+            alt: Komšinica Milica gives a thumbs-up.
+        widget:
+          aria_open: Open a conversation with Komšinica Milica
+          aria_close: Close conversation
+          aria_send: Send message
+          aria_location: Use current location for this question
+          bubble_label: Ask Milica
+          greeting: Hi! I am Komšinica Milica. Explain it in your own words and I will translate it into the right
+            form — no counters and no wandering through the portal. 😄 Where shall we start?
+          return_greeting: Here you are again — the city has not run out of topics. 😄 What shall we tackle today?
+          header_title: Komšinica Milica
+          header_status: I am here
+          input_placeholder: Write as you would to a neighbour…
+          loading: Let me check what is written, not what is rumoured…
+          long_loading: This is tucked away among the papers. I am still looking…
+          location_ready: Location received.
+          location_consent_copy: If you share your location, Milica will store it encrypted for public questions
+            in this conversation. It expires after 30 minutes of inactivity; you can forget it sooner.
+          location_active: Shared location active
+          forget_location: Forget location
+          forget_location_send: forget my location
+          location_error: Your phone and location are not getting along today. Type a street, neighbourhood or nearest
+            stop.
+          error: Something went wrong on our side. Please try again.
+          greeting_media_alt: Komšinica Milica waves hello.
+          feedback:
+            prompt: 'Help Milica learn:'
+          quick:
+            report: Report a problem
+            report_describe: Describe the problem to Milica
+            idea: Ideas and voting
+            budget: City budget
+            donate: Support a project
+            goodwill: My points
+            setup: Set up account
+            komsiluk: My neighbourhood
+        mi_hub:
+          omni:
+            sms_html: SMS is used for verification codes, sign-in links and notifications. Reply to Milica on an
+              available channel or chat on the website.
+      komsiluk:
+        edit:
+          address_placeholder: e.g. Example Street 12, your community
+      report_heatmap:
+        index:
+          eyebrow: Biće riješeno!
+      reports:
+        index:
+          eyebrow: Will be resolved!
+        show:
+          eyebrow: Will be resolved!
+      reports_map:
+        show:
+          eyebrow: Will be resolved!
+          title: Reports map — Biće riješeno!
+      onboarding:
+        guide:
+          actions:
+            bot:
+              title: Ask Milica
+      menu:
+        mi_bot: Milica
+        mi_bot_short: Milica
+        launch_event: Community event
+        race: Neighbourhood race
+      menu_groups:
+        help:
+          body: Ask Milica or open the platform guide.
+      public_actions:
+        register: Sign up
+        ask: Ask Milica
+        account: My account
+        bot: Ask Milica
+      mobile_nav:
+        new_message: New message
+        notifications: Notifications
+        login: Log in
+        home: Home
+        report: Problem
+        race: Race
+        register: Sign up
+        bot: Milica
+      pwa:
+        install_title: MI! as an app
+        install_text: Faster access to reports, points and Milica — straight from your home screen.
+        ios_text: 'Add MI! to your home screen: tap ⎖ Share then "Add to Home Screen".'
+        manual_text: Open your browser menu and choose “Add to Home Screen” or “Install app”.
+        webview_text: Open MI! in Chrome or Safari to add it to your home screen.
+      sms:
+        login_link: 'Your sign-in link for MI pre(d)uzimamo: %{url} Valid for 10 minutes. You can talk to Milica
+          here by replying to this message.'
+        login_link_and_code: 'MI: sign-in link: %{url} Backup code: %{code}. Valid 10 min. Do not share it.'
+      mi_bot:
+        show:
+          phone_header: Milica
+          viber_business_onboarding:
+            kicker: Viber messages
+            title: Milica is available in Viber messages
+            desc: Talk to Milica by replying to a Viber message you received from MI pre(d)uzimamo.
+            start: Reply to our Viber message with your question. If you do not have one yet, start a conversation
+              on this website.
+            report_note: A problem report is filed only after you reply with the message “Confirm report YES” shown
+              in Milica’s preview and receive a report number.
+          external_chat_onboarding:
+            kicker: Milica on other channels
+            title: Chat with Komšinica Milica in an app you already use
+            desc: When a channel is ready for public use, open the verified Milica conversation and ask a question
+              just as you would on the website.
+            channels_title: Chat channels
+            channels:
+              whatsapp: WhatsApp
+              messenger: Messenger
+              instagram: Instagram
+            boundary_title: Important boundary
+            boundary_body: Milica answers questions. On WhatsApp and Messenger, a report requires a preview and
+              message confirmation; Instagram offers guidance. Chat does not link your account.
+            privacy_note: Do not send national identity numbers, passwords, card details or other sensitive data
+              in chat.
+          capabilities:
+            desc: The assistant uses explicitly connected community data. Availability depends on configuration
+              and local data.
+            kicker: What Milica knows
+            note: For changing data, Milica reads the latest connected source and names that source in the answer.
+              For an official action it points to the form, responsible service or verified channel.
+            source_label: 'Sources:'
+            title: From bus times to parking zones, all in one message.
+            items:
+              transport:
+                title: Public transport
+                body: Plans routes by lines and stops, finds transfers and reads next departures for the morning,
+                  today or tomorrow.
+                source: Timetables and stops imported and reviewed by your community.
+              parking:
+                title: Parking zones
+                body: Recognises a street, returns the zone when known, price, operating hours and SMS payment instructions.
+                source: Parking tariffs and zones configured and reviewed by your community.
+              waste:
+                title: Waste collection
+                body: Answers by settlement or street when a schedule is available and separates regular collection
+                  from other utility notices.
+                source: Waste collection schedules maintained in the data used by Milica.
+              service_notices:
+                title: Service notices
+                body: Handles questions about electricity outages, water service information, heating, roads, city
+                  notices, civil protection and police services.
+                source: Explicitly connected utility and public-service sources.
+              environment:
+                title: Weather, water levels and air
+                body: Answers weather warnings, Sava and Drina water levels, live air quality and city air-quality
+                  reports.
+                source: Explicitly connected weather, water-level and sensor sources.
+              city_services:
+                title: City services and documents
+                body: Helps with registry extracts, contacts, local communities, official gazette items, decisions,
+                  budget and donations.
+                source: Local regulations, registers and tables connected by your community.
+              reports:
+                title: Reports and status
+                body: Explains how to submit a utility report, check status by case number and find the public map.
+                source: Biće riješeno/Sistem48 data, report statuses and public report views on the MI! platform.
+              community:
+                title: Neighbourhood and participation
+                body: Guides proposals, voting, volunteering, the Komšiluk board, Goodwill points, account setup,
+                  verification and donations.
+                source: Platform data and community settings.
+          cta:
+            try_bot: Try Milica
+          hero:
+            eyebrow: Digital neighbour through the MI platform
+            title_lead: Komšinica
+            title_accent: Milica
+            lead: Talk to Milica on this site and find the right next step for reports, city data, participation,
+              volunteering and donations.
+          signoff:
+            line: Your community platform assistant
+      launch:
+        messages:
+          p8:
+            viber: 'The reviewed data contains %{broj} reports; a record does not prove forwarding or resolution.
+              Community %{komsiluk}, recorded rank %{mjesto}. Rules and current information: %{link}'
+  layouts:
+    decidim:
+      header:
+        register: Sign up
+        ask_milica: Ask Milica
+  mi_launch:
+    invitation_rules:
+      title: Community invitation rules
+      who: Invitations were for people with a verified phone. One person — one account — one invitation.
+      condition: The community team sets invitation requirements before activation.
+      count: Invitation quantities appear after the event is configured.
+      confirm: Attendance confirmation was requested, not required. An invitation or attendance confirmation record
+        alone does not prove entry.
+      entry: The event has ended. Previously issued invitations remain in your records.
+      waitlist: Issuance and the waiting list for this event have ended. Points remain for community activities
+        and available rewards.
+    race_rules:
+      window: '%{window_from} – %{window_to}'
+      title: Neighbourhood race
+      formula: registered × %{registration_points} + reports × %{report_points} + proposals × %{proposal_points}
+      rule_1: Every scored action requires a verified phone. Activity must fall within the published contest window;
+        withholding contact details from the city does not reduce the score.
+      rule_2: Duplicates, “Same problem” confirmations and rejected reports earn no race points. Published citizen
+        proposals not selected for implementation remain eligible; hidden or deleted prohibited content is excluded.
+      rule_3: Each person can contribute at most %{report_cap} reports and %{proposal_cap} proposals throughout
+        the race. These limits are separate from personal community points.
+      rule_4: Equal scores are ordered by which neighbourhood reached that score first. An administrator resolves
+        a complete tie with a recorded reason.
+      rule_5: Contribution stays with the first neighbourhood reliably established for this race. Moving does not
+        transfer earlier points. Staff may contribute to the race but are excluded from citizen individual public
+        rankings.
+      time: Actions count from %{window_from} until %{window_to}, Sarajevo time, excluding the endpoint. Review
+        follows closure. An administrator may later hide public race scores manually.
+      announce: After closure, source review and approval of final standings. Closing the race does not by itself
+        declare a winner.
+      build: Project selection, budgets, dates and voting eligibility follow process rules. Points alone grant no
+        extra votes.
+    faq:
+      q1: Can I still earn a launch invitation?
+      a1: Event dates and invitations depend on your community settings.
+      q2: What can I do now?
+      a2: Report a real problem, join open processes, volunteer or invite neighbours. Community contains the earning
+        rules and limits.
+      q3: What do I need to register?
+      a3: Access to the platform and your own phone for SMS verification. Time depends on code delivery and entering
+        your details.
+      a4: 'A smartphone is not required: open the platform on a computer and enter the code received on your own
+        phone. We do not offer an account creation service on behalf of citizens. A phone receiving SMS remains
+        necessary for verification.'
+      q5: How do invitations to neighbours earn points?
+      a5: Share your personal link. Verified phone and selected neighbourhood are enough, with a waiting period
+        and monthly limit. Further eligible referrals carry forward. Your neighbour contributes to their own neighbourhood.
+      q6: Do points disappear after the event or race?
+      a6: No. Your wallet and recognized contribution are separate from the race. Spending, gifts and explained
+        corrections appear in account history.
+      a7: Reference, category, problem address, map point, status and date are public. The reporter’s name is not
+        displayed. Description, photo and contact are restricted to authorized staff and the responsible service;
+        forwarding follows review, not every submission automatically.
+      a8: Registration retains phone and selected neighbourhood. Postal address verification needs a mailing address,
+        processed temporarily under that workflow’s rules. Problem addresses and submitted map points are public
+        report information.
+      a9: Community points recognize contribution and can be used for symbolic rewards; they have no cash value
+        or extra voting power. The race uses a separate calculation. You can disable public recognition in your
+        account.
+      a10: Your community publishes its operator and funders.
+  mi_funders:
+    eyebrow: Partneri zajednice
+    line: Your community identifies support for this installation.

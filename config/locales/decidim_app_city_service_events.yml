@@ -1,0 +1,520 @@
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        menu: Gradska obavještenja
+        navigation_description: Pregledajte gradska servisna obavještenja prije objave.
+        states:
+          board_published: Objavljeno na tabli
+          dismissed: Odbačeno
+          failed: Neuspjelo
+          pending_review: Čeka pregled
+          published: Objavljeno
+        severities:
+          emergency: Hitno
+          info: Informacija
+          routine: Rutinski
+          safety: Bezbjednost
+          service_outage: Prekid usluge
+        index:
+          actions:
+            confirm_viber_review: Potvrdio/la sam provjeru dostave
+            dismiss: Odbaci
+            dismiss_confirm: Odbaciti ovo obavještenje bez objave?
+            publish_board: Objavi na tabli
+            publish_viber: Objavi i pošalji obavještenje
+            publish_viber_confirm: Objaviti obavještenje nakon provjere publike i politike slanja?
+            save: Sačuvaj
+          columns:
+            actions: Pregled
+            areas: Područja
+            event: Obavještenje
+            source: Izvor
+            state: Status
+          empty: Nema prikupljenih gradskih obavještenja za pregled.
+          empty_states:
+            review: Nema novih ili neuspjelih obavještenja za pregled.
+            viber: Nema obavještenja koja su objavljena na tabli i čekaju odluku o dostavi.
+            history: Još nema objavljenih ili odbačenih obavještenja u historiji.
+            all: Nema prikupljenih gradskih obavještenja.
+            filtered: Nema obavještenja koja odgovaraju odabranim filterima. Očisti filtere i pokušaj ponovo.
+          fields:
+            review_note: Napomena
+            summary: Sažetak za građane
+            title: Naslov
+            viber_text: Tekst obavještenja
+          filters:
+            all_sources: Svi izvori
+            all_states: Svi statusi
+            apply: Primijeni filter
+            clear: Poništi filter
+            source: Izvor
+            state: Status
+          intro: Pregledajte prikupljena gradska servisna obavještenja prije objave na Komšiluk tabli ili slanja obavještenja.
+          policy_preview: "Provjera dostave: %{delivery} (%{reason}), primaoci %{recipients}, cooldown %{cooldown} min, dnevni limit %{daily}"
+          workflow_nav_label: Tok objave gradskih obavještenja
+          workflow:
+            all: Svi zapisi
+            history: Historija
+            readiness: Spremnost
+            review: Pregled
+            viber: Provjera dostave
+          readiness:
+            operator_details: Operaterske provjere
+            title: Spremnost za objavu
+            review_source: Provjeri izvor i tekst prije svake objave.
+            preview_policy: Pregledaj politiku dostave, primaoce, cooldown i dnevni limit.
+            publish_order: Prvo objavi na tabli; obavještenja šalji samo kada je provjera potvrđena.
+          published_to: "Objavljeno za: %{slugs}"
+          source_link: Izvor
+          target_areas: "Ciljna područja: %{slugs}"
+          target_komsiluci: "Ciljni komšiluci: %{slugs}"
+          title: Gradska servisna obavještenja
+          unknown_area: Područje nije prepoznato
+        dismiss:
+          dismissed: Obavještenje je odbačeno.
+        publish_board:
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primaoci %{recipients}."
+        publish_viber:
+          board_first_required: Prvo objavite obavještenje na Komšiluk tabli.
+          viber_not_ready: Slanje obavještenja čeka važeću vlasničku odluku i spremne postavke pružaoca.
+          phone_audience_unverified: Karta pokazuje komšiluke kroz koje prolazi navedena vodovodna lokacija, ali ne potvrđuje koji su korisnici pogođeni. Obavještenje ostaje na tablama; Viber i WhatsApp traže posebno potvrđenu publiku.
+          confirmation_required: Potvrdite provjeru dostave prije objave.
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primaoci %{recipients}."
+        update:
+          updated: Obavještenje je ažurirano.
+    city_service_events:
+      bot:
+        citywide_area: Bijeljinu
+        current: "%{title} — %{summary} Izvor: %{source}; provjereno %{checked_at}. %{url}"
+        current_unchecked: "%{title} — %{summary} Izvor: %{source}; vrijeme provjere nije dostupno. %{url}"
+        location_unknown: Ne prepoznajem naselje ili komšiluk. Napiši naziv MZ/komšiluka ili otvori podešavanje komšiluka na /biceriseno/komsiluk.
+        none: "Nemam trenutno aktivno servisno obavještenje za %{area}."
+        none_checked: "Izvor %{source} je provjeren %{checked_at}, ali nemam pregledano obavještenje o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        none_reviewed: "Izvor %{source} je uspješno pročitan %{checked_at}, ali nemam pregledano obavještenje o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        pending_review: "Izvor %{source} je provjeren %{checked_at}, ali pronađeni sadržaj još nije operatorski pregledan i objavljen. Nemam pregledano obavještenje o %{service} za %{area}."
+        source_malformed: "Sadržaj izvora %{source} trenutno nije moguće pouzdano pročitati. Ne mogu potvrditi stanje za %{service} u području %{area}."
+        source_stale: "Posljednja uspješna provjera izvora %{source} je zastarjela (%{checked_at}). Ne mogu potvrditi trenutno stanje za %{service} u području %{area}."
+        source_unavailable: "Izvor za %{service} trenutno nije dostupan. Ne mogu potvrditi stanje za područje %{area}."
+        source_unreviewed: "Izvor %{source} je dostupan, ali nema podržano pregledano izdvajanje za ovaj odgovor. Ne mogu potvrditi stanje za %{service} u području %{area}."
+        services:
+          electricity: isključenja električne energije
+          heating: prekida grijanja
+          water: prekida vodosnabdijevanja
+        your_area: tvoje područje
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        menu: City alerts
+        navigation_description: Review collected city-service notices before publishing them.
+        states:
+          board_published: Board published
+          dismissed: Dismissed
+          failed: Failed
+          pending_review: Pending review
+          published: Published
+        severities:
+          emergency: Emergency
+          info: Information
+          routine: Routine
+          safety: Safety
+          service_outage: Service outage
+        index:
+          actions:
+            confirm_viber_review: I reviewed the delivery check
+            dismiss: Dismiss
+            dismiss_confirm: Dismiss this notice without publishing it?
+            publish_board: Publish to board
+            publish_viber: Publish + delivery check
+            publish_viber_confirm: Publish the notification after audience and delivery policy review?
+            save: Save
+          columns:
+            actions: Review
+            areas: Areas
+            event: Notice
+            source: Source
+            state: State
+          empty: No collected city-service notices are waiting for review.
+          empty_states:
+            review: No new or failed notices need review.
+            viber: No board-published notices are waiting for a delivery decision.
+            history: No published or dismissed notices are in the history yet.
+            all: No city-service notices have been collected.
+            filtered: No notices match the selected filters. Clear the filters and try again.
+          fields:
+            review_note: Note
+            summary: Citizen summary
+            title: Title
+            viber_text: Notification text
+          filters:
+            all_sources: All sources
+            all_states: All states
+            apply: Apply filter
+            clear: Clear filter
+            source: Source
+            state: State
+          intro: Review collected city-service notices before publishing them to Komšiluk boards or sending notifications.
+          policy_preview: "delivery check: %{delivery} (%{reason}), recipients %{recipients}, cooldown %{cooldown} min, daily limit %{daily}"
+          workflow_nav_label: City-alert publication workflow
+          workflow:
+            all: All records
+            history: History
+            readiness: Readiness
+            review: Review
+            viber: delivery check
+          readiness:
+            operator_details: Operator checks
+            title: Publishing readiness
+            review_source: Check the source and public text before every publication.
+            preview_policy: Review the delivery policy, recipients, cooldown, and daily limit.
+            publish_order: Publish to the board first; send notifications only after confirming the check.
+          published_to: "Published to: %{slugs}"
+          source_link: Source
+          target_areas: "Target areas: %{slugs}"
+          target_komsiluci: "Target neighbourhoods: %{slugs}"
+          title: City-service notices
+          unknown_area: Area not recognized
+        dismiss:
+          dismissed: The notice was dismissed.
+        publish_board:
+          published: "Published: %{posts} posts, delivery %{delivery}, recipients %{recipients}."
+        publish_viber:
+          board_first_required: Publish the notice to the Neighbourhood board first.
+          viber_not_ready: Notification delivery is waiting for a current owner decision and ready provider configuration.
+          phone_audience_unverified: The map identifies neighbourhood boards near the named water location, but does not verify which residents are affected. Keep this notice on the boards; Viber and WhatsApp require a separately verified audience.
+          confirmation_required: Confirm the delivery check before publishing.
+          published: "Published: %{posts} posts, delivery %{delivery}, recipients %{recipients}."
+        update:
+          updated: The notice was updated.
+    city_service_events:
+      bot:
+        citywide_area: Bijeljina
+        current: "%{title} - %{summary} Source: %{source}; checked %{checked_at}. %{url}"
+        current_unchecked: "%{title} - %{summary} Source: %{source}; check time is unavailable. %{url}"
+        location_unknown: I do not recognize that neighbourhood or local community. Write the MZ/Komšiluk name or open /biceriseno/komsiluk.
+        none: "I do not currently have an active service notice for %{area}."
+        none_checked: "Source %{source} was checked at %{checked_at}, but I have no reviewed notice about %{service} for %{area}. This does not confirm there is no interruption."
+        none_reviewed: "Source %{source} was read successfully at %{checked_at}, but I have no reviewed notice about %{service} for %{area}. This does not confirm there is no interruption."
+        pending_review: "Source %{source} was checked at %{checked_at}, but found content has not yet been reviewed and published by an operator. I have no reviewed notice about %{service} for %{area}."
+        source_malformed: "The content from %{source} cannot currently be read reliably. I cannot confirm the status of %{service} for %{area}."
+        source_stale: "The last successful check of %{source} is stale (%{checked_at}). I cannot confirm the current status of %{service} for %{area}."
+        source_unavailable: "The source for %{service} is currently unavailable. I cannot confirm the status for %{area}."
+        source_unreviewed: "Source %{source} is reachable, but it has no supported reviewed extraction for this answer. I cannot confirm the status of %{service} for %{area}."
+        services:
+          electricity: electricity outages
+          heating: heating interruptions
+          water: water-supply interruptions
+        your_area: your area
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        menu: Gradske obavijesti
+        navigation_description: Pregledajte gradske servisne obavijesti prije objave.
+        states:
+          board_published: Objavljeno na ploči
+          dismissed: Odbačeno
+          failed: Neuspjelo
+          pending_review: Čeka pregled
+          published: Objavljeno
+        severities:
+          emergency: Hitno
+          info: Informacija
+          routine: Rutinski
+          safety: Sigurnost
+          service_outage: Prekid usluge
+        index:
+          actions:
+            confirm_viber_review: Potvrdio/la sam provjeru dostave
+            dismiss: Odbaci
+            dismiss_confirm: Odbaciti ovu obavijest bez objave?
+            publish_board: Objavi na ploči
+            publish_viber: Objavi i pošalji obavještenje
+            publish_viber_confirm: Objaviti obavijest nakon provjere publike i politike slanja?
+            save: Spremi
+          columns:
+            actions: Pregled
+            areas: Područja
+            event: Obavijest
+            source: Izvor
+            state: Status
+          empty: Nema prikupljenih gradskih obavijesti za pregled.
+          empty_states:
+            review: Nema novih ili neuspjelih obavijesti za pregled.
+            viber: Nema obavijesti objavljenih na ploči koje čekaju odluku o dostavi.
+            history: Još nema objavljenih ili odbačenih obavijesti u povijesti.
+            all: Nema prikupljenih gradskih obavijesti.
+            filtered: Nema obavijesti koje odgovaraju odabranim filtrima. Očisti filtre i pokušaj ponovno.
+          fields:
+            review_note: Napomena
+            summary: Sažetak za građane
+            title: Naslov
+            viber_text: Tekst obavještenja
+          filters:
+            all_sources: Svi izvori
+            all_states: Svi statusi
+            apply: Primijeni filter
+            clear: Poništi filter
+            source: Izvor
+            state: Status
+          intro: Pregledajte prikupljene gradske servisne obavijesti prije objave na Komšiluk ploči ili slanja obavještenja.
+          policy_preview: "Provjera dostave: %{delivery} (%{reason}), primatelji %{recipients}, cooldown %{cooldown} min, dnevni limit %{daily}"
+          workflow_nav_label: Tok objave gradskih obavijesti
+          workflow:
+            all: Svi zapisi
+            history: Povijest
+            readiness: Spremnost
+            review: Pregled
+            viber: Provjera dostave
+          readiness:
+            operator_details: Operaterske provjere
+            title: Spremnost za objavu
+            review_source: Provjeri izvor i tekst prije svake objave.
+            preview_policy: Pregledaj politiku dostave, primatelje, cooldown i dnevni limit.
+            publish_order: Prvo objavi na ploči; obavještenja šalji samo kada je provjera potvrđena.
+          published_to: "Objavljeno za: %{slugs}"
+          source_link: Izvor
+          target_areas: "Ciljna područja: %{slugs}"
+          target_komsiluci: "Ciljni Komšiluci: %{slugs}"
+          title: Gradske servisne obavijesti
+          unknown_area: Područje nije prepoznato
+        dismiss:
+          dismissed: Obavijest je odbačena.
+        publish_board:
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primatelji %{recipients}."
+        publish_viber:
+          board_first_required: Prvo objavite obavijest na Komšiluk ploči.
+          viber_not_ready: Slanje obavještenja čeka važeću vlasničku odluku i spremne postavke pružatelja.
+          phone_audience_unverified: Karta pokazuje komšiluke uz navedenu vodovodnu lokaciju, ali ne potvrđuje koji su korisnici pogođeni. Obavijest ostaje na pločama; Viber i WhatsApp traže posebno potvrđenu publiku.
+          confirmation_required: Potvrdite provjeru dostave prije objave.
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primatelji %{recipients}."
+        update:
+          updated: Obavijest je ažurirana.
+    city_service_events:
+      bot:
+        citywide_area: Bijeljinu
+        current: "%{title} — %{summary} Izvor: %{source}; provjereno %{checked_at}. %{url}"
+        current_unchecked: "%{title} — %{summary} Izvor: %{source}; vrijeme provjere nije dostupno. %{url}"
+        location_unknown: Ne prepoznajem naselje ili komšiluk. Napišite naziv MZ/komšiluka ili otvorite /biceriseno/komsiluk.
+        none: "Nemam trenutačno aktivnu servisnu obavijest za %{area}."
+        none_checked: "Izvor %{source} provjeren je %{checked_at}, ali nemam pregledanu obavijest o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        none_reviewed: "Izvor %{source} uspješno je pročitan %{checked_at}, ali nemam pregledanu obavijest o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        pending_review: "Izvor %{source} provjeren je %{checked_at}, ali pronađeni sadržaj još nije operaterski pregledan i objavljen. Nemam pregledanu obavijest o %{service} za %{area}."
+        source_malformed: "Sadržaj izvora %{source} trenutačno nije moguće pouzdano pročitati. Ne mogu potvrditi stanje za %{service} na području %{area}."
+        source_stale: "Posljednja uspješna provjera izvora %{source} zastarjela je (%{checked_at}). Ne mogu potvrditi trenutačno stanje za %{service} na području %{area}."
+        source_unavailable: "Izvor za %{service} trenutačno nije dostupan. Ne mogu potvrditi stanje za područje %{area}."
+        source_unreviewed: "Izvor %{source} dostupan je, ali nema podržano pregledano izdvajanje za ovaj odgovor. Ne mogu potvrditi stanje za %{service} na području %{area}."
+        services:
+          electricity: isključenja električne energije
+          heating: prekida grijanja
+          water: prekida vodoopskrbe
+        your_area: tvoje područje
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        menu: Gradska obavještenja
+        navigation_description: Pregledajte gradska servisna obavještenja prije objave.
+        states:
+          board_published: Objavljeno na tabli
+          dismissed: Odbačeno
+          failed: Neuspjelo
+          pending_review: Čeka pregled
+          published: Objavljeno
+        severities:
+          emergency: Hitno
+          info: Informacija
+          routine: Rutinski
+          safety: Bezbjednost
+          service_outage: Prekid usluge
+        index:
+          actions:
+            confirm_viber_review: Potvrdio/la sam provjeru dostave
+            dismiss: Odbaci
+            dismiss_confirm: Odbaciti ovo obavještenje bez objave?
+            publish_board: Objavi na tabli
+            publish_viber: Objavi i pošalji obavještenje
+            publish_viber_confirm: Objaviti obavještenje nakon provjere publike i politike slanja?
+            save: Sačuvaj
+          columns:
+            actions: Pregled
+            areas: Područja
+            event: Obavještenje
+            source: Izvor
+            state: Status
+          empty: Nema prikupljenih gradskih obavještenja za pregled.
+          empty_states:
+            review: Nema novih ili neuspjelih obavještenja za pregled.
+            viber: Nema obavještenja koja su objavljena na tabli i čekaju odluku o dostavi.
+            history: Još nema objavljenih ili odbačenih obavještenja u istoriji.
+            all: Nema prikupljenih gradskih obavještenja.
+            filtered: Nema obavještenja koja odgovaraju odabranim filterima. Očisti filtere i pokušaj ponovo.
+          fields:
+            review_note: Napomena
+            summary: Sažetak za građane
+            title: Naslov
+            viber_text: Tekst obavještenja
+          filters:
+            all_sources: Svi izvori
+            all_states: Svi statusi
+            apply: Primijeni filter
+            clear: Poništi filter
+            source: Izvor
+            state: Status
+          intro: Pregledajte prikupljena gradska servisna obavještenja prije objave na Komšiluk tabli ili slanja obavještenja.
+          policy_preview: "Provjera dostave: %{delivery} (%{reason}), primaoci %{recipients}, cooldown %{cooldown} min, dnevni limit %{daily}"
+          workflow_nav_label: Tok objave gradskih obavještenja
+          workflow:
+            all: Svi zapisi
+            history: Istorija
+            readiness: Spremnost
+            review: Pregled
+            viber: Provjera dostave
+          readiness:
+            operator_details: Operaterske provjere
+            title: Spremnost za objavu
+            review_source: Provjeri izvor i tekst prije svake objave.
+            preview_policy: Pregledaj politiku dostave, primaoce, cooldown i dnevni limit.
+            publish_order: Prvo objavi na tabli; obavještenja šalji samo kada je provjera potvrđena.
+          published_to: "Objavljeno za: %{slugs}"
+          source_link: Izvor
+          target_areas: "Ciljna područja: %{slugs}"
+          target_komsiluci: "Ciljni komšiluci: %{slugs}"
+          title: Gradska servisna obavještenja
+          unknown_area: Područje nije prepoznato
+        dismiss:
+          dismissed: Obavještenje je odbačeno.
+        publish_board:
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primaoci %{recipients}."
+        publish_viber:
+          board_first_required: Prvo objavite obavještenje na Komšiluk tabli.
+          viber_not_ready: Slanje obavještenja čeka važeću vlasničku odluku i spremne postavke pružaoca.
+          phone_audience_unverified: Karta pokazuje komšiluke uz navedenu vodovodnu lokaciju, ali ne potvrđuje koji su korisnici pogođeni. Obavještenje ostaje na tablama; Viber i WhatsApp traže posebno potvrđenu publiku.
+          confirmation_required: Potvrdite provjeru dostave prije objave.
+          published: "Objavljeno: %{posts} objava, dostava %{delivery}, primaoci %{recipients}."
+        update:
+          updated: Obavještenje je ažurirano.
+    city_service_events:
+      bot:
+        citywide_area: Bijeljinu
+        current: "%{title} — %{summary} Izvor: %{source}; provjereno %{checked_at}. %{url}"
+        current_unchecked: "%{title} — %{summary} Izvor: %{source}; vrijeme provjere nije dostupno. %{url}"
+        location_unknown: Ne prepoznajem naselje ili komšiluk. Napiši naziv MZ/komšiluka ili otvori podešavanje komšiluka na /biceriseno/komsiluk.
+        none: "Nemam trenutno aktivno servisno obavještenje za %{area}."
+        none_checked: "Izvor %{source} je provjeren %{checked_at}, ali nemam pregledano obavještenje o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        none_reviewed: "Izvor %{source} je uspješno pročitan %{checked_at}, ali nemam pregledano obavještenje o %{service} za %{area}. To ne potvrđuje da prekida nema."
+        pending_review: "Izvor %{source} je provjeren %{checked_at}, ali pronađeni sadržaj još nije operatorski pregledan i objavljen. Nemam pregledano obavještenje o %{service} za %{area}."
+        source_malformed: "Sadržaj izvora %{source} trenutno nije moguće pouzdano pročitati. Ne mogu potvrditi stanje za %{service} u području %{area}."
+        source_stale: "Posljednja uspješna provjera izvora %{source} je zastarjela (%{checked_at}). Ne mogu potvrditi trenutno stanje za %{service} u području %{area}."
+        source_unavailable: "Izvor za %{service} trenutno nije dostupan. Ne mogu potvrditi stanje za područje %{area}."
+        source_unreviewed: "Izvor %{source} je dostupan, ali nema podržano pregledano izdvajanje za ovaj odgovor. Ne mogu potvrditi stanje za %{service} u području %{area}."
+        services:
+          electricity: isključenja električne energije
+          heating: prekida grijanja
+          water: prekida vodosnabdijevanja
+        your_area: tvoje područje
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        menu: Градска обавјештења
+        navigation_description: Прегледајте градска сервисна обавјештења прије објаве.
+        states:
+          board_published: Објављено на табли
+          dismissed: Одбачено
+          failed: Неуспјело
+          pending_review: Чека преглед
+          published: Објављено
+        severities:
+          emergency: Хитно
+          info: Информација
+          routine: Рутински
+          safety: Безбједност
+          service_outage: Прекид услуге
+        index:
+          actions:
+            confirm_viber_review: Потврдио/ла сам провјеру доставе
+            dismiss: Одбаци
+            dismiss_confirm: Одбацити ово обавјештење без објаве?
+            publish_board: Објави на табли
+            publish_viber: Објави и пошаљи обавјештење
+            publish_viber_confirm: Објавити обавјештење након провјере публике и политике слања?
+            save: Сачувај
+          columns:
+            actions: Преглед
+            areas: Подручја
+            event: Обавјештење
+            source: Извор
+            state: Статус
+          empty: Нема прикупљених градских обавјештења за преглед.
+          empty_states:
+            review: Нема нових или неуспјелих обавјештења за преглед.
+            viber: Нема обавјештења која су објављена на табли и чекају одлуку о достави.
+            history: Још нема објављених или одбачених обавјештења у историји.
+            all: Нема прикупљених градских обавјештења.
+            filtered: Нема обавјештења која одговарају одабраним филтерима. Очисти филтере и покушај поново.
+          fields:
+            review_note: Напомена
+            summary: Сажетак за грађане
+            title: Наслов
+            viber_text: Текст обавјештења
+          filters:
+            all_sources: Сви извори
+            all_states: Сви статуси
+            apply: Примијени филтер
+            clear: Поништи филтер
+            source: Извор
+            state: Статус
+          intro: Прегледајте прикупљена градска сервисна обавјештења прије објаве на Комшилук табли или слања обавјештења.
+          policy_preview: 'Провјера доставе: %{delivery} (%{reason}), примаоци %{recipients}, цоолдоwн %{cooldown} мин, дневни лимит %{daily}'
+          workflow_nav_label: Ток објаве градских обавјештења
+          workflow:
+            all: Сви записи
+            history: Историја
+            readiness: Спремност
+            review: Преглед
+            viber: Провјера доставе
+          readiness:
+            operator_details: Оператерске провјере
+            title: Спремност за објаву
+            review_source: Провјери извор и текст прије сваке објаве.
+            preview_policy: Прегледај политику доставе, примаоце, цоолдоwн и дневни лимит.
+            publish_order: Прво објави на табли; обавјештења шаљи само када је провјера потврђена.
+          published_to: 'Објављено за: %{slugs}'
+          source_link: Извор
+          target_areas: 'Циљна подручја: %{slugs}'
+          target_komsiluci: 'Циљни комшилуци: %{slugs}'
+          title: Градска сервисна обавјештења
+          unknown_area: Подручје није препознато
+        dismiss:
+          dismissed: Обавјештење је одбачено.
+        publish_board:
+          published: 'Објављено: %{posts} објава, достава %{delivery}, примаоци %{recipients}.'
+        publish_viber:
+          board_first_required: Прво објавите обавјештење на Комшилук табли.
+          viber_not_ready: Слање обавјештења чека важећу власничку одлуку и спремне поставке пружаоца.
+          phone_audience_unverified: Карта показује комшилуке уз наведену водоводну локацију, али не потврђује који су корисници погођени. Обавјештење остаје на таблама; Вибер и Вотсап траже посебно потврђену публику.
+          confirmation_required: Потврдите провјеру доставе прије објаве.
+          published: 'Објављено: %{posts} објава, достава %{delivery}, примаоци %{recipients}.'
+        update:
+          updated: Обавјештење је ажурирано.
+    city_service_events:
+      bot:
+        citywide_area: Бијељину
+        current: "%{title} — %{summary} Извор: %{source}; провјерено %{checked_at}. %{url}"
+        current_unchecked: "%{title} — %{summary} Извор: %{source}; вријеме провјере није доступно. %{url}"
+        location_unknown: Не препознајем насеље или комшилук. Напиши назив МЗ/комшилука или отвори подешавање комшилука на /бицерисено/комсилук.
+        none: Немам тренутно активно сервисно обавјештење за %{area}.
+        none_checked: Извор %{source} је провјерен %{checked_at}, али немам прегледано обавјештење о %{service} за %{area}. То не потврђује да прекида нема.
+        none_reviewed: Извор %{source} је успјешно прочитан %{checked_at}, али немам прегледано обавјештење о %{service} за %{area}. То не потврђује да прекида нема.
+        pending_review: Извор %{source} је провјерен %{checked_at}, али пронађени садржај још није операторски прегледан и објављен. Немам прегледано обавјештење о %{service} за %{area}.
+        source_malformed: Садржај извора %{source} тренутно није могуће поуздано прочитати. Не могу потврдити стање за %{service} у подручју %{area}.
+        source_stale: Посљедња успјешна провјера извора %{source} је застарјела (%{checked_at}). Не могу потврдити тренутно стање за %{service} у подручју %{area}.
+        source_unavailable: Извор за %{service} тренутно није доступан. Не могу потврдити стање за подручје %{area}.
+        source_unreviewed: Извор %{source} је доступан, али нема подржано прегледано издвајање за овај одговор. Не могу потврдити стање за %{service} у подручју %{area}.
+        services:
+          electricity: искључења електричне енергије
+          heating: прекида гријања
+          water: прекида водоснабдијевања
+        your_area: твоје подручје

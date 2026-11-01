@@ -1,0 +1,5 @@
+<% if (funder = DecidimApp::Funders.leading) %>
+  <span class="mi-leading-mark" data-leading-funder="<%= funder.key %>">
+    <%= image_tag funder.src, alt: funder.name, width: funder.width, height: funder.height, decoding: "async", class: "mi-leading-mark__logo" %>
+  </span>
+<% end %>

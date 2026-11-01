@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Verifikovan građanin">
+  <circle cx="60" cy="60" r="56" fill="#cfe8d0" stroke="#1f2d4e" stroke-width="4"/>
+  <circle cx="60" cy="56" r="28" fill="#1f2d4e"/>
+  <path d="M48 56l8 9 17-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#1f2d4e">✓</text>
+</svg>

@@ -1,0 +1,142 @@
+{
+  "sr": {
+    "layouts": {
+      "decidim": {
+        "data_consent": {
+          "dialog": {
+            "title": "Tvoj izbor kolačića",
+            "description": "Neophodni kolačići omogućavaju rad platforme. Dodatna analitika i mjerenje kampanja nisu uključeni u referentnoj instalaciji.",
+            "accept_all": "Prihvati omogućene kategorije",
+            "accept_only_essential": "Samo neophodni",
+            "settings": "Izaberi posebno"
+          },
+          "modal": {
+            "title": "Kolačići i mjerenje posjeta",
+            "description": "Ovdje možete pregledati i promijeniti izbor kolačića za ovu instalaciju. Informacije o obradi podataka i odgovornom operateru uređuje vaša zajednica.",
+            "analytics": {
+              "title": "Analitika posjeta",
+              "description": "Dodatna analitika nije uključena. Prije uključivanja zajednica mora navesti svoje pružaoce usluga, podatke koje obrađuju i pravila saglasnosti."
+            },
+            "marketing": {
+              "title": "Mjerenje naših Google kampanja",
+              "description": "Mjerenje promotivnih kampanja nije uključeno. Uključivanje zahtijeva zasebnu konfiguraciju i jasno objašnjenje građanima."
+            }
+          },
+          "details": {
+            "items": {
+              "mi-consent-v2": {
+                "service": "MI preduzimamo",
+                "description": "Čuva izbor kolačića u ovoj instalaciji platforme."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sr-Cyrl": {
+    "layouts": {
+      "decidim": {
+        "data_consent": {
+          "dialog": {
+            "title": "Твој избор колачића",
+            "description": "Неопходни колачићи омогућавају рад платформе. Додатна аналитика и мјерење кампања нису укључени у референтној инсталацији.",
+            "accept_all": "Прихвати омогућене категорије",
+            "accept_only_essential": "Само неопходни",
+            "settings": "Изабери посебно"
+          },
+          "modal": {
+            "title": "Колачићи и мјерење посјета",
+            "description": "Овдје можете прегледати и промијенити избор колачића за ову инсталацију. Информације о обради података и одговорном оператеру уређује ваша заједница.",
+            "analytics": {
+              "title": "Аналитика посјета",
+              "description": "Додатна аналитика није укључена. Прије укључивања заједница мора навести своје пружаоце услуга, податке које обрађују и правила сагласности."
+            },
+            "marketing": {
+              "title": "Мјерење наших Google кампања",
+              "description": "Мјерење промотивних кампања није укључено. Укључивање захтијева засебну конфигурацију и јасно објашњење грађанима."
+            }
+          },
+          "details": {
+            "items": {
+              "mi-consent-v2": {
+                "service": "MI preduzimamo",
+                "description": "Чува избор колачића у овој инсталацији платформе."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "bs": {
+    "layouts": {
+      "decidim": {
+        "data_consent": {
+          "dialog": {
+            "title": "Tvoj izbor kolačića",
+            "description": "Neophodni kolačići omogućavaju rad platforme. Dodatna analitika i mjerenje kampanja nisu uključeni u referentnoj instalaciji.",
+            "accept_all": "Prihvati omogućene kategorije",
+            "accept_only_essential": "Samo neophodni",
+            "settings": "Izaberi posebno"
+          },
+          "modal": {
+            "title": "Kolačići i mjerenje posjeta",
+            "description": "Ovdje možete pregledati i promijeniti izbor kolačića za ovu instalaciju. Informacije o obradi podataka i odgovornom operateru uređuje vaša zajednica.",
+            "analytics": {
+              "title": "Analitika posjeta",
+              "description": "Dodatna analitika nije uključena. Prije uključivanja zajednica mora navesti svoje pružaoce usluga, podatke koje obrađuju i pravila saglasnosti."
+            },
+            "marketing": {
+              "title": "Mjerenje naših Google kampanja",
+              "description": "Mjerenje promotivnih kampanja nije uključeno. Uključivanje zahtijeva zasebnu konfiguraciju i jasno objašnjenje građanima."
+            }
+          },
+          "details": {
+            "items": {
+              "mi-consent-v2": {
+                "service": "MI preduzimamo",
+                "description": "Čuva izbor kolačića u ovoj instalaciji platforme."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "hr": {
+    "layouts": {
+      "decidim": {
+        "data_consent": {
+          "dialog": {
+            "title": "Tvoj izbor kolačića",
+            "description": "Neophodni kolačići omogućavaju rad platforme. Dodatna analitika i mjerenje kampanja nisu uključeni u referentnoj instalaciji.",
+            "accept_all": "Prihvati omogućene kategorije",
+            "accept_only_essential": "Samo neophodni",
+            "settings": "Izaberi posebno"
+          },
+          "modal": {
+            "title": "Kolačići i mjerenje posjeta",
+            "description": "Ovdje možete pregledati i promijeniti izbor kolačića za ovu instalaciju. Informacije o obradi podataka i odgovornom operateru uređuje vaša zajednica.",
+            "analytics": {
+              "title": "Analitika posjeta",
+              "description": "Dodatna analitika nije uključena. Prije uključivanja zajednica mora navesti svoje pružaoce usluga, podatke koje obrađuju i pravila saglasnosti."
+            },
+            "marketing": {
+              "title": "Mjerenje naših Google kampanja",
+              "description": "Mjerenje promotivnih kampanja nije uključeno. Uključivanje zahtijeva zasebnu konfiguraciju i jasno objašnjenje građanima."
+            }
+          },
+          "details": {
+            "items": {
+              "mi-consent-v2": {
+                "service": "MI preduzimamo",
+                "description": "Čuva izbor kolačića u ovoj instalaciji platforme."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

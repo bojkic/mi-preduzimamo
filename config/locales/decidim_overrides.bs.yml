@@ -1,0 +1,620 @@
+---
+bs:
+  decidim:
+    menu:
+      home: Početna
+      help: Pomoć
+      processes: Odlučuj
+    forms:
+      errors:
+        error: Ovo polje sadrži grešku.
+    participatory_processes:
+      menu:
+        processes: Odlučuj
+    assemblies:
+      menu:
+        assemblies: Skupštine
+    search:
+      term_input_placeholder: Pretraga
+    content_blocks:
+      last_activity:
+        title: Posljednja aktivnost
+        view_all: Prikaži sve
+        name: Posljednja aktivnost
+      highlighted_elements_settings_form:
+        components:
+          all: Sve
+        orders:
+          random: Nasumično
+          recent: Najnovije
+    pages:
+      home:
+        extended:
+          debates: Rasprave
+          debates_explanation: Raspravljajte i razmjenjujte mišljenja te obogatite važne teme.
+          how_to_participate: Kako da učestvujem u procesu?
+          meetings: Sastanci
+          meetings_explanation: Saznajte gdje i kada možete učestvovati na javnim sastancima.
+          more_info: Više informacija o %{resource_name}
+          proposals: Prijedlozi
+          proposals_explanation: Dajte prijedloge, podržite postojeće i pokrenite promjene koje želite da vidite.
+        footer_sub_hero:
+          footer_sub_hero_body_html: Izgradimo otvorenije, transparentnije i saradničko društvo.<br /> Pridružite se, učestvujte i odlučujte.
+          footer_sub_hero_headline: Dobro došli na participativnu platformu organizacije %{organization}.
+          register: Otvori nalog
+        hero:
+          participate: Učestvuj
+          participate_title: Učestvujte u procesima na platformi
+          welcome: Dobro došli na %{organization}!
+        statistics:
+          headline: Statistika
+        sub_hero:
+          register: Otvori nalog
+          register_title: Otvori nalog
+      index:
+        standalone_pages: Stranice
+        subheading: Pregledajte stranice pomoći organizacije %{name}
+        title: Pomoć
+        topics: Teme
+    statistics:
+      comments_count: Komentari
+      followers_count: Pratioci
+      headline: Statistika
+      likes_count: Sviđanja
+      no_stats: Još nema statistike.
+      pages_count: Stranice
+      participants_count: Učesnici
+      processes_count: Procesi
+      proposals_count: Prijedlozi
+      surveys_count: Ankete
+      users_count: Učesnici
+    admin:
+      filters:
+        proposals:
+          state_eq:
+            values:
+              accepted: Prihvaćeno
+              evaluating: U procjeni
+              not_answered: Bez odgovora
+              published: Objavljeno
+              rejected: Odbijeno
+              withdrawn: Povučeno
+          with_any_state:
+            values:
+              state_not_published: Bez odgovora
+              state_published: Odgovoreno
+    devise:
+      registrations:
+        new:
+          already_have_an_account?: Već imate nalog?
+          log_in: Uloguj se
+          newsletter: Povremeno primaj bilten sa važnim informacijama
+          newsletter_title: Dozvola za kontakt
+          sign_up: Otvori nalog
+          subtitle: Otvorite nalog da biste učestvovali na platformi.
+          terms: uslovima korištenja
+          tos_agreement: Otvaranjem naloga prihvatate %{link}.
+          tos_title: Uslovi korištenja
+      sessions:
+        new:
+          are_you_new?: Niste još registrovani?
+          register: Otvori nalog
+          sign_in_disabled: Možete pristupiti pomoću vanjskog naloga.
+          sign_up_disabled: Otvaranje naloga je onemogućeno; možete pristupiti postojećim nalogom.
+      shared:
+        omniauth_buttons:
+          or: ili
+        password_fields:
+          hidden_password: Vaša lozinka je sakrivena
+          hide_password: Sakrij lozinku
+          show_password: Prikaži lozinku
+          shown_password: Vaša lozinka je prikazana
+    shared:
+      login_modal:
+        please_log_in: Molimo prijavite se
+        sign_up: Otvori nalog
+      confirm_modal:
+        cancel: Otkaži
+        ok: U redu
+        title: Potvrda
+      follow_button:
+        log_in_before_follow: Molimo prijavite se prije ove radnje
+      flag_modal:
+        close: Zatvori
+        description: Da li je ovaj sadržaj neprimjeren?
+        reason: Razlog
+        report: Prijavi
+        title: Prijavi neprimjeren sadržaj
+      reference:
+        reference: 'Referenca: %{reference}'
+      share_modal:
+        copy_share_link: Kopiraj
+        copy_share_link_clarification: Kopiraj vezu za dijeljenje u međuspremnik
+        copy_share_link_copied: Kopirano!
+        copy_share_link_cta: Ili kopiraj vezu
+        copy_share_link_message: Veza je uspješno kopirana u međuspremnik.
+        share: Podijeli
+        share_link: Veza za dijeljenje
+        share_to: Podijeli na %{service}
+    follows:
+      create:
+        button: Prati
+        participatory_space: Pratite <span>%{resource_name}</span>
+      destroy:
+        button: Otkaži praćenje
+    searches:
+      filters:
+        search: Pretraga
+        state:
+          active: Aktivno
+          all: Sve
+          future: Buduće
+          past: Prošlo
+      filters_small_view:
+        filter: Filter
+        filter_and_search: Filtriraj i pretraži
+        filter_by: Filtriraj po
+      results:
+        view_all: Prikaži sve (%{count})
+    share_widget:
+      download: Preuzmi
+      print: Štampaj poster
+      qr_code: QR kôd
+    profiles:
+      show:
+        contribution: Doprinos
+        activity: Aktivnost
+        badges: Bedževi
+        conversations: Poruke
+        followers: Pratioci
+        following: Prati
+        send_private_message: Pošalji privatnu poruku
+    comments:
+      comments:
+        title: Komentari
+        loading: Učitavanje komentara ...
+      add_comment:
+        form:
+          add_comment: Dodaj komentar
+          title: Dodaj svoj komentar
+        opinion:
+          ok: Za
+          neutral: Neutralno
+          ko: Protiv
+      order_by_comments:
+        title: 'Sortiraj po:'
+      comments_title: Komentar
+    proposals:
+      proposals:
+        count:
+          one: "%{count} prijedlog"
+          few: "%{count} prijedloga"
+          other: "%{count} prijedloga"
+        filters:
+          activity: Moja aktivnost
+          all: Sve
+          my_proposals: Moji prijedlozi
+          origin: Porijeklo
+          related_to: Povezano sa
+          scope: Obuhvat
+          search: Pretraga
+          state: Status
+          taxonomy_filters: Filteri
+          type: Tip
+          voted: Glasano
+        index:
+          click_here: Prikaži sve prijedloge
+          grid_mode: Prikaz mreže
+          list_mode: Prikaz liste
+          new_proposal: Novi prijedlog
+          see_all: Prikaži sve prijedloge
+          see_all_withdrawn: Prikaži sve povučene prijedloge
+          count:
+            one: "%{count} prijedlog"
+            few: "%{count} prijedloga"
+            other: "%{count} prijedloga"
+        new:
+          send: Nastavi
+          title: Napravi novi prijedlog
+        orders:
+          label: 'Sortiraj prijedloge po:'
+          most_commented: Najkomentarisaniji
+          most_followed: Najpraćeniji
+          most_liked: Najomiljeniji
+          most_voted: Najglasaniji
+          random: Nasumično
+          recent: Najnoviji
+          with_more_authors: Sa najviše autora
+        proposals:
+          empty: Još nema prijedloga.
+          empty_filters: Nema prijedloga koji odgovaraju ovim kriterijumima.
+        show:
+          answer: Odgovor
+          edit_proposal: Uredi
+          estimated_cost: Procijenjeni trošak
+          proposal_accepted_reason: 'Ovaj prijedlog je prihvaćen jer:'
+          proposal_in_evaluation_reason: Ovaj prijedlog se procjenjuje
+          proposal_rejected_reason: 'Ovaj prijedlog je odbijen jer:'
+          withdraw_proposal: Povuci
+        vote_button:
+          already_voted: Glasano
+          already_voted_hover: Povuci glas
+          maximum_votes_reached: Dostignuto je ograničenje glasova
+          no_votes_remaining: Nema preostalih glasova
+          vote: Glasaj
+          votes_blocked: Glasaj
+        votes_count:
+          count:
+            one: Glas
+            few: Glasa
+            other: Glasova
+        wizard_aside:
+          back: Nazad
+          back_from_step_1: Nazad na prijedloge
+          back_from_step_2: Nazad na uređivanje
+        wizard_steps:
+          current_step: Trenutni korak
+          step_1: Napravite svoj prijedlog
+          step_2: Objavite svoj prijedlog
+          title: Koraci za izradu prijedloga
+      last_activity:
+        new_proposal: 'Novi prijedlog:'
+        proposal_updated: 'Prijedlog ažuriran:'
+      models:
+        proposal:
+          fields:
+            comments: Komentari
+            official_proposal: Zvanični prijedlog
+            published_answer: Objavljeni odgovor
+            state: Status
+            title: Naslov
+            votes: Glasovi
+      components:
+        proposals:
+          actions:
+            amend: Izmijeni
+            comment: Komentariši
+            create: Napravi prijedlog
+            like: Sviđa mi se
+            vote: Glasaj
+            withdraw: Povuci
+          name: Prijedlozi
+    debates:
+      debates:
+        last_activity:
+          new_debate: Nova rasprava
+        index:
+          new_debate: Nova rasprava
+        new:
+          back: Nazad
+          create: Napravi
+          title: Napravi novu raspravu
+        orders:
+          commented: Najkomentarisanije
+          label: Sortiraj rasprave po
+          random: Nasumičan redoslijed
+          recent: Najnovije
+          updated: Nedavno ažurirano
+        show:
+          close_debate: Zatvori
+          closed: Zatvoreno
+          edit_debate: Uredi
+          not_started: Nije počelo
+          ongoing: U toku
+          open_ended: Otvorena
+          participants_count: Učesnici
+        count:
+          debates_count:
+            one: "%{count} rasprava"
+            few: "%{count} rasprave"
+            other: "%{count} rasprava"
+      last_activity:
+        debate_updated: 'Rasprava ažurirana:'
+        new_debate: 'Nova rasprava:'
+    budgets:
+      projects:
+        orders:
+          highest_cost: Najveći trošak
+          label: Sortiraj projekte po
+          lowest_cost: Najmanji trošak
+          most_voted: Najglasaniji
+          random: Nasumičan redoslijed
+          selected: Izabrani
+        project:
+          add: Dodaj projekat %{resource_name} svom glasu.
+          remove: Ukloni projekat %{resource_name} iz svog glasa.
+          selected: Izabrano
+          votes:
+            one: glas
+            few: glasa
+            other: glasova
+          you_voted: Glasali ste za ovo
+        project_budget_button:
+          add: Dodaj
+          add_descriptive: Dodaj projekat %{resource_name} svom glasu.
+          added: Dodato
+          added_descriptive: Projekat %{resource_name} dodat vašem glasu.
+        project_filter:
+          added: Dodato
+          all: Sve
+        select_projects: Dodaj projekte
+        show:
+          budget: Budžet
+          votes: Glasovi
+        vote_button:
+          remove_vote: Ukloni glas
+          vote: Glasaj
+        count:
+          projects_count:
+            one: "%{count} projekat"
+            few: "%{count} projekta"
+            other: "%{count} projekata"
+      orders_count: Podrške
+      projects_count: Budžeti
+      budgets_list:
+        count:
+          one: "%{count} budžet"
+          few: "%{count} budžeta"
+          other: "%{count} budžeta"
+    last_activities:
+      index:
+        last_activity: Posljednja aktivnost
+    help:
+      main_topic:
+        title: Općenito
+        description: Saznaj više o %{organization}.
+    components:
+      add_comment_form:
+        account_message: Prijavite se ili otvorite nalog da biste dodali komentar.
+        add_comment: Dodaj komentar
+        form:
+          body:
+            label: Komentar
+            placeholder: Šta mislite o ovome?
+          form_error: Tekst je obavezan i ne smije biti duži od %{length} znakova.
+          submit_reply: Objavi odgovor
+          submit_root_comment: Objavi komentar
+        opinion:
+          label: Vaše mišljenje o ovoj temi
+          negative: Protiv
+          negative_selected: Vaše mišljenje o ovoj temi je negativno
+          neutral: Neutralno
+          neutral_selected: Vaše mišljenje o ovoj temi je neutralno
+          positive: Za
+          positive_selected: Vaše mišljenje o ovoj temi je pozitivno
+        remaining_characters: 'Preostalo znakova: %{count}'
+        remaining_characters_1: Preostao još %{count} znak
+        title: Dodaj svoj komentar
+      comment:
+        alignment:
+          against: Protiv
+          in_favor: Za
+        answers:
+          one: "%{count} odgovor"
+          few: "%{count} odgovora"
+          other: "%{count} odgovora"
+        cancel_reply: Otkaži odgovor
+        confirm_destroy: Jeste li sigurni da želite izbrisati ovaj komentar?
+        controls_label: Kontrole komentara
+        delete: Izbriši
+        deleted_at: Komentar izbrisan %{date}
+        deleted_user: Izbrisani učesnik
+        edit: Uredi
+        edited: Uređeno
+        hide_replies:
+          one: Sakrij odgovor
+          few: Sakrij %{count} odgovora
+          other: Sakrij %{count} odgovora
+        reply: Odgovori
+        report:
+          action: Prijavi
+          already_reported: Ovaj sadržaj je već prijavljen i administrator će ga pregledati.
+          close: Zatvori
+          description: Je li ovaj sadržaj neprimjeren?
+          details: Dodatni komentari
+          reasons:
+            does_not_belong: Sadrži nezakonite radnje, prijetnje samoubistvom, lične podatke ili nešto što po vašem mišljenju ne pripada na %{organization_name}.
+            offensive: Sadrži rasizam, seksizam, uvrede, lične napade, prijetnje smrću, pozive na samoubistvo ili bilo koji oblik govora mržnje.
+            spam: Sadrži klikbejt, reklame, prevare ili skripte botova.
+          title: Prijavi neprimjeren sadržaj
+        show_replies:
+          one: Prikaži odgovor
+          few: Prikaži %{count} odgovora
+          other: Prikaži %{count} odgovora
+        single_comment_link_title: Preuzmi vezu
+        sort_by: 'Razvrstaj po: '
+      comment_order_selector:
+        order:
+          best_rated: Najbolje ocijenjeno
+          most_discussed: Najviše komentarisano
+          older: Najstarije
+          recent: Najnovije
+        title: 'Razvrstaj po:'
+      comments:
+        against: Protiv
+        blocked_comments_for_unauthorized_user_warning: Trenutno morate biti verificirani da biste komentarisali, ali možete čitati prethodne komentare.
+        blocked_comments_for_user_warning: Trenutno ne možete komentarisati, ali možete čitati prethodne komentare.
+        blocked_comments_warning: Komentari su trenutno onemogućeni, samo administratori mogu odgovarati ili objavljivati nove.
+        comment_details_title: Detalji komentara
+        in_favor: Za
+        loading: Učitavanje komentara ...
+        single_comment_warning: <a href="%{url}">Prikaži sve komentare</a>
+        single_comment_warning_title: Gledate pojedinačni komentar
+        title:
+          one: "%{count} komentar"
+          few: "%{count} komentara"
+          other: "%{count} komentara"
+        top_comment_label: Najviše glasova
+      down_vote_button:
+        text: Ne slažem se s ovim komentarom
+      edit_comment_modal_form:
+        close: Zatvori
+        form:
+          body:
+            label: Komentar
+            placeholder: Šta mislite o ovome?
+          submit: Pošalji
+        title: Uredi svoj komentar
+      up_vote_button:
+        text: Slažem se s ovim komentarom
+      pagination:
+        page_title: "%{component_name} - Stranica %{current_page} od %{total_pages}"
+    like_buttons_cell:
+      already_liked: Poništi sviđanje
+      like: Sviđa mi se
+    likes_list:
+      liked_by:
+        one: 'Sviđa se: %{visible}'
+        other: 'Sviđa se: %{visible} i %{others}'
+      others: još %{count}
+      title: Sviđa se
+      you: vi
+    versions:
+      resource_version:
+        of_versions: "(od %{number})"
+        see_other_versions: pogledaj druge verzije
+        version: Verzija broj %{number}
+    versions_list_item:
+      show:
+        version_index: Verzija %{index} od %{total}
+    version:
+      show:
+        back_to_resource: Nazad
+        changes_at_title: Promjene u "%{title}"
+        number_of_versions: Verzije
+        version_created_at: Verzija kreirana
+    fingerprint:
+      check: Provjeri otisak
+      explanation: Tekst ispod je skraćeni, heširani prikaz ovog sadržaja. Koristi se da se osigura da sadržaj nije mijenjan, jer bi i najmanja izmjena dala potpuno drugačiju vrijednost.
+      online_calculator_name: MD5 kalkulator onlajn
+      replicate_help: Ovaj otisak se računa pomoću SHA256 algoritma za heširanje. Da biste ga sami provjerili, možete koristiti %{online_calculator_link} i nalijepiti izvorne podatke.
+      source: Izvor
+      title: Digitalni otisak
+      value: Vrijednost
+  devise:
+    sessions:
+      new:
+        log_in: Uloguj se
+    registrations:
+      new:
+        sign_up: Otvori nalog
+    passwords:
+      new:
+        forgot_your_password: Zaboravljena lozinka?
+        send_me_reset_password_instructions: Pošalji mi uputstvo za resetovanje lozinke
+      edit:
+        change_my_password: Promijeni lozinku
+        confirm_new_password: Potvrdi novu lozinku
+        new_password: Nova lozinka
+        title: Promjena lozinke
+    shared:
+      links:
+        back: Nazad
+        didn_t_receive_confirmation_instructions: Niste primili uputstvo za potvrdu?
+        forgot_your_password: Zaboravljena lozinka?
+        log_in: Uloguj se
+        log_in_with_provider: Prijavi se preko %{provider}
+        sign_up: Otvori nalog
+  activerecord:
+    attributes:
+      decidim/user:
+        current_password: Trenutna lozinka
+        email: E-mail adresa
+        password: Lozinka
+        password_confirmation: Potvrda lozinke
+        remember_me: Zapamti me
+  activemodel:
+    attributes:
+      user:
+        email: Vaš e-mail
+        name: Vaše ime
+        nickname: Korisničko ime
+        old_password: Trenutna lozinka
+        password: Lozinka
+        password_confirmation: Potvrdite lozinku
+        tos_agreement: Saglasnost sa uslovima korištenja
+  layouts:
+    decidim:
+      header:
+        back: Nazad
+        close: Zatvori
+        log_in: Uloguj se
+        main_menu: Glavni meni
+        mobile_account_greeting: Zdravo, %{user_name}
+        user_menu: Korisnički meni
+      footer:
+        help: Pomoć
+        log_in: Uloguj se
+        open_data: Otvoreni podaci
+        resources: Resursi
+        sign_up: Otvori nalog
+        social_media: Društvene mreže
+        terms_of_service: Uslovi korištenja
+        data_consent_settings: Podešavanja kolačića
+      language_chooser:
+        choose_language: Izaberi jezik
+      user_menu:
+        account: 'Korisnički nalog: %{name}'
+        admin_dashboard: Administracija
+        configuration: Podešavanja
+        conversations: Poruke
+        log_out: Odjava
+        notifications: Obavještenja
+        profile: Moj nalog
+        public_profile: Moj javni profil
+        title: Profil
+        unread_conversations: Imate nepročitane poruke
+        unread_notifications: Imate nepročitana obavještenja
+      user_profile:
+        account: Nalog
+        authorizations: Ovlašćenja
+        delete_my_account: Obriši moj nalog
+        my_data: Moji podaci
+        notifications_settings: Podešavanja obavještenja
+        profile: Profil
+      navigation:
+        aria_label: 'Navigacioni meni: %{title}'
+      timeout_modal:
+        continue_session: Nastavi sesiju
+        log_out: Odjava
+        title: Želite li da nastavite sesiju?
+      data_consent:
+        dialog:
+          accept_all: Prihvati sve
+          accept_only_essential: Prihvati samo neophodne
+          description: Koristimo kolačiće da bismo poboljšali rad i sadržaj sajta. Kolačići nam omogućavaju da pružimo personaliziraniji doživljaj i sadržaje društvenih mreža.
+          settings: Podešavanja
+          title: Informacije o kolačićima koji se koriste na ovom sajtu
+        modal:
+          accept_all: Prihvati sve
+          accept_only_essential: Prihvati samo neophodne
+          save_settings: Sačuvaj podešavanja
+          title: Podešavanja kolačića
+          essential:
+            title: Neophodni
+          preferences:
+            title: Postavke
+          analytics:
+            title: Analitika i statistika
+          marketing:
+            title: Marketing
+        warning:
+          change_settings: Promijeni podešavanja kolačića
+      participatory_processes:
+        index:
+          promoted_processes: Istaknuti procesi
+        participatory_process:
+          active_step: Trenutna faza
+          more_info: Više informacija
+          more_info_about: Više informacija o procesu %{resource_name}
+          take_part: Učestvuj
+          take_part_in: Učestvuj u procesu %{resource_name}
+  views:
+    pagination:
+      next: Sljedeća
+      next_title: Veza ka sljedećoj stranici
+      pagination: Paginacija
+      previous: Prethodna
+      previous_title: Veza ka prethodnoj stranici
+      title: 'Broj stranice: '
+      truncate: "&hellip;"

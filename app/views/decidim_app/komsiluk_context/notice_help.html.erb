@@ -1,0 +1,9 @@
+<% add_decidim_page_title(t("decidim_app.komsiluk_boards.context.ask")) %>
+<div class="wrapper"><div class="mi-surface">
+  <h1><%= t("decidim_app.komsiluk_boards.context.ask") %></h1>
+  <h2><%= @post.title %></h2>
+  <p><%= t("decidim_app.komsiluk_boards.context.private_help") %></p>
+  <button type="button" class="mi-btn mi-btn--primary" data-mi-chat-open="true" data-mi-chat-draft="<%= @prompt %>"><%= t("decidim_app.komsiluk_boards.context.open_question") %></button>
+  <p><%= link_to t("decidim_app.komsiluk_boards.context.back_to_notice"), decidim_bih.komsiluk_board_path(@post) %></p>
+  <p><%= link_to t("decidim_app.komsiluk_boards.context.report_problem"), decidim_bih.new_report_path %></p>
+</div></div>

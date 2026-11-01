@@ -1,0 +1,456 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+RB="${RBENV_ROOT:-${HOME}/.rbenv}"
+if ! command -v ruby >/dev/null 2>&1 && [[ -x "$RB/versions/3.4.12/bin/ruby" ]]; then
+  export RBENV_ROOT="$RB"
+  export PATH="$RB/versions/3.4.12/bin:$PATH"
+fi
+
+# Resolve the checkout containing this script; an explicit APP_ROOT wins.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APP_ROOT="${APP_ROOT:-$(dirname "$SCRIPT_DIR")}"
+export BUNDLE_GEMFILE="$APP_ROOT/Gemfile"
+
+if command -v bundle >/dev/null 2>&1; then
+  exec bundle exec ruby -x "$0" "$@"
+fi
+
+exec ruby -x "$0" "$@"
+#!ruby
+# frozen_string_literal: true
+
+ENV["RAILS_ENV"] ||= "production"
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+
+require "bundler/setup"
+
+require_relative "../config/environment"
+require "sidekiq/api"
+
+Sidekiq.logger.level = Logger::WARN if defined?(Sidekiq.logger)
+
+def usage
+  warn <<~USAGE
+    Usage:
+      script/mi_viber_launch_readiness_smoke
+
+    Read-only launch-readiness smoke for the MI PRE(D)UZIMAMO! Viber channel
+    and ordered authentication delivery policy. It checks
+    route/config/queue/throttle shape and never sends messages to Infobip or
+    prints credential values.
+
+    Environment:
+      RAILS_ENV       Rails environment. Default: production
+      FAIL_ON_WARN    Exit nonzero on warn/fail rows. Default: 0
+  USAGE
+end
+
+if ARGV.first == "-h" || ARGV.first == "--help"
+  usage
+  exit 0
+end
+
+FAIL_ON_WARN = ENV.fetch("FAIL_ON_WARN", "0") == "1"
+
+@warnings = []
+
+def emit(section, metric, value, status: "ok", detail: nil)
+  status = status.to_s
+  @warnings << [section, metric, status] if %w[warn fail].include?(status)
+  puts [section, metric, value, status, detail.to_s.split.join(" ")[0, 240]].join("\t")
+end
+
+def secret_status(key, required: true, min_length: 1)
+  value = ENV.fetch(key, nil).to_s
+  if value.length >= min_length
+    emit("viber", key, "present", detail: "length_ok")
+  elsif required
+    emit("viber", key, "missing", status: "warn", detail: "required for enabled delivery surface")
+  else
+    emit("viber", key, "skipped", detail: "delivery surface is not enabled")
+  end
+end
+
+def webhook_secret_source_status
+  source_path, source_line = DecidimApp::Viber::WebhookController.instance_method(:provided_secret).source_location
+  source = File.readlines(source_path)[source_line - 1, 10].join
+  header_only = source.include?('request.headers["X-Webhook-Secret"]') &&
+                !source.match?(/\bparams\b|query_parameters|request\.query_string/)
+
+  if header_only
+    emit("viber", "webhook_secret_source", "header_only", detail: "header=X-Webhook-Secret")
+  else
+    emit(
+      "viber",
+      "webhook_secret_source",
+      "unexpected",
+      status: "fail",
+      detail: "expected header-only secret lookup"
+    )
+  end
+rescue StandardError => e
+  emit("viber", "webhook_secret_source", "unknown", status: "fail", detail: "#{e.class}: #{e.message}")
+end
+
+def concierge_org_host_status
+  host = ENV.fetch("DECIDIM_CONCIERGE_ORG_HOST", nil).to_s.strip
+  count = Decidim::Organization.count
+
+  if host.blank?
+    status =
+      if count == 1
+        "ok"
+      elsif Rails.env.production?
+        "fail"
+      else
+        "warn"
+      end
+    detail =
+      if count == 1
+        "env_absent; organization_count=1; selected_org_id=#{Decidim::Organization.order(:id).pick(:id)}"
+      else
+        "env_absent; organization_count=#{count}; expected_single_tenant_count=1"
+      end
+    return emit("viber", "concierge_org_host", "unset", status:, detail:)
+  end
+
+  organization = DecidimApp::Bijeljina::Concierge.organization
+  emit("viber", "concierge_org_host", "valid", detail: "env_host_matches; organization_id=#{organization.id}")
+rescue ActiveRecord::RecordNotFound
+  if host.present?
+    emit(
+      "viber",
+      "concierge_org_host",
+      "fail_closed",
+      status: "fail",
+      detail: "raises=ActiveRecord::RecordNotFound; no_fallback_to_default_org"
+    )
+  else
+    emit("viber", "concierge_org_host", "unknown", status: "fail", detail: "no default organization")
+  end
+rescue StandardError => e
+  emit("viber", "concierge_org_host", "unknown", status: "fail", detail: "#{e.class}: #{e.message}")
+end
+
+def public_onboarding_status
+  enabled = Decidim::Bih.viber_public_onboarding_enabled
+  bot_uri_present = Decidim::Bih.viber_bot_uri.to_s.strip.present?
+  delivery_ready = Decidim::Bih::Infobip::Client.new.viber_bot_configured?
+  webhook_ready = ENV.fetch("VIBER_WEBHOOK_SECRET", nil).to_s.length >= 16
+
+  if enabled && bot_uri_present && delivery_ready && webhook_ready
+    emit("viber", "public_onboarding", "enabled", detail: "bot_uri_delivery_and_webhook_ready")
+  elsif enabled
+    emit(
+      "viber",
+      "public_onboarding",
+      "misconfigured",
+      status: "fail",
+      detail: bot_uri_present ? "enabled_but_viber_bot_delivery_incomplete_or_webhook_missing" : "enabled_but_missing_VIBER_BOT_URI"
+    )
+  else
+    emit(
+      "viber",
+      "public_onboarding",
+      "disabled",
+      detail: "set DECIDIM_BIH_VIBER_PUBLIC_ONBOARDING_ENABLED=1 after live verification"
+    )
+  end
+end
+
+def viber_launch_approval_status(required:)
+  unless required
+    return emit("viber", "launch_approval", "skipped", detail: "no Bot or Messages API launch requested")
+  end
+
+  organization = DecidimApp::Bijeljina::Concierge.organization
+  approval = Decidim::Bih::GovernanceApproval.current_for(organization, "viber_launch")
+  if approval
+    emit("viber", "launch_approval", "current", detail: "valid_until=#{approval.valid_until.utc.iso8601}")
+  else
+    emit("viber", "launch_approval", "missing_or_expired", status: "warn",
+         detail: "record current viber_launch owner approval after live verification")
+  end
+rescue StandardError => e
+  emit("viber", "launch_approval", "unavailable", status: "warn", detail: e.class.name)
+end
+
+def durable_receipt_status(required:)
+  unless required
+    return emit("viber", "durable_receipts", "skipped", detail: "Viber Bot launch is disabled")
+  end
+
+  result = DecidimApp::DurableReceiptSchemaReadiness.call
+  unless result.table_exists
+    return emit("viber", "durable_receipts", "missing", status: "fail",
+                detail: "run pending decidim-bih migrations before launch")
+  end
+
+  ready = result.ready?
+  emit("viber", "durable_receipts", ready ? "channel_scoped_ordered_and_recoverable" : "missing",
+       status: ready ? "ok" : "fail",
+       detail: "dedupe_index=#{result.dedupe_index ? 'valid_unique' : 'missing_or_invalid'}; " \
+               "sender_order_index=#{result.sender_order_index ? 'present' : 'missing'}; " \
+               "effect_scrub_index=#{result.effect_scrub_index ? 'present' : 'missing'}; " \
+               "missing_columns=#{result.missing_columns.any? ? result.missing_columns.join(',') : 'none'}; " \
+               "missing_constraints=#{result.missing_constraints.any? ? result.missing_constraints.join(',') : 'none'}")
+rescue ActiveRecord::ActiveRecordError => e
+  emit("viber", "durable_receipts", "unavailable", status: "fail", detail: e.class.name)
+end
+
+puts "# mi viber launch readiness smoke"
+puts "# generated_at_utc=#{Time.now.utc.iso8601}"
+puts "# rails_env=#{Rails.env}"
+puts "section\tmetric\tvalue\tstatus\tdetail"
+
+begin
+  route = Rails.application.routes.recognize_path("/biceriseno/viber/webhook", method: :post)
+  expected = route[:controller] == "decidim_app/viber/webhook" && route[:action] == "create"
+  emit("viber", "webhook_route", expected ? "present" : "mismatch", status: expected ? "ok" : "fail", detail: route.inspect)
+rescue ActionController::RoutingError => e
+  emit("viber", "webhook_route", "missing", status: "fail", detail: e.message)
+end
+
+webhook_secret_source_status
+concierge_org_host_status
+
+config = Decidim::Bih::Config.infobip
+client = Decidim::Bih::Infobip::Client.new
+public_onboarding_enabled = Decidim::Bih.viber_public_onboarding_enabled
+bot_sender_present = config[:viber_bot_sender].present?
+bot_uri_present = Decidim::Bih.viber_bot_uri.to_s.strip.present?
+# The Viber Bot is a separately-billed product gated by an explicit switch.
+# While it is off, leftover Bot credentials are NOT a launch request and must
+# not raise warnings — the deployment runs on Business Messages only.
+bot_enabled = Decidim::Bih::Config.viber_bot_enabled?
+bot_delivery_required = bot_enabled && (public_onboarding_enabled || bot_sender_present || bot_uri_present)
+messages_api_enabled = config[:messages_api_enabled]
+viber_templates = [config[:viber_otp_template_id], config[:viber_login_template_id]]
+viber_templates_present = viber_templates.count(&:present?)
+viber_templates_ready = viber_templates_present == viber_templates.size
+business_delivery_required = messages_api_enabled || viber_templates_present.positive?
+
+emit(
+  "viber",
+  "bot_launch_gate",
+  bot_delivery_required ? "requested" : "disabled",
+  detail: if bot_delivery_required
+            "sender_uri_or_public_flag_present"
+          elsif bot_enabled
+            "bot_enabled_but_no_bot_sender_uri_or_public_flag"
+          else
+            "DECIDIM_BIH_VIBER_BOT_ENABLED is off; Business Messages only"
+          end
+)
+viber_launch_approval_status(required: bot_delivery_required || messages_api_enabled)
+durable_receipt_status(required: bot_delivery_required)
+
+secret_status("VIBER_WEBHOOK_SECRET", required: bot_delivery_required, min_length: 16)
+secret_status("INFOBIP_BASE_URL", required: true)
+secret_status("INFOBIP_API_KEY", required: true, min_length: 16)
+secret_status("INFOBIP_SMS_SENDER", required: true)
+if config[:viber_bm_sender].present?
+  sender_source = ENV.fetch("INFOBIP_VIBER_BM_SENDER", nil).to_s.present? ? "explicit_key" : "legacy_alias"
+  emit("viber", "INFOBIP_VIBER_BM_SENDER", "present", detail: "source=#{sender_source}")
+elsif business_delivery_required
+  emit("viber", "INFOBIP_VIBER_BM_SENDER", "missing", status: "warn",
+       detail: "required for enabled Messages API or staged templates")
+else
+  emit("viber", "INFOBIP_VIBER_BM_SENDER", "skipped", detail: "Viber Business Messages not configured")
+end
+secret_status("INFOBIP_VIBER_BOT_SENDER", required: bot_delivery_required)
+secret_status("INFOBIP_VIBER_BM_OTP_TEMPLATE_ID", required: messages_api_enabled)
+secret_status("INFOBIP_VIBER_BM_LOGIN_TEMPLATE_ID", required: messages_api_enabled)
+secret_status("INFOBIP_WHATSAPP_SENDER", required: false)
+secret_status("INFOBIP_WHATSAPP_PHONE_TEMPLATE_NAME", required: false)
+secret_status("INFOBIP_MESSENGER_SENDER", required: false)
+secret_status("VIBER_BOT_URI", required: bot_enabled && public_onboarding_enabled)
+
+emit("viber", "infobip_client", client.configured? ? "configured" : "unconfigured", status: client.configured? ? "ok" : "warn")
+emit(
+  "viber",
+  "infobip_viber_bm_sender",
+  config[:viber_bm_sender].present? ? "present" : (business_delivery_required ? "missing" : "skipped"),
+  status: config[:viber_bm_sender].present? || !business_delivery_required ? "ok" : "warn",
+  detail: business_delivery_required ? "required_by_messages_api_or_staged_templates" : "legacy Viber is optional; direct SMS remains available"
+)
+emit(
+  "viber",
+  "infobip_viber_bot_sender",
+  bot_sender_present ? "present" : (bot_delivery_required ? "missing" : "skipped"),
+  status: bot_sender_present || !bot_delivery_required ? "ok" : "warn",
+  detail: bot_delivery_required ? "bot_user_id_addressed_ai_thread" : "Bot delivery is not enabled"
+)
+emit(
+  "viber",
+  "viber_identity_linkage",
+  "app_managed",
+  detail: "organization_scoped_bot_user_id_to_verified_phone_and_decidim_user"
+)
+emit(
+  "viber",
+  "viber_bm_auth_templates",
+  if viber_templates_ready
+    "ready"
+  elsif viber_templates_present.positive? || messages_api_enabled
+    "partial"
+  else
+    "skipped"
+  end,
+  status: viber_templates_present == 1 || (messages_api_enabled && !viber_templates_ready) ? "warn" : "ok",
+  detail: messages_api_enabled ? "required approved OTP and login templates" : "optional until Messages API launch"
+)
+emit("viber", "phone_delivery_policy", "viber>whatsapp>sms", detail: "authentication_and_verification; messenger_excluded")
+whatsapp_language = config[:whatsapp_template_language].to_s.presence
+whatsapp_language_ready = whatsapp_language == Decidim::Bih::Config::WHATSAPP_AUTH_TEMPLATE_LANGUAGE
+emit(
+  "viber",
+  "whatsapp_phone_template_language",
+  whatsapp_language || "unset",
+  status: whatsapp_language_ready ? "ok" : "warn",
+  detail: "expected=#{Decidim::Bih::Config::WHATSAPP_AUTH_TEMPLATE_LANGUAGE}; AUTH template only"
+)
+whatsapp_sender_present = config[:whatsapp_sender].present?
+whatsapp_template_present = config[:whatsapp_template_name].present?
+whatsapp_partial = whatsapp_sender_present ^ whatsapp_template_present ||
+                   (whatsapp_sender_present && whatsapp_template_present && !whatsapp_language_ready)
+whatsapp_auth_configured = Decidim::Bih::Config.whatsapp_phone_auth_configured?
+if messages_api_enabled
+  emit("viber", "messages_api", "enabled", detail: "Infobip_manages_delivery_failover")
+  emit(
+    "viber",
+    "whatsapp_phone_delivery",
+    whatsapp_auth_configured ? "configured" : (whatsapp_partial ? "partial" : "skipped"),
+    status: whatsapp_partial ? "warn" : "ok",
+    detail: whatsapp_auth_configured ? "sender_template_and_language_configured; approval_and_live_delivery_unverified" : "optional AUTH channel; configure sender, approved template and sr language together"
+  )
+else
+  emit("viber", "messages_api", "disabled", detail: "legacy_viber_to_sms_compatibility")
+  emit(
+    "viber",
+    "whatsapp_phone_delivery",
+    whatsapp_auth_configured ? "staged" : (whatsapp_partial ? "partial" : "skipped"),
+    status: whatsapp_partial ? "warn" : "ok",
+    detail: whatsapp_auth_configured ? "configured_but_inactive_until_messages_api; approval_and_live_delivery_unverified" : "enable after Infobip onboarding"
+  )
+end
+emit(
+  "viber",
+  "messenger_phone_delivery",
+  "excluded",
+  detail: "phone_authentication_policy_never_uses_messenger_even_when_configured"
+)
+emit(
+  "viber",
+  "viber_bot_uri",
+  bot_uri_present ? "present" : (public_onboarding_enabled ? "missing" : "skipped"),
+  status: bot_uri_present || !public_onboarding_enabled ? "ok" : "warn",
+  detail: public_onboarding_enabled ? "required public deep link" : "optional until public onboarding"
+)
+public_onboarding_status
+
+begin
+  processes = Sidekiq::ProcessSet.new.size
+  runtime_ready = processes.positive? || Rails.env.test?
+  emit("viber", "sidekiq_processes", processes, status: runtime_ready ? "ok" : "warn",
+       detail: processes.positive? ? "workers_available" : "not_required_in_test")
+  queue = Sidekiq::Queue.new("integrations")
+  emit("viber", "integrations_queue", queue.size, detail: "latency=#{queue.latency.round(1)}s")
+rescue StandardError => e
+  emit("viber", "sidekiq_status", "unavailable", status: Rails.env.test? ? "ok" : "warn",
+       detail: "#{e.class}: #{e.message}")
+end
+
+if defined?(Rack::Attack) && Rack::Attack.throttles["bih/viber.webhook/ip"]
+  throttle = Rack::Attack.throttles.fetch("bih/viber.webhook/ip")
+  emit("viber", "webhook_throttle", "present", detail: "limit=#{throttle.limit} period=#{throttle.period}")
+else
+  emit("viber", "webhook_throttle", "missing", status: "fail", detail: "expected Rack::Attack throttle")
+end
+
+controller = DecidimApp::Viber::WebhookController
+if controller < ActionController::Base
+  emit("viber", "webhook_controller", "base_controller", detail: "server-to-server endpoint avoids browser gate")
+else
+  emit("viber", "webhook_controller", "unexpected_parent", status: "warn", detail: controller.superclass.name)
+end
+
+# --- Viber Business Messages two-way (the live MIlica transport) ---------------
+bm_channel = DecidimApp::Bijeljina::Concierge::BUSINESS_MESSAGES_CHANNEL
+
+begin
+  bm_route = Rails.application.routes.recognize_path("/biceriseno/viber-bm/webhook", method: :post)
+  bm_route_ok = bm_route[:controller] == "decidim_app/infobip/webhook" && bm_route[:action] == "viber_bm"
+  emit("viber_bm", "webhook_route", bm_route_ok ? "present" : "mismatch",
+       status: bm_route_ok ? "ok" : "fail", detail: bm_route.inspect)
+rescue ActionController::RoutingError => e
+  emit("viber_bm", "webhook_route", "missing", status: "fail", detail: e.message)
+end
+
+# A channel that has not been opened yet is a deliberate state, not a warning —
+# same convention as the Bot rows above. Warn only when the channel IS open but
+# its delivery configuration is incomplete, which is a real misconfiguration.
+bm_enabled = config[:chat_channels].include?(bm_channel)
+emit("viber_bm", "channel_gate", bm_enabled ? "enabled" : "disabled",
+     detail: if bm_enabled
+               "INFOBIP_CHAT_CHANNELS includes viber_bm"
+             else
+               "add viber_bm to INFOBIP_CHAT_CHANNELS once Infobip confirms two-way"
+             end)
+
+bm_ready = client.chat_channel_configured?(bm_channel)
+if bm_enabled
+  emit("viber_bm", "two_way_delivery", bm_ready ? "configured" : "incomplete",
+       status: bm_ready ? "ok" : "warn",
+       detail: "needs base URL, API key and INFOBIP_VIBER_BM_SENDER")
+else
+  emit("viber_bm", "two_way_delivery", "skipped",
+       detail: "delivery surface is not enabled")
+end
+
+bm_secret = ENV.fetch("VIBER_BM_WEBHOOK_SECRET", nil).to_s.presence ||
+            ENV.fetch("INFOBIP_CHAT_WEBHOOK_SECRET", nil).to_s
+bm_secret_ok = bm_secret.bytesize >= 16
+if bm_enabled
+  emit("viber_bm", "webhook_secret", bm_secret_ok ? "present" : "missing",
+       status: bm_secret_ok ? "ok" : "fail",
+       detail: "VIBER_BM_WEBHOOK_SECRET (or INFOBIP_CHAT_WEBHOOK_SECRET), min 16 bytes")
+else
+  emit("viber_bm", "webhook_secret", bm_secret_ok ? "present" : "skipped",
+       detail: "required once viber_bm is enabled")
+end
+
+bm_public_enabled = ENV.fetch("DECIDIM_BIH_VIBER_BM_PUBLIC_ONBOARDING_ENABLED", "false").match?(/\A(true|1|yes|on)\z/i)
+if bm_public_enabled
+  visible = Decidim::Bih::ViberBusinessPublicOnboarding.available?(DecidimApp::Bijeljina::Concierge.organization)
+  emit("viber_bm", "public_onboarding", visible ? "enabled" : "blocked",
+       status: visible ? "ok" : "fail",
+       detail: "requires configured Business Messages and webhook secret")
+else
+  emit("viber_bm", "public_onboarding", "disabled",
+       detail: "enable after owner approval; Bot deep link is independent")
+end
+
+if defined?(Rack::Attack) && Rack::Attack.throttles["bih/viber-bm.webhook/ip"]
+  bm_throttle = Rack::Attack.throttles.fetch("bih/viber-bm.webhook/ip")
+  emit("viber_bm", "webhook_throttle", "present",
+       detail: "limit=#{bm_throttle.limit} period=#{bm_throttle.period}")
+else
+  emit("viber_bm", "webhook_throttle", "missing", status: "fail", detail: "expected Rack::Attack throttle")
+end
+
+# The full concierge must own this channel; the guidance-only adapter would
+# silently drop report filing and goodwill attribution.
+bm_full_concierge = Decidim::Bih::Infobip::InboundMessage::CHANNELS.include?(bm_channel)
+emit("viber_bm", "concierge_routing", bm_full_concierge ? "full_concierge" : "unregistered",
+     status: bm_full_concierge ? "ok" : "fail",
+     detail: "viber_bm routes to DecidimApp::Bijeljina::Concierge, not ExternalChatConcierge")
+
+failures = @warnings.count { |_section, _metric, status| status == "fail" }
+warns = @warnings.count
+overall = failures.positive? ? "fail" : (warns.positive? ? "warn" : "ok")
+emit("viber", "overall", overall, status: overall, detail: "warnings=#{warns} failures=#{failures}")
+
+exit 1 if failures.positive?
+exit 1 if FAIL_ON_WARN && warns.positive?

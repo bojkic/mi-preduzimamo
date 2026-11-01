@@ -1,0 +1,65 @@
+<% phase = mi_project_phase(process)
+   components = process.components.published.where(manifest_name: "proposals").order(:weight)
+   archive = process.components.published.find_by(manifest_name: "pages") %>
+<main class="mi-project-choice" id="main-content">
+  <header class="mi-project-choice__hero">
+  <% if process.hero_image.attached? %>
+    <%= image_tag process.attached_uploader(:hero_image).url,
+                  alt: t("mi_project_choice.image_alt"),
+                  class: "mi-project-cover", width: 2048, height: 683,
+                  decoding: "async", fetchpriority: "high" %>
+  <% end %>
+    <p class="mi-project-choice__eyebrow"><%= t("mi_project_choice.eyebrow") %></p>
+    <h1><%= translated_attribute(process.title) %></h1>
+    <p class="mi-project-choice__lead"><%= t("mi_project_choice.intro") %></p>
+    <div class="mi-project-choice__status"><span><%= t("mi_project_choice.now") %>: <%= t("mi_project_choice.phase_#{phase}") %></span><p><%= t("mi_project_choice.open_#{phase}") %></p></div>
+  </header>
+
+  <section aria-labelledby="choose-neighborhood" class="mi-project-choice__section">
+    <h2 id="choose-neighborhood"><%= t("mi_project_choice.choose") %></h2>
+    <p><%= t("mi_project_choice.choose_help") %></p>
+    <div class="mi-project-choice__cards">
+      <% components.each do |component| %>
+        <article class="mi-project-choice__card">
+          <p class="mi-project-choice__budget"><%= t("mi_project_choice.budget") %></p>
+          <h3><%= mi_project_name(component) %></h3>
+          <p><%= t("mi_project_choice.card_help") %></p>
+          <div class="mi-project-choice__actions">
+            <% if component.current_settings.creation_enabled? %>
+              <%= link_to t("mi_project_choice.submit"), mi_project_link(component, submit: true), class: "mi-project-choice__button" %>
+            <% end %>
+            <%= link_to t("mi_project_choice.#{phase == 2 ? 'ballot' : phase == 3 ? 'results' : 'browse'}"), mi_project_link(component), class: "mi-project-choice__button mi-project-choice__button--outline" %>
+          </div>
+        </article>
+      <% end %>
+    </div>
+    <p class="mi-project-choice__hint"><%= t("mi_project_choice.login_hint") %></p>
+  </section>
+
+  <section class="mi-project-choice__section" aria-labelledby="how-we-choose">
+    <h2 id="how-we-choose"><%= t("mi_project_choice.how") %></h2>
+    <ol class="mi-project-choice__steps">
+      <% 4.times do |index| %>
+        <li class="<%= 'is-current' if index == phase %>" <%= 'aria-current=step' if index == phase %>>
+          <span class="mi-project-choice__number" aria-hidden="true"><%= index + 1 %></span>
+          <div><p class="mi-project-choice__step-status"><%= t("mi_project_choice.#{index == phase ? 'now' : index < phase ? 'done' : 'next'}") %></p>
+          <h3><%= t("mi_project_choice.phase_#{index}") %></h3><p><%= t("mi_project_choice.step_#{index}") %></p></div>
+        </li>
+      <% end %>
+    </ol>
+  </section>
+
+  <div class="mi-project-choice__details">
+    <section aria-labelledby="who-participates"><h2 id="who-participates"><%= t("mi_project_choice.participation") %></h2>
+      <p><%= t("mi_project_choice.propose_rule") %></p><p><%= t("mi_project_choice.vote_rule") %></p><p class="mi-project-choice__hint"><%= t("mi_project_choice.vote_note") %></p>
+    </section>
+    <section aria-labelledby="proposal-checklist"><h2 id="proposal-checklist"><%= t("mi_project_choice.idea_title") %></h2>
+      <p><%= t("mi_project_choice.idea_intro") %></p><ul><% (1..4).each do |n| %><li><%= t("mi_project_choice.idea_#{n}") %></li><% end %></ul>
+    </section>
+  </div>
+  <% if archive %>
+    <aside class="mi-project-choice__archive"><div><h2><%= t("mi_project_choice.archive") %></h2><p><%= t("mi_project_choice.archive_help") %></p></div>
+      <%= link_to t("mi_project_choice.archive_link"), mi_project_link(archive), class: "mi-project-choice__button mi-project-choice__button--outline" %>
+    </aside>
+  <% end %>
+</main>

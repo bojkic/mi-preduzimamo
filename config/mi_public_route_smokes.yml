@@ -1,0 +1,128 @@
+# Canonical anonymous public routes used by MI HTTP/browser/performance smokes.
+# Query-bearing labels are collapsed by the smoke scripts as ?[query].
+http_routes:
+  - /
+  - /biceriseno/prijave/new
+  - /biceriseno/mapa
+  - /biceriseno/mjesne-zajednice
+  - /biceriseno/mjesne-zajednice/mz-centar
+  - /biceriseno/projekti
+  - /biceriseno/donacije
+  - /biceriseno/uticaj
+  - /biceriseno/vodic
+  - /biceriseno/verifikacija
+  - /biceriseno/zajednistvo?tab=kako
+  - /biceriseno/zajednistvo?tab=tabla
+  - /biceriseno/zajednistvo?tab=nagrade
+  - /biceriseno/podrzi
+  - /biceriseno/zajednistvo?tab=pozovi
+  - /biceriseno/volontiranje
+  - /biceriseno/organizacije
+  - /users/sign_in
+  - /biceriseno/mi-bot
+  - /up
+
+lighthouse_routes:
+  - /
+  - /biceriseno/prijave/new
+  - /biceriseno/mapa
+  - /biceriseno/projekti
+  - /biceriseno/donacije
+  - /biceriseno/uticaj
+  - /biceriseno/vodic
+  - /biceriseno/verifikacija
+  - /biceriseno/zajednistvo?tab=kako
+  - /biceriseno/zajednistvo?tab=tabla
+  - /biceriseno/zajednistvo?tab=nagrade
+  - /biceriseno/podrzi
+  - /biceriseno/zajednistvo?tab=pozovi
+  - /biceriseno/volontiranje
+  - /biceriseno/organizacije
+  - /users/sign_in
+  - /biceriseno/mi-bot
+
+budget_routes:
+  - path: /biceriseno/mapa.json
+    starttransfer_env: MAP_JSON_MAX_STARTTRANSFER_MS
+    starttransfer_default: 2000
+    total_env: MAP_JSON_MAX_TOTAL_MS
+    total_default: 2500
+    bytes_env: MAP_JSON_MAX_BYTES
+    bytes_default: 600000
+  - path: /biceriseno/mapa
+    starttransfer_env: MAP_PAGE_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: MAP_PAGE_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: MAP_PAGE_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/mapa-problema
+    starttransfer_env: HEATMAP_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: HEATMAP_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: HEATMAP_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/uticaj
+    starttransfer_env: IMPACT_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: IMPACT_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: IMPACT_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/zajednistvo
+    starttransfer_env: HUB_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: HUB_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: HUB_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/zajednistvo?tab=tabla
+    starttransfer_env: HUB_TABLA_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: HUB_TABLA_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: HUB_TABLA_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/zajednistvo?tab=tabla&period=month
+    starttransfer_env: HUB_MONTH_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: HUB_MONTH_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: HUB_MONTH_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/donacije
+    starttransfer_env: DONATIONS_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: DONATIONS_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: DONATIONS_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/projekti
+    starttransfer_env: COMMUNITY_PROJECTS_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: COMMUNITY_PROJECTS_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: COMMUNITY_PROJECTS_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/mjesne-zajednice
+    starttransfer_env: MZ_DIRECTORY_MAX_STARTTRANSFER_MS
+    starttransfer_default: 3500
+    total_env: MZ_DIRECTORY_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: MZ_DIRECTORY_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/mjesne-zajednice/mz-centar
+    starttransfer_env: MZ_DETAIL_MAX_STARTTRANSFER_MS
+    starttransfer_default: 5000
+    total_env: MZ_DETAIL_MAX_TOTAL_MS
+    total_default: 6000
+    bytes_env: MZ_DETAIL_MAX_BYTES
+    bytes_default: 350000
+  - path: /biceriseno/mjesne-zajednice/mz-centar.json
+    starttransfer_env: MZ_GEOJSON_MAX_STARTTRANSFER_MS
+    starttransfer_default: 2500
+    total_env: MZ_GEOJSON_MAX_TOTAL_MS
+    total_default: 3000
+    bytes_env: MZ_GEOJSON_MAX_BYTES
+    bytes_default: 750000

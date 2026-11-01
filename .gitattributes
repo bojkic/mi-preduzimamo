@@ -1,0 +1,17 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+
+# Mark the database schema as having been generated.
+db/schema.rb linguist-generated
+
+# Mark any vendored files as having been vendored.
+vendor/* linguist-vendored
+config/credentials/*.yml.enc diff=rails_credentials
+config/credentials.yml.enc diff=rails_credentials
+
+# Preserve verbatim upstream licence whitespace.
+public/leaflet/LICENSE whitespace=-blank-at-eol
+public/mi/fonts/JOST-OFL.txt whitespace=-blank-at-eol
+public/mi/fonts/MULISH-OFL.txt whitespace=-blank-at-eol
+public/mi/fonts/SOURCE-SANS-PRO-OFL.txt whitespace=-blank-at-eol
+public/mi/licenses/BROWSER_THIRD_PARTY_NOTICES.txt whitespace=-blank-at-eol
+docs/licences/w3c_validators-1.3.7.txt whitespace=-blank-at-eol,-blank-at-eof

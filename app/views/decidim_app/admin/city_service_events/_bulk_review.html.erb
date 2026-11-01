@@ -1,0 +1,45 @@
+<% if @events.any? { |event| workflow_entry(event).editable? } %>
+  <details class="city-alerts-mobile-disclosure" data-city-mobile-collapse open>
+    <summary><%= t("decidim_app.admin.city_service_events.index.bulk.title") %></summary>
+  <%= form_with url: decidim_app_admin_city_service_events_bulk_review_path, method: :post, local: true,
+                html: { id: "city-service-bulk-review" }, class: "form form-defaults" do %>
+    <fieldset>
+      <legend><%= t("decidim_app.admin.city_service_events.index.bulk.title") %></legend>
+      <label>
+        <%= check_box_tag :select_page, "1", false, id: "city-service-select-page" %>
+        <%= t("decidim_app.admin.city_service_events.index.bulk.select_page") %>
+      </label>
+      <p><%= t("decidim_app.admin.city_service_events.index.bulk.help") %></p>
+      <%= label_tag :bulk_review_note, t("decidim_app.admin.city_service_events.index.fields.review_note") %>
+      <%= text_field_tag :review_note, nil, required: true, maxlength: 2000, id: "bulk_review_note" %>
+      <%#
+        Decidim's confirm dialog re-submits through `form.requestSubmit()` with
+        NO submitter (decidim-core confirm.js), so a submit button's own
+        name/value is dropped and the batch arrived with no bulk_action at all
+        — refused as :invalid_selection, which is what operators saw as
+        "grupni pregled ne radi". The chosen action therefore travels in a
+        field, not on the button. The buttons keep their name so the form
+        still works with no JavaScript: this hidden field comes first in the
+        DOM, so a real submitter's value still wins.
+      %>
+      <%= hidden_field_tag :bulk_action, nil, id: "city-service-bulk-action" %>
+      <%= button_tag t("decidim_app.admin.city_service_events.index.bulk.review"), name: :bulk_action, value: "review", class: "button button__sm button__secondary" %>
+      <%= button_tag t("decidim_app.admin.city_service_events.index.bulk.dismiss"), name: :bulk_action, value: "dismiss",
+                     class: "button button__sm button__transparent-secondary mi-admin-action--danger",
+                     data: { confirm: t("decidim_app.admin.city_service_events.index.actions.dismiss_confirm") } %>
+    </fieldset>
+  <% end %>
+  </details>
+  <%= javascript_tag nonce: true do %>
+    document.getElementById("city-service-select-page").addEventListener("change", function () {
+      document.querySelectorAll(".city-service-bulk-selection").forEach((input) => { input.checked = this.checked; });
+    });
+    // Capture phase: this must record the action BEFORE any confirm handler
+    // cancels the click and re-submits the form without a submitter.
+    document.getElementById("city-service-bulk-review").addEventListener("click", function (event) {
+      const button = event.target.closest("button[value]");
+      if (!button) { return; }
+      document.getElementById("city-service-bulk-action").value = button.value;
+    }, true);
+  <% end %>
+<% end %>

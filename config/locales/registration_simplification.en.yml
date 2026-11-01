@@ -1,0 +1,8 @@
+en:
+  mi_registration:
+    race_starts: 'The race starts %{date}.'
+    register: Register
+    race_offer: 'Your neighbourhood could win 3,000 KM for a community project. Verify
+      your phone and choose where you live: your registration adds %{points} point
+      to the neighbourhood race.'
+    closed_offer: Register for local information and activities.

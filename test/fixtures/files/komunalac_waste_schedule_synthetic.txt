@@ -1,0 +1,17 @@
+# SYNTHETIC Komunalac-format waste-schedule sample for the generic parser test.
+# Fictional area names — NOT real Bijeljina data. Exercises the table layout:
+# a "Рејон" line, a weekday header row, and body cells assigned to the nearest
+# weekday column. "Виноградска" appears on two weekdays to test calendar order.
+
+Рејон 1
+
+
+         Понедељак         Уторак        Сриједа       Четвртак         Петак
+ РБ
+            Село            Село           Село          Село           Села
+
+  1. Виноградска        Лиснато        Брезова        Поточара      Чаршија
+
+  2. Сунчана            Долина         Брезова        Звездара      Виноградска
+
+  3. Раскршће           Међаши         Подграђе       Љесковик

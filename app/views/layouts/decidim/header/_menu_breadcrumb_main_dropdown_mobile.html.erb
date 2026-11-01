@@ -1,0 +1,7 @@
+<div id="<%= id %>" class="mi-navigation-panel">
+  <%= render partial: "layouts/decidim/header/menu_form_search_mobile" %>
+  <nav aria-label="<%= t('layouts.decidim.header.main_menu') %>">
+    <%= mobile_breadcrumb_root_menu.render %>
+  </nav>
+  <%= render partial: "layouts/decidim/header/main_language_chooser", locals: { id: "mi-mobile-language-chooser" } %>
+</div>

@@ -1,0 +1,31 @@
+---
+en:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          source_disabled_by_owner: Publication or sending was not performed because the source is disabled.
+sr:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          source_disabled_by_owner: Objava ili slanje nisu izvršeni jer je izvor isključen.
+sr-Cyrl:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          source_disabled_by_owner: Објава или слање нису извршени јер је извор искључен.
+bs:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          source_disabled_by_owner: Objava ili slanje nisu izvršeni jer je izvor isključen.
+hr:
+  decidim_app:
+    admin:
+      city_service_events:
+        workflow_results:
+          source_disabled_by_owner: Objava ili slanje nisu izvršeni jer je izvor isključen.

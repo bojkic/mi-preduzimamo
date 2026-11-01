@@ -1,0 +1,13 @@
+<section class="city-review-map" data-tile-url="<%= Rails.env.test? ? '' : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' %>" data-city-map-url="<%= decidim_app_admin_city_service_event_map_path(event) %>" data-unknown-label="<%= t('decidim_app.admin.city_service_events.compact.unknown') %>" data-error-label="<%= t('decidim_app.admin.city_service_events.compact.error') %>" data-stale-label="<%= t('decidim_app.admin.city_service_events.compact.stale') %>" data-review-token="<%= event.answer_review_token %>">
+  <h3><%= t('decidim_app.admin.city_service_events.compact.location') %></h3>
+  <p><strong><%= t('decidim_app.admin.city_service_events.compact.affected') %>:</strong> <%= event.affected_text.presence || '—' %></p>
+  <p><%= t('decidim_app.admin.city_service_events.compact.map_help') %></p>
+  <button type="button" data-city-load-map class="button button__sm button__secondary"><%= t('decidim_app.admin.city_service_events.compact.open_map') %></button>
+  <p data-city-map-status role="status" aria-live="polite"></p>
+  <div data-city-map-canvas hidden aria-label="<%= t('decidim_app.admin.city_service_events.compact.location') %>"></div>
+  <label><input type="checkbox" data-city-map-mz> <%= t('decidim_app.admin.city_service_events.compact.mz') %></label>
+  <button type="button" data-city-map-fit hidden><%= t('decidim_app.admin.city_service_events.compact.fit') %></button>
+  <p><%= t('decidim_app.admin.city_service_events.compact.legend') %></p>
+  <label><%= t('decidim_app.admin.city_service_events.compact.search') %><input type="search" data-city-board-search></label>
+  <div data-city-board-list class="city-review-board-list"></div>
+</section>

@@ -1,0 +1,13 @@
+<% variant = local_assigns.fetch(:variant, "band") %>
+<ul class="mi-funders__logos mi-funders__logos--<%= variant %>" data-mi-funders>
+  <% DecidimApp::Funders.row.each do |funder| %>
+    <li class="mi-funders__item" data-funder="<%= funder.key %>">
+      <% image = image_tag(funder.src, alt: funder.name, width: funder.width, height: funder.height, loading: "lazy", decoding: "async", class: "mi-funders__logo") %>
+      <% if funder.linked? %>
+        <%= link_to image, funder.url, target: "_blank", rel: "noopener noreferrer", data: { external_link: false } %>
+      <% else %>
+        <%= image %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

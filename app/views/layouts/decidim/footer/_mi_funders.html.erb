@@ -1,0 +1,7 @@
+<% if DecidimApp::Funders.row.any? %>
+  <section class="mi-funders" aria-label="Partneri zajednice">
+    <div class="mi-funders__wrap">
+      <%= render partial: "decidim_app/shared/funder_logos", locals: { variant: "band" } %>
+    </div>
+  </section>
+<% end %>

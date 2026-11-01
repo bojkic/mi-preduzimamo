@@ -1,0 +1,14 @@
+<% add_decidim_page_title(t("mi_launch.faq.title")) %>
+<div class="wrapper">
+  <div class="mi-surface mi-launch">
+    <h1><%= t("mi_launch.faq.title") %></h1>
+    <dl class="mi-launch__faq">
+      <% (1..10).each do |i| %>
+        <div class="mi-launch__faq-item">
+          <dt><%= t("mi_launch.faq.q#{i}") %></dt>
+          <dd><%= t("mi_launch.faq.a#{i}") %></dd>
+        </div>
+      <% end %>
+    </dl>
+  </div>
+</div>

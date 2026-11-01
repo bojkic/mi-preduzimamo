@@ -1,0 +1,35 @@
+en:
+  decidim_app:
+    city_service_events:
+      bot:
+        unconfirmed_facts: "This source notice has not yet been independently confirmed."
+        unconfirmed_area: "Its applicability to your neighbourhood is unconfirmed."
+        unconfirmed_time: "The exact interruption window is unconfirmed."
+sr:
+  decidim_app:
+    city_service_events:
+      bot:
+        unconfirmed_facts: "Ovo obavještenje iz izvora još nije nezavisno potvrđeno."
+        unconfirmed_area: "Nije potvrđeno da se odnosi na tvoj komšiluk."
+        unconfirmed_time: "Tačan termin prekida nije potvrđen."
+bs:
+  decidim_app:
+    city_service_events:
+      bot:
+        unconfirmed_facts: "Ovo obavještenje iz izvora još nije nezavisno potvrđeno."
+        unconfirmed_area: "Nije potvrđeno da se odnosi na tvoj komšiluk."
+        unconfirmed_time: "Tačan termin prekida nije potvrđen."
+hr:
+  decidim_app:
+    city_service_events:
+      bot:
+        unconfirmed_facts: "Ova obavijest iz izvora još nije neovisno potvrđena."
+        unconfirmed_area: "Nije potvrđeno da se odnosi na tvoje susjedstvo."
+        unconfirmed_time: "Točan termin prekida nije potvrđen."
+sr-Cyrl:
+  decidim_app:
+    city_service_events:
+      bot:
+        unconfirmed_facts: "Ово обавјештење из извора још није независно потврђено."
+        unconfirmed_area: "Није потврђено да се односи на твој комшилук."
+        unconfirmed_time: "Тачан термин прекида није потврђен."

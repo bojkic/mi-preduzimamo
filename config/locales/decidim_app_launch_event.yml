@@ -1,0 +1,50 @@
+sr:
+  mi_launch_event:
+    not_open: "Slanje je dostupno samo u podešenom terminu događaja."
+    changed: "Događaj je promijenjen ili nije dostupan. Osvježi stranicu prije nastavka."
+    unavailable: "Događaj trenutno nije podešen ili nije uključen."
+    scheduled: "Glasanje još nije počelo. Termin provjeri u najavi događaja."
+    ended: "Glasanje je završeno. Rezultati ostaju dostupni."
+    valid_until: "Lični link važi do %{time}. Nemoj ga prosljeđivati."
+    recorded: "Hvala! Tvoj glas je zabilježen."
+    closed: "Slanje je završeno za ovaj događaj."
+bs:
+  mi_launch_event:
+    not_open: "Slanje je dostupno samo u podešenom terminu događaja."
+    changed: "Događaj je promijenjen ili nije dostupan. Osvježi stranicu prije nastavka."
+    unavailable: "Događaj trenutno nije podešen ili nije uključen."
+    scheduled: "Glasanje još nije počelo. Termin provjeri u najavi događaja."
+    ended: "Glasanje je završeno. Rezultati ostaju dostupni."
+    valid_until: "Lični link važi do %{time}. Nemoj ga prosljeđivati."
+    recorded: "Hvala! Tvoj glas je zabilježen."
+    closed: "Slanje je završeno za ovaj događaj."
+hr:
+  mi_launch_event:
+    not_open: "Slanje je dostupno samo u podešenom terminu događaja."
+    changed: "Događaj je promijenjen ili nije dostupan. Osvježi stranicu prije nastavka."
+    unavailable: "Događaj trenutačno nije podešen ili nije uključen."
+    scheduled: "Glasanje još nije počelo. Termin provjeri u najavi događaja."
+    ended: "Glasanje je završeno. Rezultati ostaju dostupni."
+    valid_until: "Osobna poveznica vrijedi do %{time}. Nemoj je prosljeđivati."
+    recorded: "Hvala! Tvoj glas je zabilježen."
+    closed: "Slanje je završeno za ovaj događaj."
+sr-Cyrl:
+  mi_launch_event:
+    not_open: "Слање је доступно само у подешеном термину догађаја."
+    changed: "Догађај је промијењен или није доступан. Освјежи страницу прије наставка."
+    unavailable: "Догађај тренутно није подешен или није укључен."
+    scheduled: "Гласање још није почело. Термин провјери у најави догађаја."
+    ended: "Гласање је завршено. Резултати остају доступни."
+    valid_until: "Лични линк важи до %{time}. Немој га просљеђивати."
+    recorded: "Хвала! Твој глас је забиљежен."
+    closed: "Слање је завршено за овај догађај."
+en:
+  mi_launch_event:
+    not_open: "Sending is available only within the configured event window."
+    changed: "The event has changed or is unavailable. Refresh the page before continuing."
+    unavailable: "The event is not configured or enabled."
+    scheduled: "Voting has not started. Check the event announcement for its schedule."
+    ended: "Voting has ended. Results remain available."
+    valid_until: "Your personal link is valid until %{time}. Do not forward it."
+    recorded: "Thank you! Your vote has been recorded."
+    closed: "Sending has ended for this event."

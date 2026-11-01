@@ -1,0 +1,145 @@
+sr:
+  decidim_app:
+    milica:
+      rewards:
+        cost: "Cijena u bodovima: %{cost}."
+        threshold: "Prag u bodovima: %{cost}."
+  decidim:
+    bih:
+      # The engine's FactRenderer asks for
+      # decidim.bih.dialogue.source_name_<id> before it prints a source
+      # catalogue's own label. The mechanism is the engine's; these names
+      # are Bijeljina's, so they live here — the engine's locale defaults
+      # must stay free of this city's copy.
+      dialogue:
+        source_name_air_quality: "Grad Bijeljina, mjerenja kvaliteta vazduha"
+        source_name_air_quality_realtime: "Klimerko, javni prikaz kvaliteta vazduha"
+        source_name_bulky_waste: "Komunalac, kabasti otpad i akcije čišćenja"
+        source_name_city_official_notices: "Grad Bijeljina, zvanična obavještenja"
+        source_name_civil_protection: "Civilna zaštita, upozorenja"
+        source_name_electricity_outages: "Elektro Bijeljina, planirana isključenja"
+        source_name_heating_service: "Gradska toplana, obavještenja"
+        source_name_police_service_information: "Policija, obavještenja i bezbjednost"
+        source_name_public_transport: "Javni prevoz, linije i obavještenja"
+        source_name_road_conditions: "Auto-moto savez RS, stanje na putevima"
+        source_name_sistem48_public_archive: "Sistem 48, javne prijave"
+        source_name_waste_schedule: "Komunalac, raspored odvoza otpada"
+        source_name_water_levels: "Vodostaji Save i Drine"
+        source_name_water_service: "Vodovod Bijeljina, obavještenja o vodosnabdijevanju"
+        source_name_weather_warnings: "Vremenska upozorenja (MeteoAlarm/RHMZ)"
+sr-Cyrl:
+  decidim_app:
+    milica:
+      rewards:
+        cost: "Цијена у бодовима: %{cost}."
+        threshold: "Праг у бодовима: %{cost}."
+  decidim:
+    bih:
+      # The engine's FactRenderer asks for
+      # decidim.bih.dialogue.source_name_<id> before it prints a source
+      # catalogue's own label. The mechanism is the engine's; these names
+      # are Bijeljina's, so they live here — the engine's locale defaults
+      # must stay free of this city's copy.
+      dialogue:
+        source_name_air_quality: "Град Бијељина, мјерења квалитета ваздуха"
+        source_name_air_quality_realtime: "Климерко, јавни приказ квалитета ваздуха"
+        source_name_bulky_waste: "Комуналац, кабасти отпад и акције чишћења"
+        source_name_city_official_notices: "Град Бијељина, званична обавјештења"
+        source_name_civil_protection: "Цивилна заштита, упозорења"
+        source_name_electricity_outages: "Електро Бијељина, планирана искључења"
+        source_name_heating_service: "Градска топлана, обавјештења"
+        source_name_police_service_information: "Полиција, обавјештења и безбједност"
+        source_name_public_transport: "Јавни превоз, линије и обавјештења"
+        source_name_road_conditions: "Ауто-мото савез РС, стање на путевима"
+        source_name_sistem48_public_archive: "Систем 48, јавне пријаве"
+        source_name_waste_schedule: "Комуналац, распоред одвоза отпада"
+        source_name_water_levels: "Водостаји Саве и Дрине"
+        source_name_water_service: "Водовод Бијељина, обавјештења о водоснабдијевању"
+        source_name_weather_warnings: "Временска упозорења (МетеоАларм/РХМЗ)"
+bs:
+  decidim_app:
+    milica:
+      rewards:
+        cost: "Cijena u bodovima: %{cost}."
+        threshold: "Prag u bodovima: %{cost}."
+  decidim:
+    bih:
+      # The engine's FactRenderer asks for
+      # decidim.bih.dialogue.source_name_<id> before it prints a source
+      # catalogue's own label. The mechanism is the engine's; these names
+      # are Bijeljina's, so they live here — the engine's locale defaults
+      # must stay free of this city's copy.
+      dialogue:
+        source_name_air_quality: "Grad Bijeljina, mjerenja kvaliteta zraka"
+        source_name_air_quality_realtime: "Klimerko, javni prikaz kvaliteta zraka"
+        source_name_bulky_waste: "Komunalac, kabasti otpad i akcije čišćenja"
+        source_name_city_official_notices: "Grad Bijeljina, zvanična obavještenja"
+        source_name_civil_protection: "Civilna zaštita, upozorenja"
+        source_name_electricity_outages: "Elektro Bijeljina, planirana isključenja"
+        source_name_heating_service: "Gradska toplana, obavještenja"
+        source_name_police_service_information: "Policija, obavještenja i sigurnost"
+        source_name_public_transport: "Javni prijevoz, linije i obavještenja"
+        source_name_road_conditions: "Auto-moto savez RS, stanje na putevima"
+        source_name_sistem48_public_archive: "Sistem 48, javne prijave"
+        source_name_waste_schedule: "Komunalac, raspored odvoza otpada"
+        source_name_water_levels: "Vodostaji Save i Drine"
+        source_name_water_service: "Vodovod Bijeljina, obavještenja o vodosnabdijevanju"
+        source_name_weather_warnings: "Vremenska upozorenja (MeteoAlarm/RHMZ)"
+hr:
+  decidim_app:
+    milica:
+      rewards:
+        cost: "Cijena u bodovima: %{cost}."
+        threshold: "Prag u bodovima: %{cost}."
+  decidim:
+    bih:
+      # The engine's FactRenderer asks for
+      # decidim.bih.dialogue.source_name_<id> before it prints a source
+      # catalogue's own label. The mechanism is the engine's; these names
+      # are Bijeljina's, so they live here — the engine's locale defaults
+      # must stay free of this city's copy.
+      dialogue:
+        source_name_air_quality: "Grad Bijeljina, mjerenja kvalitete zraka"
+        source_name_air_quality_realtime: "Klimerko, javni prikaz kvalitete zraka"
+        source_name_bulky_waste: "Komunalac, glomazni otpad i akcije čišćenja"
+        source_name_city_official_notices: "Grad Bijeljina, službene obavijesti"
+        source_name_civil_protection: "Civilna zaštita, upozorenja"
+        source_name_electricity_outages: "Elektro Bijeljina, planirana isključenja"
+        source_name_heating_service: "Gradska toplana, obavijesti"
+        source_name_police_service_information: "Policija, obavijesti i sigurnost"
+        source_name_public_transport: "Javni prijevoz, linije i obavijesti"
+        source_name_road_conditions: "Auto-moto savez RS, stanje na cestama"
+        source_name_sistem48_public_archive: "Sistem 48, javne prijave"
+        source_name_waste_schedule: "Komunalac, raspored odvoza otpada"
+        source_name_water_levels: "Vodostaji Save i Drine"
+        source_name_water_service: "Vodovod Bijeljina, obavijesti o vodoopskrbi"
+        source_name_weather_warnings: "Vremenska upozorenja (MeteoAlarm/RHMZ)"
+en:
+  decidim_app:
+    milica:
+      rewards:
+        cost: "Cost in points: %{cost}."
+        threshold: "Threshold in points: %{cost}."
+  decidim:
+    bih:
+      # The engine's FactRenderer asks for
+      # decidim.bih.dialogue.source_name_<id> before it prints a source
+      # catalogue's own label. The mechanism is the engine's; these names
+      # are Bijeljina's, so they live here — the engine's locale defaults
+      # must stay free of this city's copy.
+      dialogue:
+        source_name_air_quality: "City of Bijeljina, air quality measurements"
+        source_name_air_quality_realtime: "Klimerko, public air quality display"
+        source_name_bulky_waste: "Komunalac, bulky waste and clean-up actions"
+        source_name_city_official_notices: "City of Bijeljina, official notices"
+        source_name_civil_protection: "Civil protection warnings"
+        source_name_electricity_outages: "Elektro Bijeljina, planned outages"
+        source_name_heating_service: "Gradska toplana district heating notices"
+        source_name_police_service_information: "Police service and safety notices"
+        source_name_public_transport: "Public transport routes and notices"
+        source_name_road_conditions: "Automobile Association of Republika Srpska, road conditions"
+        source_name_sistem48_public_archive: "Sistem 48, public reports"
+        source_name_waste_schedule: "Komunalac, waste collection schedule"
+        source_name_water_levels: "Sava and Drina water levels"
+        source_name_water_service: "Vodovod Bijeljina, water supply notices"
+        source_name_weather_warnings: "Weather warnings (MeteoAlarm/RHMZ)"

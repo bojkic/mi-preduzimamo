@@ -1,0 +1,51 @@
+<% add_decidim_page_title(t("decidim_app.komsiluk_boards.source_title")) %>
+<div class="mi-admin-page">
+  <h1><%= t("decidim_app.komsiluk_boards.source_title") %></h1>
+  <p><%= link_to t("decidim_app.komsiluk_boards.back_to_review"), decidim_admin_bih.admin_bih_komsiluk_post_path(@post) %></p>
+  <h2><%= @post.title %></h2>
+  <p><%= t("decidim_app.komsiluk_boards.local_hide_help") %></p>
+  <section class="card-section" aria-labelledby="source-impact">
+    <h2 id="source-impact"><%= t("decidim_app.komsiluk_boards.impact") %></h2>
+    <ul><% @posts.each do |post| %>
+      <li><%= post.komsiluk.translated_name %> — <%= t("decidim.bih.komsiluk_board.statuses.#{post.status}", default: post.status) %></li>
+    <% end %></ul>
+    <p><%= t("decidim_app.komsiluk_boards.pending", count: @pending_count) %></p>
+    <p><%= t("decidim_app.komsiluk_boards.phone_records", count: @phone_handoffs) %></p>
+    <p><%= t("decidim_app.komsiluk_boards.handoff_help") %></p>
+  </section>
+  <% @events.each do |event| %>
+    <section class="card-section" aria-labelledby="source-event-<%= event.id %>">
+      <h2 id="source-event-<%= event.id %>"><%= event.title %></h2>
+      <p><%= DecidimApp::Bijeljina::CityServiceBoardMetadata.for_event(event)["provider"] %></p>
+      <p><%= DecidimApp::Bijeljina::CityServiceBoardMetadata.scope_label(event) %></p>
+      <div><%= simple_format(event.summary) %></div>
+      <p><%= t("decidim_app.komsiluk_boards.phone_scope.#{DecidimApp::Bijeljina::CityServicePhoneDelivery.phone_audience_unverified?(event) ? 'blocked' : 'review'}") %></p>
+      <% if %w(board_published published).include?(event.state) %>
+        <%= form_with url: decidim_app_admin_komsiluk_source_path(@post), method: :patch, local: true, class: "form form-defaults" do %>
+          <%= hidden_field_tag :action_token, @action_token %>
+          <%= hidden_field_tag :event_id, event.id %>
+          <%= label_tag "source-note-#{event.id}", t("decidim_app.komsiluk_boards.reason") %>
+          <%= text_field_tag :review_note, nil, id: "source-note-#{event.id}", required: true, maxlength: 2000 %>
+          <p><%= t("decidim_app.komsiluk_boards.one_source_help") %></p>
+          <%= button_tag t("decidim_app.komsiluk_boards.correct_source"), name: :source_action, value: "correct_source", class: "button button__sm button__secondary" %>
+          <%= button_tag t("decidim_app.komsiluk_boards.withdraw_source"), name: :source_action, value: "withdraw_source", class: "button button__sm button__transparent-secondary" %>
+        <% end %>
+      <% else %>
+        <%= link_to t("decidim_app.komsiluk_boards.open_source_review"), decidim_app_admin_city_service_events_path(tab: "review", event_id: event.id) %>
+      <% end %>
+    </section>
+  <% end %>
+  <% if @events.any? { |event| %w(board_published published).include?(event.state) } %>
+    <details class="card-section">
+      <summary><%= t("decidim_app.komsiluk_boards.withdraw_all") %></summary>
+      <p><%= t("decidim_app.komsiluk_boards.all_sources_help", count: @posts.size) %></p>
+      <%= form_with url: decidim_app_admin_komsiluk_source_path(@post), method: :patch, local: true, class: "form form-defaults" do %>
+        <%= hidden_field_tag :action_token, @action_token %>
+        <%= hidden_field_tag :source_action, "withdraw_all" %>
+        <%= label_tag :all_sources_note, t("decidim_app.komsiluk_boards.reason") %>
+        <%= text_field_tag :review_note, nil, id: :all_sources_note, required: true, maxlength: 2000 %>
+        <%= submit_tag t("decidim_app.komsiluk_boards.confirm_withdraw_all"), class: "button button__sm button__alert" %>
+      <% end %>
+    </details>
+  <% end %>
+</div>

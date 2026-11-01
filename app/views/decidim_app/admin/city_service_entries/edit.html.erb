@@ -1,0 +1,79 @@
+<%= render "decidim/bih/admin/shared/navigation", current_item: :city_service_entries %>
+
+<div class="card" id="admin-city-service-entry-edit" data-city-service-entry-key="<%= @entry.key %>" data-city-service-entry-state="<%= entry_state_key(@entry) %>">
+  <div class="card-divider">
+    <div>
+      <h1 class="h3"><%= t(".title", title: @shipped.fetch(:title)) %></h1>
+      <p class="text-muted" style="margin-bottom: 0;"><%= t(".intro") %></p>
+      <p style="margin-bottom: 0;"><strong><%= entry_state_label(@entry) %></strong></p>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <%= form_with model: @entry, scope: :city_service_entry,
+                  url: decidim_app_admin_city_service_entry_path(@entry.key),
+                  method: :patch,
+                  local: true,
+                  html: { style: "display:grid; gap:0.65rem; min-width:0; max-width:52rem;" },
+                  class: "form form-defaults mi-admin-form mi-admin-record-editor" do |form| %>
+      <% if @entry.errors.any? %>
+        <div class="mi-admin-form__error-summary" role="alert" id="city-service-entry-errors">
+          <ul>
+            <% @entry.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="mi-admin-form__field">
+        <%= form.label :title, t(".fields.title") %>
+        <%= form.text_field :title, maxlength: 200 %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.label :body, t(".fields.body") %>
+        <%= form.text_area :body, rows: 7, maxlength: 2000 %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.label :source_url, t(".fields.source_url") %>
+        <%= form.url_field :source_url, maxlength: 500 %>
+        <small><%= t(".help.source_host") %></small>
+        <% if @entry.source_url.present? && !source_host_reviewed?(@entry.source_url) %>
+          <small class="callout warning" id="city-service-entry-source-warning" style="display:block; margin-top:0.35rem;">
+            <%= t(".source_host_warning", host: (URI.parse(@entry.source_url).host rescue @entry.source_url)) %>
+          </small>
+        <% end %>
+      </div>
+      <div class="mi-admin-form__field">
+        <%= form.label :source_checked_on, t(".fields.source_checked_on") %>
+        <%= form.date_field :source_checked_on, max: Date.current.iso8601 %>
+      </div>
+      <p><small><%= t(".help.approval") %></small></p>
+      <div class="mi-admin-record-editor__footer">
+        <%= form.submit t(".actions.save"), class: "button button__sm button__secondary" %>
+      </div>
+    <% end %>
+
+    <div class="mi-admin-record-editor__actions" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+      <% if @entry.persisted? %>
+        <%= link_to t(".actions.preview"), decidim_app_admin_city_service_entry_preview_path(@entry.key),
+                    class: "button button__sm button__transparent-secondary" %>
+        <% unless @entry.live? %>
+          <%= button_to t(".actions.approve"), decidim_app_admin_city_service_entry_approve_path(@entry.key),
+                        method: :post, class: "button button__sm button__secondary" %>
+        <% end %>
+        <% if @entry.approved? %>
+          <%= button_to t(".actions.rollback"), decidim_app_admin_city_service_entry_rollback_path(@entry.key),
+                        method: :post, class: "button button__sm button__transparent-secondary mi-admin-action--danger",
+                        data: { confirm: t("decidim_app.admin.city_service_entries.index.actions.rollback_confirm") } %>
+        <% end %>
+      <% end %>
+      <%= link_to t(".actions.back"), decidim_app_admin_city_service_entries_path, class: "button button__sm button__transparent-secondary" %>
+    </div>
+
+    <details style="margin-top:1rem;">
+      <summary><%= t(".shipped_heading") %></summary>
+      <p style="white-space:pre-wrap; margin-top:0.5rem;"><%= @shipped.fetch(:answer) %></p>
+      <p><small><%= @shipped.fetch(:source_url) %> · <%= @shipped.fetch(:source_checked_on) %></small></p>
+    </details>
+  </div>
+</div>

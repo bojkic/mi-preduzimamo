@@ -1,0 +1,46 @@
+<% ai = event.extraction_metadata["ai_classification"].to_h %>
+<% if ai.present? %>
+  <% base = "decidim_app.admin.city_service_events.ai_review" %>
+  <section class="city-alert-ai-review" aria-label="<%= t("#{base}.title") %>">
+    <h3 class="h5"><%= t("#{base}.title") %></h3>
+    <% if ai["source_content_version"] != event.content_version %>
+      <p class="city-alerts-exception"><%= t("#{base}.stale") %></p>
+    <% else %>
+      <p><strong><%= t("#{base}.status_label") %></strong> <%= t("#{base}.statuses.#{ai['status']}", default: t("#{base}.statuses.unknown")) %></p>
+      <% if ai["needs_review"] == true %><p class="city-alerts-exception"><%= t("#{base}.needs_review") %></p><% end %>
+      <% if Array(ai["reasons"]).any? %>
+        <ul>
+          <% Array(ai["reasons"]).each do |reason| %>
+            <li><%= t("#{base}.reasons.#{reason}", default: t("#{base}.reasons.unknown")) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <% if ai["event_type"].present? || ai["severity"].present? %>
+        <dl>
+          <% if ai["event_type"].present? %>
+            <dt><%= t("#{base}.type") %></dt>
+            <dd><%= t("decidim_app.admin.city_service_events.review_facts.values.#{ai['event_type']}", default: t("#{base}.unknown_value")) %>
+              → <%= t("decidim_app.admin.city_service_events.review_facts.values.#{event.event_type}", default: t("#{base}.unknown_value")) %></dd>
+          <% end %>
+          <% if ai["severity"].present? %>
+            <dt><%= t("#{base}.severity") %></dt>
+            <dd><%= DecidimApp::Bijeljina::CityServiceEvent::SEVERITIES.include?(ai["severity"]) ? severity_label(ai["severity"]) : t("#{base}.unknown_value") %>
+              → <%= severity_label(event.severity) %></dd>
+          <% end %>
+        </dl>
+      <% end %>
+      <% if ai["suggested_title"].present? || ai["suggested_body"].present? || ai["suggested_viber_text"].present? %>
+        <p><strong><%= t("#{base}.suggested_copy") %></strong></p>
+        <% if ai["suggested_title"].present? %><p><%= t("#{base}.title_label") %>: <%= ai["suggested_title"] %></p><% end %>
+        <% if ai["suggested_body"].present? %><p><%= t("#{base}.body_label") %>: <%= ai["suggested_body"] %></p><% end %>
+        <% if ai["suggested_viber_text"].present? %><p><%= t("#{base}.phone_label") %>: <%= ai["suggested_viber_text"] %></p><% end %>
+        <p><strong><%= t("#{base}.published_copy") %></strong> <%= event.title %> — <%= event.summary %></p>
+      <% end %>
+    <% end %>
+    <% if ai["model"].present? %><p class="city-alerts-ai-model"><%= t("#{base}.model") %>: <%= ai["model"] %></p><% end %>
+    <details class="city-alerts-technical-details">
+      <summary><%= t('decidim_app.admin.city_service_events.ui_review.diagnostics') %></summary>
+      <p><code><%= ai.slice("status", "source_content_version", "prompt_hash", "reasons").to_json %></code></p>
+    </details>
+  </section>
+<% end %>

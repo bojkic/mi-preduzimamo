@@ -1,0 +1,45 @@
+sr:
+  decidim_app:
+    milica:
+      activity:
+        citywide: "Za cijelu Bijeljinu"
+        location: "Lokacija iz kataloga: %{location}"
+        period: "Raspon iz kataloga: %{from} – %{through} (Europe/Sarajevo)."
+        online_notice: "Učešće je navedeno kao online, ne kao događaj na potvrđenoj fizičkoj lokaciji u komšiluku."
+        long_interval_notice: "Katalog navodi raspon duži od jednog dana; to nije potvrda neprekidnog angažmana. Tačan termin provjeri sa organizatorom."
+sr-Cyrl:
+  decidim_app:
+    milica:
+      activity:
+        citywide: "За цијелу Бијељину"
+        location: "Локација из каталога: %{location}"
+        period: "Распон из каталога: %{from} – %{through} (Europe/Sarajevo)."
+        online_notice: "Учешће је наведено као онлајн, не као догађај на потврђеној физичкој локацији у комшилуку."
+        long_interval_notice: "Каталог наводи распон дужи од једног дана; то није потврда непрекидног ангажмана. Тачан термин провјери са организатором."
+bs:
+  decidim_app:
+    milica:
+      activity:
+        citywide: "Za cijelu Bijeljinu"
+        location: "Lokacija iz kataloga: %{location}"
+        period: "Raspon iz kataloga: %{from} – %{through} (Europe/Sarajevo)."
+        online_notice: "Učešće je navedeno kao online, ne kao događaj na potvrđenoj fizičkoj lokaciji u komšiluku."
+        long_interval_notice: "Katalog navodi raspon duži od jednog dana; to nije potvrda neprekidnog angažmana. Tačan termin provjeri sa organizatorom."
+hr:
+  decidim_app:
+    milica:
+      activity:
+        citywide: "Za cijelu Bijeljinu"
+        location: "Lokacija iz kataloga: %{location}"
+        period: "Raspon iz kataloga: %{from} – %{through} (Europe/Sarajevo)."
+        online_notice: "Sudjelovanje je navedeno kao online, ne kao događaj na potvrđenoj fizičkoj lokaciji u susjedstvu."
+        long_interval_notice: "Katalog navodi raspon dulji od jednog dana; to nije potvrda neprekidnog angažmana. Točan termin provjeri s organizatorom."
+en:
+  decidim_app:
+    milica:
+      activity:
+        citywide: "For the whole of Bijeljina"
+        location: "Catalog location: %{location}"
+        period: "Catalog period: %{from} – %{through} (Europe/Sarajevo)."
+        online_notice: "Participation is listed as online, not as an event at a verified physical neighborhood venue."
+        long_interval_notice: "The catalog lists a period longer than one day; this does not establish continuous attendance. Confirm the exact session with the organizer."

@@ -1,0 +1,15 @@
+<% if slugs.blank? %>
+  <span class="city-alerts-area-unknown"><%= t('decidim_app.admin.city_service_events.index.unknown_area') %></span>
+<% else %>
+  <ul class="city-alerts-area-list">
+    <% slugs.first(3).each do |slug| %><li data-city-area-slug="<%= slug %>"><%= city_alert_area_label(slug) %></li><% end %>
+  </ul>
+  <% if slugs.size > 3 %>
+    <details class="city-alerts-more-areas">
+      <summary><%= t('decidim_app.admin.city_service_events.index.layout.more_areas', count: slugs.size - 3) %></summary>
+      <ul class="city-alerts-area-list">
+        <% slugs.drop(3).each do |slug| %><li data-city-area-slug="<%= slug %>"><%= city_alert_area_label(slug) %></li><% end %>
+      </ul>
+    </details>
+  <% end %>
+<% end %>

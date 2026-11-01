@@ -1,0 +1,113 @@
+/* Bijeljina city alerts: readable overview with full-width review panels. */
+#admin-city-service-events .city-alerts-table-wrap { width: 100%; max-width: 100%; }
+#admin-city-service-events .city-alerts-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: collapse; }
+#admin-city-service-events .city-alerts-table th,
+#admin-city-service-events .city-alerts-table td { box-sizing: border-box; padding: .8rem .65rem; vertical-align: top; text-align: left; white-space: normal; overflow-wrap: anywhere; line-height: 1.45; }
+#admin-city-service-events .city-alerts-table th { background: #f3f6fa; color: #334155; font-size: .78rem; }
+#admin-city-service-events .city-alerts-col-select { width: 4%; }
+#admin-city-service-events .city-alerts-table th.city-alerts-col-select { padding-left: .2rem; padding-right: .2rem; font-size: .68rem; overflow-wrap: normal; }
+#admin-city-service-events .city-alerts-col-source { width: 13%; }
+#admin-city-service-events .city-alerts-col-event { width: 28%; }
+#admin-city-service-events .city-alerts-col-areas { width: 23%; }
+#admin-city-service-events .city-alerts-col-state { width: 13%; }
+#admin-city-service-events .city-alerts-col-actions { width: 19%; }
+#admin-city-service-events .city-alerts-summary-row { border-bottom: 1px solid #dbe3ec; background: #fff; }
+#admin-city-service-events .city-alerts-summary-row:has(.city-service-bulk-selection:checked) { background: #eff6ff; }
+#admin-city-service-events .city-alerts-title,
+#admin-city-service-events .city-alerts-summary { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+#admin-city-service-events .city-alerts-title { -webkit-line-clamp: 2; font-size: .92rem; }
+#admin-city-service-events .city-alerts-summary { -webkit-line-clamp: 3; margin: .35rem 0; font-size: .85rem; }
+#admin-city-service-events .city-alerts-source-link { display: block; margin-top: .4rem; }
+#admin-city-service-events .city-alerts-severity { display: block; margin-top: .25rem; color: #475569; font-size: .78rem; }
+#admin-city-service-events .city-alerts-time { display: block; margin-top: .5rem; font-size: .8rem; font-weight: 600; }
+#admin-city-service-events .city-alerts-area-list { list-style: none; padding: 0; margin: 0; font-size: .85rem; }
+#admin-city-service-events .city-alerts-area-list li { margin: 0 0 .4rem; }
+#admin-city-service-events .city-alerts-more-areas summary { color: #1456b8; cursor: pointer; font-size: .83rem; }
+#admin-city-service-events .city-alerts-area-unknown { color: #64748b; font-size: .85rem; }
+#admin-city-service-events .city-alerts-exception { margin: .45rem 0 0; color: #874600; font-size: .78rem; }
+#admin-city-service-events .city-alerts-toggle { max-width: 100%; padding: .55rem .6rem; font-size: .8rem; white-space: normal; }
+#admin-city-service-events .city-alerts-detail-row[hidden] { display: none !important; }
+#admin-city-service-events .city-alerts-detail-row > td { width: auto; padding: 1.2rem; background: #f5f8fc; border-bottom: 2px solid #b8c9df; }
+#admin-city-service-events .city-alerts-editor-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; }
+#admin-city-service-events .city-alerts-editor-grid > section { min-width: 0; }
+#admin-city-service-events .city-alerts-editor-grid input:not([type=checkbox]),
+#admin-city-service-events .city-alerts-editor-grid textarea,
+#admin-city-service-events .city-alerts-editor-grid select { max-width: 100%; width: 100%; box-sizing: border-box; }
+#admin-city-service-events .city-alerts-editor-grid select[multiple] { min-height: 10rem; }
+#admin-city-service-events .city-alerts-editor-grid p { margin: .6rem 0; }
+#admin-city-service-events .city-alerts-editor-grid details { margin: .8rem 0; }
+#admin-city-service-events .city-alerts-editor-grid summary { cursor: pointer; font-weight: 600; }
+#admin-city-service-events .city-alerts-editor-grid code { white-space: normal; overflow-wrap: anywhere; }
+#admin-city-service-events .city-alerts-editor-grid dl { display: grid; grid-template-columns: minmax(6rem, 1fr) minmax(0, 2fr); gap: .4rem .8rem; margin-top: .8rem; }
+#admin-city-service-events .city-alerts-editor-grid dt { font-weight: 600; }
+#admin-city-service-events .city-alerts-editor-grid dd { margin: 0; min-width: 0; }
+#admin-city-service-events #city-service-bulk-review { background: #f3f6fa; border: 1px solid #dbe3ec; padding: .8rem; margin: .8rem 0; }
+#admin-city-service-events #city-service-bulk-review fieldset { margin: 0; min-width: 0; }
+#admin-city-service-events #city-service-bulk-review p { font-size: .8rem; color: #475569; margin: .4rem 0; }
+#admin-city-service-events #city-service-bulk-review input[type=text] { max-width: 100%; }
+#admin-city-service-events #city-service-bulk-review button { margin: .25rem 0; }
+@media (max-width: 1000px) {
+  #admin-city-service-events .city-alerts-table thead { display: none; }
+  #admin-city-service-events .city-alerts-table,
+  #admin-city-service-events .city-alerts-table tbody { display: block; width: 100%; }
+  #admin-city-service-events .city-alerts-summary-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid #dbe3ec; border-radius: .5rem; margin-top: 1rem; }
+  #admin-city-service-events .city-alerts-table .city-alerts-summary-row > td { display: block; width: auto; border: 0; padding: .6rem .8rem; }
+  #admin-city-service-events .city-alerts-col-select { grid-column: 1; }
+  #admin-city-service-events .city-alerts-col-source { grid-column: 2; grid-row: 1; }
+  #admin-city-service-events .city-alerts-col-event,
+  #admin-city-service-events .city-alerts-col-areas { grid-column: 1 / -1; }
+  #admin-city-service-events .city-alerts-summary-row > td::before { content: attr(data-label); display: block; font-weight: 600; font-size: .75rem; color: #64748b; margin-bottom: .3rem; }
+  #admin-city-service-events .city-alerts-detail-row,
+  #admin-city-service-events .city-alerts-detail-row > td { display: block; width: 100%; box-sizing: border-box; }
+  #admin-city-service-events .city-alerts-editor-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 1000px) {
+  #admin-city-service-events #admin-city-alert-filters label { min-width: 0; max-width: 100%; width: 100%; }
+  #admin-city-service-events #admin-city-alert-filters select { box-sizing: border-box; min-width: 0; max-width: 100%; width: 100%; }
+}
+
+#admin-city-service-events [data-city-area-proposal] { border: 1px solid #dbe3ec; border-radius: .4rem; padding: .75rem; margin: .75rem 0; min-width: 0; }
+#admin-city-service-events .city-area-proposal-option { display: flex; align-items: baseline; gap: .5rem; margin: .4rem 0; }
+#admin-city-service-events [data-city-area-confirmation-status] { overflow-wrap: anywhere; }
+
+.city-review-map [data-city-map-canvas] { height: 360px; width: 100%; z-index: 0; }
+.city-review-board-list { max-height: 12rem; overflow: auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: .3rem; }
+.city-review-board-list label { display: flex; gap: .5rem; padding: .4rem; }
+.city-review-map button { margin: .5rem .5rem .5rem 0; }
+.city-review-map input[type=search] { width: 100%; }
+.city-review-board-list label[hidden], .city-review-map [hidden] { display: none !important; }
+
+.city-approval-preview { max-width: 54rem; padding: 1.5rem; border: 1px solid #dbe3ec; border-radius: .65rem; background: white; }
+.city-approval-preview h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.city-approval-preview p, .city-approval-preview blockquote { margin: .8rem 0; line-height: 1.5; }
+.city-approval-preview blockquote { padding: .75rem; background: #f3f6fa; border-left: 3px solid #64748b; }
+.city-approval-preview form { display: grid; gap: 1rem; margin: 1rem 0; }
+.city-approval-preview form label { display: flex; align-items: start; gap: .5rem; }
+.city-approval-preview input[type=submit] { justify-self: start; padding: .65rem 1rem; }
+
+/* Keep the queue first on small screens; disclosure controls retain all tools. */
+#admin-city-alert-workflow-nav a[aria-current="page"],
+#admin-city-alert-workflow-nav a[aria-current="page"]:visited { color: #fff; background: #155abf; }
+.city-alerts-mobile-disclosure > summary { cursor: pointer; font-weight: 600; padding: .55rem 0; }
+#admin-city-service-events .city-alerts-region-context { padding: .65rem; background: #e8f0fc; border-left: 3px solid #155abf; }
+#admin-city-service-events .pagination { display: flex; gap: 1rem; align-items: center; margin: .75rem 0; }
+@media (min-width: 1001px) {
+  .city-alerts-mobile-disclosure[open] > summary { display: none; }
+}
+@media (max-width: 1000px) {
+  .city-alerts-navigation { margin-bottom: .75rem; }
+  #admin-city-service-events h1 { font-size: 1.25rem; line-height: 1.3; margin: .5rem 0; }
+  #admin-city-service-events #admin-city-alert-workflow-nav { gap: .3rem !important; }
+  #admin-city-service-events > .card-section > p { margin: .35rem 0; }
+}
+
+#admin-city-service-events .city-alerts-col-actions .button { margin: .15rem .2rem .15rem 0; min-height: 2.5rem; }
+#admin-city-service-events .city-alerts-decision { padding: .45rem .6rem; border-left: 3px solid #155abf; background: #eff6ff; color: #183654; }
+#admin-city-service-events .city-alerts-decision-method { font-weight: 700; }
+#admin-city-service-events [data-city-alert-active-tab="automatic"] .city-alerts-summary-row { border-left: 4px solid #155abf; }
+@media (max-width: 1000px) {
+  #admin-city-service-events .city-alerts-col-state, #admin-city-service-events .city-alerts-col-actions { grid-column: 1 / -1; }
+  #admin-city-service-events .city-alerts-col-actions { display: flex !important; flex-wrap: wrap; gap: .35rem; }
+  #admin-city-service-events .city-alerts-col-actions form { margin: 0; }
+  #admin-city-service-events .city-alerts-col-actions .button { min-height: 2.75rem; }
+}

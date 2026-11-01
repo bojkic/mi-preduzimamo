@@ -1,0 +1,35 @@
+---
+en:
+  decidim_app:
+    city_service_review_nudge:
+      notification:
+        one: "%{count} city notice is waiting for review and starts within 24 hours: %{title}"
+        other: "%{count} city notices are waiting for review and start within 24 hours. First: %{title}"
+sr:
+  decidim_app:
+    city_service_review_nudge:
+      notification:
+        one: "%{count} gradsko obavještenje čeka pregled, a počinje u naredna 24 sata: %{title}"
+        few: "%{count} gradska obavještenja čekaju pregled, a počinju u naredna 24 sata. Prvo: %{title}"
+        other: "%{count} gradskih obavještenja čeka pregled, a počinju u naredna 24 sata. Prvo: %{title}"
+bs:
+  decidim_app:
+    city_service_review_nudge:
+      notification:
+        one: "%{count} gradsko obavještenje čeka pregled, a počinje u naredna 24 sata: %{title}"
+        few: "%{count} gradska obavještenja čekaju pregled, a počinju u naredna 24 sata. Prvo: %{title}"
+        other: "%{count} gradskih obavještenja čeka pregled, a počinju u naredna 24 sata. Prvo: %{title}"
+hr:
+  decidim_app:
+    city_service_review_nudge:
+      notification:
+        one: "%{count} gradska obavijest čeka pregled, a počinje u sljedeća 24 sata: %{title}"
+        few: "%{count} gradske obavijesti čekaju pregled, a počinju u sljedeća 24 sata. Prva: %{title}"
+        other: "%{count} gradskih obavijesti čeka pregled, a počinju u sljedeća 24 sata. Prva: %{title}"
+sr-Cyrl:
+  decidim_app:
+    city_service_review_nudge:
+      notification:
+        one: "%{count} градско обавјештење чека преглед, а почиње у наредна 24 сата: %{title}"
+        few: "%{count} градска обавјештења чекају преглед, а почињу у наредна 24 сата. Прво: %{title}"
+        other: "%{count} градских обавјештења чека преглед, а почињу у наредна 24 сата. Прво: %{title}"

@@ -1,0 +1,8 @@
+hr:
+  mi_registration:
+    race_starts: 'Trka počinje %{date}.'
+    register: Registruj se
+    race_offer: 'Tvoj komšiluk može osvojiti 3.000 KM za zajednički projekat. Potvrdi
+      telefon i izaberi gdje živiš: tvoja registracija donosi %{points} bod u Trci
+      komšiluka.'
+    closed_offer: Registruj se za informacije i akcije u svom komšiluku.

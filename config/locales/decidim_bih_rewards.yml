@@ -1,0 +1,171 @@
+---
+bs:
+  decidim:
+    bih:
+      goodwill:
+        rewards:
+          naljepnice: "MI! naljepnice"
+          zahvalnica: "Digitalna zahvalnica"
+          torba: "Platnena torba"
+          pozivnica: "Pozivnica za dogadjaj zajednice"
+          majica: "MI! majica"
+          partner_kupon: "Partnerski kupon zajednice"
+          radionica: "Mjesto na radionici ili mentorstvu"
+          termos: "MI! termos"
+          godisnje_priznanje: "Godišnje priznanje"
+        reward_descriptions:
+          naljepnice: "Mali pocetni paket za laptop, bicikl ili notes."
+          zahvalnica: "Javna ili digitalna potvrda doprinosa koju mozes podijeliti."
+          torba: "Prakticna platnena torba sa MI obiljezjima."
+          pozivnica: "Prednost pri prijavi za dogadjaje zajednice kada je broj mjesta ogranicen."
+          majica: "Majica zajednice; velicina se potvrdjuje prije preuzimanja."
+          partner_kupon: "Simbolicna pogodnost lokalnog partnera, kada je partner aktivan."
+          radionica: "Rezervisano mjesto na radionici, obuci ili mentorskom susretu."
+          termos: "Termos sa MI obiljezjima za najaktivnije komsije."
+          godisnje_priznanje: "Istaknuto godišnje priznanje za dugotrajan doprinos zajednici."
+        reward_fulfillment:
+          naljepnice: "Preuzimanje u kancelariji fondacije ili na narednom dogadjaju."
+          zahvalnica: "Fondacija salje digitalnu zahvalnicu na e-mail naloga."
+          torba: "Preuzimanje se dogovara nakon rucne potvrde zaliha."
+          pozivnica: "Tim potvrdjuje raspolozivo mjesto prije dogadjaja."
+          majica: "Tim potvrdjuje velicinu i termin preuzimanja."
+          partner_kupon: "Vazi samo za trenutno dogovorene partnere i dostupne termine."
+          radionica: "Tim potvrdjuje termin radionice ili mentorstva."
+          termos: "Preuzimanje se dogovara nakon rucne potvrde zaliha."
+          godisnje_priznanje: "Dodjeljuje se u sklopu godišnjeg pregleda zajednice."
+sr:
+  decidim:
+    bih:
+      goodwill:
+        rewards:
+          naljepnice: "MI! naljepnice"
+          zahvalnica: "Digitalna zahvalnica"
+          torba: "Platnena torba"
+          pozivnica: "Pozivnica za događaj zajednice"
+          majica: "MI! majica"
+          partner_kupon: "Partnerski kupon zajednice"
+          radionica: "Mjesto na radionici ili mentorstvu"
+          termos: "MI! termos"
+          godisnje_priznanje: "Godišnje priznanje"
+        reward_descriptions:
+          naljepnice: "Mali početni paket za laptop, bicikl ili notes."
+          zahvalnica: "Javna ili digitalna potvrda doprinosa koju možeš podijeliti."
+          torba: "Praktična platnena torba sa MI obilježjima."
+          pozivnica: "Prednost pri prijavi za događaje zajednice kada je broj mjesta ograničen."
+          majica: "Majica zajednice; veličina se potvrđuje prije preuzimanja."
+          partner_kupon: "Simbolična pogodnost lokalnog partnera, kada je partner aktivan."
+          radionica: "Rezervisano mjesto na radionici, obuci ili mentorskom susretu."
+          termos: "Termos sa MI obilježjima za najaktivnije komšije."
+          godisnje_priznanje: "Istaknuto godišnje priznanje za dugotrajan doprinos zajednici."
+        reward_fulfillment:
+          naljepnice: "Preuzimanje u kancelariji fondacije ili na narednom događaju."
+          zahvalnica: "Fondacija šalje digitalnu zahvalnicu na e-mail naloga."
+          torba: "Preuzimanje se dogovara nakon ručne potvrde zaliha."
+          pozivnica: "Tim potvrđuje raspoloživo mjesto prije događaja."
+          majica: "Tim potvrđuje veličinu i termin preuzimanja."
+          partner_kupon: "Važi samo za trenutno dogovorene partnere i dostupne termine."
+          radionica: "Tim potvrđuje termin radionice ili mentorstva."
+          termos: "Preuzimanje se dogovara nakon ručne potvrde zaliha."
+          godisnje_priznanje: "Dodjeljuje se u sklopu godišnjeg pregleda zajednice."
+hr:
+  decidim:
+    bih:
+      goodwill:
+        rewards:
+          naljepnice: "MI! naljepnice"
+          zahvalnica: "Digitalna zahvalnica"
+          torba: "Platnena torba"
+          pozivnica: "Pozivnica za dogadjaj zajednice"
+          majica: "MI! majica"
+          partner_kupon: "Partnerski kupon zajednice"
+          radionica: "Mjesto na radionici ili mentorstvu"
+          termos: "MI! termos"
+          godisnje_priznanje: "Godišnje priznanje"
+        reward_descriptions:
+          naljepnice: "Mali pocetni paket za laptop, bicikl ili notes."
+          zahvalnica: "Javna ili digitalna potvrda doprinosa koju mozes podijeliti."
+          torba: "Prakticna platnena torba s MI obiljezjima."
+          pozivnica: "Prednost pri prijavi za dogadjaje zajednice kada je broj mjesta ogranicen."
+          majica: "Majica zajednice; velicina se potvrdjuje prije preuzimanja."
+          partner_kupon: "Simbolicna pogodnost lokalnog partnera, kada je partner aktivan."
+          radionica: "Rezervirano mjesto na radionici, obuci ili mentorskom susretu."
+          termos: "Termos s MI obiljezjima za najaktivnije susjede."
+          godisnje_priznanje: "Istaknuto godišnje priznanje za dugotrajan doprinos zajednici."
+        reward_fulfillment:
+          naljepnice: "Preuzimanje u uredu fondacije ili na narednom dogadjaju."
+          zahvalnica: "Fondacija salje digitalnu zahvalnicu na e-mail racuna."
+          torba: "Preuzimanje se dogovara nakon rucne potvrde zaliha."
+          pozivnica: "Tim potvrdjuje raspolozivo mjesto prije dogadjaja."
+          majica: "Tim potvrdjuje velicinu i termin preuzimanja."
+          partner_kupon: "Vrijedi samo za trenutno dogovorene partnere i dostupne termine."
+          radionica: "Tim potvrdjuje termin radionice ili mentorstva."
+          termos: "Preuzimanje se dogovara nakon rucne potvrde zaliha."
+          godisnje_priznanje: "Dodjeljuje se u sklopu godišnjeg pregleda zajednice."
+sr-Cyrl:
+  decidim:
+    bih:
+      goodwill:
+        rewards:
+          naljepnice: "МИ! наљепнице"
+          zahvalnica: "Дигитална захвалница"
+          torba: "Платнена торба"
+          pozivnica: "Позивница за догађај заједнице"
+          majica: "МИ! мајица"
+          partner_kupon: "Партнерски купон заједнице"
+          radionica: "Мјесто на радионици или менторству"
+          termos: "МИ! термос"
+          godisnje_priznanje: "Годишње признање"
+        reward_descriptions:
+          naljepnice: "Мали почетни пакет за лаптоп, бицикл или нотес."
+          zahvalnica: "Јавна или дигитална потврда доприноса коју можеш подијелити."
+          torba: "Практична платнена торба са МИ обиљежјима."
+          pozivnica: "Предност при пријави за догађаје заједнице када је број мјеста ограничен."
+          majica: "Мајица заједнице; величина се потврђује прије преузимања."
+          partner_kupon: "Симболична погодност локалног партнера, када је партнер активан."
+          radionica: "Резервисано мјесто на радионици, обуци или менторском сусрету."
+          termos: "Термос са МИ обиљежјима за најактивније комшије."
+          godisnje_priznanje: "Истакнуто годишње признање за дуготрајан допринос заједници."
+        reward_fulfillment:
+          naljepnice: "Преузимање у канцеларији фондације или на наредном догађају."
+          zahvalnica: "Фондација шаље дигиталну захвалницу на e-mail налога."
+          torba: "Преузимање се договара након ручне потврде залиха."
+          pozivnica: "Тим потврђује расположиво мјесто прије догађаја."
+          majica: "Тим потврђује величину и термин преузимања."
+          partner_kupon: "Важи само за тренутно договорене партнере и доступне термине."
+          radionica: "Тим потврђује термин радионице или менторства."
+          termos: "Преузимање се договара након ручне потврде залиха."
+          godisnje_priznanje: "Додјељује се у склопу годишњег прегледа заједнице."
+en:
+  decidim:
+    bih:
+      goodwill:
+        rewards:
+          naljepnice: "MI! sticker pack"
+          zahvalnica: "Digital thank-you certificate"
+          torba: "Tote bag"
+          pozivnica: "Community event invitation"
+          majica: "MI! T-shirt"
+          partner_kupon: "Partner community coupon"
+          radionica: "Workshop or mentoring seat"
+          termos: "MI! thermos"
+          godisnje_priznanje: "Annual recognition"
+        reward_descriptions:
+          naljepnice: "A small starter pack for a laptop, bicycle, or notebook."
+          zahvalnica: "A public or digital contribution certificate you can share."
+          torba: "A practical tote bag with MI! branding."
+          pozivnica: "Priority registration for community events when space is limited."
+          majica: "A community T-shirt; size is confirmed before pickup."
+          partner_kupon: "A symbolic benefit from a local partner when a partner is active."
+          radionica: "A reserved seat at a workshop, training, or mentoring session."
+          termos: "An MI! thermos for the most active neighbours."
+          godisnje_priznanje: "Highlighted annual recognition for sustained community contribution."
+        reward_fulfillment:
+          naljepnice: "Pickup at the foundation office or the next community event."
+          zahvalnica: "The foundation sends the digital certificate to the account email."
+          torba: "Pickup is arranged after manual stock confirmation."
+          pozivnica: "The team confirms an available seat before the event."
+          majica: "The team confirms size and pickup timing."
+          partner_kupon: "Valid only for currently approved partners and available slots."
+          radionica: "The team confirms the workshop or mentoring date."
+          termos: "Pickup is arranged after manual stock confirmation."
+          godisnje_priznanje: "Awarded as part of the annual community review."

@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "mz",
+        "slug": "izmisljena-mz",
+        "name": {
+          "sr": "Izmišljena MZ",
+          "bs": "Izmišljena MZ",
+          "hr": "Izmišljena MZ",
+          "en": "Authored test area"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.1,
+              0.1
+            ],
+            [
+              0.2,
+              0.1
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.1,
+              0.3
+            ],
+            [
+              0.1,
+              0.1
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

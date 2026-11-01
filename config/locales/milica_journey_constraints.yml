@@ -1,0 +1,40 @@
+bs:
+  decidim_app:
+    milica:
+      journey_uncertainty:
+        walking_range: "Okvirna procjena ukupnog pješačenja %{low}–%{high} min; to nije terenski potvrđeno vrijeme hoda."
+        close_transfer: "Presjedanje je tijesno: duže stvarno hodanje može značiti propušten autobus."
+      unsupported_journey_constraint:
+        ordered_via: "Ne mogu pouzdano izračunati put s obaveznim prolaskom kroz drugo mjesto u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uslova."
+        arrive_by: "Ne mogu pouzdano izračunati put s rokom dolaska u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uslova."
+        both: "Ne mogu pouzdano izračunati put s obaveznim prolaskom kroz drugo mjesto i rokom dolaska u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tih uslova."
+hr:
+  decidim_app:
+    milica:
+      journey_uncertainty:
+        walking_range: "Okvirna procjena ukupnog pješačenja %{low}–%{high} min; to nije terenski potvrđeno vrijeme hoda."
+        close_transfer: "Presjedanje je tijesno: dulje stvarno hodanje može značiti propušten autobus."
+      unsupported_journey_constraint:
+        ordered_via: "Ne mogu pouzdano izračunati put s obveznim prolaskom kroz drugo mjesto u pregledanom voznom redu. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uvjeta."
+        arrive_by: "Ne mogu pouzdano izračunati put s rokom dolaska u pregledanom voznom redu. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uvjeta."
+        both: "Ne mogu pouzdano izračunati put s obveznim prolaskom kroz drugo mjesto i rokom dolaska u pregledanom voznom redu. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tih uvjeta."
+sr:
+  decidim_app:
+    milica:
+      journey_uncertainty:
+        walking_range: "Okvirna procjena ukupnog pješačenja %{low}–%{high} min; to nije terenski potvrđeno vrijeme hoda."
+        close_transfer: "Presjedanje je tijesno: duže stvarno hodanje može značiti propušten autobus."
+      unsupported_journey_constraint:
+        ordered_via: "Ne mogu pouzdano izračunati put s obaveznim prolaskom kroz drugo mjesto u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uslova."
+        arrive_by: "Ne mogu pouzdano izračunati put s rokom dolaska u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tog uslova."
+        both: "Ne mogu pouzdano izračunati put s obaveznim prolaskom kroz drugo mjesto i rokom dolaska u pregledanom redu vožnje. Mogu provjeriti polazak i procijenjeni dolazak za jednu relaciju bez tih uslova."
+en:
+  decidim_app:
+    milica:
+      journey_uncertainty:
+        walking_range: "Estimated total walking time is roughly %{low}–%{high} minutes; this is not a surveyed walking time."
+        close_transfer: "The transfer is tight: a longer actual walk could mean missing the bus."
+      unsupported_journey_constraint:
+        ordered_via: "I cannot reliably plan a journey that must pass through another place using the reviewed timetable. I can check a departure and estimated arrival for one leg without that condition."
+        arrive_by: "I cannot reliably plan a journey with an arrival deadline using the reviewed timetable. I can check a departure and estimated arrival for one leg without that condition."
+        both: "I cannot reliably plan a journey that must pass through another place and meet an arrival deadline using the reviewed timetable. I can check a departure and estimated arrival for one leg without those conditions."

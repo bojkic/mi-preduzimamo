@@ -1,0 +1,57 @@
+<%= csrf_meta_tags %>
+
+<%# Based on Decidim 0.31.7: keep search URLs free of account and tracking parameters. %>
+<% if mi_search_noindex? %>
+  <meta name="robots" content="noindex, follow">
+<% else %>
+  <link rel="canonical" href="<%= mi_search_url %>">
+  <% available_locales.each do |locale| %>
+    <link rel="alternate" href="<%= mi_search_url(locale: locale) %>" hreflang="<%= locale %>">
+  <% end %>
+<% end %>
+<meta name="description" content="<%= mi_search_description %>">
+<%= tag :meta, property: "og:site_name", content: current_organization_name %>
+<% if mi_search_home? %>
+  <script type="application/ld+json"><%= raw json_escape(mi_search_schema.to_json) %></script>
+<% end %>
+
+<%= tag :meta, name: "viewport", content: "width=device-width, initial-scale=1.0" %>
+
+<%= tag :meta, name: "twitter:card", content: "summary_large_image" %>
+<%= tag :meta, name: "twitter:site", content: "@#{decidim_meta_twitter_handler}" %>
+<%= tag :meta, name: "twitter:title", content: decidim_page_title %>
+<%= tag :meta, name: "twitter:description", content: mi_search_description %>
+<%= tag :meta, name: "twitter:image", content: decidim_meta_image_url.presence || "https://#{current_organization.host}/mi/heart-mark.png" %>
+
+<%= tag :meta, property: "og:image", content: decidim_meta_image_url.presence || "https://#{current_organization.host}/mi/heart-mark.png" %>
+<%= tag :meta, property: "og:type", content: "article" %>
+<%= tag :meta, property: "og:title", content: decidim_page_title %>
+<%= tag :meta, property: "og:description", content: mi_search_description %>
+<%= tag :meta, property: "og:url", content: (mi_search_noindex? ? "https://#{current_organization.host}/" : mi_search_url) %>
+
+<% if current_organization.colors.present? %>
+  <%= tag :meta, name: "theme-color", content: current_organization.colors["primary"] %>
+<% end %>
+
+<%= render partial: "layouts/decidim/meta_tags_context" %>
+
+<%# Decidim's legacy_favicon links the original uploaded organization favicon (432 KB .ico).
+    Point the legacy rel=icon at the compact static public/favicon.ico (same image); the
+    PNG icon, apple-touch icon and manifest below still come from the organization upload. %>
+<%= tag :link, rel: "icon", href: "/favicon.ico", sizes: "any" %>
+<%= favicon %>
+<%= apple_favicon %>
+<link rel="manifest" href="/manifest.webmanifest">
+
+<%= prepend_javascript_pack_tag(mi_search_home? && !current_user ? "mi_home" : "decidim_core", defer: false) %>
+<%= append_stylesheet_pack_tag "decidim_overrides", media: "all" %>
+<%= stylesheet_pack_tag "decidim_core", media: "all" %>
+<%= yield :css_content %>
+
+<%= invisible_captcha_styles %>
+<%= organization_colors %>
+
+<%= render partial: "layouts/decidim/head_extra" %>
+<%== current_organization.header_snippets if Decidim.enable_html_header_snippets %>
+<%= snippets.display(:head) %>
+<%= content_for :header_snippets %>

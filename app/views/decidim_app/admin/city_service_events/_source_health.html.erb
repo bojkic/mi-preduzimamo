@@ -1,0 +1,100 @@
+<section id="admin-city-alert-source-health" aria-labelledby="city-source-health-title">
+  <h2 id="city-source-health-title"><%= t(".title") %></h2>
+  <p><%= t(".description") %></p>
+  <div class="table-stacked" style="overflow-x:auto;">
+    <table class="table-list">
+      <thead><tr>
+        <th><%= t(".source") %></th>
+        <th><%= t(".status") %></th>
+        <th><%= t(".last_attempt") %></th>
+        <th><%= t(".last_success") %></th>
+        <th><%= t(".coverage") %></th>
+        <th><%= t("decidim_app.source_health_dimensions.evidence") %></th>
+      </tr></thead>
+      <tbody>
+        <% DecidimApp::Bijeljina::CityServiceSources.all.each do |source| %>
+          <% check = @source_checks[source.fetch(:key)] %>
+          <% collection = @source_snapshots[source.fetch(:key)]&.check_payload.to_h.fetch("collection", {}) %>
+          <% health = DecidimApp::Bijeljina::CityServiceSourceHealth.call(source_key: source.fetch(:key), check: check) if source.fetch(:enabled, true) %>
+          <tr data-city-source-health="<%= source.fetch(:key) %>" data-source-status="<%= source.fetch(:enabled, true) ? (check&.status || :unavailable) : :disabled %>">
+            <td data-label="<%= t('.source') %>">
+              <%= link_to city_alert_source_label(source.fetch(:key)), source.fetch(:source_url), target: "_blank", rel: "noopener" %>
+              <br><small><%= source.fetch(:provider) %></small>
+            </td>
+            <td data-label="<%= t('.status') %>">
+              <% if source.fetch(:enabled, true) %>
+                <%= source_status_label(check&.status || :unavailable) %>
+              <% else %>
+                <%= t("decidim_app.city_service_events.source_disabled_by_owner", default: "Disabled by owner") %>
+              <% end %>
+              <% if collection.present? %>
+                <details data-city-collection-health><summary><%= t("decidim_app.admin.city_service_events.compact.collection_status.#{collection["outcome"]}", default: collection["outcome"]) %></summary>
+                  <p><%= t('decidim_app.admin.city_service_events.compact.collection_complete') %>: <%= collection["complete"] == true ? '✓' : '—' %></p>
+                  <% if collection["retry_at"] %><p><%= t('decidim_app.admin.city_service_events.compact.retry_at') %>: <%= collection["retry_at"] %></p><% end %>
+                  <% if collection["last_good_age_seconds"] %><p><%= t('decidim_app.admin.city_service_events.compact.last_good_age', seconds: collection["last_good_age_seconds"]) %></p><% end %>
+                  <% Array(collection.dig("articles", "failures")).each do |failure| %><p><%= failure["url"] %> — <%= failure["error_code"] %></p><% end %>
+                </details>
+              <% end %>
+              <% if check&.error_code %><details><summary><%= t('decidim_app.admin.city_service_events.ui_review.diagnostics') %></summary><small><%= check.error_code %></small></details><% end %>
+            </td>
+            <td data-label="<%= t('.last_attempt') %>"><%= check&.attempted_at ? l(check.attempted_at, format: :long) : t('.unknown') %></td>
+            <td data-label="<%= t('.last_success') %>"><%= check&.last_success_at ? l(check.last_success_at, format: :long) : t('.unknown') %></td>
+            <td data-label="<%= t('.coverage') %>">
+              <%= t('.items', count: Array(check&.notices).size) %>
+              <br><small><%= t("decidim_app.source_health_dimensions.partial_coverage") %></small>
+            </td>
+            <td data-label="<%= t('decidim_app.source_health_dimensions.evidence') %>">
+              <% if source.fetch(:enabled, true) %>
+                <%= t("decidim_app.source_health_dimensions.#{health.fetch(:next_action)}") %>
+              <% else %>
+                <%= t("decidim_app.city_service_events.source_disabled_by_owner") %>
+              <% end %>
+              <% if health && health[:empty_reason] == "no_relevant_records_in_checked_scope" %>
+                <br><small><%= t("decidim_app.source_health_dimensions.quiet_scope") %></small>
+              <% end %>
+              <% if health&.dig(:observation, :oldest_at) %>
+                <br><small><%= t("decidim_app.source_health_dimensions.oldest_observation", time: l(Time.iso8601(health.dig(:observation, :oldest_at)), format: :long)) %></small>
+              <% elsif health&.dig(:observation, :state) == "unknown" %>
+                <br><small><%= t("decidim_app.source_health_dimensions.observation_unknown") %></small>
+              <% end %>
+              <% if health&.dig(:last_good, "available") && %w(unavailable malformed stale).include?(health[:status]) %>
+                <br><small><%= t("decidim_app.source_health_dimensions.last_good_retained") %></small>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% Array(@prepared_references).each do |reference| %>
+          <% snapshot = reference[:snapshot] %>
+          <% health = DecidimApp::Bijeljina::CityReferenceHealth.for_reference(reference_key: reference[:key], snapshot: snapshot, organization: current_organization) %>
+          <% status = health.fetch(:status) %>
+          <tr data-prepared-reference="<%= reference[:key] %>" data-source-status="<%= status %>" data-last-attempt-status="<%= health[:last_attempt_status] %>">
+            <td data-label="<%= t('.source') %>"><%= city_alert_reference_label(reference[:key]) %></td>
+            <td data-label="<%= t('.status') %>">
+              <%= source_status_label(status) %>
+              <% if health[:error_code] %><details><summary><%= t("decidim_app.admin.city_service_events.ui_review.diagnostics") %></summary><small><%= health[:error_code] %></small></details><% end %>
+              <br><small><%= t("decidim_app.source_health_dimensions.last_attempt_status", status: source_status_label(health[:last_attempt_status])) %></small>
+              <% if health[:last_attempt_error_code] %><details><summary><%= t("decidim_app.admin.city_service_events.ui_review.diagnostics") %></summary><small><%= health[:last_attempt_error_code] %></small></details><% end %>
+            </td>
+            <td data-label="<%= t('.last_attempt') %>"><%= snapshot&.attempted_at ? l(snapshot.attempted_at, format: :long) : t('.unknown') %></td>
+            <td data-label="<%= t('.last_success') %>"><%= snapshot&.last_success_at ? l(snapshot.last_success_at, format: :long) : t('.unknown') %></td>
+            <td data-label="<%= t('.coverage') %>">
+              <% if reference[:key].to_s.start_with?("reference:procedure:") %>
+                <%= t("decidim_app.source_health_dimensions.procedure_review") %>
+              <% else %>
+                <%= t('.items', count: Array(snapshot&.check_payload&.fetch("entries", nil) || snapshot&.check_payload&.fetch("items", [])).size) %>
+              <% end %>
+            </td>
+            <td data-label="<%= t('decidim_app.source_health_dimensions.evidence') %>">
+              <%= t("decidim_app.source_health_dimensions.edition_review") %>
+              <% if health[:reader_basis] %><br><small><%= t("decidim_app.source_health_dimensions.#{health[:reader_basis]}") %></small><% end %>
+              <% if health[:reviewed_on] %><br><small><%= t("decidim_app.source_health_dimensions.reviewed_on", date: health[:reviewed_on]) %></small><% end %>
+              <% if health[:index_captured_on] %><br><small><%= t("decidim_app.source_health_dimensions.index_captured_on", date: health[:index_captured_on]) %></small><% end %>
+              <% if health[:checked_at] %><br><small><%= t("decidim_app.source_health_dimensions.prepared_checked_at", time: l(health[:checked_at], format: :long)) %></small><% end %>
+              <% Array(health[:warning_codes]).each do |warning| %><br><small><%= warning %></small><% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
