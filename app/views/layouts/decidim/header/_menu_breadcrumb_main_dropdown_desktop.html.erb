@@ -1,8 +1,12 @@
-<div id="<%= id %>" class="menu-bar__main-dropdown">
+<div id="<%= id %>" class="menu-bar__main-dropdown mi-navigation-panel--desktop">
   <div class="menu-bar__main-dropdown__left">
     <div class="menu-bar__main-dropdown__left-top">
       <%= render partial: "layouts/decidim/header/menu_breadcrumb_main_dropdown_top_left" %>
     </div>
+    <%= cell("decidim/highlighted_participatory_process", menu_highlighted_participatory_process) %>
+    <%= cell "decidim/bih/menu_activity", current_organization %>
   </div>
-  <%= breadcrumb_root_menu.render %>
+  <nav aria-label="<%= t("layouts.decidim.header.main_menu") %>">
+    <%= breadcrumb_root_menu.render %>
+  </nav>
 </div>

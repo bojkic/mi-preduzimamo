@@ -1,5 +1,11 @@
 # Istorija izdanja
 
+## v0.1.2 — 2026-11-01
+
+- Ispravljeni stilovi jezičkih putanja procesa i prikaz glavnog menija nakon prelaska na Decidim 0.32.
+- Vraćeni istaknuti proces i aktivnosti uz postojeća pravila vidljivosti.
+- Stranica o otvorenom kodu i podnožje dostupni su na sva četiri jezika platforme.
+
 ## v0.1.1
 
 - BIH administracija koristi jezičke putanje Decidim-a 0.32; stari GET linkovi vode do dostupne stranice, a raniji POST/PATCH endpoint-i ostaju kompatibilni.

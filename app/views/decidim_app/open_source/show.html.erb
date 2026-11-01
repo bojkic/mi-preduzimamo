@@ -1,35 +1,33 @@
-<% add_decidim_page_title("Otvoreni kod — MI preduzimamo") %>
+<% add_decidim_page_title(t("mi_open_source.page_title")) %>
 <div class="wrapper">
-  <article class="mi-surface mi-open-source" lang="sr-Latn" aria-labelledby="open-source-title">
-    <h1 id="open-source-title">Pokrenite MI preduzimamo u svojoj zajednici</h1>
-    <p>MI preduzimamo je platforma za učešće građana, prijave problema, komšiluke, volontiranje i zajedničke projekte. Razvija je Lokalna fondacija Bijeljina, na osnovi slobodnog softvera Decidim.</p>
-    <h2>Otvoreni kod za zajednice u BiH</h2>
-    <p>Otvoreni kod omogućava da proučavate, koristite, prilagođavate i dijelite softver prema licenci AGPL-3.0-or-later. Pri izmjenama i daljoj upotrebi poštujte obaveze licence, uključujući ponudu odgovarajućeg izvornog koda kada je primjenjiva. Podaci građana, privatne poruke i bijeljinski skupovi podataka nisu dio javne distribucije.</p>
+  <article class="mi-surface mi-open-source" lang="<%= I18n.locale.to_s == "sr" ? "sr-Latn" : I18n.locale %>" aria-labelledby="open-source-title">
+    <h1 id="open-source-title"><%= t("mi_open_source.title") %></h1>
+    <p><%= t("mi_open_source.intro") %></p>
+    <h2><%= t("mi_open_source.freedoms_title") %></h2>
+    <p><%= t("mi_open_source.freedoms") %></p>
     <% if @release.published? %>
-      <h2>Pokrenite sami</h2>
-      <p>Počnite od README uputstva u aplikaciji. Izvorni kod je podijeljen na aplikaciju zajednice i zajednički engine.</p>
+      <h2><%= t("mi_open_source.self_title") %></h2>
+      <p><%= t("mi_open_source.self_intro") %></p>
       <ul>
-        <li><%= link_to "Aplikacija — kod i uputstvo za instalaciju", @release.repositories.fetch(:app) %></li>
-        <li><%= link_to "Zajednički engine — kod, licenca i doprinosi", @release.repositories.fetch(:engine) %></li>
+        <li><%= link_to t("mi_open_source.app_link"), @release.repositories.fetch(:app) %></li>
+        <li><%= link_to t("mi_open_source.engine_link"), @release.repositories.fetch(:engine) %></li>
       </ul>
-      <p>Repozitorijumi sadrže javna izdanja i povremeno se ažuriraju. Ova stranica ne tvrdi da javno izdanje odgovara verziji koja trenutno radi na ovoj platformi.</p>
+      <p><%= t("mi_open_source.versions") %></p>
     <% else %>
-      <h2>Priprema javnog izdanja</h2>
-      <p>Pripremamo repozitorijume i uputstva za samostalnu instalaciju. Linkove ćemo objaviti nakon završnih provjera. Za razgovor o pokretanju platforme već sada možete kontaktirati Fondaciju.</p>
+      <h2><%= t("mi_open_source.draft_title") %></h2>
+      <p><%= t("mi_open_source.draft") %></p>
     <% end %>
-    <h2>Od ideje do platforme vaše zajednice</h2>
+    <h2><%= t("mi_open_source.steps_title") %></h2>
     <ol>
-      <li>Dogovorite potrebe zajednice, odgovorne administratore i pravila moderacije.</li>
-      <li>Obezbijedite hosting, domen i tehničko održavanje ili zatražite pomoć Fondacije.</li>
-      <li>Instalirajte aplikaciju i podesite naziv, jezike, komšiluke i lokalne izvore podataka.</li>
-      <li>Povežite potrebne spoljne usluge, obučite administratore i sprovedite probni rad.</li>
-      <li>Otvorite platformu građanima i pratite prijave, bezbjednost i rad pozadinskih poslova.</li>
+      <% t("mi_open_source.steps").each do |step| %>
+        <li><%= step %></li>
+      <% end %>
     </ol>
-    <p>Samostalna instalacija zahtijeva znanje administracije Rails aplikacija, PostgreSQL-a i Redis-a. Hosting, poruke i AI usluge mogu imati zasebne troškove. Vaša zajednica uređuje privatnost, rokove čuvanja podataka i pravila rada. Naziv „MI preduzimamo“ možete koristiti uz naziv svog grada ili zajednice.</p>
-    <h2>Zatražite pomoć Fondacije</h2>
-    <p>LF Bijeljina nudi objedinjenu uslugu: hosting kojim upravlja Fondacija, konfiguraciju platforme, pripremu za pokretanje, obuku i podršku. Obim usluge, odgovornosti za podatke i naloge, održavanje i način predaje dogovaraju se ponudom. Plaćena pomoć nije uslov za samostalno korišćenje softvera prema licenci.</p>
-    <p><%= mail_to "office@fondacijabijeljina.com", "Kontaktirajte Fondaciju za ponudu", subject: "MI preduzimamo — platforma za našu zajednicu", class: "mi-open-source__contact" %></p>
-    <h2>Doprinosi i bezbjednost</h2>
-    <p>Projektna pitanja i privatne prijave bezbjednosnih problema pošaljite na <%= mail_to "bojan@fondacijabijeljina.com" %>. Lične podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uslovi doprinosa navedeni su u javnom repozitorijumu kada izdanje bude dostupno.</p>
+    <p><%= t("mi_open_source.requirements") %></p>
+    <h2><%= t("mi_open_source.services_title") %></h2>
+    <p><%= t("mi_open_source.services") %></p>
+    <p><%= mail_to "office@fondacijabijeljina.com", t("mi_open_source.contact"), subject: t("mi_open_source.contact_subject"), class: "mi-open-source__contact" %></p>
+    <h2><%= t("mi_open_source.contribute_title") %></h2>
+    <p><%= t("mi_open_source.contribute_intro") %> <%= mail_to "bojan@fondacijabijeljina.com" %>. <%= t("mi_open_source.contribute_after") %></p>
   </article>
 </div>

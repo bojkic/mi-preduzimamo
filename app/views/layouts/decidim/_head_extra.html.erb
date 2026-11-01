@@ -182,12 +182,13 @@
   <script defer src="/mi/mi-analytics.js?v=<%= mi_analytics_v %>"></script>
 <% end %>
 
-<% project_choice_path = DecidimApp::Bijeljina::RaceProjectSelection.process_path %>
-<% if request.path == project_choice_path || request.path.start_with?("#{project_choice_path}/") %>
+<% mi_process_asset_path = Decidim::Bih::LocalePath.strip(request.path)
+   project_choice_path = DecidimApp::Bijeljina::RaceProjectSelection.process_path %>
+<% if mi_process_asset_path == project_choice_path || mi_process_asset_path.start_with?("#{project_choice_path}/") %>
   <link rel="stylesheet" href="/mi/project-choice.css?v=<%= File.mtime(Rails.root.join('public/mi/project-choice.css')).to_i %>">
 <% end %>
 
-<% if request.path == "/processes" || request.path.start_with?("/processes/") %>
+<% if mi_process_asset_path == "/processes" || mi_process_asset_path.start_with?("/processes/") %>
   <link rel="stylesheet" href="/mi/process-help.css?v=<%= File.mtime(Rails.root.join('public/mi/process-help.css')).to_i %>">
 <% end %>
 

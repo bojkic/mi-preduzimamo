@@ -1,0 +1,150 @@
+{
+  "sr": {
+    "mi_open_source": {
+      "page_title": "Otvoreni kod — MI preduzimamo",
+      "title": "Pokrenite MI preduzimamo u svojoj zajednici",
+      "intro": "MI preduzimamo je platforma za učešće građana, prijave problema, komšiluke, volontiranje i zajedničke projekte. Razvija je Lokalna fondacija Bijeljina, na osnovi slobodnog softvera Decidim.",
+      "freedoms_title": "Otvoreni kod za zajednice u BiH",
+      "freedoms": "Otvoreni kod omogućava da proučavate, koristite, prilagođavate i dijelite softver prema licenci AGPL-3.0-or-later. Pri izmjenama i daljoj upotrebi poštujte obaveze licence, uključujući ponudu odgovarajućeg izvornog koda kada je primjenjiva. Podaci građana, privatne poruke i bijeljinski skupovi podataka nisu dio javne distribucije.",
+      "self_title": "Pokrenite sami",
+      "self_intro": "Počnite od README uputstva u aplikaciji. Izvorni kod je podijeljen na aplikaciju zajednice i zajednički engine.",
+      "app_link": "Aplikacija — kod i uputstvo za instalaciju",
+      "engine_link": "Zajednički engine — kod, licenca i doprinosi",
+      "versions": "Repozitorijumi sadrže javna izdanja i povremeno se ažuriraju. Ova stranica ne tvrdi da javno izdanje odgovara verziji koja trenutno radi na ovoj platformi.",
+      "draft_title": "Priprema javnog izdanja",
+      "draft": "Pripremamo repozitorijume i uputstva za samostalnu instalaciju. Linkove ćemo objaviti nakon završnih provjera. Za razgovor o pokretanju platforme već sada možete kontaktirati Fondaciju.",
+      "steps_title": "Od ideje do platforme vaše zajednice",
+      "steps": [
+        "Dogovorite potrebe zajednice, odgovorne administratore i pravila moderacije.",
+        "Obezbijedite hosting, domen i tehničko održavanje ili zatražite pomoć Fondacije.",
+        "Instalirajte aplikaciju i podesite naziv, jezike, komšiluke i lokalne izvore podataka.",
+        "Povežite potrebne spoljne usluge, obučite administratore i sprovedite probni rad.",
+        "Otvorite platformu građanima i pratite prijave, bezbjednost i rad pozadinskih poslova."
+      ],
+      "requirements": "Samostalna instalacija zahtijeva znanje administracije Rails aplikacija, PostgreSQL-a i Redis-a. Hosting, poruke i AI usluge mogu imati zasebne troškove. Vaša zajednica uređuje privatnost, rokove čuvanja podataka i pravila rada. Naziv „MI preduzimamo“ možete koristiti uz naziv svog grada ili zajednice.",
+      "services_title": "Zatražite pomoć Fondacije",
+      "services": "LF Bijeljina nudi objedinjenu uslugu: hosting kojim upravlja Fondacija, konfiguraciju platforme, pripremu za pokretanje, obuku i podršku. Obim usluge, odgovornosti za podatke i naloge, održavanje i način predaje dogovaraju se ponudom. Plaćena pomoć nije uslov za samostalno korišćenje softvera prema licenci.",
+      "contact": "Kontaktirajte Fondaciju za ponudu",
+      "contact_subject": "MI preduzimamo — platforma za našu zajednicu",
+      "contribute_title": "Doprinosi i bezbjednost",
+      "contribute_intro": "Projektna pitanja i privatne prijave bezbjednosnih problema pošaljite na",
+      "contribute_after": "Lične podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uslovi doprinosa navedeni su u javnom repozitorijumu.",
+      "footer_link": "Otvoreni kod"
+    },
+    "mi_footer": {
+      "apply_language": "Primijeni",
+      "legal_navigation": "Pravni linkovi"
+    }
+  },
+  "sr-Cyrl": {
+    "mi_open_source": {
+      "page_title": "Отворени код — MI preduzimamo",
+      "title": "Покрените MI preduzimamo у својој заједници",
+      "intro": "MI preduzimamo је платформа за учешће грађана, пријаве проблема, комшилуке, волонтирање и заједничке пројекте. Развија је Локална фондација Бијељина, на основи слободног софтвера Decidim.",
+      "freedoms_title": "Отворени код за заједнице у БиХ",
+      "freedoms": "Отворени код омогућава да проучавате, користите, прилагођавате и дијелите софтвер према лиценци AGPL-3.0-or-later. При измјенама и даљој употреби поштујте обавезе лиценце, укључујући понуду одговарајућег изворног кода када је примјењива. Подаци грађана, приватне поруке и бијељински скупови података нису дио јавне дистрибуције.",
+      "self_title": "Покрените сами",
+      "self_intro": "Почните од README упутства у апликацији. Изворни код је подијељен на апликацију заједнице и заједнички engine.",
+      "app_link": "Апликација — код и упутство за инсталацију",
+      "engine_link": "Заједнички engine — код, лиценца и доприноси",
+      "versions": "Репозиторијуми садрже јавна издања и повремено се ажурирају. Ова страница не тврди да јавно издање одговара верзији која тренутно ради на овој платформи.",
+      "draft_title": "Припрема јавног издања",
+      "draft": "Припремамо репозиторијуме и упутства за самосталну инсталацију. Линкове ћемо објавити након завршних провјера. За разговор о покретању платформе већ сада можете контактирати Фондацију.",
+      "steps_title": "Од идеје до платформе ваше заједнице",
+      "steps": [
+        "Договорите потребе заједнице, одговорне администраторе и правила модерације.",
+        "Обезбиједите hosting, домен и техничко одржавање или затражите помоћ Фондације.",
+        "Инсталирајте апликацију и подесите назив, језике, комшилуке и локалне изворе података.",
+        "Повежите потребне спољне услуге, обучите администраторе и спроведите пробни рад.",
+        "Отворите платформу грађанима и пратите пријаве, безбједност и рад позадинских послова."
+      ],
+      "requirements": "Самостална инсталација захтијева знање администрације Rails апликација, PostgreSQL-а и Redis-а. Hosting, поруке и AI услуге могу имати засебне трошкове. Ваша заједница уређује приватност, рокове чувања података и правила рада. Назив „MI preduzimamo“ можете користити уз назив свог града или заједнице.",
+      "services_title": "Затражите помоћ Фондације",
+      "services": "ЛФ Бијељина нуди обједињену услугу: hosting којим управља Фондација, конфигурацију платформе, припрему за покретање, обуку и подршку. Обим услуге, одговорности за податке и налоге, одржавање и начин предаје договарају се понудом. Плаћена помоћ није услов за самостално коришћење софтвера према лиценци.",
+      "contact": "Контактирајте Фондацију за понуду",
+      "contact_subject": "MI preduzimamo — платформа за нашу заједницу",
+      "contribute_title": "Доприноси и безбједност",
+      "contribute_intro": "Пројектна питања и приватне пријаве безбједносних проблема пошаљите на",
+      "contribute_after": "Личне податке и осјетљиве налазе немојте објављивати у јавним пријавама проблема. Услови доприноса наведени су у јавном репозиторијуму.",
+      "footer_link": "Отворени код"
+    },
+    "mi_footer": {
+      "apply_language": "Примијени",
+      "legal_navigation": "Правне везе"
+    }
+  },
+  "bs": {
+    "mi_open_source": {
+      "page_title": "Otvoreni kod — MI preduzimamo",
+      "title": "Pokrenite MI preduzimamo u svojoj zajednici",
+      "intro": "MI preduzimamo je platforma za učešće građana, prijave problema, komšiluke, volontiranje i zajedničke projekte. Razvija je Lokalna fondacija Bijeljina, na osnovi slobodnog softvera Decidim.",
+      "freedoms_title": "Otvoreni kod za zajednice u BiH",
+      "freedoms": "Otvoreni kod omogućava da proučavate, koristite, prilagođavate i dijelite softver prema licenci AGPL-3.0-or-later. Pri izmjenama i daljnjoj upotrebi poštujte obaveze licence, uključujući ponudu odgovarajućeg izvornog koda kada je primjenjiva. Podaci građana, privatne poruke i bijeljinski skupovi podataka nisu dio javne distribucije.",
+      "self_title": "Pokrenite sami",
+      "self_intro": "Počnite od README uputstva u aplikaciji. Izvorni kod je podijeljen na aplikaciju zajednice i zajednički engine.",
+      "app_link": "Aplikacija — kod i uputstvo za instalaciju",
+      "engine_link": "Zajednički engine — kod, licenca i doprinosi",
+      "versions": "Repozitoriji sadrže javna izdanja i povremeno se ažuriraju. Ova stranica ne tvrdi da javno izdanje odgovara verziji koja trenutno radi na ovoj platformi.",
+      "draft_title": "Priprema javnog izdanja",
+      "draft": "Pripremamo repozitorije i uputstva za samostalnu instalaciju. Linkove ćemo objaviti nakon završnih provjera. Za razgovor o pokretanju platforme već sada možete kontaktirati Fondaciju.",
+      "steps_title": "Od ideje do platforme vaše zajednice",
+      "steps": [
+        "Dogovorite potrebe zajednice, odgovorne administratore i pravila moderacije.",
+        "Osigurajte hosting, domenu i tehničko održavanje ili zatražite pomoć Fondacije.",
+        "Instalirajte aplikaciju i podesite naziv, jezike, komšiluke i lokalne izvore podataka.",
+        "Povežite potrebne vanjske usluge, obučite administratore i provedite probni rad.",
+        "Otvorite platformu građanima i pratite prijave, sigurnost i rad pozadinskih poslova."
+      ],
+      "requirements": "Samostalna instalacija zahtijeva znanje administracije Rails aplikacija, PostgreSQL-a i Redis-a. Hosting, poruke i AI usluge mogu imati zasebne troškove. Vaša zajednica uređuje privatnost, rokove čuvanja podataka i pravila rada. Naziv „MI preduzimamo“ možete koristiti uz naziv svog grada ili zajednice.",
+      "services_title": "Zatražite pomoć Fondacije",
+      "services": "LF Bijeljina nudi objedinjenu uslugu: hosting kojim upravlja Fondacija, konfiguraciju platforme, pripremu za pokretanje, obuku i podršku. Opseg usluge, odgovornosti za podatke i račune, održavanje i način predaje dogovaraju se ponudom. Plaćena pomoć nije uslov za samostalno korištenje softvera prema licenci.",
+      "contact": "Kontaktirajte Fondaciju za ponudu",
+      "contact_subject": "MI preduzimamo — platforma za našu zajednicu",
+      "contribute_title": "Doprinosi i sigurnost",
+      "contribute_intro": "Projektna pitanja i privatne prijave sigurnosnih problema pošaljite na",
+      "contribute_after": "Lične podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uslovi doprinosa navedeni su u javnom repozitoriju.",
+      "footer_link": "Otvoreni kod"
+    },
+    "mi_footer": {
+      "apply_language": "Primijeni",
+      "legal_navigation": "Pravni linkovi"
+    }
+  },
+  "hr": {
+    "mi_open_source": {
+      "page_title": "Otvoreni kod — MI preduzimamo",
+      "title": "Pokrenite MI preduzimamo u svojoj zajednici",
+      "intro": "MI preduzimamo je platforma za sudjelovanje građana, prijave problema, susjedstva, volontiranje i zajedničke projekte. Razvija je Lokalna fondacija Bijeljina, na temelju slobodnog softvera Decidim.",
+      "freedoms_title": "Otvoreni kod za zajednice u BiH",
+      "freedoms": "Otvoreni kod omogućuje vam proučavanje, korištenje, prilagodbu i dijeljenje softvera prema licenci AGPL-3.0-or-later. Pri izmjenama i daljnjoj uporabi poštujte obveze licence, uključujući ponudu odgovarajućega izvornog koda kada je primjenjiva. Podaci građana, privatne poruke i bijeljinski skupovi podataka nisu dio javne distribucije.",
+      "self_title": "Pokrenite sami",
+      "self_intro": "Počnite od README uputa u aplikaciji. Izvorni kod podijeljen je na aplikaciju zajednice i zajednički engine.",
+      "app_link": "Aplikacija — kod i upute za instalaciju",
+      "engine_link": "Zajednički engine — kod, licenca i doprinosi",
+      "versions": "Repozitoriji sadrže javna izdanja i povremeno se ažuriraju. Ova stranica ne tvrdi da javno izdanje odgovara inačici koja trenutačno radi na ovoj platformi.",
+      "draft_title": "Priprema javnog izdanja",
+      "draft": "Pripremamo repozitorije i upute za samostalnu instalaciju. Poveznice ćemo objaviti nakon završnih provjera. Za razgovor o pokretanju platforme već sada možete kontaktirati Fondaciju.",
+      "steps_title": "Od ideje do platforme vaše zajednice",
+      "steps": [
+        "Dogovorite potrebe zajednice, odgovorne administratore i pravila moderiranja.",
+        "Osigurajte hosting, domenu i tehničko održavanje ili zatražite pomoć Fondacije.",
+        "Instalirajte aplikaciju i postavite naziv, jezike, susjedstva i lokalne izvore podataka.",
+        "Povežite potrebne vanjske usluge, educirajte administratore i provedite probni rad.",
+        "Otvorite platformu građanima i pratite prijave, sigurnost i rad pozadinskih zadataka."
+      ],
+      "requirements": "Samostalna instalacija zahtijeva znanje administriranja Rails aplikacija, PostgreSQL-a i Redis-a. Hosting, poruke i AI usluge mogu imati zasebne troškove. Vaša zajednica uređuje privatnost, rokove čuvanja podataka i pravila rada. Naziv „MI preduzimamo“ možete koristiti uz naziv svojega grada ili zajednice.",
+      "services_title": "Zatražite pomoć Fondacije",
+      "services": "LF Bijeljina nudi objedinjenu uslugu: hosting kojim upravlja Fondacija, konfiguraciju platforme, pripremu pokretanja, edukaciju i podršku. Opseg usluge, odgovornosti za podatke i korisničke račune, održavanje i način predaje dogovaraju se ponudom. Plaćena pomoć nije uvjet za samostalno korištenje softvera prema licenci.",
+      "contact": "Kontaktirajte Fondaciju za ponudu",
+      "contact_subject": "MI preduzimamo — platforma za našu zajednicu",
+      "contribute_title": "Doprinosi i sigurnost",
+      "contribute_intro": "Projektna pitanja i privatne prijave sigurnosnih problema pošaljite na",
+      "contribute_after": "Osobne podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uvjeti doprinosa navedeni su u javnom repozitoriju.",
+      "footer_link": "Otvoreni kod"
+    },
+    "mi_footer": {
+      "apply_language": "Primijeni",
+      "legal_navigation": "Pravne poveznice"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<% if available_locales.length > 1 %>
+  <%= form_with url: decidim.locale_path(locale: nil), method: :post, local: true,
+                id: "mi-footer-language-form", class: "flex flex-wrap items-center gap-2", data: { turbo: false } do %>
+    <%= label_tag "mi-footer-language", t("layouts.decidim.language_chooser.choose_language"), class: "sr-only" %>
+    <%= select_tag :locale, options_for_select(available_locales.map { |code| [locale_name(code), code] }, I18n.locale.to_s),
+                   id: "mi-footer-language", class: "rounded border border-white bg-white px-3 py-2 text-sm text-black" %>
+    <%= submit_tag t("mi_footer.apply_language"), class: "button button__sm button__secondary" %>
+  <% end %>
+<% end %>

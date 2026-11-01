@@ -1,6 +1,6 @@
 <%# Host override of decidim-core 0.32.2 layouts/decidim/footer/_main.html.erb.
     The single change: the funders band renders BEFORE .main-footer, so the
-    logos sit on white above the navy footer. The footer also retains a language chooser through the current header partial;
+    logos sit on white above the navy footer. The footer uses its own native language form; header dropdown styles are header-scoped.
     other markup follows core — re-diff against core on a Decidim upgrade. %>
 <%= render partial: "layouts/decidim/footer/mi_funders" %>
 <div class="main-footer">
@@ -13,12 +13,12 @@
     </div>
   </div>
   <div class="main-footer__down">
-    <nav class="md:w-1/2 lg:w-auto" role="navigation" aria-label="Legal">
+    <nav class="md:w-1/2 lg:w-auto" role="navigation" aria-label="<%= t("mi_footer.legal_navigation") %>">
       <%= render partial: "layouts/decidim/footer/main_legal" %>
     </nav>
     <nav class="w-full md:w-auto md:ml-auto" role="navigation" aria-label="<%= t("layouts.decidim.footer.social_media") %>">
       <%= render partial: "layouts/decidim/footer/main_social_media_links" %>
     </nav>
-    <%= render partial: "layouts/decidim/header/main_language_chooser", locals: { id: "mi-footer-language-chooser" } %>
+    <%= render partial: "layouts/decidim/footer/language_chooser" %>
   </div>
 </div>

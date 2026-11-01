@@ -15,6 +15,6 @@
     <%= link_to t("mi_launch.about.title"), main_app.launch_about_path %>
   </li>
   <li>
-    <%= link_to "Otvoreni kod", main_app.open_source_path %>
+    <%= link_to t("mi_open_source.footer_link"), main_app.open_source_path(locale: I18n.locale) %>
   </li>
 </ul>

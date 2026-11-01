@@ -3,6 +3,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  post "/locale", to: "decidim_app/locales#create", as: :mi_locale
   get "/sitemap.xml", to: "decidim_app/sitemaps#show", defaults: { format: :xml }
   # Milica's expiring browser-bound auth return; ticket stays in the session.
   get "/u-komsiluku/usluge", to: "decidim_app/komsiluk_context#services", as: :komsiluk_services

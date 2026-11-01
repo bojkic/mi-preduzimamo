@@ -10,7 +10,8 @@
     "/system",
     "/api"
   ]
-  hide_mobile_nav = hidden_prefixes.any? { |prefix| request.path.start_with?(prefix) }
+  navigation_path = Decidim::Bih::LocalePath.strip(request.path)
+  hide_mobile_nav = hidden_prefixes.any? { |prefix| navigation_path.start_with?(prefix) }
 
   # Režim lansiranja (spec §6). The bar keeps its four slots — a fifth would not
   # fit a 320px phone — so "Odlučuj" steps aside for the race and moves into the
@@ -111,8 +112,8 @@
     { href: Decidim::Bih.public_path("vodic"), icon: "question-line", label: t("decidim.bih.menu.onboarding_short") }
   ]
   active_path = lambda do |href|
-    normalized = href.to_s.split("?").first
-    request.path == normalized || (normalized == "/processes" && request.path.start_with?("/processes/"))
+    normalized = Decidim::Bih::LocalePath.strip(href.to_s.split("?").first)
+    navigation_path == normalized || (normalized == "/processes" && navigation_path.start_with?("/processes/"))
   end
   locale_labels = {
     "sr" => "Srpski",
