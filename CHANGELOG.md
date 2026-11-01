@@ -1,5 +1,10 @@
 # Istorija izdanja
 
+## v0.1.1
+
+- BIH administracija koristi jezičke putanje Decidim-a 0.32; stari GET linkovi vode do dostupne stranice, a raniji POST/PATCH endpoint-i ostaju kompatibilni.
+- Usklađene su provjere jezičkih putanja i linkova prijava, uz zadržanu provjeru obrade prijava i ovlašćenja.
+
 ## v0.1.0
 
 Prvo javno izdanje referentne aplikacije MI preduzimamo za lokalne zajednice u Bosni i Hercegovini.

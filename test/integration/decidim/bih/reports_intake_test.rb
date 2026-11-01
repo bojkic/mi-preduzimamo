@@ -35,7 +35,7 @@ module Decidim
         get "/biceriseno/prijave/new"
 
         assert_response :success
-        assert_select "form[action=?]", "/biceriseno/prijave"
+        assert_select "form[action=?]", "/biceriseno/prijave?locale=sr"
         assert_select "textarea[name=?]", "report[description]"
         assert_select "textarea#report_description[required][aria-describedby*=?]", "report_description_hint"
         assert_select "label[for=?]", "report_description"
@@ -71,7 +71,7 @@ module Decidim
         get "/biceriseno"
 
         assert_response :success
-        assert_select "form[action=?]", "/biceriseno/prijave"
+        assert_select "form[action=?]", "/biceriseno/prijave?locale=sr"
         assert_select "textarea[name=?]", "report[description]"
         assert_select "#bih-report-location-map"
         assert_select "input[name=?][autocomplete=off]", "report[website]"
@@ -100,7 +100,7 @@ module Decidim
         assert_nil report.category
         assert_in_delta 44.756, report.latitude.to_f, 0.0001
         assert_in_delta 19.216, report.longitude.to_f, 0.0001
-        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}"
+        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}?locale=sr"
 
         follow_redirect!
         assert_response :success
@@ -132,7 +132,7 @@ module Decidim
         assert_equal @organization, report.organization
         assert_nil report.decidim_user_id
         assert_not_equal outsider.id, report.decidim_user_id
-        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}"
+        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}?locale=sr"
       end
 
       test "POST create shows the duplicate interstitial and does NOT create when a likely dup exists" do
@@ -162,7 +162,7 @@ module Decidim
         assert_select "#bih-duplicate-actions-help"
         assert_select "button[aria-describedby=?]", "bih-duplicate-actions-help"
         assert_select "input#report_duplicate_photo", count: 0
-        assert_select "a[href=?]", "/biceriseno/prijave/#{existing.reference}"
+        assert_select "a[href=?]", "/biceriseno/prijave/#{existing.reference}?locale=sr"
         # PII-safe: the EXISTING report's description is never exposed.
         assert_not_includes response.body, "Rupa na putu kod skole"
         # The "submit anyway" path carries the citizen's own data forward (their
@@ -265,7 +265,7 @@ module Decidim
           end
         end
 
-        assert_redirected_to "/biceriseno/prijave/#{existing.reference}"
+        assert_redirected_to "/biceriseno/prijave/#{existing.reference}?locale=sr"
         follow_redirect!
         assert_response :success
       end
@@ -275,7 +275,7 @@ module Decidim
           post "/biceriseno/prijave/BR-2026-9999/potvrdi"
         end
 
-        assert_redirected_to "/biceriseno/prijave/new"
+        assert_redirected_to "/biceriseno/prijave/new?locale=sr"
       end
 
       test "POST corroborate never crosses organizations" do
@@ -292,7 +292,7 @@ module Decidim
           post "/biceriseno/prijave/#{existing.reference}/potvrdi"
         end
 
-        assert_redirected_to "/biceriseno/prijave/new"
+        assert_redirected_to "/biceriseno/prijave/new?locale=sr"
       end
 
       test "POST create with confirmed_new bypasses dup detection and creates the report" do
@@ -318,7 +318,7 @@ module Decidim
         end
 
         report = Decidim::Bih::Report.last
-        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}"
+        assert_redirected_to "/biceriseno/prijave/#{report.reference}/status/#{report.status_token}?locale=sr"
       end
 
       test "POST create with blank description re-renders new without creating a report" do
@@ -416,7 +416,7 @@ module Decidim
       test "GET show for an unknown reference is handled with a friendly redirect" do
         get "/biceriseno/prijave/BR-2026-9999"
 
-        assert_redirected_to "/biceriseno/prijave/new"
+        assert_redirected_to "/biceriseno/prijave/new?locale=sr"
         follow_redirect!
         assert_response :success
       end
@@ -431,7 +431,7 @@ module Decidim
         host! other.host
         get "/biceriseno/prijave/#{report.reference}"
 
-        assert_redirected_to "/biceriseno/prijave/new"
+        assert_redirected_to "/biceriseno/prijave/new?locale=sr"
       end
     end
   end

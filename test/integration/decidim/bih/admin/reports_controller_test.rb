@@ -24,11 +24,21 @@ module Decidim
           )
         end
 
+        test "legacy admin GET redirects to a working localized reports page" do
+          sign_in @admin
+          get "/admin/bih/reports"
+          assert_redirected_to "/sr/admin/bih/reports"
+          assert_response :moved_permanently
+          follow_redirect!
+          assert_response :success
+          assert_includes response.body, @report.reference
+        end
+
         # --- index ---
 
         test "admin sees the reports index" do
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -91,7 +101,7 @@ module Decidim
           other.record_forwarding_failure!(StandardError.new("other timeout"), code: "other_timeout")
 
           sign_in @admin
-          get "/admin/bih/reports", params: { tab: "insights" }
+          get "/sr/admin/bih/reports", params: { tab: "insights" }
 
           assert_response :success
           assert_not_includes response.body, "admin-reports-list"
@@ -145,7 +155,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { tab: "attention" }
+          get "/sr/admin/bih/reports", params: { tab: "attention" }
 
           assert_response :success
           assert_not_includes response.body, "admin-reports-escalation"
@@ -166,7 +176,7 @@ module Decidim
 
         test "insights tab renders aggregate handoffs and heatmap away from the queue" do
           sign_in @admin
-          get "/admin/bih/reports", params: { tab: "insights" }
+          get "/sr/admin/bih/reports", params: { tab: "insights" }
 
           assert_response :success
           assert_not_includes response.body, "admin-reports-list"
@@ -190,7 +200,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports/#{@report.reference}"
+          get "/sr/admin/bih/reports/#{@report.reference}"
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -208,7 +218,7 @@ module Decidim
                                                     metadata: { proposal_id: 4321, lease: "resumed", job_id: "job-0f9e-not-for-staff", prompt_version: "case-agent-v2" })
 
           sign_in @admin
-          get "/admin/bih/reports/#{@report.reference}"
+          get "/sr/admin/bih/reports/#{@report.reference}"
 
           assert_response :success
           events = "decidim.bih.admin.reports.events"
@@ -223,22 +233,22 @@ module Decidim
 
         test "non-admin is denied access to report detail" do
           sign_in @citizen
-          get "/admin/bih/reports/#{@report.reference}"
+          get "/sr/admin/bih/reports/#{@report.reference}"
 
           assert_response :redirect
         end
 
         test "detail for missing reference redirects to index" do
           sign_in @admin
-          get "/admin/bih/reports/BR-1900-0000"
+          get "/sr/admin/bih/reports/BR-1900-0000"
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports"
+          assert_redirected_to "/sr/admin/bih/reports"
         end
 
         test "admin sees showing N of M count" do
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_includes response.body, "1"
@@ -246,7 +256,7 @@ module Decidim
 
         test "non-admin is denied access to reports index" do
           sign_in @citizen
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :redirect
         end
@@ -260,7 +270,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { status: "rijeseno" }
+          get "/sr/admin/bih/reports", params: { status: "rijeseno" }
 
           assert_response :success
           assert_includes response.body, resolved.reference
@@ -269,7 +279,7 @@ module Decidim
 
         test "invalid status filter is ignored (shows all)" do
           sign_in @admin
-          get "/admin/bih/reports", params: { status: "bad_status" }
+          get "/sr/admin/bih/reports", params: { status: "bad_status" }
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -279,7 +289,7 @@ module Decidim
           @report.record_forwarding_failure!(StandardError.new("timeout"), code: "net_timeout")
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_includes response.body, "Neuspjelo"
@@ -295,7 +305,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { needs_review: "1" }
+          get "/sr/admin/bih/reports", params: { needs_review: "1" }
 
           assert_response :success
           assert_includes response.body, flagged.reference
@@ -306,7 +316,7 @@ module Decidim
           @report.update!(needs_review: true)
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_select "[data-category-missing]"
@@ -325,7 +335,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { mz_slug: "mz-centar" }
+          get "/sr/admin/bih/reports", params: { mz_slug: "mz-centar" }
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -335,7 +345,7 @@ module Decidim
 
         test "invalid mz filter is ignored" do
           sign_in @admin
-          get "/admin/bih/reports", params: { mz_slug: "not-a-real-mz" }
+          get "/sr/admin/bih/reports", params: { mz_slug: "not-a-real-mz" }
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -351,7 +361,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { age: "older_than_30" }
+          get "/sr/admin/bih/reports", params: { age: "older_than_30" }
 
           assert_response :success
           assert_includes response.body, old_report.reference
@@ -360,7 +370,7 @@ module Decidim
 
         test "invalid age filter is ignored" do
           sign_in @admin
-          get "/admin/bih/reports", params: { age: "older_than_forever" }
+          get "/sr/admin/bih/reports", params: { age: "older_than_forever" }
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -385,7 +395,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports", params: { attention: "stale_city_followup" }
+          get "/sr/admin/bih/reports", params: { attention: "stale_city_followup" }
 
           assert_response :success
           assert_includes response.body, stale_city.reference
@@ -394,7 +404,7 @@ module Decidim
           assert_not_includes response.body, "admin-reports-escalation"
           assert_not_includes response.body, "admin-reports-heatmap"
 
-          get "/admin/bih/reports", params: { tab: "attention", attention: "stale_city_followup" }
+          get "/sr/admin/bih/reports", params: { tab: "attention", attention: "stale_city_followup" }
 
           assert_response :success
           # rubocop:disable Rails/DynamicFindBy
@@ -403,7 +413,7 @@ module Decidim
           assert_includes queue_panel.text, stale_city.reference
           assert_not_includes queue_panel.text, old_received.reference
 
-          get "/admin/bih/reports", params: { tab: "insights", attention: "stale_city_followup" }
+          get "/sr/admin/bih/reports", params: { tab: "insights", attention: "stale_city_followup" }
 
           assert_response :success
           heatmap_links = Capybara.string(response.body).all("#admin-reports-heatmap a").map { |link| link[:href] }
@@ -414,7 +424,7 @@ module Decidim
 
         test "invalid attention filter is ignored" do
           sign_in @admin
-          get "/admin/bih/reports", params: { attention: "private_everything" }
+          get "/sr/admin/bih/reports", params: { attention: "private_everything" }
 
           assert_response :success
           assert_includes response.body, @report.reference
@@ -430,7 +440,7 @@ module Decidim
           )
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           # Body should not include the other org's description (reference may
@@ -448,7 +458,7 @@ module Decidim
           @report.record_forwarding_failure!(StandardError.new("timeout"), code: "net_timeout")
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           body = response.body
@@ -462,7 +472,7 @@ module Decidim
           @report.record_forwarding_failure!(StandardError.new("raw failure text"), code: "net_error")
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_includes response.body, "Proslijeđeno"
@@ -474,7 +484,7 @@ module Decidim
           assert_not_includes list_panel.text, "StandardError"
           assert_not_includes list_panel.text, "raw failure text"
 
-          get "/admin/bih/reports/#{@report.reference}"
+          get "/sr/admin/bih/reports/#{@report.reference}"
 
           assert_response :success
           assert_includes response.body, "net_error"
@@ -530,7 +540,7 @@ module Decidim
                 params: { status: "izmisljeno" }
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_equal "primljeno", @report.reload.status
         end
 
@@ -558,7 +568,7 @@ module Decidim
                 params: { status: "rijeseno" }
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports"
+          assert_redirected_to "/admin/bih/reports?locale=sr"
         end
 
         # R3: retrying a non-existent reference likewise redirects, never 500.
@@ -569,7 +579,7 @@ module Decidim
           end
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports"
+          assert_redirected_to "/admin/bih/reports?locale=sr"
         end
 
         test "status update rejects missing CSRF token when forgery protection is enabled" do
@@ -593,7 +603,7 @@ module Decidim
           end
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_includes @report.reload.internal_note, "Provjeriti sa komunalnim timom"
           assert_includes @report.internal_note, @admin.name
           event = @report.events.where(event_type: "internal_note_changed").last
@@ -605,12 +615,12 @@ module Decidim
           @report.update!(internal_note: "Samo za operatere")
 
           sign_in @admin
-          get "/admin/bih/reports"
+          get "/sr/admin/bih/reports"
 
           assert_response :success
           assert_not_includes response.body, "Samo za operatere"
 
-          get "/admin/bih/reports/#{@report.reference}"
+          get "/sr/admin/bih/reports/#{@report.reference}"
 
           assert_response :success
           assert_includes response.body, "Samo za operatere"
@@ -648,7 +658,7 @@ module Decidim
           end
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_equal canonical.id, @report.reload.duplicate_of_report_id
           assert_equal canonical.reference, @report.events.where(event_type: "duplicate_marked").last.metadata["duplicate_of_reference"]
 
@@ -657,7 +667,7 @@ module Decidim
           end
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_nil @report.reload.duplicate_of_report_id
           assert_equal "reopen", @report.events.where(event_type: "case_decision_applied").last.metadata["action"]
           assert_equal "primljeno", @report.status
@@ -668,7 +678,7 @@ module Decidim
           decide("duplicate", duplicate_reference: @report.reference)
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_nil @report.reload.duplicate_of_report_id
         end
 
@@ -685,7 +695,7 @@ module Decidim
           decide("duplicate", duplicate_reference: other_report.reference)
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_nil @report.reload.duplicate_of_report_id
         end
 
@@ -706,7 +716,7 @@ module Decidim
           decide("duplicate", duplicate_reference: duplicate_target.reference)
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_nil @report.reload.duplicate_of_report_id
         end
 
@@ -734,7 +744,7 @@ module Decidim
           assert_no_enqueued_jobs(only: Decidim::Bih::ReportProcessingJob) do
             post "/admin/bih/reports/#{@report.reference}/retry-forwarding"
           end
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert @report.reload.forwarding_failed_at
           assert_equal "timeout", @report.forwarding_error_code
         end
@@ -744,7 +754,7 @@ module Decidim
           assert_no_enqueued_jobs(only: Decidim::Bih::ReportProcessingJob) do
             post "/admin/bih/reports/#{@report.reference}/retry-forwarding"
           end
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
           assert_nil @report.reload.forwarded_at
         end
 
@@ -757,7 +767,7 @@ module Decidim
           end
 
           assert_response :redirect
-          assert_redirected_to "/admin/bih/reports/#{@report.reference}?return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
+          assert_redirected_to "/admin/bih/reports/#{@report.reference}?locale=sr&return_to=%2Fadmin%2Fbih%2Freports%3Fview%3Dreview"
         end
 
         test "retry rejects missing CSRF token when forgery protection is enabled" do
