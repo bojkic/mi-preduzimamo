@@ -17,6 +17,26 @@ sudo apt update
 sudo apt install git python3 ca-certificates curl
 ```
 
+Za **novi Ubuntu 24.04 x86_64 bez postojećeg Docker-a**, sljedeće komande dodaju zvanični repozitorijum i instaliraju Engine/Compose. Ovo je sistemska radnja operatera; installer platforme je ne izvršava. Prvo provjerite `cat /etc/os-release`, `uname -m` i `docker version`. Ako već koristite Docker Desktop kroz WSL ili drugi daemon, zadržite njega i preskočite instalaciju drugog Engine-a.
+
+```sh
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+sudo tee /etc/apt/sources.list.d/docker.sources >/dev/null <<'EOF'
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: noble
+Components: stable
+Architectures: amd64
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Ovaj primjer bira Ubuntu 24.04 (`noble`) i `amd64`; ne kopirajte ga na drugu distribuciju/arhitekturu. Ako apt prijavi konflikt sa postojećim Docker/containerd paketima, zaustavite pripremu i pregledajte njihovu upotrebu prema zvaničnom vodiču. Ne uklanjajte ih automatski.
+
 Instalirajte Engine i Compose iz [zvaničnog Docker apt repozitorijuma](https://docs.docker.com/engine/install/ubuntu/). Ako postoje drugi Docker/containerd paketi ili resursi, prvo procijenite konflikt; nemojte automatski uklanjati tuđe servise. Kada je Docker instaliran, uz systemd provjerite:
 
 ```sh

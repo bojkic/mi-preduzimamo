@@ -53,3 +53,5 @@ Fondacija nudi objedinjenu uslugu hostinga, konfiguracije, obuke i podrške. Za 
 ## Licenca
 
 AGPL-3.0-or-later; puni tekst je u LICENSE-AGPLv3.txt. Sačuvajte obavezne licence i tuđe autorske napomene. Identitet održavaoca ne znači da Fondacija vodi svaku instalaciju.
+
+[Rezultati dosadašnjih proba i otvorene provjere](installation/REZULTATI_PROVJERA.md) sažimaju istorijski izvještaj bez privatnih priloga.

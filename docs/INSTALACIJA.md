@@ -280,3 +280,5 @@ Bez fajla nema ugrađenih lokalnih naziva ili posebnih sufiksa. Za obične varij
 Fajl se provjerava pri učitavanju: do 1 MiB, do 1000 veza i 256 bajta po nazivu, bez praznih ili duplih normalizovanih ključeva. Poslije promjene ponovo pokrenite aplikaciju. Revizija pravila uključuje hash mape, pa automatska priprema preispituje prethodne veze; postojeće operaterske odluke zadržavaju svoje zaštite.
 
 Razvoj koristi praćenje i ponovno građenje fajlova (`bin/shakapacker --watch`), bez zasebnog HTTP/WebSocket servera za assete. Kompajler i Rails pokrećite samo sa razvojnim podacima i pristupnim podacima. Razvojni webpack server nije uključen u ovaj postupak zbog poznatih upozorenja njegovih zavisnosti. Produkcija koristi unaprijed izgrađene assete.
+
+[Rezultati dosadašnjih proba i otvorene provjere](../installation/REZULTATI_PROVJERA.md) sažimaju istorijski izvještaj bez privatnih priloga.
