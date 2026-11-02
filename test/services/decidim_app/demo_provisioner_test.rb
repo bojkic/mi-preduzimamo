@@ -26,6 +26,17 @@ module DecidimApp
       FileUtils.remove_entry(@directory)
     end
 
+    test "first system setup refuses an existing community before credential or account writes" do
+      organization = create_organization
+      before_pages = organization.static_pages.order(:id).pluck(:id, :content)
+      assert_no_difference -> { Decidim::System::Admin.count } do
+        error = assert_raises(RuntimeError) { @subject.call("system") }
+        assert_match "existing community", error.message
+      end
+      assert_not @directory.join("credentials.json").exist?
+      assert_equal before_pages, organization.static_pages.order(:id).pluck(:id, :content)
+    end
+
     test "failed credential write cannot create a system administrator" do
       assert_no_difference -> { Decidim::System::Admin.count } do
         @subject.stub(:persist, ->(_) { raise IOError, "Synthetic private file failure" }) do

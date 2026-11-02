@@ -77,7 +77,7 @@ class MiDemoProvisioner
     Decidim::System::Admin.transaction do
       connection = Decidim::System::Admin.connection
       connection.execute("LOCK TABLE #{connection.quote_table_name(Decidim::System::Admin.table_name)} IN SHARE ROW EXCLUSIVE MODE")
-      raise "Refusing to adopt existing system administrators" if record.nil? && Decidim::System::Admin.exists?
+      validate_initial_system_setup!(record)
 
       record ||= { "installation_id" => @identity, "system_email" => SYSTEM_EMAIL, "system_password" => "Mi1!#{SecureRandom.hex(24)}", "system_state" => "planned" }
       raise "Unexpected system account identity" unless record.fetch("system_email") == SYSTEM_EMAIL
@@ -94,6 +94,13 @@ class MiDemoProvisioner
     end
     complete = record.merge("system_state" => "done", "system_id" => admin.id)
     persist(complete) unless complete == record
+  end
+
+  def validate_initial_system_setup!(record)
+    return if record
+
+    raise "Refusing to adopt existing system administrators" if Decidim::System::Admin.exists?
+    raise "Refusing to create a demo administrator for an existing community" if Decidim::Organization.exists?
   end
 
   def validate_system_account!(admin, record)
