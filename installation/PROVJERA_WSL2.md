@@ -28,3 +28,7 @@ Za svaki korak označiti izvršeno/prošlo, neuspješno, neizvršeno ili neprimj
 WSL2 može potvrditi lokalnu instalaciju, restart/recreate i izolovan backup/restore ako se ti koraci stvarno izvedu. Javni domen/TLS, obnova sertifikata i automatski start nakon restarta zasebnog Linux VPS-a ostaju zasebne provjere. Restart kontejnera nije reboot servera. Za VPS prihvatanje treba stvarni odvojeni VPS i testni domen; Windows/WSL rezultat se ne prepisuje u taj red matrice.
 
 Prilikom probe ne slati stvarne poruke, ne aktivirati plaćene integracije i ne mijenjati Windows/WSL globalna podešavanja, bez korisnikovog posebnog naloga. Ne koristiti `down -v` ili globalni prune kao popravku neuspjele instalacije.
+
+## Nastavak provjere uz popravke
+
+Poslije čuvanja prvobitnog rezultata agent smije praviti ispravke u zasebnoj grani i nastaviti punu funkcionalnu matricu. Za svaku ispravku sačuvati diff/commit, razlog i neuspjeli/ponovljeni rezultat. Ne mijenjati stare tagove, zaobilaziti OTP ili izlagati DB/Redis radi prolaza. Ne mijenjati tuđe resurse ili produkciju. Izvještaj mora razlikovati originalni tag, zakrpljenu varijantu i kasniju čistu probu objavljenog novog taga. Izvorni rc1 takođe je stao na nedostajućem ICU-u; eventualni pripremljeni upgrade početak jasno označiti kao patchovani rc1.
