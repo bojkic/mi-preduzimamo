@@ -1,5 +1,10 @@
 # Istorija izdanja
 
+## v0.1.3 — 2026-11-02
+
+- Ispravljen poziv Decidim 0.32 komande za telefonsku i imenovanu/poštansku autorizaciju; privremeni host adapter nije potreban.
+- Dodate ciljane provjere stvarnih OTP/link tokova, zaključavanja i konkurentnih potvrda. Ovo izdanje ne proglašava stari Docker put ili VPS instalaciju provjerenim.
+
 ## v0.1.2 — 2026-11-01
 
 - Ispravljeni stilovi jezičkih putanja procesa i prikaz glavnog menija nakon prelaska na Decidim 0.32.
