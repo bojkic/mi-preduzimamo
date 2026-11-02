@@ -41,6 +41,7 @@ const PRIVATE_NAVIGATION_PATHS = [
 ];
 
 const PUBLIC_NAVIGATION_PATTERNS = [
+  /^\/(?:sr\/|sr-Cyrl\/|bs\/|hr\/)?otvoreni-kod\/?$/,
   /^\/$/,
   /^\/offline\/?$/,
   /^\/biceriseno\/?$/,

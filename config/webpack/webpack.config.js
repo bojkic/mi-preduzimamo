@@ -7,6 +7,11 @@ const customConfig = require("./custom")
 webpackConfig.optimization = {}
 const combinedConfig = merge(webpackConfig, customConfig)
 
+// Keep native build-host paths out of distributed production source maps.
+if (process.env.NODE_ENV === "production") {
+  combinedConfig.devtool = false
+}
+
 // Retain an explicit public build-environment allowlist after the upstream
 // Shakapacker 9 upgrade. Only these public build-mode flags may be substituted into
 // browser bundles; pack sources read nothing else from process.env. Proven by

@@ -1,5 +1,9 @@
 # Istorija izdanja
 
+## v0.1.4-rc2 — kandidat za nezavisnu probu
+
+Dopunjeni su prevodi pogođenih administratorskih tokova na sva četiri jezika, uz inventar ključeva i regresione provjere kalendara. Stranica otvorenog koda dobila je offline navigacionu rutu. Produkcioni build ne isporučuje source mape sa internim putanjama domaćina. Upozorenja o velikim paketima ostaju vidljiva. Ove native provjere ne potvrđuju novu čistu Docker/WSL instalaciju, Docker restore/nadogradnju ili VPS/TLS/reboot.
+
 ## v0.1.4-rc1 — Kandidat instalera i održavanje
 
 Novi izolovani demo/VPS profili, privatni backup, karantinski restore i nastavak nadogradnje bez novih autentifikacionih ključeva. Node 22.23.4/npm 10.9.9; Ruby/Rails/Decidim ostaju 3.4.12/8.1.4/0.32.2. Dodati su sintetički worker probe i uputstva. Ciljane native provjere nisu dokaz nove čiste Docker/WSL ili VPS instalacije; to prihvatanje ostaje otvoreno.

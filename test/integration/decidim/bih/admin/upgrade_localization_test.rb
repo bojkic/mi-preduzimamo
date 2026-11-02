@@ -27,6 +27,22 @@ module Decidim
             assert_select ".translation_missing", count: 0
           end
 
+          test "#{locale} process forms and navigation use native translations" do
+            get "/#{locale}/admin/participatory_processes/new"
+            assert_response :success
+            %w(
+              decidim.participatory_processes.admin.participatory_processes.new.title
+              activemodel.attributes.participatory_process.title
+              activemodel.attributes.participatory_process.start_date
+              decidim.admin.menu.settings
+              decidim.forms.upload.labels.validation_error
+            ).each do |key|
+              assert I18n.exists?(key, locale, fallback: false), "Missing native translation: #{locale}/#{key}"
+              assert_includes response.body, I18n.t(key, locale:)
+            end
+            assert_no_match(/New participatory process|General Information|Title is required!/, response.body)
+          end
+
           test "#{locale} process date inputs receive the complete datepicker dictionary" do
             get "/#{locale}/admin/participatory_processes/new"
             assert_response :success
