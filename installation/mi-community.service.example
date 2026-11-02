@@ -1,0 +1,21 @@
+[Unit]
+Description=MI community installation
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+RequiresMountsFor=/srv/mi
+
+[Service]
+Type=oneshot
+User=mi
+Group=mi
+WorkingDirectory=/srv/mi
+ExecStart=/srv/mi/script/mi_install start
+ExecStop=/srv/mi/script/mi_install stop
+RemainAfterExit=yes
+TimeoutStartSec=600
+TimeoutStopSec=360
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

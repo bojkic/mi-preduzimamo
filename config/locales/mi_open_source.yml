@@ -29,7 +29,9 @@
       "contribute_title": "Doprinosi i bezbjednost",
       "contribute_intro": "Projektna pitanja i privatne prijave bezbjednosnih problema pošaljite na",
       "contribute_after": "Lične podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uslovi doprinosa navedeni su u javnom repozitorijumu.",
-      "footer_link": "Otvoreni kod"
+      "footer_link": "Otvoreni kod",
+      "installation_link": "Uputstvo za instalaciju i početno podešavanje",
+      "installation_status": "Lokalni demo i produkcioni VPS imaju odvojena uputstva. Čista instalacija novog instalera i VPS/TLS put još su u provjeri; simulirane poruke ne potvrđuju stvarnu dostavu."
     },
     "mi_footer": {
       "apply_language": "Primijeni",
@@ -66,7 +68,9 @@
       "contribute_title": "Доприноси и безбједност",
       "contribute_intro": "Пројектна питања и приватне пријаве безбједносних проблема пошаљите на",
       "contribute_after": "Личне податке и осјетљиве налазе немојте објављивати у јавним пријавама проблема. Услови доприноса наведени су у јавном репозиторијуму.",
-      "footer_link": "Отворени код"
+      "footer_link": "Отворени код",
+      "installation_link": "Упутство за инсталацију и почетно подешавање",
+      "installation_status": "Локални демо и продукциони VPS имају одвојена упутства. Чиста инсталација новог инсталера и VPS/TLS пут још су у провјери; симулиране поруке не потврђују стварну доставу."
     },
     "mi_footer": {
       "apply_language": "Примијени",
@@ -103,7 +107,9 @@
       "contribute_title": "Doprinosi i sigurnost",
       "contribute_intro": "Projektna pitanja i privatne prijave sigurnosnih problema pošaljite na",
       "contribute_after": "Lične podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uslovi doprinosa navedeni su u javnom repozitoriju.",
-      "footer_link": "Otvoreni kod"
+      "footer_link": "Otvoreni kod",
+      "installation_link": "Uputstvo za instalaciju i početno podešavanje",
+      "installation_status": "Lokalni demo i produkcioni VPS imaju odvojena uputstva. Čista instalacija novog instalera i VPS/TLS put još su u provjeri; simulirane poruke ne potvrđuju stvarnu dostavu."
     },
     "mi_footer": {
       "apply_language": "Primijeni",
@@ -140,7 +146,9 @@
       "contribute_title": "Doprinosi i sigurnost",
       "contribute_intro": "Projektna pitanja i privatne prijave sigurnosnih problema pošaljite na",
       "contribute_after": "Osobne podatke i osjetljive nalaze nemojte objavljivati u javnim prijavama problema. Uvjeti doprinosa navedeni su u javnom repozitoriju.",
-      "footer_link": "Otvoreni kod"
+      "footer_link": "Otvoreni kod",
+      "installation_link": "Upute za instalaciju i početno postavljanje",
+      "installation_status": "Lokalni demo i produkcijski VPS imaju odvojene upute. Čista instalacija novog instalera i VPS/TLS postupak još se provjeravaju; simulirane poruke ne potvrđuju stvarnu dostavu."
     },
     "mi_footer": {
       "apply_language": "Primijeni",

@@ -28,12 +28,13 @@ Detaljan pregled zahtjeva svake oblasti: [FUNKCIONALNOSTI.md](docs/FUNKCIONALNOS
 
 ## Početno podešavanje
 
-1. Klonirajte aplikaciju i instalirajte zavisnosti: `bundle install` i `npm ci` uz Node 22.22.1 (npm 10.9.4) iz .node-version.
-2. Koristite [.env.example](.env.example) kao spisak razvojnih podešavanja. U okruženju podesite pristup razvojnoj bazi, odvojeni Redis i lokalne tajne. Rails ne učitava automatski .env; promjenljive treba predati procesu kroz lokalni upravljač okruženjem.
-3. Pripremite bazu komandom `bin/rails db:prepare`. Prije pokretanja provjerite da DATABASE_URL označava namijenjenu razvojnu bazu.
-4. Pokrenite `bin/rails server -b 127.0.0.1 -p 3000`, `bin/shakapacker --watch` i `bundle exec sidekiq -C config/sidekiq.yml` u odvojenim procesima. Uredite organizaciju, domen, administratore i lokalne podatke prije otvaranja registracije.
+Novi installer je kandidat za provjeru; nova čista Docker instalacija i VPS/TLS put još nisu potvrđeni. v0.1.3 je zaseban OTP hotfix, bez ovog instalacionog paketa.
 
-Za produkciju obezbijedite TLS, ograničen administratorski pristup, bezbjedno čuvanje tajni, rezervne kopije i provjeru vraćanja, nadzor poslova i lokalno odobrene uslove privatnosti. Ne koristite produkcione pristupne podatke u testovima.
+Za lokalnu izmišljenu zajednicu koristite [kratki Compose vodič](installation/LOKALNO.md): jedan installer priprema tajne, build, bazu i servise. Ruby 3.4.12, Node 22.23.4 i npm 10.9.9 dolaze kroz image; na domaćinu su potrebni Linux x86_64 (ili WSL2), Git, Python i Docker/Compose 2.30+.
+
+Za javnu zajednicu postoji zaseban [VPS profil](installation/PRODUKCIJA.md). Prije otvaranja registracije pripremite svoje pravne tekstove, domen, podatke i odgovorne administratore. Backup/restore i nadogradnja kandidata još se dovršavaju; ograničenja i stvarni rezultati navedeni su u vodiču.
+
+[Glavni instalacioni indeks](docs/INSTALACIJA.md) vodi do podešavanja oblasti. [Nezavisna WSL2 proba](installation/PROVJERA_WSL2.md) čuva razliku između kandidata, javnog izdanja i VPS dokaza.
 
 ## Spoljne usluge i privatnost
 

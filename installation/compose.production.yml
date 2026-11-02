@@ -1,0 +1,16 @@
+# Javni TLS reverse proxy povezuje se samo sa loopback app portom.
+# Ovaj profil nema demo image, Mailpit ili simulirani transport.
+services:
+  app:
+    build:
+      target: runtime
+    environment:
+      MI_INSTALL_PROFILE: production
+      DECIDIM_FORCE_SSL: 'true'
+    ports: ['127.0.0.1:${MI_WEB_PORT}:3000']
+  worker:
+    build:
+      target: runtime
+    environment:
+      MI_INSTALL_PROFILE: production
+      DECIDIM_FORCE_SSL: 'true'

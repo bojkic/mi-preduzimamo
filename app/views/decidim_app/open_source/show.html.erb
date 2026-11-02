@@ -12,6 +12,8 @@
         <li><%= link_to t("mi_open_source.app_link"), @release.repositories.fetch(:app) %></li>
         <li><%= link_to t("mi_open_source.engine_link"), @release.repositories.fetch(:engine) %></li>
       </ul>
+      <p><%= link_to t("mi_open_source.installation_link"), "#{@release.repositories.fetch(:app)}/blob/main/docs/INSTALACIJA.md" %></p>
+      <p><%= t("mi_open_source.installation_status") %></p>
       <p><%= t("mi_open_source.versions") %></p>
     <% else %>
       <h2><%= t("mi_open_source.draft_title") %></h2>

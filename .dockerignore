@@ -46,3 +46,12 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
+
+# Operator-owned installer state contains secrets; never commit/build it.
+/.mi-install/
+/.mi-install.lock
+
+/docs/
+/.claude/
+/.codex/
+/.mi-build-owned

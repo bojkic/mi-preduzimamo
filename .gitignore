@@ -72,3 +72,11 @@ shared/log/**/*.log
 shared/state/
 # Original municipal GIS delivery stays on this server; track only derived resolver data.
 /docs/assets/handoff_decidim/
+
+# Operator-owned installer state contains secrets; never commit/build it.
+/.mi-install/
+/.mi-install.lock
+
+# Python installer/test bytecode is generated locally.
+__pycache__/
+*.py[cod]

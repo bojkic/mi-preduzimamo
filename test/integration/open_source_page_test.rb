@@ -32,7 +32,7 @@ class OpenSourcePageTest < ActionDispatch::IntegrationTest
 
   test "content and footer are translated explicitly in all four platform locales" do
     %w(sr sr-Cyrl bs hr).each do |locale|
-      %w(title intro freedoms_title freedoms self_title self_intro app_link engine_link versions draft_title draft steps_title steps requirements services_title services contact contact_subject contribute_title contribute_intro contribute_after footer_link).each do |key|
+      %w(title intro freedoms_title freedoms self_title self_intro app_link engine_link installation_link installation_status versions draft_title draft steps_title steps requirements services_title services contact contact_subject contribute_title contribute_intro contribute_after footer_link).each do |key|
         assert I18n.exists?("mi_open_source.#{key}", locale, fallback: false), "Missing #{locale}: #{key}"
       end
       get "/otvoreni-kod", params: { locale: locale }
@@ -96,6 +96,8 @@ class OpenSourcePageTest < ActionDispatch::IntegrationTest
     assert_select "h2", text: "Pokrenite sami"
     assert_select "article a[href='https://github.com/bojkic/community-app']"
     assert_select "article a[href='https://github.com/bojkic/community-engine']"
+    assert_select "article a[href='https://github.com/bojkic/community-app/blob/main/docs/INSTALACIJA.md']"
+    assert_includes response.body, I18n.t("mi_open_source.installation_status")
     assert_select "h2", text: "Priprema javnog izdanja", count: 0
   end
 end

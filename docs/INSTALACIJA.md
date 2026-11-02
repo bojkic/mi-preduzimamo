@@ -1,43 +1,13 @@
-# Početna instalacija
+# Instalacija i početno podešavanje
 
-Ovo uputstvo je za novu izolovanu instalaciju. Nemojte pokretati ove komande nad bazom postojeće zajednice.
+Novi instalacioni paket je kandidat za provjeru. Njegova čista Docker instalacija, javni VPS/TLS, reboot i restore još nisu potvrđeni. Istorijski patchovani WSL rezultat ne potvrđuje ovaj kandidat.
 
-1. Obezbijedite Ruby 3.4.12, Node 22.22.1 (npm 10.9.4), PostgreSQL i Redis. Za standardne Rails varijante slika potreban je libvips (provjereno sa 8.18). Aplikacija zaključava Rails 8.1.4 i Decidim 0.32.2; Awesome je zaključan na javni upstream commit, a ne na promjenjivu granu. Za fotografije obezbijedite Linux i ImageMagick 7.1.2-35 ili noviju zakrpljenu verziju 7.x, sa JPEG/PNG/WebP koderima i resource-limit podrškom. Obrada i izrada umanjenih PNG/JPEG/WebP slika provjerene su sa 7.1.2-35. Provjerite `magick -version` i `bundle exec ruby -rmini_magick -e 'puts MiniMagick.cli_version'` u istom okruženju koje koriste web proces i pozadinski poslovi; sam broj verzije sistemskog paketa ne potvrđuje da aplikacija koristi taj izvršni fajl. Granice i provjere obrade su u engine dokumentu `docs/MEDIA_DECODING.md`. Koristite zaključane zavisnosti: `bundle install` i `npm ci`. Lokalna platforma mora imati sopstvene tajne, domen i odvojene razvojne/testne resurse.
-2. Podesite DATABASE_HOST, DATABASE_PORT, DATABASE_USERNAME i DATABASE_PASSWORD ili namjenski DATABASE_URL. Podesite REDIS_URL i odgovarajuće tajne SECRET_KEY_BASE i DECIDIM_API_JWT_SECRET. Rails ih ne učitava automatski iz .env; proslijedite ih procesu kroz svoj upravljač okruženjem. Ne unosite stvarne vrijednosti u Git.
-3. Administrator PostgreSQL-a treba da obezbijedi novu praznu bazu u vlasništvu namijenjenog aplikacionog naloga (ili nalog sa pravom pravljenja takve baze). Provjerite odabranu bazu pa izvršite `bin/rails db:prepare`. Seed podrazumijevano ne pravi demo naloge. Opcija `MI_LOAD_SYNTHETIC_EXAMPLES=true bin/rails db:seed` dozvoljena je isključivo u development okruženju i koristi Decidim demo podatke; nije postupak za produkciju.
-4. Napravite sistemskog administratora interaktivno: `bin/rails decidim_system:create_admin`. Zadajte sopstvenu adresu i jaku lozinku; nemojte ih slati u komandnoj liniji ili izvještaju.
-5. Pokrenite `bin/rails server -b 127.0.0.1 -p 3000` i `bin/shakapacker --watch`. Otvorite `/system` na lokalnoj adresi, kreirajte organizaciju sa svojim domenom, jezicima i administratorom, pa podesite sadržaje i ovlašćenja.
-6. Pokrenite `bundle exec sidekiq -C config/sidekiq.yml` sa istim namijenjenim okruženjem. Provjerite poslove i dostavu uz presretanje spoljnih zahtjeva prije aktiviranja pravih kanala.
+1. Za izmišljenu lokalnu zajednicu slijedite [lokalni Compose vodič](../installation/LOKALNO.md), uključujući pripremu Linux/WSL2 sistema, portove, opcione demo naloge i nastavak poslije greške.
+2. Za novu stvarnu zajednicu koristite [zaseban VPS profil](../installation/PRODUKCIJA.md). Lokalni HTTP/capture dodaci nisu dio produkcionog image-a.
+3. Za nezavisno testiranje koristite [WSL2 postupak i granice dokaza](../installation/PROVJERA_WSL2.md).
+4. Zatim izaberite potrebne oblasti iz [FUNKCIONALNOSTI.md](FUNKCIONALNOSTI.md). Spoljni provider nalog nije uslov za osnovno pokretanje; aktivacija zahtijeva sopstvenu konfiguraciju i zasebnu provjeru.
 
-## Izmišljeni geografski primjer
-
-`db/examples/synthetic_community.geojson` sadrži jednu MZ i četiri komšiluka. Koordinate su oko tačke 0,0; to nije stvarna zajednica niti GIS sloj Bijeljine. Primjer nema imena stanovnika, brojeve telefona ili kontaktne podatke.
-
-U izolovanoj razvojnoj instalaciji sa već kreiranom organizacijom možete uvesti primjer:
-
-```sh
-bin/rails "decidim_bih:geo:import_areas[db/examples/synthetic_community.geojson,community.example.invalid]"
-```
-
-Zamijenite `community.example.invalid` domenom svoje razvojne organizacije. Za stvarnu zajednicu pribavite sopstvene granice i pravo upotrebe podataka; provjerite geometriju, nazive i pripadnost. Testni primjer se ne objavljuje kao stvarni lokalni podatak.
-
-## Prije produkcije
-
-Obezbijedite TLS, procesni nadzor i produkcioni asset build, rezervne kopije sa provjerom vraćanja, ograničenja pristupa administratorima, lokalno odobrene uslove privatnosti i plan ažuriranja. Povežite samo potrebne izvore, AI i komunikacione usluge. Njihovi ugovori, saglasnosti, šabloni i pristupni podaci zavise od instalacije. Ne izlažite razvojni server ili razvojne tajne javno.
-
-## Lokalni servisni podaci
-
-Referentni lokalni adapteri ne uključuju bijeljinski imenik, parking tarife ili spisak ulica. Za sopstvene provjerene podatke podesite putanju `MI_CITY_SERVICES_DATA_PATH` ka JSON datoteci imenika i `MI_PARKING_DATA_PATH` ka JSON datoteci parking podataka. Prazna konfiguracija nema lokalne činjenice niti parking odgovore. To su podaci instalacije; ne unosite kontakte građana ili neprovjerene činjenice u javni repozitorijum.
-
-Imenik prihvata niz `entries`, sa poljima `key`, `title`, `answer`, `source_url` i `source_checked_on` za svaku stavku. Opcioni `parking_answer_sections`, `transport_answer_sections` i `transport_answer_sources` daju tekstove i izvore vaše zajednice. Parking konfiguracija definiše `source_url`, `source_map_url`, `source_checked_on`, `tariff_checked_on`, `tariffs`, `monthly_fening` i `street_rows`. Tarife su u feningima; red ulice ima naziv, normalizovani naziv, aliase, ključ zone i opis segmenta. Prvo ih provjerite u izolovanoj instalaciji.
-
-## Referentni odgovori o lokalnoj organizaciji
-
-`MI_FOUNDATION_METADATA_PATH` je putanja do vašeg lokalnog YAML fajla. Bez nje čitač vraća „nedostupno“, bez tvrdnji o otvorenom pozivu ili raspoloživom novcu. Fajl mora imati `reviewed_on` i `review_expires_on` kao ISO datume, `reviewed_at` kao ISO datum/vrijeme sa zonom, te `sources.about` i `sources.idea_call`. Svaki izvor ima `id` i službeni `url`; `idea_call.current_open_status` je `unverified`, `open` ili `closed`. Datume zadajte prema stvarnom pregledu, ne prema danu instalacije. Otvoren poziv sam po sebi ne potvrđuje raspoloživa sredstva.
-
-Referentni identifikatori `lfbn:about` i `lfbn:idea_call` služe nastavku razgovora; pri mijenjanju identifikatora prilagodite i `FoundationRead::SOURCE_IDS`. Prepoznavanje naziva organizacije u ovom adapteru i dalje je referentno za Bijeljinu: za imenovane upite svoje zajednice prilagodite interfejs `FoundationRead.intent`. Javni tekstovi u `config/locales/milica_foundation_answers.yml` su neutralni; uredite ih prema pregledanim izvorima svoje organizacije i sačuvajte sve dogovorene jezike/pisma. Javni kontakt se uključuje tek kada su izričito podešeni naziv, adresa, mejl i sajt (`MI_PUBLIC_SUPPORT_NAME`, `MI_PUBLIC_SUPPORT_ADDRESS`, `MI_PUBLIC_SUPPORT_EMAIL`, `MI_PUBLIC_SUPPORT_WEBSITE`). Privatni kontakti operatera nisu izvor javnih odgovora.
-
-Za `SECRET_KEY_BASE` i `DECIDIM_API_JWT_SECRET` generišite dvije različite vrijednosti, svaku komandom `ruby -rsecurerandom -e 'puts SecureRandom.hex(64)'`. Čuvajte ih u sopstvenom upravljaču tajnama i predajte procesu kroz okruženje; nemojte ih commitovati ili dodavati dokazima testiranja.
+Referentni alati kandidata su Ruby 3.4.12, Rails 8.1.4, Decidim 0.32.2, Node 22.23.4 i npm 10.9.9. Lockfile čuva puni engine SHA. Ne generišite nove tajne pri nastavku, restore-u ili nadogradnji postojeće instalacije. Ne pokrećite new-install komande nad bazom postojeće zajednice.
 
 ## Pravni dokumenti vaše zajednice
 
@@ -47,7 +17,7 @@ Pripremite sopstvene lokalno pregledane tekstove i podesite `MI_LEGAL_PAGES_PATH
 
 Kada administrator odabere organizaciju i tekstovi su spremni za objavu, može pozvati `DecidimApp::Bijeljina::LegalPagesSetup.call(organization: organization)` iz namijenjenog Rails administrativnog procesa. Alat provjerava oblik konfiguracije i datume, a ne pravnu ispravnost ili saglasnost vaših tekstova sa propisima. Testni primjer `test/support/synthetic_legal_pages.rb` je izmišljen sadržaj za testove, ne politika koju treba objaviti.
 
-Infrastrukturna osnova provjera ovog izdanja je PostgreSQL 18.6 i zasebna Redis 8.0.5 testna instanca, uz Ruby 3.4.12 i Node/npm navedene iznad. To opisuje provjereno okruženje; konfiguraciju svoje zajednice, spoljne usluge i potrebne lokalne tokove provjerite zasebno.
+Referentni kandidat pinovan je na PostgreSQL 18.6 i Redis 8.0.5. Native backend provjere koriste Ruby 3.4.12 i odvojene testne resurse; kompletan novi Docker build sa Node 22.23.4/npm 10.9.9 i čista instalacija još zahtijevaju svoju probu. Konfiguraciju zajednice, spoljne usluge i VPS/TLS put provjerite zasebno. [Backup i odvojena proba oporavka](../installation/OPORAVAK.md).
 
 ### Pregledane činjenice imenika
 

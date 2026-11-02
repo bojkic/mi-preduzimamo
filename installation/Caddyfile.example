@@ -1,0 +1,6 @@
+# Replace the domain and loopback port with your installation values.
+# Public DNS A/AAAA and incoming TCP 80/443 must reach this server.
+community.example.org {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3100
+}
