@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "json"
+require "digest"
 require "securerandom"
 require "tempfile"
 
@@ -29,7 +30,12 @@ class MiDemoProvisioner
     File.open(@directory.join(".provision.lock"), flags, 0o600) do |lock|
       raise "Another demo provisioning command is running" unless lock.flock(File::LOCK_EX | File::LOCK_NB)
 
-      action == "system" ? system_account : content
+      case action
+      when "system" then system_account
+      when "content" then content
+      when "geography" then geography
+      else raise ArgumentError, "Unknown demo provisioning action"
+      end
     end
     puts "Demo provisioning completed. Credentials remain in the private provisioning directory; no values printed."
   end
@@ -119,6 +125,38 @@ class MiDemoProvisioner
     record = plan_content(record, organization, user)
     write_content(record, organization, user)
     persist(record.merge("content_state" => "done"))
+  end
+
+  # Explicit local fixture only. Existing areas are never overwritten, and
+  # a partial import rolls back together with its completion marker.
+  def geography
+    record = journal || raise("Run demo-system and demo-content first")
+    organization = Decidim::Organization.find_by!(host: "127.0.0.1")
+    user = Decidim::User.find_by!(organization:, email: ADMIN_EMAIL)
+    raise "Complete demo-content first" unless completed_content?(record, organization, user)
+
+    path = Rails.root.join("db/examples/synthetic_community.geojson")
+    checksum = Digest::SHA256.file(path).hexdigest
+    organization.transaction do
+      organization.lock!
+      marker = Decidim::Bih::Setting.namespace_for(organization, "mi_demo")["geography_sha256"]
+      next if marker == checksum
+      raise "Existing community geography must not be modified" if marker || Decidim::Bih::LocalArea.exists?(organization:)
+
+      import_geography!(organization, path)
+      Decidim::Bih::Setting.put(organization, "mi_demo", "geography_sha256", checksum)
+    end
+  end
+
+  def import_geography!(organization, path)
+    require "rake"
+    Rails.application.load_tasks unless Rake::Task.task_defined?("decidim_bih:geo:import_areas")
+    task = Rake::Task["decidim_bih:geo:import_areas"]
+    task.reenable
+    task.invoke(path.to_s, organization.host)
+    expected = JSON.parse(path.read).fetch("features").map { |feature| feature.fetch("properties").fetch("slug") }.sort
+    actual = Decidim::Bih::LocalArea.where(organization:).order(:slug).pluck(:slug)
+    raise "Incomplete synthetic geography import" unless expected == actual
   end
 
   def completed_content?(record, organization, user)

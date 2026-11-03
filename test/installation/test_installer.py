@@ -99,6 +99,24 @@ class InstallerSafetyTest(unittest.TestCase):
         self.assertNotEqual(first.config["project"], second.config["project"])
         self.assertEqual(before, {name: (first.state / name).read_bytes() for name in before})
 
+    def test_explicit_demo_geography_calls_only_its_guarded_runner(self):
+        subject = self.prepare()
+        subject.calls.clear()
+        with contextlib.redirect_stdout(io.StringIO()):
+            subject.execute(self.operation("demo-geography"))
+        commands = [args for name, args in subject.calls if name == "demo-provision"]
+        self.assertEqual(1, len(commands))
+        self.assertEqual("installation/demo/setup_geography.rb", commands[0][-1])
+
+    def test_demo_geography_is_refused_in_production_before_provisioning(self):
+        self.args.profile = "production"
+        self.args.domain = "community.example.invalid"
+        subject = self.prepare()
+        subject.calls.clear()
+        with self.assertRaises(installer.InstallError):
+            subject.execute(self.operation("demo-geography"))
+        self.assertFalse(any(name == "demo-provision" for name, _ in subject.calls))
+
     def test_install_refuses_existing_configuration_without_changing_any_bytes(self):
         s = self.prepare()
         before = (s.state / "app.env").read_bytes()

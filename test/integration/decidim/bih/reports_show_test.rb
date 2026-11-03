@@ -53,7 +53,7 @@ module Decidim
           travel_to instant do
             r = report
             %w(sr sr-Cyrl bs hr).each do |locale|
-              Time.use_zone("UTC") { get "/#{locale}/biceriseno/prijave/#{r.reference}" }
+              Time.use_zone("UTC") { get "/biceriseno/prijave/#{r.reference}", params: { locale: } }
               assert_response :success
               expected = I18n.l(r.created_at.in_time_zone(Rails.application.config.time_zone), format: :long, locale:)
               assert_select "dd", text: expected

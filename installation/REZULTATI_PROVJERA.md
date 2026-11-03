@@ -64,6 +64,18 @@ Kandidat v0.1.4-rc6 sadrži lokalizovane unutrašnje kalendarske oznake za sva �
 
 Ovaj kandidat još nema novi Docker/kompajlirani browser PASS. Sljedeća objedinjena proba mora provjeriti kalendar/navigaciju/datum na svim jezicima, isti status potvrde e-maila prije i poslije stvarnog lokalnog dokazivanja/promjene adrese, zimsko/ljetno vrijeme i prelaz dana za prijave, Compose logging i nadogradnju iz neizmijenjenog javnog rc5 na novi javni tag. Stare zakrpljene rc1 podatkovne probe ostaju istorijski dokaz. Ponoviti opravdanu funkcionalnu matricu, ne prepisivati prethodne PASS oznake novom commitu.
 
+## Puni RC6 paket i objedinjeni završni kandidat
+
+Paket od 3. novembra 2026 sadrži 1.336 payload fajlova i manifest (ZIP 1.337 unosa); svaki payload hash i CRC ponovo su provjereni. Pregledani su originalni neuspjesi, redigovani logovi, ključni JSON dokazi, screenshot-i i prerequisite Git bundle-i. Secret scanner označio je tri pojave iste već javne FactoryBot testne lozinke u testnom izvorniku/patchu; to nisu runtime tajne. Sirovi privatni worker log sa credential argumentom nije dio paketa. Paket se ne objavljuje kao korisnički sadržaj niti kopira u repo.
+
+Neizmijenjeni RC6 prošao je install (547 s), direktni javni RC5 → RC6 upgrade (404 s installer-a), funkcionalne/persistence/foto/drain probe, kontrolisane build i DB greške sa bezbjednim resume-om, kao i stvarnu promjenu app IP adrese bez gateway restarta. Osnovni verify radi prazne instalacije. Kalendar je prošao navigaciju i ISO na sva četiri jezika; izvještaj i 4 browser testa/63 provjere ne daju opšti PASS za sve admin tekstove. Backup/karantinski restore na istom daemon-u čuva podatke, fotografije, sliku i ključeve; hladni off-site import i VPS nisu testirani.
+
+RC6 ipak nema puni e-mail tok: stvarni worker nije pronašao Devise confirmation template, lokalni proof link nema pravi origin/port, a potvrđena nova adresa vraća korisnika na nelokalizovanu SMS rutu koja ne postoji u Decidim 0.32. Tri dijagnostičke app zakrpe i dvije engine testne zakrpe sačuvane su odvojeno od neizmijenjenog taga; dijagnostički prolaz se ne prenosi RC6. Pogrešne testne rute su potvrđene izvornim route definicijama.
+
+Završni kandidat v0.1.4-rc7 objedinjuje eksplicitni upstream mailer fallback, čuvanje lokalnog demo origin-a, lokalizovane SMS/prijavne rute i testove, Rails/Sidekiq mail-job log privatnost, 100 ciljanih UI prevoda i očuvanje editor interpolacija. Javni generated-host postupak sada priprema podržane zavisnosti i čuva izolaciju/tuđe direktorijume. Opcioni demo-geography zatvara nedostajući sintetički onboarding preduslov, bez automatskog uvoza u demo-content i bez prepisivanja postojećih oblasti.
+
+Sve te izmjene pripadaju jednom završnom testnom krugu. Novi worker/e-mail/UI/geo/generated-host rezultati RC7 još nisu izvršeni na ovom serveru. Nove i stare prolaske voditi sa tačnim source/image identitetom. Ransack/Minitest izmjene su samo generisani razvojni host; runtime Dockerfile i zaključane runtime zavisnosti ostaju isti.
+
 ## Matrica prihvatanja
 
 | Obuhvat | Status | Šta rezultat dokazuje |
@@ -77,7 +89,8 @@ Ovaj kandidat još nema novi Docker/kompajlirani browser PASS. Sljedeća objedin
 | rc4 čista WSL2/Docker instalacija | Neuspješno | PATH/boot/default-page prepreke; zakrpljena varijanta se vodi zasebno |
 | rc4 dijagnostička varijanta | Djelimično prošlo | Runtime/podaci provjereni; automatski HTTP upgrade i kalendar imali nedostatke |
 | rc5 neizmijenjeni javni tag | Lokalni funkcionalni PASS prema izvještaju; UI djelimično FAIL | Nova WSL2 instalacija/restore i dijagnostički upgrade; bez VPS/cold off-site importa |
-| rc6 objedinjene popravke | Neizvršena nova instalacija/browser | Potrebna proba novog taga, uključujući direktni javni rc5 → novi tag upgrade |
+| rc6 neizmijenjeni javni tag | Instalacija/upgrade/kalendar/podaci prošli; e-mail FAIL | Puni nezavisni paket; lokalni origin/template/return ruta blokiraju puni funkcionalni PASS |
+| rc7 završne objedinjene popravke | Nova instalaciona/worker/browser proba neizvršena | Jedan završni krug poslije svih priprema, uključujući direktni javni RC6 → RC7 upgrade |
 | Novi Linux VPS, javni DNS/TLS/obnova i reboot | Neizvršeno | WSL2 rezultat se ne prenosi u ovaj red |
 | Stvarni SMTP/SMS/Viber/AI/naplata | Nije potvrđeno ovom probom | Opcioni sopstveni nalozi i zasebno odobrene provjere |
 
@@ -85,7 +98,7 @@ Ažuriranje postojećeg native servera nije nova instalacija na praznom VPS-u. W
 
 ## Sljedeća nezavisna proba
 
-Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća proba poslije objave bira javni **v0.1.4-rc6** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
+Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc7** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
 Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
 

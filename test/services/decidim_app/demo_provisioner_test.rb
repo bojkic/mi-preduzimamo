@@ -183,6 +183,29 @@ module DecidimApp
       end
     end
 
+    test "explicit synthetic geography is imported once without changing credentials" do
+      organization, = prepare_organization
+      @subject.call("content")
+      credentials = @directory.join("credentials.json").read
+      assert_difference -> { Decidim::Bih::LocalArea.where(organization:).count }, 5 do
+        @subject.call("geography")
+      end
+      before = Decidim::Bih::LocalArea.where(organization:).order(:id).map(&:attributes)
+      @subject.call("geography")
+      assert_equal before, Decidim::Bih::LocalArea.where(organization:).order(:id).map(&:attributes)
+      assert_equal credentials, @directory.join("credentials.json").read
+    end
+
+    test "explicit demo geography refuses preexisting community areas" do
+      organization, = prepare_organization
+      @subject.call("content")
+      area = Decidim::Bih::LocalArea.create!(organization:, kind: "komsiluk", slug: "existing", name: { sr: "Existing synthetic area" })
+      before = area.attributes
+      assert_raises(RuntimeError) { @subject.call("geography") }
+      assert_equal before, area.reload.attributes
+      assert_equal 1, Decidim::Bih::LocalArea.where(organization:).count
+    end
+
     private
 
     def prepare_organization

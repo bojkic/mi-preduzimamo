@@ -80,7 +80,17 @@ Privatno otvorite `.mi-install/private/credentials.json` u svom editoru. Nemojte
 ./script/mi_install demo-content
 ```
 
-Isti privatni fajl sada sadrži i lozinku organizacionog administratora. Prijavite se na `/users/sign_in`, pregledajte sintetičke uslove i administraciju. Demo tekstovi nisu pravni dokumenti za stvarnu zajednicu. Ako organizacija već ima druge korisnike, pregledane pravne stranice ili sadržaj, alat odbija upis. Ponovljeni završen poziv čuva postojeće lozinke i stranice; prekid nastavite istom komandom.
+Isti privatni fajl sada sadrži i lozinku organizacionog administratora. Prijavite se na `/sr/users/sign_in`, pregledajte sintetičke uslove i administraciju. Demo tekstovi nisu pravni dokumenti za stvarnu zajednicu. Ako organizacija već ima druge korisnike, pregledane pravne stranice ili sadržaj, alat odbija upis. Ponovljeni završen poziv čuva postojeće lozinke i stranice; prekid nastavite istom komandom.
+
+Za potpunu probu telefonskog uključivanja i izbora komšiluka, prije registracije građana izričito uvezite izmišljene oblasti:
+
+```sh
+./script/mi_install demo-geography
+```
+
+Komanda zahtijeva završen `demo-content`, isti lokalni demo/DB identitet i praznu geografiju. Uvozi samo javni `db/examples/synthetic_community.geojson` (jedna izmišljena MZ i četiri komšiluka oko koordinata 0,0), u transakciji i bez promjene lozinki. Ponovljeni dovršeni poziv čuva podatke; postojeće oblasti bez tog demo markera odbijaju se. Ne pokrećite je nad ranijim RC6 primjerom kojem ste već ručno uvezli oblasti. Stvarna zajednica priprema sopstvene podatke zasebnim javnim geo taskom. `demo-content` i dalje ne učitava geografiju automatski.
+
+U lokalnom demou i originalni „Potvrdi e-mail“ link i Devise potvrda nove adrese moraju stići u Mailpit sa `http://127.0.0.1:<web-port>` porijeklom. Ne prepravljajte primljeni link da bi proba prošla. Normalno potvrđena nova adresa mora otvoriti postojeću lokalizovanu sljedeću stranicu. Produkcioni profil zadržava javni HTTPS domen i nema lokalni override.
 
 Privatne demo lozinke su izvan foto volumena. Nakon probe izvezite samo redigovane rezultate i uklonite privatni credential fajl kada više nije potreban; poslije uklanjanja demo provisioning više ne treba pokretati. Ako instalaciju zadržavate, prvo promijenite lozinke kroz uobičajeni postupak. Izmišljeni demo se ne pretvara u produkciju promjenom jedne zastavice.
 

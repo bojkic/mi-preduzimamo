@@ -32,3 +32,13 @@ Prilikom probe ne slati stvarne poruke, ne aktivirati plaćene integracije i ne 
 ## Nastavak provjere uz popravke
 
 Poslije čuvanja prvobitnog rezultata agent smije praviti ispravke u zasebnoj grani i nastaviti punu funkcionalnu matricu. Za svaku ispravku sačuvati diff/commit, razlog i neuspjeli/ponovljeni rezultat. Ne mijenjati stare tagove, zaobilaziti OTP ili izlagati DB/Redis radi prolaza. Ne mijenjati tuđe resurse ili produkciju. Izvještaj mora razlikovati originalni tag, zakrpljenu varijantu i kasniju čistu probu objavljenog novog taga. Izvorni rc1 takođe je stao na nedostajućem ICU-u; eventualni pripremljeni upgrade početak jasno označiti kao patchovani rc1.
+
+## Završni objedinjeni krug poslije RC6 nalaza
+
+Završni krug pokreće se tek nad objavljenim parom svih pregledanih popravki (RC7). Posebno pokriti novu čistu instalaciju i direktni javni RC6 → RC7 upgrade sa postojećim pending/granted korisnicima, procesom, fotografijama i istim ključevima. Podaci i geografske oblasti ranijih projekata čuvaju se; demo-geography pripada samo novom praznom demo primjeru. Potrebni su dovoljno prostora i pregledani sopstveni resursi; bez globalnog prune-a, gašenja drugih distribucija ili mijenjanja njihovih bezbjednosnih podešavanja.
+
+Stvarni worker mora isporučiti Devise potvrdu nove adrese i originalni lokalni proof link u Mailpit. Link se otvara bez ručnog mijenjanja scheme/host/porta; poslije potvrde normalno se otvara postojeća lokalizovana sljedeća stranica. Provjeriti i svjež worker/eager boot sa uključenim missing-translation režimom. Poslije kontrolisane greške pregledati samo redigovan log: token, adresa i serialized mail args ne smiju se pojaviti; izvršni/retry payload ne smije biti promijenjen radi logovanja.
+
+Provjeriti Publish/Update/Phases i editor na sva četiri jezika, native ARIA oznake i interpolirane nivoe naslova/pozicije resizera. Datumi/kalendar i timezone/DST, OTP negativni/pozitivni, privacy/tenancy, fotografije, posao u toku, persistence/restore i živi guard-ovi ostaju u dokumentovanom obuhvatu. Generated-host launcher koristi javno podržani izbor testova i uputstvo engine docs/VERIFIKACIJA.md, bez privatnih ručnih Gemfile/script izmjena.
+
+Priložiti puni redigovani ZIP sa izvještajem, dnevnikom, stvarnim logovima/snimcima/manifestima i svakim eventualnim novim patchom, uz SHA256SUMS. Za svaku stavku zabilježiti izvršeno/prošlo, neuspješno, neizvršeno ili neprimjenjivo sa razlogom. Ovaj lokalni krug ne potvrđuje javni Linux VPS/TLS/reboot/obnovu sertifikata, hladni off-site import/restore/aktivaciju ili stvarne provajdere. Ako se zahtijeva i njihovo konačno prihvatanje, moraju biti dostupni zaseban testni server/domen, backup cilj i sopstveni odobreni nalozi; WSL rezultat se ne prepisuje u te redove.

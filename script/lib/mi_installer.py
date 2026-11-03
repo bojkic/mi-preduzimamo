@@ -56,7 +56,7 @@ def read_private(path):
 
 class Installation:
     FORMAT = 1
-    COMMANDS = ("install", "resume", "check", "verify", "start", "stop", "restart", "status", "admin", "demo-system", "demo-content", "configure", "backup", "restore", "restore-inspect", "activate-restored", "upgrade", "upgrade-abort", "demo-probe", "demo-probe-status", "recreate")
+    COMMANDS = ("install", "resume", "check", "verify", "start", "stop", "restart", "status", "admin", "demo-system", "demo-content", "demo-geography", "configure", "backup", "restore", "restore-inspect", "activate-restored", "upgrade", "upgrade-abort", "demo-probe", "demo-probe-status", "recreate")
     CONFIGURABLE = {
         "DECIDIM_APPLICATION_NAME", "DECIDIM_MAILER_SENDER", "SMTP_ADDRESS", "SMTP_PORT",
         "SMTP_DOMAIN", "SMTP_STARTTLS_AUTO", "SMTP_OPENSSL_VERIFY_MODE", "SMTP_AUTHENTICATION",
@@ -487,10 +487,10 @@ class Installation:
                 action = "enqueue" if args.command == "demo-probe" else "status"
                 value = self.compose("demo-worker-probe", "exec", "-T", "app", "bin/rails", "runner", "installation/demo/drain_probe.rb", action, identity, capture=True)
                 print(json.dumps(json.loads(value.splitlines()[-1]), ensure_ascii=False))
-            elif args.command in ("demo-system", "demo-content"):
+            elif args.command in ("demo-system", "demo-content", "demo-geography"):
                 self.daemon()
                 require(self.config["profile"] == "demo", "Demo provisioning is refused outside the demo profile.")
-                script = "installation/demo/setup_system.rb" if args.command == "demo-system" else "installation/demo/setup_content.rb"
+                script = {"demo-system": "installation/demo/setup_system.rb", "demo-content": "installation/demo/setup_content.rb", "demo-geography": "installation/demo/setup_geography.rb"}[args.command]
                 self.compose("demo-provision", "exec", "-T", "app", "bin/rails", "runner", script)
                 print("Demo pristupni podaci su u .mi-install/private/credentials.json; otvorite ih privatno u editoru, ne šaljite u izvještaj.")
             elif args.command == "admin":
