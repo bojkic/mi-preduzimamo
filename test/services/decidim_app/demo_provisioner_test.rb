@@ -157,6 +157,32 @@ module DecidimApp
       assert_equal "done", JSON.parse(@directory.join("credentials.json").read).fetch("content_state")
     end
 
+    test "real system informational defaults are preserved during demo setup" do
+      organization, user = prepare_organization
+      Decidim::System::CreateDefaultHelpPages.call(organization)
+      Decidim::ParticipatoryProcesses::CreateDemocraticQualityIndicatorsPage.call(organization.id)
+      pages = organization.static_pages.where.not(slug: "terms-of-service").order(:id)
+      before = pages.pluck(:id, :title, :content, :updated_at)
+      original_ids = before.map(&:first)
+      @subject.call("content")
+      assert user.reload.invitation_accepted_at
+      assert_equal before, organization.static_pages.where(id: original_ids).order(:id).pluck(:id, :title, :content, :updated_at)
+    end
+
+    %w(help democratic-quality-indicators).each do |slug|
+      test "edited #{slug} defaults are refused before any provisioning write" do
+        organization, = prepare_organization
+        Decidim::System::CreateDefaultHelpPages.call(organization)
+        Decidim::ParticipatoryProcesses::CreateDemocraticQualityIndicatorsPage.call(organization.id)
+        organization.static_pages.find_by!(slug:).update!(content: organization.available_locales.index_with { "Reviewed operator content" })
+        before = organization.static_pages.order(:id).pluck(:id, :title, :content, :updated_at)
+        credential_before = @directory.join("credentials.json").read
+        assert_raises(RuntimeError) { @subject.call("content") }
+        assert_equal before, organization.static_pages.order(:id).pluck(:id, :title, :content, :updated_at)
+        assert_equal credential_before, @directory.join("credentials.json").read
+      end
+    end
+
     private
 
     def prepare_organization

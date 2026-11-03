@@ -22,8 +22,16 @@ class AdminUpgradeLocalizationSystemTest < ApplicationSystemTestCase
       field.send_keys(:tab)
       assert_equal "2026-12-15", find("##{original[:id]}", visible: :all).value
       row = find("##{original[:id]}_datepicker_row")
-      row.find(".datepicker__calendar-button").click
+      button = row.find(".datepicker__calendar-button")
+      assert button["aria-label"].present?
+      assert_no_match(/undefined|translation missing/i, button["aria-label"])
+      button.click
       assert_selector ".datepicker__container wc-datepicker"
+      if locale == "sr"
+        assert_selector "wc-datepicker[locale='sr-Latn']"
+      else
+        assert_selector "wc-datepicker[locale='#{locale}']"
+      end
       assert_selector ".datepicker__close-calendar", text: I18n.t("date.buttons.close", locale:)
       row.find(".datepicker__close-calendar").click
       assert_no_selector ".datepicker__container wc-datepicker"

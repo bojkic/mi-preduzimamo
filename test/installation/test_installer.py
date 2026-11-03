@@ -36,6 +36,9 @@ class DockerDouble(installer.Installation):
             raise installer.InstallError("Controlled failure")
         return {"selected-image": self.config.get("image_id", ""), "worker-running": "e" * 64 if self.worker_active else "", "compose-version": "2.30.0", "built-image": "sha256:" + "d" * 64, "runtime-image": "sha256:" + "d" * 64, "runtime-containers": "e" * 64 + "\n" + "f" * 64, "docker-identity": self.daemon_id, "docker-memory": str(8 * 1024**3), "resource-identity": self.volume_rows}.get(name, "")
 
+    def verify_http(self, timeout=30):
+        self.calls.append(("public-http", []))
+
     def context(self, **kwargs):
         self.calls.append(("context", []))
 
@@ -314,6 +317,7 @@ class InstallerSafetyTest(unittest.TestCase):
         s = self.prepare()
         with contextlib.redirect_stdout(io.StringIO()):
             s.resume()
+            s.calls.clear()
             s.execute(self.operation("verify"))
         verify = next(args for name, args in s.calls if name == "runtime-verify")
         self.assertEqual(["a" * 40, "b" * 40, "c" * 64], verify[-3:])
@@ -324,6 +328,23 @@ class InstallerSafetyTest(unittest.TestCase):
         with self.assertRaises(installer.InstallError):
             s.execute(self.operation("verify"))
         self.assertNotIn("runtime-verify", [name for name, _ in s.calls])
+
+    def test_resume_does_not_claim_running_when_gateway_fails(self):
+        s = self.prepare()
+        with patch.object(s, "verify_http", side_effect=installer.InstallError("Synthetic gateway 502")):
+            with self.assertRaises(installer.InstallError):
+                s.resume()
+        self.assertEqual("database-ready", s.config["stage"])
+        self.assertIn("runtime-verify", [name for name, _ in s.calls])
+
+    def test_build_arguments_bind_expected_engine_and_lock_before_image_acceptance(self):
+        s = self.prepare()
+        with contextlib.redirect_stdout(io.StringIO()):
+            s.resume()
+        command = next(args for name, args in s.calls if name == "build")
+        self.assertIn("MI_ENGINE_BUILD_REVISION=" + "b" * 40, command)
+        self.assertIn("MI_LOCK_BUILD_SHA256=" + "c" * 64, command)
+        self.assertLess([name for name, _ in s.calls].index("public-http"), len(s.calls))
 
     def production_configuration(self):
         self.args.profile = "production"

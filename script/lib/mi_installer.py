@@ -19,6 +19,9 @@ import stat
 import subprocess
 import sys
 import tarfile
+import time
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 
 
@@ -316,7 +319,8 @@ class Installation:
             self.config["stage"] = "building"
             self.save()
             self.context()
-            self.compose("build", "build", "app")
+            self.compose("build", "build", "--build-arg", "MI_ENGINE_BUILD_REVISION=" + self.config["source"]["engine_sha"],
+                         "--build-arg", "MI_LOCK_BUILD_SHA256=" + self.config["source"]["lock_sha256"], "app")
             image = self.config["project"] + "-app:" + self.config["source"]["app_sha"][:12]
             identity = self.run("built-image", self.docker_args("image", "inspect", "--format", "{{.Id}}", image), capture=True)
             require(re.fullmatch(r"sha256:[0-9a-f]{64}", identity), "Image build nije dao puni identitet.")
@@ -342,6 +346,7 @@ class Installation:
         if force_recreate:
             options.append("--force-recreate")
         self.compose("services-start", *options)
+        self.verify_running()
         self.config["stage"] = "running"
         self.save()
         print("Servisi su pokrenuti. Provjerite ./script/mi_install verify; zatim kreirajte administratora i organizaciju prema uputstvu.")
@@ -362,6 +367,34 @@ class Installation:
             require(image == self.config.get("image_id"), "Pokrenuti image ne odgovara izgrađenom kandidatu.")
         source = self.config["source"]
         self.compose("runtime-verify", "exec", "-T", "app", "bin/rails", "runner", "installation/verify.rb", source["app_sha"], source["engine_sha"], source["lock_sha256"])
+        self.verify_http()
+
+    def verify_http(self, timeout=30):
+        # Probe the operator-facing demo gateway, not only the app container.
+        # Production probes its loopback backend; public TLS is a separate check.
+        port = self.config["ports"]["web"]
+        require(isinstance(port, int) and 1024 <= port <= 65535, "Neispravan HTTP port instalacije.")
+        headers = {"Host": self.config["domain"]}
+        if self.config["profile"] == "production":
+            headers["X-Forwarded-Proto"] = "https"
+        request = urllib.request.Request(f"http://127.0.0.1:{port}/up", headers=headers)
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, req, fp, code, msg, headers, newurl):
+                return None
+
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
+        deadline = time.monotonic() + timeout
+        while True:
+            try:
+                with opener.open(request, timeout=2) as response:
+                    if response.status == 200:
+                        return
+            except urllib.error.HTTPError as error:
+                error.close()
+            except (OSError, urllib.error.URLError):
+                pass
+            require(time.monotonic() < deadline, "HTTP putanja instalacije nije spremna; image/worker provjera sama nije dokaz dostupnog gateway-a. Stanje je sačuvano; koristite resume.")
+            time.sleep(1)
 
     def worker_running(self):
         return bool(self.compose("worker-running", "ps", "--status", "running", "--quiet", "worker", capture=True))

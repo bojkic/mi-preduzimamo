@@ -97,6 +97,8 @@ class Upgrade:
             target = "demo" if self.i.config["profile"] == "demo" else "runtime"
             self.i.run("upgrade-image-build", self.i.docker_args("build", "--target", target, "--tag", record["image_name"],
                        "--build-arg", "MI_APP_BUILD_REVISION=" + record["target"]["app_sha"], "--build-arg", "MI_RUNTIME_UID=" + str(self.i.config["runtime_uid"]),
+                       "--build-arg", "MI_ENGINE_BUILD_REVISION=" + record["target"]["engine_sha"],
+                       "--build-arg", "MI_LOCK_BUILD_SHA256=" + record["target"]["lock_sha256"],
                        str(self.i.state / "upgrade-context")))
             image = self.i.run("upgrade-image-identity", self.i.docker_args("image", "inspect", "--format", "{{.Id}}", record["image_name"]), capture=True)
             require(re.fullmatch(r"sha256:[0-9a-f]{64}", image), "Novi image nema puni identitet.")

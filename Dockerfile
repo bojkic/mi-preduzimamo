@@ -8,12 +8,15 @@ RUN curl -fsSL https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.1.
 ENV PATH=/opt/im/bin:/usr/local/bin:/usr/bin:/bin
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
+# Optional for old upgrade clients; current installer binds both expected values.
+ARG MI_ENGINE_BUILD_REVISION
+ARG MI_LOCK_BUILD_SHA256
 RUN gem install bundler -v 2.6.9 --no-document && bundle _2.6.9_ install --jobs 2 --retry 2
 COPY package.json package-lock.json ./
 RUN npm ci --include=dev --no-audit --no-fund
 COPY . .
 ARG MI_APP_BUILD_REVISION
-RUN MI_APP_BUILD_REVISION="$MI_APP_BUILD_REVISION" bundle exec ruby installation/build_identity.rb
+RUN MI_APP_BUILD_REVISION="$MI_APP_BUILD_REVISION" MI_ENGINE_BUILD_REVISION="$MI_ENGINE_BUILD_REVISION" MI_LOCK_BUILD_SHA256="$MI_LOCK_BUILD_SHA256" bundle exec ruby installation/build_identity.rb
 RUN SECRET_KEY_BASE_DUMMY=1 SECRET_KEY_BASE=build-only-not-runtime DECIDIM_API_JWT_SECRET=build-only-not-runtime RAILS_ENV=production NODE_OPTIONS=--max-old-space-size=2048 bin/rails assets:precompile
 
 FROM ${RUBY_IMAGE} AS runtime
@@ -29,7 +32,7 @@ COPY --from=build /app /app
 # Frontend dependencies/build caches are not runtime inputs after compilation.
 RUN rm -rf node_modules tmp/cache tmp/shakapacker
 ARG MI_RUNTIME_UID=1000
-RUN groupadd -g ${MI_RUNTIME_UID} mi && useradd -u ${MI_RUNTIME_UID} -g mi -m mi && mkdir -p storage tmp/pids log shared/sockets shared/pids shared/log && chown -R mi:mi storage tmp log shared
+RUN /usr/sbin/groupadd -g ${MI_RUNTIME_UID} mi && /usr/sbin/useradd -u ${MI_RUNTIME_UID} -g mi -m mi && mkdir -p storage tmp/pids log shared/sockets shared/pids shared/log && chown -R mi:mi storage tmp log shared
 ARG MI_APP_BUILD_REVISION
 LABEL org.opencontainers.image.revision=$MI_APP_BUILD_REVISION
 ENV RAILS_ENV=production RACK_ENV=production BUNDLE_FROZEN=true MI_RUNTIME_STATE_DIR=/app/tmp

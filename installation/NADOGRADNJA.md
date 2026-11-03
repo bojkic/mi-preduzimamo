@@ -40,3 +40,9 @@ Time se pokreće stari par i čuvaju se i djelimične kopije. Poslije započetog
 ## Provjera ishoda
 
 Poslije nadogradnje provjerite prijavu, postojeći sadržaj i fotografije, administratorske tokove i kontrolisan worker posao. `/up` i provjera image-a nisu dokaz ispravnosti svake funkcije ili spoljne dostave. Sačuvajte stvarne app/engine SHA, image ID, hash lockfile-a, rezultate i napomene o migracijama. Stare kopije zadržite prema svojoj politici i do provjerenog oporavka.
+
+## Lokalni HTTP poslije zamjene kontejnera
+
+U RC4 dijagnostičkoj probi backend je bio healthy, ali demo gateway je zadržao staru app adresu i vratio502. U novom kandidatu gateway nosi app revision label radi ponovnog stvaranja pri promjeni verzije, a Nginx razrješava promjenljive servisne adrese. Novi installer provjerava i lokalni `/up` kroz operator-facing port, bez praćenja redirect-a ili naslijeđenog HTTP proxy-ja. Produkcioni loopback probe nije provjera javnog TLS-a.
+
+Ako upgrade započinje starijim installer kodom, poslije završetka izvršite `./script/mi_install verify` iz novog checkout-a i pregledajte browser. Raniji javni `./script/mi_install restart` oporavio je opaženi demo502; čuva podatke, ali donosi dodatni prekid. Ne koristite brisanje guard zapisa, ručni checkout aktivnog koda ili `down -v`. Novi automatski tok još zahtijeva stvarnu Docker/browser probu; lokalni Nginx/DNS test nije zamjena.

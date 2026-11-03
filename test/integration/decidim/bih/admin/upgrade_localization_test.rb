@@ -47,6 +47,13 @@ module Decidim
             get "/#{locale}/admin/participatory_processes/new"
             assert_response :success
             assert_select "input[data-controller~='date-picker']", minimum: 2
+            assert_select "input[data-controller~='date-picker']" do |inputs|
+              inputs.each do |input|
+                assert input["data-date-label"].present?
+                assert input["data-button-date-label"].present?
+                assert_no_match(/undefined|translation missing/i, input["data-button-date-label"])
+              end
+            end
             config = response.body.match(/Decidim\.config\.set\((\{.*?\})\);/m)
             assert config, "Actual layout must export the JS configuration"
             messages = JSON.parse(config[1]).fetch("messages")

@@ -8,4 +8,6 @@ Rails.application.config.force_ssl = false
 Rails.application.config.assume_ssl = false
 Rails.application.config.action_mailer.default_url_options = { host: "127.0.0.1", port: ENV.fetch("MI_WEB_PORT", "3100"), protocol: "http" }
 
-require Rails.root.join("installation/demo/drain_probe_job")
+Rails.application.config.to_prepare do
+  require Rails.root.join("installation/demo/drain_probe_job")
+end

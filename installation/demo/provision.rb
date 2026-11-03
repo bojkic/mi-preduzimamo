@@ -182,9 +182,38 @@ class MiDemoProvisioner
     Decidim.participatory_space_manifests.any? { |manifest| manifest.model_class_name.constantize.exists?(organization:) }
   end
 
+  # System creation also adds informational help pages and the DQ page.
+  # Only exact upstream-generated title/content pairs are accepted; never
+  # discard custom/reviewed pages or edit these informational pages.
+  def validate_default_information_pages!(organization)
+    builder = Decidim::System::CreateDefaultHelpPages.new(organization)
+    expected = {
+      "help" => {
+        title: builder.multi_translation("decidim.help.main_topic.default_page.title", organization: builder.organization_name),
+        content: builder.multi_translation("decidim.help.main_topic.default_page.content", organization: builder.organization_name)
+      }
+    }
+    Decidim.participatory_space_manifests.each do |manifest|
+      scope = "decidim.help.participatory_spaces.#{manifest.name}"
+      next unless I18n.exists?(scope)
+
+      expected[manifest.name.to_s] = { title: builder.multi_translation("#{scope}.title"), content: builder.multi_translation("#{scope}.page") }
+    end
+    scope = "decidim.participatory_processes.static_pages.democratic_quality_indicators"
+    expected["democratic-quality-indicators"] = {
+      title: organization.available_locales.index_with { |locale| I18n.t("#{scope}.title", locale:) },
+      content: organization.available_locales.index_with { |locale| I18n.t("#{scope}.content", locale:) }
+    }
+    organization.static_pages.where.not(slug: "terms-of-service").find_each do |page|
+      attributes = expected[page.slug]
+      valid = attributes && page.title == attributes.fetch(:title).stringify_keys && page.content == attributes.fetch(:content).stringify_keys
+      raise "Existing reviewed legal or custom pages must not be replaced" unless valid
+    end
+  end
+
   def validate_terms!(organization)
     legal_pages = organization.static_pages
-    raise "Existing reviewed legal pages must not be replaced" if legal_pages.where.not(slug: "terms-of-service").exists?
+    validate_default_information_pages!(organization)
 
     terms = legal_pages.find_by(slug: "terms-of-service")
     return unless terms

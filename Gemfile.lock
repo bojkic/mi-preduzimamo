@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/bojkic/mi-preduzimamo-engine.git
-  revision: c0c024553bdc99132191cfa484bd19a29d442301
-  ref: c0c024553bdc99132191cfa484bd19a29d442301
+  revision: d18843e6e682850abf91722631d9df66de6cebbf
+  ref: d18843e6e682850abf91722631d9df66de6cebbf
   branch: main
   specs:
     decidim-bih (0.4.0)

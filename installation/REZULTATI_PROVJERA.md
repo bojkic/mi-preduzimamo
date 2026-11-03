@@ -28,7 +28,17 @@ Na tačnom javnom rc2 paru prošli su 18 request testova / 337 provjera, inventa
 
 Neizmijenjeni javni **v0.1.4-rc3** (`6fe54d18499f263377122fcb89d101bfd8d9cb59`, isti engine/lockfile kao gore) nije prošao čistu WSL2/Docker instalaciju. Prema nezavisnom izvještaju od 2. novembra 2026, Bundler je stao na `charlock_holmes 0.7.9`: build stage nije imao ICU razvojne biblioteke. Install je trajao528s do neuspjeha; resume je poslije142s ponovo stao na istom mjestu. Frontend, aplikacioni image i funkcionalni tokovi nisu dostignuti. I izvorni rc1 je pao na istom nedostatku, pa upgrade nije izvršen.
 
-Naredni paket **v0.1.4-rc4** dodaje `libicu-dev` u build i eksplicitni `libicu72` u Debian Bookworm runtime, uz provjeru učitavanja native gem-ova pod runtime korisnikom tokom izgradnje. Ovo je ispravka potvrđenog nedostatka, ne tvrdnja da je nova čista instalacija prošla ili da drugih prepreka nema. [ICU development paket](https://packages.debian.org/bookworm/libicu-dev), [ICU runtime paket](https://packages.debian.org/bookworm/libicu72).
+Paket **v0.1.4-rc4** dodaje `libicu-dev` u build i eksplicitni `libicu72` u Debian Bookworm runtime, uz provjeru učitavanja native gem-ova pod runtime korisnikom tokom izgradnje. Ovo je ispravka potvrđenog nedostatka, ne tvrdnja da je nova čista instalacija prošla ili da drugih prepreka nema. [ICU development paket](https://packages.debian.org/bookworm/libicu-dev), [ICU runtime paket](https://packages.debian.org/bookworm/libicu72).
+
+## RC4 dijagnostička proba i priprema RC5
+
+Neizmijenjeni RC4 nije prošao novi Docker build: nakon odvojeno riješenog lokalnog DNS problema `groupadd` nije pronađen u ograničenom PATH-u. Dijagnostička grana zatim je ispravila apsolutne putanje account alata, prerano učitavanje demo posla i prepoznavanje tačnih upstream podrazumijevanih help/DQ stranica. Izmijenjene ili prilagođene stranice ostaju zaštićene.
+
+Prema nezavisnom paketu od 3. novembra 2026, zakrpljena varijanta prošla je registraciju/OTP/prijavu, proces, JPEG/PNG/WebP tokove, posao u toku kroz drain/recreate, persistence i izolovani backup/restore. Nadogradnja patchovanog rc1 na dijagnostički merge cilj provjerena je i sa pending i sa granted telefonom. Jedna nadogradnja ipak je vratila HTTP502 zbog stare Nginx adrese; ručni javni restart je oporavio HTTP. Jedna početna rc1 slika imala je pogrešan engine/lock i ispravno je odbijena; uzrok tog nepodudaranja nije konačno utvrđen. Nijedan od ovih rezultata nije čisti javni-tag PASS.
+
+Naredni kandidat **v0.1.4-rc5** preuzima pregledane instalacione popravke, osvježava demo gateway pri promjeni app revizije i koristi DNS razrješavanje promjenljive adrese. Novi installer prije prijave uspjeha provjerava i lokalnu HTTP putanju. Dodate su ranije provjere očekivanog engine/lock porijekla i potpuniji manifest, bez podrazumijevanog gašenja cache-a. Podrška starijem upgrade klijentu i runtime provjera porijekla ostaju. Dodate su i kalendarske oznake/latinični mjeseci i ciljani prevodi; novi UI još čeka browser provjeru.
+
+Na razvojnom kandidatu prolaze69 instalacionih/provenance/HTTP provjera, uključujući stvarni izolovani Nginx/DNS test promjene adrese,6 Ruby testova/157 provjera oznaka i3 JS testa locale-a. To nisu Docker ili browser rezultati novog taga. Novi čisti RC5 build, kompletna funkcionalna matrica i zasebne VPS provjere ostaju neizvršeni.
 
 ## Matrica prihvatanja
 
@@ -40,7 +50,9 @@ Naredni paket **v0.1.4-rc4** dodaje `libicu-dev` u build i eksplicitni `libicu72
 | rc2 čista WSL2/Docker instalacija | Neizvršeno | Potrebna nezavisna proba samo iz javnih izvora |
 | rc2 Docker backup/restore i nadogradnja sa postojećim podacima | Neizvršeno | Native drill i command doubles nisu zamjena |
 | rc3 čista WSL2/Docker instalacija | Neuspješno | Nedostaje ICU dev; nema gotovog image-a ni runtime PASS-a |
-| rc4 čista WSL2/Docker instalacija | Neizvršeno | Nova proba nakon ispravke; ne prenositi stare PASS rezultate |
+| rc4 čista WSL2/Docker instalacija | Neuspješno | PATH/boot/default-page prepreke; zakrpljena varijanta se vodi zasebno |
+| rc4 dijagnostička varijanta | Djelimično prošlo | Runtime/podaci provjereni; automatski HTTP upgrade i kalendar imali nedostatke |
+| rc5 novi javni kandidat | Neizvršeno | Potrebni novi Docker build i funkcionalna provjera |
 | Novi Linux VPS, javni DNS/TLS/obnova i reboot | Neizvršeno | WSL2 rezultat se ne prenosi u ovaj red |
 | Stvarni SMTP/SMS/Viber/AI/naplata | Nije potvrđeno ovom probom | Opcioni sopstveni nalozi i zasebno odobrene provjere |
 
@@ -48,7 +60,7 @@ Ažuriranje postojećeg native servera nije nova instalacija na praznom VPS-u. W
 
 ## Sljedeća nezavisna proba
 
-Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća proba bira javni **v0.1.4-rc4** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
+Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća proba bira javni **v0.1.4-rc5** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
 Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
 

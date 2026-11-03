@@ -3,3 +3,6 @@
 
 // Load images
 require.context("../../images", true)
+
+// Shared locale handling is supplied by the engine; load it in every core pack.
+import "src/decidim/bih/calendar_locale";
