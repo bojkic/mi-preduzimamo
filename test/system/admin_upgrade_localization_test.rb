@@ -32,6 +32,14 @@ class AdminUpgradeLocalizationSystemTest < ApplicationSystemTestCase
       else
         assert_selector "wc-datepicker[locale='#{locale}']"
       end
+      picker_label = { "sr" => "Izaberi datum", "sr-Cyrl" => "Изабери датум", "bs" => "Odaberi datum", "hr" => "Odaberi datum" }.fetch(locale)
+      assert_selector "wc-datepicker [role='group'][aria-label='#{picker_label}']"
+      assert_no_selector "wc-datepicker [aria-label='Choose date'], wc-datepicker [aria-label='Previous month'], wc-datepicker [aria-label='Select year']"
+      if locale == "bs"
+        assert_selector "wc-datepicker select[name='month'] option", text: "decembar", visible: :all
+        assert_selector "wc-datepicker th[abbr='ponedjeljak'] span", text: "pon"
+        assert_no_selector "wc-datepicker select[name='month'] option", text: /M\d{2}/, visible: :all
+      end
       assert_selector ".datepicker__close-calendar", text: I18n.t("date.buttons.close", locale:)
       row.find(".datepicker__close-calendar").click
       assert_no_selector ".datepicker__container wc-datepicker"

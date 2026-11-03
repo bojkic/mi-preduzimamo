@@ -40,6 +40,30 @@ Naredni kandidat **v0.1.4-rc5** preuzima pregledane instalacione popravke, osvje
 
 Na razvojnom kandidatu prolaze69 instalacionih/provenance/HTTP provjera, uključujući stvarni izolovani Nginx/DNS test promjene adrese,6 Ruby testova/157 provjera oznaka i3 JS testa locale-a. To nisu Docker ili browser rezultati novog taga. Novi čisti RC5 build, kompletna funkcionalna matrica i zasebne VPS provjere ostaju neizvršeni.
 
+## Neizmijenjeni javni RC5 — nezavisni izvještaj od 3. novembra 2026
+
+Primljeni izvještaj i dnevnik navode novu praznu Ubuntu 24.04.5 WSL2 distribuciju i zaseban Docker daemon bez ranijih slika/kontejnera/volumena. Windows/kernel/RAM ostaju zajednički, a zasebna lokalna mrežna priprema i DNS opisani su u izvještaju; to nije novi VPS. Navedena četiri hash-a dostavljenih izvještajnih fajlova provjerena su prema priloženom manifestu. Sirovi redigovani logovi, screenshot-i i Git bundle navedeni u izvještaju nisu dostavljeni uz tih pet fajlova; ove rezultate navodimo kao nezavisni izvještaj, bez tvrdnje o njihovom novom serverskom izvršenju ili pregledu nedostavljenih fajlova.
+
+| Identitet | RC5 |
+|---|---|
+| App | `d3cbb44421a62cff973067efe790e6a730c917b8` |
+| Engine | `d18843e6e682850abf91722631d9df66de6cebbf` |
+| Lockfile SHA-256 | `eba53849217f3013c034c4179c60f91f7aa6dc600f93b8de8ea67141cad0fbc0` |
+| Glavni image | `sha256:c7c737b49355e6423f6db5d68ef17bcaf7f015a54580ac6180ddd0104c1587ba` |
+| Profil / okruženje | demo, Linux x86_64, novi WSL2 daemon |
+
+Hladni install prošao je za 658 s bez aplikacionih zakrpa. Prijavljeni su prolazi praznog verify-a, registracije/OTP/prijave, tri foto formata, procesa, worker-a i lokalnog Mailpit-a, stop/start/recreate-a sa stvarnim poslom u toku i nezavisnim tajnama drugog projekta. Javna Python suite ima 69 prolaznih testova nakon pripreme nedostajućih testnih Nginx temp direktorijuma; ciljana Rails suite ima 46 testova/308 provjera. Prvi neuspjesi i priprema okruženja ostaju u dnevniku.
+
+Docker backup/restore izvršeni su u zasebnim praznim volumenima/projektu istog novog daemon-a, sa očuvanim ključevima, karantinom, 232 tabele, 230 sekvenci, šest storage fajlova i novim upisom bez superuser prava. Image je već postojao na tom daemon-u, pa hladni import na drugom praznom daemon-u i off-site restore nisu potvrđeni. Tri nadogradnje patchovanog rc1/merge/marker varijante prošle su sa očuvanim podacima i bez ručnog gateway restarta; stvarna app IP promjena nije izazvana. Detalji i granice su u [NADOGRADNJA.md](NADOGRADNJA.md) i [OPORAVAK.md](OPORAVAK.md).
+
+UI ostaje djelimično neispravan: bosanski kalendar ima M01–M12/Sun–Sat, unutrašnje kalendarske oznake ostaju engleske, kartica potvrde e-maila protivrječi posebnom panelu, a isto vrijeme prijave različito je prikazano u sažetku i toku. Nema više undefined ARIA oznaka; sr koristi latinične mjesece i datum se pravilno serijalizuje u sva četiri jezika. Ovi nedostaci ne poništavaju izvedene podatkovne probe, ali sprečavaju potpuni UI PASS.
+
+## Objedinjene naredne popravke
+
+Kandidat v0.1.4-rc6 sadrži lokalizovane unutrašnje kalendarske oznake za sva četiri jezika i determinističke bosanske nazive mjeseci/dana, bez promjene datuma ili globalnog Intl-a. Status e-maila koristi isti postojeći dokaz trenutne adrese kao panel za potvrdu, bez promjene autentifikacije. Sažetak/tok/poruke/datumi prijava prikazuju aplikacionu vremensku zonu. Redis, demo gateway i Mailpit dobijaju isto ograničenje logova kao app/worker/DB. Dockerfile i zaključane zavisnosti nisu mijenjani radi smanjivanja image-a; postojeća višefazna slika već odvaja kompajler/development biblioteke. Dodatno uklanjanje runtime alata odloženo je kao opcioni rad, da se ne proširuje potvrđeni build bez potrebe.
+
+Ovaj kandidat još nema novi Docker/kompajlirani browser PASS. Sljedeća objedinjena proba mora provjeriti kalendar/navigaciju/datum na svim jezicima, isti status potvrde e-maila prije i poslije stvarnog lokalnog dokazivanja/promjene adrese, zimsko/ljetno vrijeme i prelaz dana za prijave, Compose logging i nadogradnju iz neizmijenjenog javnog rc5 na novi javni tag. Stare zakrpljene rc1 podatkovne probe ostaju istorijski dokaz. Ponoviti opravdanu funkcionalnu matricu, ne prepisivati prethodne PASS oznake novom commitu.
+
 ## Matrica prihvatanja
 
 | Obuhvat | Status | Šta rezultat dokazuje |
@@ -52,7 +76,8 @@ Na razvojnom kandidatu prolaze69 instalacionih/provenance/HTTP provjera, uključ
 | rc3 čista WSL2/Docker instalacija | Neuspješno | Nedostaje ICU dev; nema gotovog image-a ni runtime PASS-a |
 | rc4 čista WSL2/Docker instalacija | Neuspješno | PATH/boot/default-page prepreke; zakrpljena varijanta se vodi zasebno |
 | rc4 dijagnostička varijanta | Djelimično prošlo | Runtime/podaci provjereni; automatski HTTP upgrade i kalendar imali nedostatke |
-| rc5 novi javni kandidat | Neizvršeno | Potrebni novi Docker build i funkcionalna provjera |
+| rc5 neizmijenjeni javni tag | Lokalni funkcionalni PASS prema izvještaju; UI djelimično FAIL | Nova WSL2 instalacija/restore i dijagnostički upgrade; bez VPS/cold off-site importa |
+| rc6 objedinjene popravke | Neizvršena nova instalacija/browser | Potrebna proba novog taga, uključujući direktni javni rc5 → novi tag upgrade |
 | Novi Linux VPS, javni DNS/TLS/obnova i reboot | Neizvršeno | WSL2 rezultat se ne prenosi u ovaj red |
 | Stvarni SMTP/SMS/Viber/AI/naplata | Nije potvrđeno ovom probom | Opcioni sopstveni nalozi i zasebno odobrene provjere |
 
@@ -60,7 +85,7 @@ Ažuriranje postojećeg native servera nije nova instalacija na praznom VPS-u. W
 
 ## Sljedeća nezavisna proba
 
-Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća proba bira javni **v0.1.4-rc5** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
+Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća proba poslije objave bira javni **v0.1.4-rc6** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
 Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
 

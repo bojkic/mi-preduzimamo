@@ -1,12 +1,12 @@
 # Lokalna instalacija za izmišljenu zajednicu
 
-**Status kandidata:** installer i image su u pripremi. Nova čista Docker instalacija ovog kandidata još nije potvrđena. Ranija patchovana WSL proba nije dokaz ovog izdanja. [Postupak nezavisne provjere](PROVJERA_WSL2.md).
+**Status:** prema nezavisnom izvještaju od 3. novembra 2026, neizmijenjeni javni v0.1.4-rc5 prošao je novu WSL2/Docker instalaciju i navedene funkcionalne/restore probe, uz preostale UI nedostatke. Naredni kandidat sa njihovim popravkama još nije prošao novu instalacionu/browser probu. Detaljne granice su u [matrici](REZULTATI_PROVJERA.md). [Postupak nezavisne provjere](PROVJERA_WSL2.md).
 
 Ovo je jedini lokalni Compose put. `compose.yml` sa demo profilom pokreće web, worker, PostgreSQL, Redis, Mailpit i Nginx. Stari `docker-compose.yml` je uklonjen. Za javni server koristi se zaseban [produkcioni profil](PRODUKCIJA.md).
 
 ## Priprema računara
 
-Obuhvat je Linux x86_64, uključujući WSL2. Za novi lokalni sistem izaberite Ubuntu 24.04 LTS, Git, Python 3.12+, Docker Engine i Compose 2.30+. Ruby i Node dolaze kroz image. Installer zahtijeva najmanje 15 GiB slobodnog prostora za build i 4 GiB RAM-a dodijeljenog Docker-u; to su početne zaštitne granice, još nisu izmjeren minimum ovog novog image-a. Obezbijedite dodatni prostor za slike, podatke i kopije.
+Obuhvat je Linux x86_64, uključujući WSL2. Za novi lokalni sistem izaberite Ubuntu 24.04 LTS, Git, Python 3.12+, Docker Engine i Compose 2.30+. Ruby i Node dolaze kroz image. Installer zahtijeva najmanje 15 GiB slobodnog prostora za build i 4 GiB RAM-a dodijeljenog Docker-u; to su početne zaštitne granice, još nisu izmjeren minimum ovog novog image-a. Obezbijedite dodatni prostor za slike, podatke i kopije. Nezavisna rc5 proba mjeri hladni install 658 s i glavni image oko 2,58 GiB. Više instalacija, build cache i četiri privatne kopije zajedno su zauzeli oko 27,42 GiB novog Linux filesystem-a; to nije veličina jedne instalacije. WSL je dijelio 7,59 GiB RAM-a, a uzorkovanje nije obuhvatilo cijeli BuildKit proces. Ovi podaci ne potvrđuju da je 4 GiB dovoljno za svaki build niti garantuju vrijeme instalacije. Ne mijenjajte globalna WSL podešavanja ili tuđe resurse radi prolaza.
 
 Na Windows-u provjerite `wsl --list --verbose` u PowerShell-u. Ako WSL nije instaliran, [Microsoft postupak](https://learn.microsoft.com/en-us/windows/wsl/install) opisuje `wsl --install`, restart Windows-a i pripremu Linux naloga. Postojeću distribuciju nemojte brisati radi ove probe. Repozitorijum čuvajte u Linux home direktorijumu, npr. `~/mi-zajednica`, bez ličnih Windows putanja u izvještaju.
 

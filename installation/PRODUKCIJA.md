@@ -63,14 +63,24 @@ sudo systemctl status mi-community
 
 Compose servisi imaju restart politiku; oneshot unit upravlja start/stop redoslijedom i ne predstavlja kontinuirani zdravstveni nadzor. Poslije izričito odobrenog reboot-a VPS-a provjerite sa drugog računara HTTPS, prijavu, fotografije i izvršen testni worker posao. Sam `active` ili `/up` nisu dokaz cijelog toka. Worker quiet/drain ima 150 sekundi, TERM grace 90, a systemd Stop rok 360 sekundi.
 
-Nadzirite web, worker proces/heartbeat, starost i veličinu reda, neuspjele poslove, disk, PostgreSQL/Redis i datum isteka TLS sertifikata. Podesite lokalnu politiku rotacije journald/proxy logova. Compose aplikacioni i PostgreSQL logovi su ograničeni na 3 × 10 MB po kontejneru; i ostale servise treba obuhvatiti rotacijom. Ne objavljujte logove sa ličnim podacima. Broj uspješno izvršenih testnih poslova vodite odvojeno od dostupnosti weba.
+Nadzirite web, worker proces/heartbeat, starost i veličinu reda, neuspjele poslove, disk, PostgreSQL/Redis i datum isteka TLS sertifikata. Podesite lokalnu politiku rotacije journald/proxy logova. Compose aplikacioni, worker, PostgreSQL i Redis logovi ograničeni su na 3 × 10 MB po kontejneru; demo gateway i Mailpit imaju istu granicu. Ovo nije ograničenje veličine upload-a, baze, backup-a, journald-a ili Caddy logova. Ne objavljujte logove sa ličnim podacima. Broj uspješno izvršenih testnih poslova vodite odvojeno od dostupnosti weba.
 
 ## Backup, restore i nadogradnja — otvorena verifikacija
 
-Komande za backup i izolovani restore opisane su u [OPORAVAK.md](OPORAVAK.md), sa odvojenim native dokazom i otvorenom Docker/VPS provjerom. Postupak nadogradnje i oporavak poslije migracione greške opisani su u [NADOGRADNJA.md](NADOGRADNJA.md), uz još otvorenu stvarnu Docker probu. Do odgovarajuće stvarne probe ne koristiti ovaj kandidat kao jedini produkcioni primjerak podataka. `stop/start`, trajni volumen i lista arhive nisu dokaz oporavka.
+Komande za backup i izolovani restore opisane su u [OPORAVAK.md](OPORAVAK.md), sa odvojenim native dokazom i otvorenom Docker/VPS provjerom. Postupak nadogradnje i oporavak poslije migracione greške opisani su u [NADOGRADNJA.md](NADOGRADNJA.md), uz odvojeno dokumentovanu rc5 Docker dijagnostičku probu i otvoreno VPS prihvatanje. Do odgovarajuće stvarne probe ne koristiti ovaj kandidat kao jedini produkcioni primjerak podataka. `stop/start`, trajni volumen i lista arhive nisu dokaz oporavka.
 
 Potrebno je sačuvati DB, fotografije, potrebnu Redis/queue politiku, trajne tajne, konfiguraciju i tačan par image-a/host/engine koda. Demo credential fajl ostaje odvojen od foto kopije. Kopije moraju imati ograničen pristup, dogovoreno čuvanje i zasebnu lokaciju. Restore proba ide u drugo prazno izolovano okruženje sa stvarnim sintetičkim sadržajem i fotografijama, istim potrebnim ključevima i blokiranim spoljnim slanjem. Pregledajte vraćeni red prije worker starta; ne šaljite ponovo stare poruke.
 
 Ne koristite novi `install` nad postojećim ili vraćenim podacima, ne radite neplanirani PostgreSQL major upgrade i ne mijenjajte engine pin nezavisno od host lockfile-a. Nadogradnja mora imati backup prije migracija i dokumentovan rollback ili forward repair; code rollback ne poništava migracije. Ovaj odjeljak ostaje otvoren dok se komande i stvarni rezultati ne dopune.
 
 Za stvarni SMTP pripremite sopstveni nalog i provjerite DNS autentikaciju i dostavu na dogovorenu adresu. SMS/Viber, AI i naplata ostaju opcioni i imaju zasebne naloge, privatne konfiguracije i konkretno odobrene probe. Lokalna simulacija nije zamjena za njih.
+
+## Operativna provjera prije javnog otvaranja
+
+1. Sa drugog računara provjerite javni HTTPS, sertifikat/domen, prijavu, fotografiju i dovršen sintetički posao. Potvrdite da spolja nisu dostupni PostgreSQL, Redis, Mailpit ili app loopback port. Provjerite sopstvene izlazne integracije, bez uključivanja nepotrebnih provajdera.
+2. Sačuvajte redigovani pregled prostora (`df -h`, veličine baze/storage-a i backup-a), potrošnju web/worker procesa i starost reda. Podesite upozorenja za popunjenost diska i rast reda; početni prag upozorenja može biti 20% slobodnog prostora, ali mora pokriti i najveći očekivani backup/build. Ne brišite podatke automatski radi upozorenja.
+3. Testirajte systemd start i izričito odobren reboot zasebnog testnog VPS-a; zatim ponovite HTTPS/prijavu/fotografiju/worker i uporedite iste kontrolne podatke. Zabilježite datum i trajanje prekida. Nemojte za ovu probu restartovati aktivni server druge zajednice.
+4. Provjerite obnovu TLS sertifikata odabranim proxy-jem, rotaciju njegovih logova i journald-a, dogovoreni backup raspored/retenciju i udaljeni restore prema [OPORAVAK.md](OPORAVAK.md).
+5. Prilikom nadogradnje zabilježite stare/nove app/gateway identitete i IP adrese. U izolovanom projektu zasebno izazovite stvarnu promjenu app IP-a bez ručnog restarta gateway-a i provjerite operator HTTP/TLS. Nemojte slabljenjem source/ancestry zaštita simulirati ovaj prelaz.
+
+Za svaki korak sačuvajte tačne app/engine/lock/image identitete, profil i oznaku izvršeno/prošlo, neuspješno ili neizvršeno. Pripremljeno uputstvo nije izvedena proba. Ovaj VPS spisak ostaje otvoren dok nema zasebnog servera/domena i stvarnih rezultata; lokalna WSL proba može se nastaviti odmah.

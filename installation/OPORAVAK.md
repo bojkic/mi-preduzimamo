@@ -2,6 +2,9 @@
 
 **Status kandidata:** postoje komande i ciljane provjere. Stvarni native PostgreSQL 18.6/filesystem eksperiment prošao je sa drugom praznom bazom: upoređene su 232 tabele, 230 sekvenci i pet fajlova; vraćeni proces i fotografija su pročitani, a novi upis prošao je nalogom bez superuser prava. Kontrolisane izmjene podataka i fotografije prepoznate su kao razlika. Ovo nije potvrda Docker image importa, container volumena, TLS-a, reboot-a ili VPS prihvatanja novog izdanja.
 
+
+Prema nezavisnom rc5 izvještaju, stvarni Docker backup (91 s), restore (77 s) i restore-inspect (76 s) prošli su na istom novom daemon-u u drugom projektu/praznim volumenima: 232 tabele, 230 sekvenci i šest storage fajlova bez razlika, očuvani ključevi i novi upis kao mi_app bez superuser prava. Cilj je ostao u karantinu. Tačan image već je postojao na tom daemon-u: hladni import na drugom praznom daemon-u i off-site oporavak nisu dokazani. To je rezultat rc5, ne nove izmijenjene verzije.
+
 ## Napravite kopiju
 
 Iz dovršene, pokrenute instalacije:
@@ -56,3 +59,11 @@ Za stvarni oporavak operater prvo pregleda red poslova i spoljne integracije, uk
 Time se izlazi iz karantina i normalno pokreću web i worker. Zastavica bilježi operaterov izbor; sama nije dokaz ispravnosti reda ili stvarne dostave. Alat ne briše red automatski. Ako treba ukloniti/izmijeniti pojedine poslove, uradite to zasebnim pregledanim postupkom prije aktiviranja.
 
 Poslije aktiviranja ponovite HTTP/TLS, prijavu, čitanje sadržaja/fotografija i kontrolisan worker posao. Za dokaz oporavka zabilježite stvarne app/engine SHA, image ID, profil, datum, gubitak podataka od trenutka kopije i izmjereno vrijeme vraćanja. Podatke, env, dump, image arhivu, OTP i privatne logove ne dodajte javnom izvještaju.
+
+## Čuvanje i udaljena kopija
+
+Prije javne upotrebe zapišite odgovornu osobu, dozvoljeni gubitak podataka (RPO), rok oporavka (RTO), raspored i budžet prostora. Kao početni prijedlog za malu zajednicu razmotrite dnevnu kopiju, sedam dnevnih i četiri sedmične kopije; stvarno zadržavanje prilagodite obimu i svojim obavezama. Ovo nije već aktiviran scheduler ili odluka o brisanju. Backup zaustavlja web/worker radi dosljednosti, pa raspored mora uključiti očekivani prekid.
+
+Udaljeno odredište mora pripadati zajednici ili ugovorenom hostingu, imati ograničen pristup i šifrovano čuvanje. Prenesite cijeli dovršeni direktorijum preko provjerenog SSH kanala ili odobrenog backup servisa, zatim tamo uporedite manifest i svaki checksum. Ne šaljite kopije e-mailom i ne unosite ih u Git. Ključ za dešifrovanje mora biti dostupan operateru i kada izvorni server ne radi. Sam završen prenos nije dokaz oporavka.
+
+Za konačno prihvatanje na drugom praznom daemon-u/serveru pribavite kod sačuvanog tačnog para, prenesite tu udaljenu kopiju i izvršite restore u karantinu. Zabilježite da image nije postojao prije probe, da je uvezen iz kopije, sadržajne hash-eve, fotografije, novi upis, očuvane ključeve i stvarni RPO/RTO. Brisanje starih kopija odložite dok posljednja provjerena udaljena kopija i politika zadržavanja nisu potvrđeni.

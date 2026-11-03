@@ -45,7 +45,22 @@ module Decidim
         # The timeline section heading is rendered.
         assert_includes body, I18n.t("decidim.bih.reports.show.timeline.title", locale: :sr)
         # At least one localized stage timestamp is rendered.
-        assert_includes body, I18n.l(r.reload.created_at, format: :long, locale: :sr)
+        assert_includes body, I18n.l(r.reload.created_at.in_time_zone(Rails.application.config.time_zone), format: :long, locale: :sr)
+      end
+
+      test "submission and received timeline use the same application zone across DST and day boundaries" do
+        [Time.utc(2026, 1, 15, 23, 30), Time.utc(2026, 7, 15, 22, 30)].each do |instant|
+          travel_to instant do
+            r = report
+            %w(sr sr-Cyrl bs hr).each do |locale|
+              Time.use_zone("UTC") { get "/#{locale}/biceriseno/prijave/#{r.reference}" }
+              assert_response :success
+              expected = I18n.l(r.created_at.in_time_zone(Rails.application.config.time_zone), format: :long, locale:)
+              assert_select "dd", text: expected
+              assert_select "li small", text: expected, minimum: 1
+            end
+          end
+        end
       end
 
       test "tokenized status route renders the same PII-light tracker" do
@@ -120,7 +135,7 @@ module Decidim
         assert_includes body, I18n.t("decidim.bih.reports.public_statuses.sent_to_service", locale: :sr)
         assert_includes body, I18n.t("decidim.bih.reports.show.timeline.title", locale: :sr)
         # The forwarded_at fallback timestamp is rendered for the proslijedjeno stage.
-        assert_includes body, I18n.l(r.reload.forwarded_at, format: :long, locale: :sr)
+        assert_includes body, I18n.l(r.reload.forwarded_at.in_time_zone(Rails.application.config.time_zone), format: :long, locale: :sr)
       end
 
       test "show surfaces the corroboration count when at least one citizen corroborated" do
