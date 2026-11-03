@@ -1,6 +1,23 @@
 # Rezultati i granice instalacionih provjera
 
-Pregled: 2. novembar 2026. Ovaj sažetak zamjenjuje javno povezivanje na privatni `CLEAN_INSTALL_REPORT.md` i istorijski `INSTALACIJA_CLEAN.md`. Sirovi izvještaj, ZIP, lokalne putanje i pristupni podaci nisu dio javne dokumentacije. Za novu instalaciju koristite [LOKALNO.md](LOKALNO.md), a za server [PRODUKCIJA.md](PRODUKCIJA.md).
+Pregled nezavisnih izvještaja od 3. novembra 2026. Ovaj sažetak zamjenjuje javno povezivanje na privatni `CLEAN_INSTALL_REPORT.md` i istorijski `INSTALACIJA_CLEAN.md`. Sirovi izvještaj, ZIP, lokalne putanje i pristupni podaci nisu dio javne dokumentacije. Za novu instalaciju koristite [LOKALNO.md](LOKALNO.md), a za server [PRODUKCIJA.md](PRODUKCIJA.md).
+
+## Aktuelni pregled
+
+| Obuhvat | Rezultat | Granica |
+|---|---|---|
+| Neizmijenjeni javni RC7: nova lokalna instalacija i direktni RC6 → RC7 upgrade | Prošlo u nezavisnoj WSL2 laboratoriji | Novi projekti/volumeni, zajednički OS/daemon/cache, bez VPS tvrdnje |
+| Neizmijenjeni javni RC7: puni engine harness | Neuspješno: 1.188 / 6.443, 71 failure, četiri error, jedan skip | Izvorni rezultat je sačuvan |
+| Pregledane RC7 engine dopunske ispravke | Prošlo: 1.194 testa / 6.787 tvrdnji, nula failures/errors/skips | Javni generated-host, svih139 izvornih fajlova; lokalno popravljena grana, ne stari javni tag |
+| Četiri nove/dopunjene DB-free unit regresije na toj grani | Prošlo: 10 / 2.546, bez grešaka/preskakanja | Izolovani test bundle, bez mreže/DB/Redis-a |
+| Objedinjeni RC8: novi image, browser i direktni RC7 → RC8 upgrade | Čeka završnu probu | Raniji prolazi se ne prepisuju novom image-u |
+| Stvarni VPS/TLS/reboot, hladni off-site restore i sopstveni provajderi | Nije izvršeno | Zasebni resursi i stvarni rezultati |
+
+RC7 novi install trajao je740s, a direktni upgrade/verify wrapper355s. Potvrđeni su normalni e-mail dokaz i povratak200, privatnost mail-job loga uz očuvan retry payload, eksplicitna demo geografija, fotografije i navedene lokalne persistence/drain/restore provjere. Stari javni tag ima preostale administratorske engleske tekstove i neuspjeli puni engine obuhvat.
+
+Nezavisni engine follow-up prvo je potvrdio tačan reviewed tree `784d3a5aae508069024463a2f09957834ca3c51e`: 1.194 testa / 6.767 tvrdnji, tri failures. Stvarna dodatna popravka dešifruje snimljenu poštansku metadata adresu poslije commita; dvije testne dopune usklađuju poll locale i stvarne mounted admin putanje. Konačni pregledani tree `ade9a0194133c9b60829a4f1a2a2f3e21e2780fb` prošao je svih139 fajlova za oko290s ukupno (oko224s Minitest). Generated host koristi Rails8.1.3, a engine-only razvojni bundle Rails8.1.4, uz Ruby3.4.12 i Decidim0.32.2. Nije mijenjan launcher niti izbor testova. Prvi neuspjesi ostaju odvojeni.
+
+Pregledani ZIP tog follow-up-a ima213 payload fajlova; CRC, svi manifest hash-evi, bundle i izvor/test identiteti su provjereni. Sirovi izvještaji, runtime konfiguracija i lokalne putanje nisu dio javnog repoa. Runtime instalacije nisu pokretane niti mijenjane tim engine-only krugom. Izvorne dopunske popravke uključene su u RC8; razvojni Gemfile dodatno navodi preduslove za locale i stvarni Sidekiq logger unit test.
 
 ## Istorijska proba
 
@@ -90,7 +107,8 @@ Sve te izmjene pripadaju jednom završnom testnom krugu. Novi worker/e-mail/UI/g
 | rc4 dijagnostička varijanta | Djelimično prošlo | Runtime/podaci provjereni; automatski HTTP upgrade i kalendar imali nedostatke |
 | rc5 neizmijenjeni javni tag | Lokalni funkcionalni PASS prema izvještaju; UI djelimično FAIL | Nova WSL2 instalacija/restore i dijagnostički upgrade; bez VPS/cold off-site importa |
 | rc6 neizmijenjeni javni tag | Instalacija/upgrade/kalendar/podaci prošli; e-mail FAIL | Puni nezavisni paket; lokalni origin/template/return ruta blokiraju puni funkcionalni PASS |
-| rc7 završne objedinjene popravke | Nova instalaciona/worker/browser proba neizvršena | Jedan završni krug poslije svih priprema, uključujući direktni javni RC6 → RC7 upgrade |
+| rc7 neizmijenjeni javni tag | Lokalni install/upgrade/worker prošli; puni engine i dio admin jezika neuspješni | Kasniji popravljen engine prolaz naveden odvojeno u aktuelnom pregledu |
+| rc8 objedinjene ispravke | Nova instalaciona/browser proba čeka rezultat | Direktni javni RC7 → RC8 sa očuvanim podacima i ključevima |
 | Novi Linux VPS, javni DNS/TLS/obnova i reboot | Neizvršeno | WSL2 rezultat se ne prenosi u ovaj red |
 | Stvarni SMTP/SMS/Viber/AI/naplata | Nije potvrđeno ovom probom | Opcioni sopstveni nalozi i zasebno odobrene provjere |
 
@@ -98,7 +116,7 @@ Ažuriranje postojećeg native servera nije nova instalacija na praznom VPS-u. W
 
 ## Sljedeća nezavisna proba
 
-Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc7** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
+Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc8** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
 Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
 

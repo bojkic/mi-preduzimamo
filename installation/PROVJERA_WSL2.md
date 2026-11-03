@@ -1,6 +1,6 @@
 # Nezavisna provjera na Windows-u / WSL2
 
-Status: postupak za narednu probu; novi installer još nije potvrđen čistom instalacijom. Konačni javni tag i commitovi unose se kada kandidat bude objavljen. Ne koristiti ovaj dokument kao potvrdu uspjeha.
+Status: završni postupak za objedinjeni RC8. RC7 install/upgrade imaju nezavisni lokalni prolaz, a pregledane engine ispravke puni generated-host prolaz. Novi RC8 image, browser i direktni upgrade provjeravaju se zasebno po ovom uputstvu.
 
 Codex aplikacija na Windows-u može voditi provjeru ako izvršava Linux komande unutar izabrane WSL2 distribucije. Codex CLI u toj distribuciji je alternativni način rada. Repozitorijum držati na Linux filesystem-u distribucije, npr. `~/mi-proba`, a ne u Windows direktorijumu sa prethodnim instalacionim fajlovima.
 
@@ -33,12 +33,16 @@ Prilikom probe ne slati stvarne poruke, ne aktivirati plaćene integracije i ne 
 
 Poslije čuvanja prvobitnog rezultata agent smije praviti ispravke u zasebnoj grani i nastaviti punu funkcionalnu matricu. Za svaku ispravku sačuvati diff/commit, razlog i neuspjeli/ponovljeni rezultat. Ne mijenjati stare tagove, zaobilaziti OTP ili izlagati DB/Redis radi prolaza. Ne mijenjati tuđe resurse ili produkciju. Izvještaj mora razlikovati originalni tag, zakrpljenu varijantu i kasniju čistu probu objavljenog novog taga. Izvorni rc1 takođe je stao na nedostajućem ICU-u; eventualni pripremljeni upgrade početak jasno označiti kao patchovani rc1.
 
-## Završni objedinjeni krug poslije RC6 nalaza
+## Završni objedinjeni krug RC8
 
-Završni krug pokreće se tek nad objavljenim parom svih pregledanih popravki (RC7). Posebno pokriti novu čistu instalaciju i direktni javni RC6 → RC7 upgrade sa postojećim pending/granted korisnicima, procesom, fotografijama i istim ključevima. Podaci i geografske oblasti ranijih projekata čuvaju se; demo-geography pripada samo novom praznom demo primjeru. Potrebni su dovoljno prostora i pregledani sopstveni resursi; bez globalnog prune-a, gašenja drugih distribucija ili mijenjanja njihovih bezbjednosnih podešavanja.
+Završni krug pokreće se nad objavljenim parom svih pregledanih popravki (v0.1.4-rc8). Posebno pokriti novu čistu instalaciju i direktni javni RC7 → RC8 upgrade sa postojećim pending/granted korisnicima, procesom, fotografijama i istim ključevima. Podaci i geografske oblasti ranijih projekata čuvaju se; demo-geography pripada samo novom praznom demo primjeru. Potrebni su dovoljno prostora i pregledani sopstveni resursi; bez globalnog prune-a, gašenja drugih distribucija ili mijenjanja njihovih bezbjednosnih podešavanja.
 
 Stvarni worker mora isporučiti Devise potvrdu nove adrese i originalni lokalni proof link u Mailpit. Link se otvara bez ručnog mijenjanja scheme/host/porta; poslije potvrde normalno se otvara postojeća lokalizovana sljedeća stranica. Provjeriti i svjež worker/eager boot sa uključenim missing-translation režimom. Poslije kontrolisane greške pregledati samo redigovan log: token, adresa i serialized mail args ne smiju se pojaviti; izvršni/retry payload ne smije biti promijenjen radi logovanja.
 
 Provjeriti Publish/Update/Phases i editor na sva četiri jezika, native ARIA oznake i interpolirane nivoe naslova/pozicije resizera. Datumi/kalendar i timezone/DST, OTP negativni/pozitivni, privacy/tenancy, fotografije, posao u toku, persistence/restore i živi guard-ovi ostaju u dokumentovanom obuhvatu. Generated-host launcher koristi javno podržani izbor testova i uputstvo engine docs/VERIFIKACIJA.md, bez privatnih ručnih Gemfile/script izmjena.
+
+Posebno potvrditi da validna BIH verifikacija radi unutar postojećih 24 sata, da istekli/potrošeni dokaz i zaključana autorizacija ostaju odbijeni, te da prijava bez lozinke zadržava 10 minuta. Dodjela bodova nakon potvrde telefona mora biti tačno jednom, bez efekata prije commita ili poslije rollback-a. Poštanski geokoder smije dobiti dešifrovanu sintetičku adresu samo poslije commita, uz obrisane metadata na dodijeljenoj autorizaciji. Za administraciju provjeriti i standardne menije, publish flash, pretragu i logo alt tekst u sva četiri jezika.
+
+Dokumentovani engine generated-host rezultat ima 1.194 testa / 6.787 tvrdnji na pregledanom popravljenom izvoru. Sačuvati tačan identitet i uporediti runtime/test/harness sadržaj prije pozivanja na taj dokaz. Ne ponavljati već prolazne kolekcije bez promjene pogođenog koda ili okruženja; novi Docker/browser tokovi i host regresije ostaju zasebne provjere. Razvojni Ruby unit bundle engine-a uključuje opcioni Sidekiq logger preduslov; normalni generated-host bundle nije zamjena za taj unit kontekst.
 
 Priložiti puni redigovani ZIP sa izvještajem, dnevnikom, stvarnim logovima/snimcima/manifestima i svakim eventualnim novim patchom, uz SHA256SUMS. Za svaku stavku zabilježiti izvršeno/prošlo, neuspješno, neizvršeno ili neprimjenjivo sa razlogom. Ovaj lokalni krug ne potvrđuje javni Linux VPS/TLS/reboot/obnovu sertifikata, hladni off-site import/restore/aktivaciju ili stvarne provajdere. Ako se zahtijeva i njihovo konačno prihvatanje, moraju biti dostupni zaseban testni server/domen, backup cilj i sopstveni odobreni nalozi; WSL rezultat se ne prepisuje u te redove.

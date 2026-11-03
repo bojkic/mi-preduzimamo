@@ -1,6 +1,6 @@
 # Lokalna instalacija za izmišljenu zajednicu
 
-**Status:** prema nezavisnom izvještaju od 3. novembra 2026, neizmijenjeni javni v0.1.4-rc5 prošao je novu WSL2/Docker instalaciju i navedene funkcionalne/restore probe, uz preostale UI nedostatke. Naredni kandidat sa njihovim popravkama još nije prošao novu instalacionu/browser probu. Detaljne granice su u [matrici](REZULTATI_PROVJERA.md). [Postupak nezavisne provjere](PROVJERA_WSL2.md).
+**Status:** neizmijenjeni javni RC7 prošao je lokalnu novu instalaciju i direktnu RC6 → RC7 nadogradnju, uključujući e-mail i navedene operativne tokove. Njegov puni engine regresijski rezultat bio je neuspješan. Pregledane dopunske engine ispravke zatim su prošle 1.194 testa / 6.787 tvrdnji u javno generisanom hostu. Objedinjeni RC8 čeka sopstvenu završnu Docker/browser probu. Detalji su u [matrici](REZULTATI_PROVJERA.md) i [postupku provjere](PROVJERA_WSL2.md).
 
 Ovo je jedini lokalni Compose put. `compose.yml` sa demo profilom pokreće web, worker, PostgreSQL, Redis, Mailpit i Nginx. Stari `docker-compose.yml` je uklonjen. Za javni server koristi se zaseban [produkcioni profil](PRODUKCIJA.md).
 
