@@ -28,7 +28,7 @@ Detaljan pregled zahtjeva svake oblasti: [FUNKCIONALNOSTI.md](docs/FUNKCIONALNOS
 
 ## Početno podešavanje
 
-Novi installer je kandidat za provjeru; nova čista Docker instalacija i VPS/TLS put još nisu potvrđeni. v0.1.3 je zaseban OTP hotfix, bez ovog instalacionog paketa.
+Installer je dostupan u v0.1.4. Nezavisna RC9 Windows/WSL2 proba potvrdila je čistu lokalnu instalaciju, direktnu RC7→RC9 nadogradnju i hladni restore u drugom praznom Docker okruženju. Završne ispravke demo identiteta i admin prevoda imaju ciljane regresije; cijela instalacija konačnog taga nije ponovljena, po odluci vlasnika. VPS/TLS, reboot VPS-a, off-site aktivacija i stvarni SMTP ostaju opcioni i neprovjereni. Detalji i ograničenja su u [rezultatima provjera](installation/REZULTATI_PROVJERA.md).
 
 Za lokalnu izmišljenu zajednicu koristite [kratki Compose vodič](installation/LOKALNO.md): jedan installer priprema tajne, build, bazu i servise. Ruby 3.4.12, Node 22.23.4 i npm 10.9.9 dolaze kroz image; na domaćinu su potrebni Linux x86_64 (ili WSL2), Git, Python i Docker/Compose 2.30+.
 

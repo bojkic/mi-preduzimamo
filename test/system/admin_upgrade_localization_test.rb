@@ -35,6 +35,10 @@ class AdminUpgradeLocalizationSystemTest < ApplicationSystemTestCase
       assert_text I18n.t("decidim.admin.participatory_processes.update.success", locale:)
       click_link steps_label
       assert_selector "#steps h1", text: I18n.t("decidim.participatory_processes.admin.participatory_process_steps.index.title", locale:)
+      %w(title start_date end_date actions).each do |field|
+        assert_selector "#steps thead th", text: I18n.t("decidim.admin.models.participatory_process_step.fields.#{field}", locale:)
+      end
+      assert_no_selector "#steps thead th", text: /\A(?:Title|Start date|End date|Actions)\z/
       visit "/#{locale}/admin/participatory_processes"
       find("button[data-target='actions-process-#{process.id}']").click
       within "#actions-process-#{process.id}" do
@@ -44,6 +48,18 @@ class AdminUpgradeLocalizationSystemTest < ApplicationSystemTestCase
       assert process.reload.published?
       assert_no_selector ".translation_missing"
       page.save_screenshot(Rails.root.join("tmp/screenshots/admin-publish-#{locale}.png")) # rubocop:disable Lint/Debugger -- native locale acceptance evidence
+    end
+
+    test "#{locale} admin terms review and refusal are translated" do
+      @organization.update!(admin_terms_of_service_body: { locale => "Test admin terms" })
+      @admin.update!(admin_terms_accepted_at: nil)
+      visit "/#{locale}/admin"
+      # A user without accepted terms is redirected directly to the review page.
+      assert_text I18n.t("decidim.admin.admin_terms_of_service.required_review.callout", locale:)
+      assert_text I18n.t("decidim.admin.admin_terms_of_service.actions.title", locale:)
+      assert_link I18n.t("decidim.admin.admin_terms_of_service.actions.refuse", locale:)
+      assert_no_text "Refuse the admin terms"
+      assert_no_text "Please take a moment to review"
     end
 
     test "#{locale} actual admin dashboard and calendar" do

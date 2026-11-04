@@ -10,7 +10,7 @@ gem "rails", "8.1.4"
 # Shared Bosnian-market customizations (locales, theme base, overrides).
 # Local dev uses a path override: `bundle config set local.decidim-bih ../mi-preduzimamo-engine`
 gem "decidim-bih", git: "https://github.com/bojkic/mi-preduzimamo-engine.git", branch: "main",
-                   ref: "2f0af7fe50a52a40ecaef73bf784b5b7fe347ce9"
+                   ref: "a0fea2a82133e1c7dfb16c91a3de9b077da4a126"
 
 # Customization/admin power layer — structured proposal fields, scoped CSS branding,
 # weighted voting, anti-spam. 0.15.x targets Decidim 0.32.x; use an immutable upstream commit.

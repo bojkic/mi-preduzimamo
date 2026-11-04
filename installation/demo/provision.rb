@@ -118,7 +118,7 @@ class MiDemoProvisioner
     raise "Prepare the system demo account first" unless record && record["system_state"] == "done"
 
     organization = Decidim::Organization.find_by!(host: "127.0.0.1")
-    user = Decidim::User.find_by!(organization:, email: ADMIN_EMAIL)
+    user = content_account(record, organization)
     return if completed_content?(record, organization, user)
 
     validate_empty_demo!(organization, user)
@@ -132,7 +132,7 @@ class MiDemoProvisioner
   def geography
     record = journal || raise("Run demo-system and demo-content first")
     organization = Decidim::Organization.find_by!(host: "127.0.0.1")
-    user = Decidim::User.find_by!(organization:, email: ADMIN_EMAIL)
+    user = content_account(record, organization)
     raise "Complete demo-content first" unless completed_content?(record, organization, user)
 
     path = Rails.root.join("db/examples/synthetic_community.geojson")
@@ -168,6 +168,20 @@ class MiDemoProvisioner
 
     persist(record.merge("content_state" => "done")) unless record["content_state"] == "done"
     true
+  end
+
+  # Once intent records an account, its scoped id remains stable through a
+  # normal confirmed email change. Initial setup still requires the invited
+  # default account; completed_content? retains installation/password checks.
+  def content_account(record, organization)
+    user = if record["organization_user_id"]
+             Decidim::User.find_by!(organization:, id: record.fetch("organization_user_id"))
+           else
+             Decidim::User.find_by!(organization:, email: ADMIN_EMAIL)
+           end
+    raise "Recorded demo account must remain an administrator" unless user.admin?
+
+    user
   end
 
   def plan_content(record, organization, user)

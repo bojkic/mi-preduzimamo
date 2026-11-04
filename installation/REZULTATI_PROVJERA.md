@@ -126,12 +126,29 @@ Lokalna priprema RC9 dodatno obuhvata 105 browser testova / 1689 provjera bez pa
 
 Stvarno generisani prazni Decidim host prošao je instalaciju engine-a, migracije i eager-load provjeru ugovora. Ransack zavisnost sada odbija nezaštićene verzije pri razrješavanju; proba je izabrala 4.4.4 umjesto generatorovog 4.4.1. To je native framework proba, odvojena od završne Docker/WSL2 instalacije javnog taga. Ovi ciljani rezultati ne znače da je kompletan host test suite prošao.
 
-## Sljedeća nezavisna proba
+## Istorijsko uputstvo za završnu RC9 probu (sada izvršena)
 
 Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc9** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
-Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
+Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Raniji zahtjev za ponovnom cijelom instalacijom zamijenjen je odlukom vlasnika od 4. novembra 2026: posljednje ograničene ispravke integrišu se uz ciljane regresije, bez novog kruga kompletne instalacije.
 
 Početni rc1 takođe nema ICU dev. Za dijagnostički upgrade može se pripremiti **patchovani rc1**, sa sačuvanim diff-om, procesom i fotografijom. Installer zahtijeva da cilj bude potomak trenutnog commita: lokalni rc1 patch commit nije predak javnog rc4. Zato u zasebnom checkout-u pripremite pregledan dijagnostički merge koji sadrži patchovani početak i novi javni tag, preuzmite taj commit u instalacioni checkout bez prebacivanja aktivnog koda, pa koristite njegov puni SHA kroz upgrade. Sačuvajte sve identitete i provjerite odnos predak–potomak; ne zaobilazite zaštitu niti prepisujte instalacioni zapis. Taj rezultat pripada dijagnostičkoj merge varijanti, ne direktnom javni-tag → javni-tag prelazu. Takav početak nije izvorni rc1 clean-install PASS. Ako izvorni rc1 ne može da se instalira, dokumentovati blokadu; dvije prazne instalacije ne dokazuju nadogradnju.
 
 U izvještaju navedite stvarne verzije, app/engine SHA, hash lockfile-a, image ID, profil, datum, trajanje i rezultate prije bilo kakve popravke. Ne prenosite PASS između commitova ili okruženja. Ne objavljujte env fajlove, OTP, lozinke, tokene ili lične Windows putanje.
+
+## Završni nezavisni RC9 rezultat — 4. novembar 2026.
+
+Nezavisni Windows/WSL2 izvještaj provjerava javni app `dbe9274690314beddf06ce1d84a7cacce02bdabd`, engine `2f0af7fe50a52a40ecaef73bf784b5b7fe347ce9` i lock SHA-256 `decfd67261af4579e9cd88c4904c10fe85187481e5e5b5b3a3c8f716ec9197a0`. Održavalac je provjerio svih 1615 SHA-256 zapisa dostavljenog redigovanog paketa; originalne laboratorijske mašine nisu mu daljinski dostupne.
+
+| Obuhvat | Dostavljeni rezultat i granica |
+|---|---|
+| Nova Ubuntu/WSL2 distribucija, prazan Docker | Neizmijenjeni RC9 instaliran za 582,148 s; normalni system/admin/citizen tokovi, lokalni e-mail/OTP/worker i fotografije provjereni |
+| Direktni javni RC7→RC9 upgrade | 336,885 s; podaci, fotografije, tajne i lozinke očuvani; provjereni portovi, DNS/IP promjena i restart/recreate sa poslom |
+| Hladni restore u drugom praznom daemon-u | 179,946 s; slika iz kopije, 232 tabele, 230 sekvenci i 9 storage fajlova poređeni; nov upis baznom aplikacionom rolom uspio. Cilj ostao u karantinu, bez javne aktivacije |
+| Resursi | WSL2 oko 7,59 GiB / 8 CPU; runtime jednog projekta oko 1,35–1,62 GiB. Uzorak nije garantovani VPS minimum |
+| Generated-host | 139 izvornih fajlova, 1194 testa / 6787 provjera, bez padova, grešaka ili preskakanja |
+| Engine razvojni obuhvat | 2600 testova / 40295 provjera, bez padova/grešaka, 9 preskakanja; JS 20 prolaza / 1 preskakanje |
+| Lokalni ostatak | Originalni RC9 ima kvar ponavljanja demo komandi poslije promjene administratorskog e-maila i nedostajuće admin prevode. Dijagnostička popravka demo identiteta zasebno je prošla 19/72 i svoju novu instalaciju; to nije pripisano neizmijenjenom RC9 |
+| Zaseban VPS / javni TLS / VPS reboot / stvarni SMTP / off-site restore i aktivacija | Nisu izvršeni; prema odluci vlasnika nisu uslov završetka lokalnog izdanja. Opcione integracije zahtijevaju sopstvene naloge i provjere |
+
+Završne ispravke koriste zapisani ID demo administratora unutar iste organizacije, zadržavaju postojeće zaštite i zahtijevaju administratorska prava; prevodi dopunjuju fazne kolone i pregled admin uslova u četiri jezika. Provjeravaju se ciljanim regresijama. Cjeloviti RC9 instalacioni rezultat ne prenosi se kao nova kompletna instalacija konačnog izdanja. Vlasnik je prihvatio završetak bez njenog ponavljanja. Puni privatni gate ostaje izuzet, a ne uspješan.
