@@ -25,12 +25,12 @@ class GoodwillAdminDashboardTest < ApplicationSystemTestCase
 
     assert_selector "#goodwill-stats"
     assert_selector "#goodwill-stats[data-goodwill-active-tab='rewards']"
-    assert_selector "#goodwill-workflow-nav a[aria-current='page'][href='/admin/bih/goodwill?tab=rewards']"
-    assert_selector "#goodwill-workflow-nav a[href='/admin/bih/goodwill?tab=overview']"
-    assert_selector "#goodwill-workflow-nav a[href='/admin/bih/goodwill?tab=matched_giving']"
-    assert_selector "#goodwill-workflow-nav a[href='/admin/bih/goodwill?tab=reports']"
-    assert_selector "#goodwill-workflow-nav a[href='/admin/bih/goodwill?tab=ledger']"
-    assert_selector "a[href='/admin/bih/volunteering']"
+    assert_selector "#goodwill-workflow-nav a[aria-current='page'][href='/sr/admin/bih/goodwill?tab=rewards']"
+    assert_selector "#goodwill-workflow-nav a[href='/sr/admin/bih/goodwill?tab=overview']"
+    assert_selector "#goodwill-workflow-nav a[href='/sr/admin/bih/goodwill?tab=matched_giving']"
+    assert_selector "#goodwill-workflow-nav a[href='/sr/admin/bih/goodwill?tab=reports']"
+    assert_selector "#goodwill-workflow-nav a[href='/sr/admin/bih/goodwill?tab=ledger']"
+    assert_selector "a[href='/sr/admin/bih/volunteering']"
     assert_selector "#goodwill-reward-fulfillments", text: "Majica zajednice"
     assert_selector "#goodwill-reward-fulfillments", text: "Zatraženo"
     assert_selector "#goodwill-reward-fulfillments", text: "preuzimanje"
@@ -57,7 +57,7 @@ class GoodwillAdminDashboardTest < ApplicationSystemTestCase
     visit "/admin/bih/goodwill?tab=reports"
     assert_selector "#goodwill-stats[data-goodwill-active-tab='reports']"
     assert_selector "#goodwill-report-forwarding-failures", text: @failed_report.reference
-    assert_selector "#goodwill-report-forwarding-failures a[href='/admin/bih/reports/#{@failed_report.reference}']"
+    assert_selector "#goodwill-report-forwarding-failures a[href='/sr/admin/bih/reports/#{@failed_report.reference}']"
     assert_no_selector "#goodwill-match-requests"
     assert_no_selector "#goodwill-reward-fulfillments"
     assert_no_selector "#goodwill-report-forwarding-failures", text: "StandardError"
@@ -72,8 +72,8 @@ class GoodwillAdminDashboardTest < ApplicationSystemTestCase
     visit "/admin/bih/goodwill?tab=overview"
     assert_selector "#goodwill-stats[data-goodwill-active-tab='overview']"
     assert_selector "#goodwill-volunteering-handoff"
-    assert_selector "a[href='/admin/bih/volunteering?subqueue=pending_opportunities']"
-    assert_selector "a[href='/admin/bih/volunteering?subqueue=pending_logs']"
+    assert_selector "a[href='/sr/admin/bih/volunteering?subqueue=pending_opportunities']"
+    assert_selector "a[href='/sr/admin/bih/volunteering?subqueue=pending_logs']"
     assert_selector "#goodwill-metrics"
     assert_selector "#goodwill-top-earners"
     assert_no_selector "#goodwill-pending-opportunities"
@@ -97,7 +97,7 @@ class GoodwillAdminDashboardTest < ApplicationSystemTestCase
     worked_from_at = zone.parse("#{work_date.iso8601} 09:00")
     Decidim::Bih::VolunteerLog.create!(
       organization: @organization,
-      opportunity: opportunity,
+      opportunity:,
       user: @citizen,
       work_date:,
       worked_from_at:,

@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/bojkic/mi-preduzimamo-engine.git
-  revision: db348708b66dde478dc868dbaad720c9478526d3
-  ref: db348708b66dde478dc868dbaad720c9478526d3
+  revision: 2f0af7fe50a52a40ecaef73bf784b5b7fe347ce9
+  ref: 2f0af7fe50a52a40ecaef73bf784b5b7fe347ce9
   branch: main
   specs:
     decidim-bih (0.4.0)
@@ -15,6 +15,7 @@ GIT
       mini_magick (~> 4.9)
       nokogiri (~> 1.0)
       pdf-reader (~> 2.0)
+      ransack (>= 4.4.3, < 4.5)
       redis (~> 4.0)
       rqrcode (~> 2.0)
 

@@ -213,7 +213,11 @@ class PublicChatAndMapTest < ApplicationSystemTestCase
 
     find(".leaflet-interactive", match: :first).click
     assert_selector ".leaflet-popup-content", text: report.reference
-    assert_selector ".leaflet-popup-content a[href$='#{report.reference}']"
+    popup_uri = URI.parse(find(".leaflet-popup-content a")[:href])
+    assert_equal "/biceriseno/prijave/#{report.reference}", popup_uri.path
+    assert_equal({ "locale" => "sr" }, Rack::Utils.parse_query(popup_uri.query))
+    assert_equal URI.parse(page.current_url).host, popup_uri.host
+    assert_equal URI.parse(page.current_url).port, popup_uri.port
   end
 
   test "report intake map click stores hidden coordinates" do

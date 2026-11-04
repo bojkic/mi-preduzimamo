@@ -55,7 +55,7 @@ class HomepageRegistrationCtaTest < ApplicationSystemTestCase
     accept_data_consent!
 
     assert_no_selector ".mi-hero-register", visible: :visible
-    assert_selector ".mi-mobile-bottom-nav a[href='/users/sign_in']"
+    assert_selector ".mi-mobile-bottom-nav a[href='/sr/users/sign_in']"
     assert_no_selector ".mi-action-launcher--mobile"
     assert_selector ".mi-mobile-bottom-nav a[href='/biceriseno/prijave/new']", text: "Problem"
     assert_selector ".mi-mobile-bottom-nav a[href='/biceriseno/mi-bot']", text: "Milica"
@@ -66,7 +66,7 @@ class HomepageRegistrationCtaTest < ApplicationSystemTestCase
 
   test "mobile invitation stays joined to the homepage after scroll and resize" do
     user = create(:user, :confirmed, organization: @organization)
-    Decidim::Authorization.create!(user: user, name: "sms", granted_at: Time.current)
+    Decidim::Authorization.create!(user:, name: "sms", granted_at: Time.current)
     Decidim::Bih::Setting.put(@organization, "launch", "mode", "on")
     sign_in_user!(user)
     page.driver.browser.execute_cdp("Emulation.setDeviceMetricsOverride", width: 390, height: 844, deviceScaleFactor: 1, mobile: true)
@@ -77,7 +77,7 @@ class HomepageRegistrationCtaTest < ApplicationSystemTestCase
     assert_equal "0px", page.evaluate_script('getComputedStyle(document.getElementById("menu-bar-container")).marginTop')
     gap = page.evaluate_script(<<~JS)
       document.getElementById("content").getBoundingClientRect().top -
-        document.getElementById("sticky-header-container").getBoundingClientRect().bottom
+        document.querySelector("header[role=banner]").getBoundingClientRect().bottom
     JS
     assert_operator gap.abs, :<=, 2
     assert_no_horizontal_overflow!

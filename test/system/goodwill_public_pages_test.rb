@@ -52,7 +52,7 @@ class GoodwillPublicPagesTest < ApplicationSystemTestCase
     accept_data_consent!
     assert_selector "body", text: "1.250"
     assert_selector ".mi-donation-count", text: I18n.t("decidim.bih.donations.show.count", count: 8)
-    assert_link I18n.t("decidim.bih.donations.show.browse_projects"), href: "/biceriseno/projekti"
+    assert_link I18n.t("decidim.bih.donations.show.browse_projects"), href: "/biceriseno/projekti?locale=sr"
     assert_selector ".mi-donation-notes", text: I18n.t("decidim.bih.donations.show.donor_privacy_note")
     assert_no_horizontal_overflow!
 
@@ -116,11 +116,14 @@ class GoodwillPublicPagesTest < ApplicationSystemTestCase
     find_by_id("mi-install-close").click if page.has_selector?("#mi-install-close", wait: 0)
     within ".mi-volunteer-tabs" do
       availability_link = find_link(I18n.t("decidim.bih.volunteer.index.tabs.dostupnost"))
-      assert_match(/\?tab=dostupnost#dostupnost\z/, availability_link[:href])
+      availability_uri = URI.parse(availability_link[:href])
+      assert_equal "/biceriseno/volontiranje", availability_uri.path
+      assert_equal({ "locale" => "sr", "tab" => "dostupnost" }, Rack::Utils.parse_query(availability_uri.query))
+      assert_equal "dostupnost", availability_uri.fragment
       assert_not_equal "_blank", availability_link[:target]
       availability_link.click
     end
-    assert_current_path "/biceriseno/volontiranje?tab=dostupnost"
+    assert_current_path "/biceriseno/volontiranje?locale=sr&tab=dostupnost"
     assert_no_selector "input[type='datetime-local']"
     assert_selector ".mi-choice-grid--days", text: "Ponedjeljak"
     assert_selector ".mi-choice-grid--months", text: "Januar"
@@ -133,7 +136,7 @@ class GoodwillPublicPagesTest < ApplicationSystemTestCase
         "::before"
       ).content
     JS
-    form = find("form[action$='/biceriseno/volontiranje/dostupnost']")
+    form = find("form[action='/biceriseno/volontiranje/dostupnost?locale=sr']")
     within form do
       find("textarea[name='availability']").fill_in with: "Subotom prijepodne"
       find("textarea[name='interests']").fill_in with: "Parkovi i dvorista"

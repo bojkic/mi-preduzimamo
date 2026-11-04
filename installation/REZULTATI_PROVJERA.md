@@ -1,8 +1,12 @@
 # Rezultati i granice instalacionih provjera
 
-Pregled nezavisnih izvještaja od 3. novembra 2026. Ovaj sažetak zamjenjuje javno povezivanje na privatni `CLEAN_INSTALL_REPORT.md` i istorijski `INSTALACIJA_CLEAN.md`. Sirovi izvještaj, ZIP, lokalne putanje i pristupni podaci nisu dio javne dokumentacije. Za novu instalaciju koristite [LOKALNO.md](LOKALNO.md), a za server [PRODUKCIJA.md](PRODUKCIJA.md).
+Pregled nezavisnih izvještaja i native dopune do 4. novembra 2026. Ovaj sažetak zamjenjuje javno povezivanje na privatni `CLEAN_INSTALL_REPORT.md` i istorijski `INSTALACIJA_CLEAN.md`. Sirovi izvještaj, ZIP, lokalne putanje i pristupni podaci nisu dio javne dokumentacije. Za novu instalaciju koristite [LOKALNO.md](LOKALNO.md), a za server [PRODUKCIJA.md](PRODUKCIJA.md).
 
 ## Aktuelni pregled
+
+Native dopuna od4. novembra razlikuje stvarne runtime ispravke od očekivanja starih testova: uklonjen je zastarjeli collaborative drafts blok iz host prikaza prijedloga, a queue povratak prihvata samo tačne konfigurirane lokalne jezičke putanje i čuva filtere. Dodati su bs/hr/sr-Cyrl mailbox tekstovi i sva četiri URL objašnjenja procesa, uvoza i kopiranja. Nova samostalna locale provjera ima1 test /2.592 tvrdnje. Naknadni browser rezultati56/1056/7/2,23/236/2/0 i4/41/0/0 ostaju zasebni rezultati, uz očuvane prve neuspjehe; ne predstavljaju izmišljeni jedan puni PASS. Dva originalna native skip-a pripadaju privatnoj Milica visible-reply provjeri sa posebnim launcher-om.
+
+Raniji1194/6787 engine rezultat važi za svoj tačan izvor. RC9 mijenja queue servis i locale tekstove; taj raniji rezultat ne proglašavamo novim punim rezultatom RC9. Nema nove tvrdnje o Docker-u, VPS-u ili spoljnim provajderima.
 
 | Obuhvat | Rezultat | Granica |
 |---|---|---|
@@ -10,7 +14,10 @@ Pregled nezavisnih izvještaja od 3. novembra 2026. Ovaj sažetak zamjenjuje jav
 | Neizmijenjeni javni RC7: puni engine harness | Neuspješno: 1.188 / 6.443, 71 failure, četiri error, jedan skip | Izvorni rezultat je sačuvan |
 | Pregledane RC7 engine dopunske ispravke | Prošlo: 1.194 testa / 6.787 tvrdnji, nula failures/errors/skips | Javni generated-host, svih139 izvornih fajlova; lokalno popravljena grana, ne stari javni tag |
 | Četiri nove/dopunjene DB-free unit regresije na toj grani | Prošlo: 10 / 2.546, bez grešaka/preskakanja | Izolovani test bundle, bez mreže/DB/Redis-a |
-| Objedinjeni RC8: novi image, browser i direktni RC7 → RC8 upgrade | Čeka završnu probu | Raniji prolazi se ne prepisuju novom image-u |
+| Dodatni native RC8 browser pokušaj | Neuspješno:101 test /1.088 tvrdnji /26 padova /4 greške /2 preskakanja | Dva potvrđena runtime kvara; ostalo su uglavnom zastarjela testna očekivanja. Originalni rezultat ostaje sačuvan |
+| RC9 kandidat: filtrirani povratak na prijave | Prošlo15 testova /107 tvrdnji | Stvarni host kontroleri, četiri native jezika i negativna povratna adresa |
+| RC9 kandidat: native editor/čuvanje/faze/objavljivanje | Prošlo4 toka /52 tvrdnje, plus ranija kalendarska provjera | Desktop browser na četiri jezika; stvarne sintetičke izmjene i objavljivanje, native ARIA/tekst i odsustvo uočenog engleskog URL objašnjenja |
+| RC9 kandidat: novi image i završni install/upgrade/browser prihvat | Još nije potvrđeno | Raniji prolazi se ne prepisuju novom image-u |
 | Stvarni VPS/TLS/reboot, hladni off-site restore i sopstveni provajderi | Nije izvršeno | Zasebni resursi i stvarni rezultati |
 
 RC7 novi install trajao je740s, a direktni upgrade/verify wrapper355s. Potvrđeni su normalni e-mail dokaz i povratak200, privatnost mail-job loga uz očuvan retry payload, eksplicitna demo geografija, fotografije i navedene lokalne persistence/drain/restore provjere. Stari javni tag ima preostale administratorske engleske tekstove i neuspjeli puni engine obuhvat.
@@ -108,15 +115,20 @@ Sve te izmjene pripadaju jednom završnom testnom krugu. Novi worker/e-mail/UI/g
 | rc5 neizmijenjeni javni tag | Lokalni funkcionalni PASS prema izvještaju; UI djelimično FAIL | Nova WSL2 instalacija/restore i dijagnostički upgrade; bez VPS/cold off-site importa |
 | rc6 neizmijenjeni javni tag | Instalacija/upgrade/kalendar/podaci prošli; e-mail FAIL | Puni nezavisni paket; lokalni origin/template/return ruta blokiraju puni funkcionalni PASS |
 | rc7 neizmijenjeni javni tag | Lokalni install/upgrade/worker prošli; puni engine i dio admin jezika neuspješni | Kasniji popravljen engine prolaz naveden odvojeno u aktuelnom pregledu |
-| rc8 objedinjene ispravke | Nova instalaciona/browser proba čeka rezultat | Direktni javni RC7 → RC8 sa očuvanim podacima i ključevima |
+| rc8 objedinjene ispravke | Naknadni native browser pokušaj nije prošao | Poznati template API i lokalizovani povratak filtera popravljaju se u narednom kandidatu |
+| rc9 native dopuna | Ciljani controller/browser rezultati prolaze; završni Docker prihvat čeka | Direktni javni RC7 → RC9 sa očuvanim podacima i ključevima |
 | Novi Linux VPS, javni DNS/TLS/obnova i reboot | Neizvršeno | WSL2 rezultat se ne prenosi u ovaj red |
 | Stvarni SMTP/SMS/Viber/AI/naplata | Nije potvrđeno ovom probom | Opcioni sopstveni nalozi i zasebno odobrene provjere |
 
 Ažuriranje postojećeg native servera nije nova instalacija na praznom VPS-u. WSL2 je dovoljan za lokalno Docker prihvatanje kada se koraci stvarno izvrše; za sljedeći krug lokalne probe nije potreban zaseban VPS. Javno serversko prihvatanje ostaje odvojeno.
 
+Lokalna priprema RC9 dodatno obuhvata 105 browser testova / 1689 provjera bez padova ili grešaka, uz dva evidentirana preskakanja koja zahtijevaju poseban zaštićeni pokretač. Samostalni engine obuhvat prošao je 2599 testova / 40291 provjeru uz devet preskakanja; JavaScript obuhvat sada uključuje i CommonJS kalendarske testove (20 prolaza, jedno preskakanje). Zasebna završna provjera registracionih stranica prošla je 4 testa / 40 provjera, a demo provisioner i privatnost početne stranice 24 testa / 139 provjera, bez preskakanja.
+
+Stvarno generisani prazni Decidim host prošao je instalaciju engine-a, migracije i eager-load provjeru ugovora. Ransack zavisnost sada odbija nezaštićene verzije pri razrješavanju; proba je izabrala 4.4.4 umjesto generatorovog 4.4.1. To je native framework proba, odvojena od završne Docker/WSL2 instalacije javnog taga. Ovi ciljani rezultati ne znače da je kompletan host test suite prošao.
+
 ## Sljedeća nezavisna proba
 
-Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc8** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
+Slijedite [PROVJERA_WSL2.md](PROVJERA_WSL2.md), [OPORAVAK.md](OPORAVAK.md) i [NADOGRADNJA.md](NADOGRADNJA.md). Sljedeća završna proba poslije objave bira javni **v0.1.4-rc9** i njegov puni SHA (`git rev-parse HEAD`); rc2/rc3 identiteti iznad ostaju istorijski rezultati.
 
 Agent smije nastaviti dijagnostiku i popravljati prepreke u zasebnoj grani. Prvo sačuvati neuspjeh neizmijenjenog taga, pa svaki diff/commit, razlog i rezultate. Cjelovit prolaz sa zakrpama označiti kao prolaz te zakrpljene varijante. Poslije prenosa i objave ispravki treba zasebna čista instalacija novog javnog taga bez zakrpa.
 

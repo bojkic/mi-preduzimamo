@@ -30,7 +30,8 @@ class PublicReportFormTest < ApplicationSystemTestCase
     before_count = Decidim::Bih::Report.count
     click_on I18n.t("decidim.bih.reports.new.submit", locale: :sr)
 
-    assert_current_path(%r{\A/biceriseno/prijave/BR-\d{4}-\d+/status/[A-Za-z0-9_-]{32,}\z}, wait: 5)
+    assert_current_path(%r{\A/biceriseno/prijave/BR-\d{4}-\d+/status/[A-Za-z0-9_-]{32,}\z}, ignore_query: true, wait: 5)
+    assert_equal({ "locale" => "sr" }, Rack::Utils.parse_query(URI.parse(page.current_url).query))
     reference = page.current_path.split("/")[-3]
     report = Decidim::Bih::Report.find_by!(organization: @organization, reference:)
     assert_equal before_count + 1, Decidim::Bih::Report.count

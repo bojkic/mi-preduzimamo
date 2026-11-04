@@ -10,6 +10,42 @@ class AdminUpgradeLocalizationSystemTest < ApplicationSystemTestCase
   end
 
   %w(sr sr-Cyrl bs hr).each do |locale|
+    test "#{locale} native editor update phases and publication use native translations" do
+      page.driver.browser.manage.window.resize_to(1440, 1100)
+      title = { "sr" => "Probni proces", "sr-Cyrl" => "Пробни процес", "bs" => "Probni proces", "hr" => "Probni proces" }
+      process = FactoryBot.create(:participatory_process, :with_steps, organization: @organization, published_at: nil, title:)
+      edit_path = "/#{locale}/admin/participatory_processes/#{process.slug}/edit"
+      visit edit_path
+      update_label = I18n.t("decidim.admin.participatory_processes.edit.update", locale:)
+      steps_label = I18n.t("decidim.admin.menu.participatory_processes_submenu.steps", locale:)
+      bold_label = I18n.t("editor.toolbar.control.bold", locale:)
+      heading_label = I18n.t("editor.toolbar.textStyle.heading", locale:).gsub("%level%", "2")
+      assert_button update_label
+      assert_link steps_label
+      slug_key = "decidim.participatory_processes.admin.participatory_processes.form.slug_help_html"
+      assert I18n.exists?(slug_key, locale, fallback: false)
+      assert_text I18n.t(slug_key, locale:, url: "").strip
+      assert_no_text "URL slugs are used"
+      assert_selector "button[data-editor-type='bold'][aria-label='#{bold_label}']", minimum: 1
+      assert_selector "select[data-editor-type='heading'] option[value='2']", text: heading_label, visible: :all
+      assert_no_selector "[data-editor-type][aria-label='Bold'], [data-editor-type][aria-label='Text style']", visible: :all
+      FileUtils.mkdir_p(Rails.root.join("tmp/screenshots"))
+      page.save_screenshot(Rails.root.join("tmp/screenshots/admin-editor-#{locale}.png")) # rubocop:disable Lint/Debugger -- native locale acceptance evidence
+      click_button update_label
+      assert_text I18n.t("decidim.admin.participatory_processes.update.success", locale:)
+      click_link steps_label
+      assert_selector "#steps h1", text: I18n.t("decidim.participatory_processes.admin.participatory_process_steps.index.title", locale:)
+      visit "/#{locale}/admin/participatory_processes"
+      find("button[data-target='actions-process-#{process.id}']").click
+      within "#actions-process-#{process.id}" do
+        click_link I18n.t("decidim.admin.actions.publish", locale:)
+      end
+      assert_text I18n.t("decidim.admin.participatory_process_publications.create.success", locale:)
+      assert process.reload.published?
+      assert_no_selector ".translation_missing"
+      page.save_screenshot(Rails.root.join("tmp/screenshots/admin-publish-#{locale}.png")) # rubocop:disable Lint/Debugger -- native locale acceptance evidence
+    end
+
     test "#{locale} actual admin dashboard and calendar" do
       visit "/#{locale}/admin"
       assert_selector "h1", text: I18n.t("decidim.admin.dashboard.show.title", locale:)

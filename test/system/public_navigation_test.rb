@@ -21,13 +21,13 @@ class PublicNavigationTest < ApplicationSystemTestCase
     accept_data_consent!
 
     within ".home__menu" do
-      assert_selector "a[href='/biceriseno/prijave/new']", text: I18n.t("decidim.bih.menu.reports")
-      assert_selector "a[href='/biceriseno/volontiranje']", text: I18n.t("decidim.bih.menu.volunteer_action")
-      assert_selector "a[href='/biceriseno/projekti']", text: I18n.t("decidim.bih.menu.donate_action")
+      assert_selector "a[href='/biceriseno/prijave/new?locale=sr']", text: I18n.t("decidim.bih.menu.reports")
+      assert_selector "a[href='/biceriseno/volontiranje?locale=sr']", text: I18n.t("decidim.bih.menu.volunteer_action")
+      assert_selector "a[href='/biceriseno/projekti?locale=sr']", text: I18n.t("decidim.bih.menu.donate_action")
       assert_selector "a[href='/processes']", text: I18n.t("decidim.bih.menu.decide")
-      assert_selector "a[href='/biceriseno/mi-bot']", text: I18n.t("decidim.bih.menu.mi_bot_short")
-      assert_selector "a[href='/biceriseno/zajednistvo']", text: I18n.t("decidim.bih.menu.community")
-      assert_selector "a[href='/biceriseno/komsiluk-board']", text: I18n.t("decidim.bih.menu.komsiluk")
+      assert_selector "a[href='/biceriseno/mi-bot?locale=sr']", text: I18n.t("decidim.bih.menu.mi_bot_short")
+      assert_selector "a[href='/biceriseno/zajednistvo?locale=sr']", text: I18n.t("decidim.bih.menu.community")
+      assert_selector "a[href='/biceriseno/komsiluk-board?locale=sr']", text: I18n.t("decidim.bih.menu.komsiluk")
     end
   end
 
@@ -38,7 +38,7 @@ class PublicNavigationTest < ApplicationSystemTestCase
     accept_data_consent!
 
     assert_no_selector "#main-bar", visible: :visible
-    assert_selector ".mi-mobile-bottom-nav a[href='/users/sign_in']", text: I18n.t("decidim.bih.mobile_nav.login")
+    assert_selector ".mi-mobile-bottom-nav a[href='/sr/users/sign_in']", text: I18n.t("decidim.bih.mobile_nav.login")
     assert_no_selector ".main-bar__logo", visible: :visible
     assert_no_selector "#main-dropdown-summary-mobile", visible: :visible
     assert_no_horizontal_overflow!
@@ -48,7 +48,7 @@ class PublicNavigationTest < ApplicationSystemTestCase
 
     find(".mi-mobile-bottom-nav [data-mi-bot-open]").click
 
-    assert_current_path "/"
+    assert_current_path "/sr/"
     assert_selector "#mi-chat.mi-chat.is-open", wait: 10
     find(".mi-chat__close").click
 
@@ -79,11 +79,11 @@ class PublicNavigationTest < ApplicationSystemTestCase
     assert_includes ring, "rgb(198, 40, 40)"
     assert_no_horizontal_overflow!
     avatar_link.click
-    assert_current_path "/notifications"
+    assert_current_path "/sr/notifications"
     assert_selector "nav .mi-mobile-bottom-nav__item--unread"
     find("[data-mi-mobile-more-open]").click
     within ".mi-mobile-more-sheet__links" do
-      assert_selector "a[href='/notifications']", text: "Obavještenja"
+      assert_selector "a[href='/sr/notifications']", text: "Obavještenja"
       assert_selector "a[href='/biceriseno/moj-nalog']"
     end
   end
@@ -97,7 +97,7 @@ class PublicNavigationTest < ApplicationSystemTestCase
     accept_data_consent!
 
     assert_selector "#trigger-dropdown-account .mi-main-bar-account__name", text: "Mila Gradjanka"
-    assert_selector ".home__menu a[data-mi-bot-open][href='/biceriseno/mi-bot']", text: I18n.t("decidim.bih.menu.mi_bot_short")
+    assert_selector ".home__menu a[data-mi-bot-open][href='/biceriseno/mi-bot?locale=sr']", text: I18n.t("decidim.bih.menu.mi_bot_short")
 
     page.driver.browser.manage.window.resize_to(390, 844)
     visit "/"
@@ -109,7 +109,7 @@ class PublicNavigationTest < ApplicationSystemTestCase
 
     find(".mi-mobile-bottom-nav [data-mi-bot-open]").click
 
-    assert_current_path "/"
+    assert_current_path "/sr/"
     assert_selector "#mi-chat.mi-chat.is-open", wait: 10
     assert_selector "#mi-chat-panel", visible: :visible
     assert_no_horizontal_overflow!

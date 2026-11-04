@@ -24,12 +24,6 @@
       <% end %>
     <% end %>
 
-    <% if component_settings.collaborative_drafts_enabled? %>
-      <%= link_to collaborative_drafts_path, class: "button button__sm button__transparent-secondary" do %>
-        <span><%= t("collaborative_drafts_list", scope: "decidim.proposals.proposals.index") %></span>
-        <%= icon "edit-2-line" %>
-      <% end %>
-    <% end %>
   </div>
 
   <% if campaign %><p class="mi-project-choice__hint"><%= t("mi_project_choice.login_hint") %></p><details class="mi-project-filters"><summary><%= t("mi_project_choice.filter") %></summary><% end %>

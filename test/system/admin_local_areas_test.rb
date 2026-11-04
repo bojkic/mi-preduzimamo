@@ -33,7 +33,7 @@ class AdminLocalAreasTest < ApplicationSystemTestCase
     accept_data_consent!
 
     assert_selector "#local-areas-header[data-local-areas-active-tab='mz']"
-    assert_selector "#local-areas-workflow-nav a[aria-current='page'][href='/admin/bih/local-areas?tab=mz']"
+    assert_selector "#local-areas-workflow-nav a[aria-current='page'][href='/sr/admin/bih/local-areas?tab=mz']"
     assert_selector "#local-areas-mz-list", text: "Centar browser"
     assert_selector "#local-areas-mz-list", text: "Mira Browser"
     assert_no_selector "#local-areas-komsiluk-list"

@@ -184,12 +184,12 @@ class KomsilukBoardNoticesTest < ApplicationSystemTestCase
     assert_equal [@north.id, @south.id].sort, posts.map(&:komsiluk_id).sort
     assert_equal 1, posts.map(&:publication_key).uniq.length
     assert(posts.all? { |post| post.body == body && post.origin == "staff" })
-    reviewed_post = posts.find { |post| current_path == "/admin/bih/komsiluk-posts/#{post.id}" }
+    reviewed_post = posts.find { |post| current_path == "/sr/admin/bih/komsiluk-posts/#{post.id}" }
     assert reviewed_post, "Expected the detail page of one of this publication's two confirmed board placements"
-    assert_current_path "/admin/bih/komsiluk-posts/#{reviewed_post.id}"
+    assert_current_path "/sr/admin/bih/komsiluk-posts/#{reviewed_post.id}"
     assert_text body
     assert_selector "#notice-delivery"
-    assert_link copy("phone_preview"), href: "/admin/bih/board-notices/#{reviewed_post.id}/phone"
+    assert_link copy("phone_preview"), href: "/sr/admin/bih/board-notices/#{reviewed_post.id}/phone"
     assert_empty Decidim::Bih::KomsilukPhoneDelivery.where(organization: @organization)
     assert_equal 2, Decidim::Bih::PlatformDelivery.where(komsiluk_post_id: posts.map(&:id)).count
     assert_no_horizontal_overflow!

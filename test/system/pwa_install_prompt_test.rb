@@ -51,7 +51,7 @@ class PwaInstallPromptTest < ApplicationSystemTestCase
     find_by_id("dc-dialog-reject").click
     assert_selector "#mi-install-banner.mi-install-card--ios"
     visit "/notifications"
-    assert_current_path "/notifications"
+    assert_current_path "/sr/notifications"
     assert_selector "#mi-install-banner.mi-install-card--ios"
     visit "/account"
     assert_current_path "/biceriseno/moj-nalog"
@@ -73,7 +73,7 @@ class PwaInstallPromptTest < ApplicationSystemTestCase
     within ".mi-volunteer-tabs" do
       click_link I18n.t("decidim.bih.volunteer.index.tabs.dostupnost")
     end
-    assert_current_path "/biceriseno/volontiranje?tab=dostupnost"
+    assert_current_path "/biceriseno/volontiranje?locale=sr&tab=dostupnost"
     assert_equal "0", page.evaluate_script('sessionStorage.getItem("testNativeInstallCalls")')
 
     visit "/?app=1"

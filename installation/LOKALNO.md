@@ -1,6 +1,6 @@
 # Lokalna instalacija za izmišljenu zajednicu
 
-**Status:** neizmijenjeni javni RC7 prošao je lokalnu novu instalaciju i direktnu RC6 → RC7 nadogradnju, uključujući e-mail i navedene operativne tokove. Njegov puni engine regresijski rezultat bio je neuspješan. Pregledane dopunske engine ispravke zatim su prošle 1.194 testa / 6.787 tvrdnji u javno generisanom hostu. Objedinjeni RC8 čeka sopstvenu završnu Docker/browser probu. Detalji su u [matrici](REZULTATI_PROVJERA.md) i [postupku provjere](PROVJERA_WSL2.md).
+**Status:** javni RC7 ima nezavisni lokalni install/upgrade prolaz, a pregledane engine dopunske ispravke zaseban1194/6787 prolaz. Dodatna native RC8 proba pokazala je još dva kvara: listu prijedloga i povratak na filtrirani administrativni spisak prijava. RC9 kandidat ih ispravlja, uz dopunjene prevode i stvarne četvorojezične editor/čuvanje/faze/objavljivanje provjere. Novi RC9 Docker image i završni install/upgrade/browser prihvat još nisu potvrđeni. Detalji su u [matrici](REZULTATI_PROVJERA.md) i [postupku provjere](PROVJERA_WSL2.md).
 
 Ovo je jedini lokalni Compose put. `compose.yml` sa demo profilom pokreće web, worker, PostgreSQL, Redis, Mailpit i Nginx. Stari `docker-compose.yml` je uklonjen. Za javni server koristi se zaseban [produkcioni profil](PRODUKCIJA.md).
 

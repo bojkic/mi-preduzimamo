@@ -17,7 +17,7 @@ class ReportRoutingSupplementalAcceptanceTest < ApplicationSystemTestCase
     visit "/admin/bih/report-routing-guides"
     accept_data_consent!
     assert_no_text outsider.title
-    within "form[action='/admin/bih/report-routing-guides']" do
+    within "form[action='/sr/admin/bih/report-routing-guides']" do
       fill_in "guide_key", with: "synthetic-parking"
       fill_in "guide_title", with: "Synthetic reviewed parking guidance"
       fill_in "guide_body_sr", with: "Enforcement and signage require distinct staff review."
@@ -34,18 +34,18 @@ class ReportRoutingSupplementalAcceptanceTest < ApplicationSystemTestCase
     assert_equal ["saobracaj"], guide.approved_recipient_keys
     assert guide.active
 
-    within "form[action='/admin/bih/report-routing-guides/#{guide.id}']" do
+    within "form[action='/sr/admin/bih/report-routing-guides/#{guide.id}']" do
       fill_in "guide_body_sr", with: "Updated reviewed guidance; never imply service receipt."
       click_button I18n.t("decidim.bih.routing_guides.save", locale: :sr)
     end
     assert_selector "textarea", text: "Updated reviewed guidance; never imply service receipt."
     assert_equal 2, guide.reload.version
     assert_equal @admin.id, guide.approved_by_id
-    within "form[action='/admin/bih/report-routing-guides/#{guide.id}']" do
+    within "form[action='/sr/admin/bih/report-routing-guides/#{guide.id}']" do
       uncheck "guide_active"
       click_button I18n.t("decidim.bih.routing_guides.save", locale: :sr)
     end
-    within "form[action='/admin/bih/report-routing-guides/#{guide.id}']" do
+    within "form[action='/sr/admin/bih/report-routing-guides/#{guide.id}']" do
       assert_unchecked_field "guide_active"
     end
     assert_not guide.reload.active
@@ -59,7 +59,7 @@ class ReportRoutingSupplementalAcceptanceTest < ApplicationSystemTestCase
     member = FactoryBot.create(:user, :confirmed, organization: @organization)
     sign_in_user! member
     visit "/admin/bih/report-routing-guides"
-    assert_no_selector "form[action='/admin/bih/report-routing-guides']"
+    assert_no_selector "form[action='/sr/admin/bih/report-routing-guides']"
     assert_equal "Protected text", guide.reload.body_sr
     assert_equal 1, guide.version
     assert_nil guide.approved_by_id

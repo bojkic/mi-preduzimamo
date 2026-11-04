@@ -10,9 +10,9 @@ class ReportPlanningSystemTest < ApplicationSystemTestCase
     ActionController::Base.forgery_protection_origin_check = true
     organization = create_organization
     use_organization_host!(organization)
-    admin = FactoryBot.create(:user, :admin, :confirmed, organization: organization)
-    report = Decidim::Bih::Report.create!(organization: organization, description: "Speeding", address: "Račanska", category: "saobracaj", severity: "visok")
-    collection = Decidim::Bih::ReportCollection.create!(organization: organization, title: "Traffic safety", topic: "Signage", assigned_to: admin,
+    admin = FactoryBot.create(:user, :admin, :confirmed, organization:)
+    report = Decidim::Bih::Report.create!(organization:, description: "Speeding", address: "Račanska", category: "saobracaj", severity: "visok")
+    collection = Decidim::Bih::ReportCollection.create!(organization:, title: "Traffic safety", topic: "Signage", assigned_to: admin,
                                                         review_due_at: 2.weeks.from_now, summary: "Please assess the listed locations.")
     workspace = "decidim.bih.review_workspace"
     coordinates = {}
@@ -73,7 +73,7 @@ class ReportPlanningSystemTest < ApplicationSystemTestCase
     click_button I18n.t("decidim.bih.report_planning.ready")
     assert_text I18n.t("decidim.bih.report_planning.states.ready")
     assert_equal "ready", collection.reload.state
-    assert_link I18n.t("decidim.bih.report_planning.export"), href: "/admin/bih/report-collections/#{collection.id}/export"
+    assert_link I18n.t("decidim.bih.report_planning.export"), href: "/sr/admin/bih/report-collections/#{collection.id}/export"
     assert_nil report.reload.forwarded_at
     assert_empty report.dispatches
     assert_no_horizontal_overflow!

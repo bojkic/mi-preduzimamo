@@ -28,9 +28,9 @@ class AdminRewardsCatalogTest < ApplicationSystemTestCase
     accept_data_consent!
 
     assert_selector "#admin-rewards-header[data-rewards-active-tab='catalog']"
-    assert_selector "#admin-rewards-workflow-nav a[aria-current='page'][href='/admin/bih/rewards?tab=catalog']"
+    assert_selector "#admin-rewards-workflow-nav a[aria-current='page'][href='/sr/admin/bih/rewards?tab=catalog']"
     assert_selector "#admin-rewards-list", text: "Majica browser"
-    assert_selector "#admin-rewards-list form[action='/admin/bih/rewards/#{@reward.id}/deactivate'] input[name='approval_rationale']"
+    assert_selector "#admin-rewards-list form[action='/sr/admin/bih/rewards/#{@reward.id}/deactivate'] input[name='approval_rationale']"
     assert_no_selector "#admin-rewards-stock-review"
     assert_no_selector "#admin-rewards-diagnostics"
     assert_no_horizontal_overflow!
@@ -43,7 +43,7 @@ class AdminRewardsCatalogTest < ApplicationSystemTestCase
     assert_selector "#admin-rewards-stock-review", text: "Zauzeto"
     assert_selector "#admin-rewards-stock-review td", text: "2"
     assert_selector "#admin-rewards-stock-review td", text: "1"
-    assert_no_selector "#admin-rewards-stock-review form[action='/admin/bih/rewards/#{@reward.id}/deactivate']"
+    assert_no_selector "#admin-rewards-stock-review form[action='/sr/admin/bih/rewards/#{@reward.id}/deactivate']"
     assert_no_horizontal_overflow!
     assert_no_browser_console_errors!
 

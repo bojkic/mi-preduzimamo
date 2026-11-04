@@ -40,13 +40,13 @@ class AccountRegistrationPagesTest < ApplicationSystemTestCase
     within ".mi-registration-login" do
       click_link I18n.t("decidim.bih.registrations.new.have_account_link")
     end
-    assert_current_path "/users/sign_in"
+    assert_current_path "/sr/users/sign_in"
     within "#mi-auth-phone-form" do
       fill_in "phone", with: "065 999 999"
       click_button I18n.t("decidim.bih.phone_sessions.new.submit")
     end
     assert_selector "#mi-auth-code-form"
-    assert_current_path "/users/sign_in"
+    assert_current_path "/sr/users/sign_in"
     assert page.evaluate_script(<<~JS)
       document.querySelector('#mi-auth-code').getBoundingClientRect().bottom <=
         document.querySelector('#mi-auth-phone-title').getBoundingClientRect().top
@@ -60,7 +60,9 @@ class AccountRegistrationPagesTest < ApplicationSystemTestCase
     fill_in "mi-registration-name", with: "Test Građanin"
     fill_in "mi-registration-phone", with: "065 999 998"
     check "mi-registration-tos"
-    find("#mi-registration-form button[type=submit]").click
+    within "#mi-registration-form" do
+      click_button
+    end
     assert_selector "#mi-verification-code"
     [[390, 844], [1200, 900]].each do |width, height|
       page.driver.browser.manage.window.resize_to(width, height)
@@ -98,13 +100,16 @@ class AccountRegistrationPagesTest < ApplicationSystemTestCase
     assert_selector ".mi-account-settings", text: "Profil i postavke naloga"
     assert_selector ".mi-account-activity", text: "Praćene teme"
     assert_selector ".mi-account-activity", text: "Odgovori"
-    assert_selector ".mi-account-activity a[href='/profiles/#{@citizen.nickname}/following']"
-    assert_selector ".mi-account-activity a[href='/profiles/#{@citizen.nickname}/activity']"
+    assert_selector ".mi-account-activity a[href='/sr/profiles/#{@citizen.nickname}/following']"
+    assert_selector ".mi-account-activity a[href='/sr/profiles/#{@citizen.nickname}/activity']"
     assert_no_selector ".mi-account-dashboard", text: "Sedmični niz"
     assert_selector ".mi-setup-list", text: "Izaberi Komšiluk"
     assert_selector ".mi-setup-list", text: "Potvrdi adresu pismom"
     assert_selector ".mi-verification-options", text: "Pismo na adresu"
-    assert_selector ".mi-verification-actions a[href='/postal_letter/authorizations/edit']", text: "Upiši kod"
+    confirm_path = I18n.with_locale(@organization.default_locale) do
+      Decidim::Verifications::Adapter.from_element("postal_letter").resume_authorization_path
+    end
+    assert_selector ".mi-verification-actions a[href='#{confirm_path}']", text: "Upiši kod"
     assert_account_settings_precede_activity!
     assert_account_form_labels_are_vertical!
     assert_selector ".mi-account-activity__section", count: 5

@@ -19,7 +19,7 @@ module Decidim
         sign_in @admin
       end
 
-      def path(suffix = "") = "/admin/bih/reports/#{@report.reference}#{suffix}"
+      def path(suffix = "") = "/sr/admin/bih/reports/#{@report.reference}#{suffix}"
 
       def preview
         post path("/decision"), params: { decision_action: "send", input_version: ReportReviewVersion.digest(@report),
@@ -122,6 +122,22 @@ module Decidim
         post path("/decision"), params: { decision_action: "ask", after_decision: "next", intent: "draft", return_to:,
                                           input_version: ReportReviewVersion.digest(@report.reload), decision: { body: "Draft" } }
         assert_equal path, URI.parse(response.location).path
+      end
+
+      %w(sr sr-Cyrl bs hr).each do |locale|
+        test "native #{locale} case detail preserves its filtered queue return" do
+          queue_path = "/#{locale}/admin/bih/reports"
+          get "/#{locale}/admin/bih/reports/#{@report.reference}",
+              params: { return_to: "#{queue_path}?view=review&age=recent_7&mz_slug=synthetic-area" }
+          assert_response :success
+          input = css_select("input[name=return_to]").first
+          assert input, "Expected the real decision form's queue return"
+          returned = URI.parse(input["value"])
+          assert_equal queue_path, returned.path
+          assert_equal({ "view" => "review", "age" => "recent_7", "mz_slug" => "synthetic-area" },
+                       Rack::Utils.parse_nested_query(returned.query))
+          assert_select ".report-workspace > header a[href=?]", input["value"], count: 1
+        end
       end
 
       test "queue return rejects external and nested query parameters" do

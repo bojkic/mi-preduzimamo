@@ -20,7 +20,7 @@ class HomepagePublicActivityTest < ActionDispatch::IntegrationTest
     opportunity = opportunity(title: "Pomoć zajednici")
     notice = profile.notices.create!(organization: @organization, title: "Javno obavještenje", body: "Public notice body")
 
-    get "/"
+    get "/sr/"
 
     assert_response :success
     assert_select ".mi-ticker:not(.mi-hide-sm)" do
@@ -76,12 +76,12 @@ class HomepagePublicActivityTest < ActionDispatch::IntegrationTest
     profile.notices.create!(organization: @organization, title: "Važna objava", body: "Public", published_at: 1.day.ago)
     8.times { |n| opportunity(title: "Prilika #{n}") }
 
-    get "/"
+    get "/sr/"
     assert_select ".mi-ticker__item", count: 6
     assert_select ".mi-ticker a[href=?]", "/biceriseno/prijave/#{report.reference}"
     assert_select ".mi-ticker a", text: "Važna objava"
     first = css_select(".mi-ticker").first.to_html
-    get "/"
+    get "/sr/"
     assert_equal first, css_select(".mi-ticker").first.to_html
   end
 
@@ -99,10 +99,10 @@ class HomepagePublicActivityTest < ActionDispatch::IntegrationTest
       Decidim::Bih::HomepageActivity.new(@organization).call
     end
     assert(queries.none? { |sql| sql.include?("decidim_bih_komsiluk_posts") })
-    get "/"
+    get "/sr/"
     guest = css_select(".mi-ticker").first.to_html
     sign_in user
-    get "/"
+    get "/sr/"
     assert_equal guest, css_select(".mi-ticker").first.to_html
     assert_not_includes response.body, "PRIVATE NEIGHBORHOOD"
   end
@@ -111,11 +111,11 @@ class HomepagePublicActivityTest < ActionDispatch::IntegrationTest
     profile = partner
     opportunity = opportunity(title: "Only public while approved", partner_profile: profile)
     notice = profile.notices.create!(organization: @organization, title: "Public while verified", body: "Body")
-    get "/"
+    get "/sr/"
     assert_select ".mi-ticker a", text: opportunity.title
     assert_select ".mi-ticker a", text: notice.title
     profile.suspend!
-    get "/"
+    get "/sr/"
     assert_select ".mi-ticker", count: 0
   end
 
@@ -130,21 +130,25 @@ class HomepagePublicActivityTest < ActionDispatch::IntegrationTest
         end
       end
     end
-    get "/"
+    get "/sr/"
     assert_select ".mi-ticker script", count: 0
     assert_select ".mi-ticker a", text: "<script>alert(1)</script>"
   end
 
   test "private participation activity stays off the homepage even for an authorized member" do
     actor = create(:user, :confirmed, organization: @organization)
-    process = create(:participatory_process, :published, organization: @organization, private_space: true)
-    create(:participatory_space_private_user, user: actor, privatable_to: process)
+    process = create(:participatory_process, :published, :restricted, organization: @organization)
+    create(:member, user: actor, participatory_space: process)
+    assert process.restricted?
+    assert process.has_members?
+    assert_not Decidim::ParticipatoryProcess.visible_for(nil).exists?(id: process.id)
+    assert Decidim::ParticipatoryProcess.visible_for(actor).exists?(id: process.id)
     component = create(:proposal_component, participatory_space: process)
     proposal = create(:proposal, component:, published_at: Time.current)
     create(:action_log, user: actor, organization: @organization, action: "publish", visibility: "public-only",
                         resource: proposal, component:, participatory_space: process)
     sign_in actor
-    get "/"
+    get "/sr/"
     assert_response :success
     assert_select ".mi-ticker", count: 0
   end

@@ -19,10 +19,10 @@ class OnboardingGuidePageTest < ApplicationSystemTestCase
 
       assert_selector ".mi-guide", text: "Šta mogu ovdje?"
       assert_selector ".mi-guide-account a[href='/registracija']", text: "Registruj se"
-      assert_selector ".mi-guide-action[href='/biceriseno/prijave/new']", text: "Nova prijava"
-      assert_selector ".mi-guide-action[href='/biceriseno/mi-bot']", text: "Pitaj Milicu"
-      assert_selector ".mi-guide-action[href='/biceriseno/mapa']", text: "Mapa prijava"
-      assert_selector ".mi-guide-action[href='/biceriseno/komsiluk-board']", text: "Komšiluk tabla"
+      assert_selector ".mi-guide-action[href='/biceriseno/prijave/new?locale=sr']", text: "Nova prijava"
+      assert_selector ".mi-guide-action[href='/biceriseno/mi-bot?locale=sr']", text: "Pitaj Milicu"
+      assert_selector ".mi-guide-action[href='/biceriseno/mapa?locale=sr']", text: "Mapa prijava"
+      assert_selector ".mi-guide-action[href='/biceriseno/komsiluk-board?locale=sr']", text: "Komšiluk tabla"
       assert_no_horizontal_overflow!
       assert_no_browser_console_errors!
     end

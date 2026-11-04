@@ -26,7 +26,7 @@ class ReportReviewBatchBrowserTest < ApplicationSystemTestCase
     assert_no_selector "input[type=checkbox]:checked"
     reports.first(2).each { |report| check I18n.t("#{w}.batch.include", reference: report.reference) }
     click_button I18n.t("#{w}.batch.preview")
-    assert_current_path "/admin/bih/reports/batch/preview", ignore_query: true
+    assert_current_path "/sr/admin/bih/reports/batch/preview", ignore_query: true
     assert_text I18n.t("#{w}.batch.confirm_title")
     assert_text "intake@example.org"
     assert_text "Broken lamp near school"
@@ -36,7 +36,7 @@ class ReportReviewBatchBrowserTest < ApplicationSystemTestCase
     Decidim::Bih::ReportCaseWorkflow.new(reports.first, nil).reply(body: "The location changed")
     reports.first(2).each { |report| check I18n.t("#{w}.batch.approve", reference: report.reference) }
     click_button I18n.t("#{w}.batch.apply")
-    assert_current_path "/admin/bih/reports/batch/confirm", ignore_query: true
+    assert_current_path "/sr/admin/bih/reports/batch/confirm", ignore_query: true
     assert_text I18n.t("#{w}.batch.results")
     assert_text I18n.t("#{w}.errors.stale")
     assert_equal 0, reports.first.dispatches.count

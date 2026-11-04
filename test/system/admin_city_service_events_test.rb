@@ -187,10 +187,10 @@ class AdminCityServiceEventsTest < ApplicationSystemTestCase
 
     assert_selector "#admin-city-service-events", text: "Gradska servisna obavještenja"
     assert_selector "#admin-city-service-events[data-city-alert-active-tab='review']"
-    assert_selector "#admin-city-alert-workflow-nav a[aria-current='page'][href='/admin/bih/city-alerts?tab=review']"
-    assert_selector "#admin-city-alert-workflow-nav a[href='/admin/bih/city-alerts?tab=automatic']"
-    assert_selector "#admin-city-alert-workflow-nav a[href='/admin/bih/city-alerts?tab=done']"
-    assert_selector "#city-alert-settings[href='/admin/bih/city-alerts?tab=settings']"
+    assert_selector "#admin-city-alert-workflow-nav a[aria-current='page'][href='/admin/bih/city-alerts?locale=sr&tab=review']"
+    assert_selector "#admin-city-alert-workflow-nav a[href='/admin/bih/city-alerts?locale=sr&tab=automatic']"
+    assert_selector "#admin-city-alert-workflow-nav a[href='/admin/bih/city-alerts?locale=sr&tab=done']"
+    assert_selector "#city-alert-settings[href='/admin/bih/city-alerts?locale=sr&tab=settings']"
     assert_no_selector "#admin-city-alert-readiness"
     assert_selector "#admin-city-alert-state-summary"
     assert_selector "#admin-city-alert-filters"
@@ -308,7 +308,7 @@ class AdminCityServiceEventsTest < ApplicationSystemTestCase
       assert_no_selector "[data-city-alert-withdraw][open]"
       find("[data-city-alert-withdraw] > summary").click
       assert_selector "[data-city-alert-withdraw][open]"
-      within "[data-city-alert-withdraw] form[action$='/withdraw']" do
+      within "[data-city-alert-withdraw] form[action='/admin/bih/city-alerts/#{@event.id}/withdraw?locale=sr']" do
         fill_in "withdraw_note_#{@event.id}", with: "Izvor je ispravio podatke"
         click_button I18n.t("decidim_app.admin.city_service_events.workflow_results.correct")
       end

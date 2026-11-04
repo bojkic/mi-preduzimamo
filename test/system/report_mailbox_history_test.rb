@@ -31,12 +31,12 @@ class ReportMailboxHistoryTest < ApplicationSystemTestCase
         assert_text body
         assert_text I18n.t("decidim.bih.report_mailbox.history")
         email = Decidim::Bih::InboundEmail.find_by!(organization:, message_id: raw[/Message-ID: <([^>]+)>/, 1])
-        assert_current_path "/admin/bih/report-mail/#{email.id}"
+        assert_current_path "/sr/admin/bih/report-mail/#{email.id}"
         assert email.history_only
         fill_in "references", with: report.reference
         click_button I18n.t("decidim.bih.report_mailbox.link")
         assert_field "references", with: ""
-        assert_current_path "/admin/bih/report-mail/#{email.id}"
+        assert_current_path "/sr/admin/bih/report-mail/#{email.id}"
         link = email.inbound_email_links.find_by!(report:)
         assert_equal "manual", link.matching_method
         assert_equal "association", link.assurance
@@ -49,7 +49,7 @@ class ReportMailboxHistoryTest < ApplicationSystemTestCase
         assert_empty report.dispatches
         visit "/admin/bih/reports/#{report.reference}"
         assert_text body
-        assert_link I18n.t("decidim.bih.report_mailbox.open"), href: "/admin/bih/report-mail/#{email.id}"
+        assert_link I18n.t("decidim.bih.report_mailbox.open"), href: "/sr/admin/bih/report-mail/#{email.id}"
       end
     end
   end
